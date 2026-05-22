@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Mail, ArrowRight } from "lucide-react";
-import Link from "next/link";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CtaSection } from "@/components/cta-section";
 import { SITE_URL } from "@/lib/site-config";

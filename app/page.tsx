@@ -471,7 +471,7 @@ export default function HomePage() {
                         {a.name}
                       </span>
                       {a.primary && (
-                        <span className="ml-auto text-[10px] font-bold uppercase tracking-widest text-cta">
+                        <span className="ml-auto text-[10px] font-bold uppercase tracking-widest text-primary">
                           Primary
                         </span>
                       )}

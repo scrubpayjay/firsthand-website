@@ -365,7 +365,7 @@ export default async function ServiceDetailPage({ params }: RouteProps) {
                     {a.name}
                   </span>
                   {a.primary && (
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-cta">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
                       ★
                     </span>
                   )}

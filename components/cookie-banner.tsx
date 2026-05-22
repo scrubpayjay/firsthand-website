@@ -1,57 +1,78 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import Script from "next/script";
 import Link from "next/link";
 import { X } from "lucide-react";
 
 const CONSENT_KEY = "firsthand:cookie-consent";
 
-type ConsentState = "granted" | "denied" | null;
+type StoredConsent = "granted" | "denied" | null;
 
 interface CookieBannerProps {
   pixelId: string;
   tidioKey: string;
 }
 
+const subscribe = (callback: () => void): (() => void) => {
+  window.addEventListener("storage", callback);
+  return () => window.removeEventListener("storage", callback);
+};
+
+const getSnapshot = (): StoredConsent => {
+  try {
+    const stored = localStorage.getItem(CONSENT_KEY);
+    if (stored === "granted" || stored === "denied") return stored;
+    return null;
+  } catch {
+    return null;
+  }
+};
+
+// Server-side render: treat as "not yet decided" — banner is suppressed by
+// the local `hydrated` flag, so we never render mismatched content.
+const getServerSnapshot = (): StoredConsent => null;
+
 /**
  * Cookie consent banner. Gates Meta Pixel + Tidio chat behind explicit user
  * consent. Decline only fires PageView (no advertising/profiling pixels).
  * Stores choice in localStorage so we don't nag returning visitors.
+ *
+ * Reads consent via useSyncExternalStore so localStorage stays the source of
+ * truth (other tabs can update it, etc.) and we don't violate the
+ * react-hooks/set-state-in-effect lint.
  */
 export function CookieBanner({ pixelId, tidioKey }: CookieBannerProps) {
-  const [consent, setConsent] = useState<ConsentState>(null);
-  const [hydrated, setHydrated] = useState(false);
+  const storedConsent = useSyncExternalStore(
+    subscribe,
+    getSnapshot,
+    getServerSnapshot
+  );
 
-  useEffect(() => {
-    setHydrated(true);
-    try {
-      const stored = localStorage.getItem(CONSENT_KEY);
-      if (stored === "granted" || stored === "denied") {
-        setConsent(stored);
-      }
-    } catch {
-      // Private browsing or storage disabled — banner stays hidden, no pixels fire.
-    }
-  }, []);
+  // Local override so we can update consent immediately without waiting on a
+  // storage event (which only fires for *other* tabs).
+  const [overrideConsent, setOverrideConsent] = useState<StoredConsent>(null);
+
+  const consent = overrideConsent ?? storedConsent;
 
   const decide = (choice: "granted" | "denied") => {
     try {
       localStorage.setItem(CONSENT_KEY, choice);
     } catch {
-      // ignore
+      // ignore — private browsing
     }
-    setConsent(choice);
+    setOverrideConsent(choice);
   };
 
   const accepted = consent === "granted";
+  const showBanner = consent === null;
   const placeholderPixel = pixelId.startsWith("PLACEHOLDER");
   const placeholderTidio = tidioKey.startsWith("PLACEHOLDER");
 
   return (
     <>
       {/* Meta Pixel — only fires after explicit consent AND once real ID is configured */}
-      {hydrated && accepted && !placeholderPixel && (
+      {accepted && !placeholderPixel && (
         <Script
           id="meta-pixel"
           strategy="afterInteractive"
@@ -73,14 +94,14 @@ export function CookieBanner({ pixelId, tidioKey }: CookieBannerProps) {
 
       {/* Tidio — only fires after consent AND once real public key is configured.
           See README for full Tidio account setup checklist (greeting, quick replies, hours). */}
-      {hydrated && accepted && !placeholderTidio && (
+      {accepted && !placeholderTidio && (
         <Script
           src={`//code.tidio.co/${tidioKey}.js`}
           strategy="lazyOnload"
         />
       )}
 
-      {hydrated && consent === null && (
+      {showBanner && (
         <div
           role="dialog"
           aria-label="Cookie consent"
@@ -103,7 +124,7 @@ export function CookieBanner({ pixelId, tidioKey }: CookieBannerProps) {
             We use cookies to measure site traffic and enable live chat for
             customer questions. We don&apos;t sell your data.{" "}
             <Link href="/privacy" className="underline text-foreground">
-              Read more
+              Read our privacy policy
             </Link>
             .
           </p>

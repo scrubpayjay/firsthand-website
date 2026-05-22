@@ -146,8 +146,8 @@ export default async function ServiceAreaPage({ params }: RouteProps) {
                 {area.fullName}
               </p>
               {area.primary && (
-                <span className="inline-flex items-center gap-1 rounded-full bg-cta/15 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-cta">
-                  <Star className="h-3 w-3 fill-cta" strokeWidth={0} />
+                <span className="inline-flex items-center gap-1 rounded-full bg-primary/12 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-widest text-primary">
+                  <Star className="h-3 w-3 fill-primary" strokeWidth={0} />
                   Primary
                 </span>
               )}
@@ -384,7 +384,7 @@ export default async function ServiceAreaPage({ params }: RouteProps) {
                     {a.name}
                   </span>
                   {a.primary && (
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-cta">
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-primary">
                       ★
                     </span>
                   )}

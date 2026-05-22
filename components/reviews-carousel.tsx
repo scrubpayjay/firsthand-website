@@ -162,21 +162,33 @@ export function ReviewsCarousel({
 
       {/* Controls */}
       <div className="mt-6 flex items-center justify-between gap-4">
-        <div className="flex items-center gap-1.5" aria-label="Carousel position">
+        <div
+          className="flex items-center -mx-2"
+          role="tablist"
+          aria-label="Carousel position"
+        >
           {reviews.map((_, i) => (
             <button
               key={i}
               type="button"
+              role="tab"
               onClick={() => goTo(i)}
-              aria-label={`Go to review ${i + 1}`}
+              aria-label={`Go to review ${i + 1} of ${total}`}
+              aria-selected={index === i}
               aria-current={index === i ? "true" : undefined}
-              className={cn(
-                "h-1.5 rounded-full transition-all",
-                index === i
-                  ? "w-6 bg-primary"
-                  : "w-1.5 bg-border hover:bg-text-faint"
-              )}
-            />
+              // 44px tap target with the visual dot rendered inside
+              className="inline-flex h-11 w-7 items-center justify-center group"
+            >
+              <span
+                aria-hidden="true"
+                className={cn(
+                  "block h-1.5 rounded-full transition-all",
+                  index === i
+                    ? "w-6 bg-primary"
+                    : "w-1.5 bg-border group-hover:bg-text-dim"
+                )}
+              />
+            </button>
           ))}
         </div>
 

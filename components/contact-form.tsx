@@ -227,7 +227,7 @@ function Field({
     <label className="block">
       <span className="block text-sm font-medium text-foreground mb-1.5">
         {label}
-        {required && <span className="text-cta ml-1">*</span>}
+        {required && <span className="text-primary ml-1" aria-hidden="true">*</span>}
       </span>
       {children}
       {hint && !error && (

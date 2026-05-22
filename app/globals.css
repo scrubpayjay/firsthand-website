@@ -65,10 +65,12 @@
   --accent-foreground: #1e3a0e;
   --accent-hover: #d9f99d;
 
-  /* Vibrant lime CTA — used for primary action buttons */
-  --cta: #65a30d;
-  --cta-hover: #4d7c0f;
-  --cta-foreground: #ffffff;
+  /* Vibrant lime CTA — used for primary action buttons.
+     Dark foreground (--text) keeps the lime pop while passing WCAG AA contrast
+     (white on this green tested at 2.6:1, dark text reads ~7:1). */
+  --cta: #84cc16;
+  --cta-hover: #65a30d;
+  --cta-foreground: #15240a;
 
   --destructive: #b91c1c;
   --border: #e7e5e4;
@@ -78,7 +80,9 @@
 
   --elevated: #f5f5f4;
   --text-dim: #57534e;
-  --text-faint: #a8a29e;
+  /* text-faint is used for [RYAN: ...] placeholders; darkened from stone-400
+     (#a8a29e) to stone-500 (#78716c) so it passes WCAG AA on warm-white bg. */
+  --text-faint: #78716c;
 
   --radius: 0.625rem;
 }
@@ -106,6 +110,12 @@
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display), Georgia, serif;
     letter-spacing: -0.02em;
+    /* Inherit color from parent so dark sections (bg-primary) can flip text
+       to --primary-foreground via Tailwind utilities without an override war. */
+    color: currentColor;
+  }
+
+  body {
     color: var(--foreground);
   }
 

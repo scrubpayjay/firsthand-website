@@ -10,7 +10,6 @@ import {
   Home,
 } from "lucide-react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { CtaSection } from "@/components/cta-section";
 import { FINANCING, SERVICES, SITE_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
