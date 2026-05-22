@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import path from "node:path";
 
 /**
  * 301 redirect map — preserves SEO equity from the existing
@@ -26,6 +27,10 @@ const legacyRedirects = [
 ];
 
 const nextConfig: NextConfig = {
+  // Pin Turbopack to this project so it ignores stray lockfiles in parent dirs.
+  turbopack: {
+    root: path.resolve(__dirname),
+  },
   images: {
     remotePatterns: [
       // CompanyCam-hosted photos that we link out to from /portfolio
