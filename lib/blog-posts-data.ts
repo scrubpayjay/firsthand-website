@@ -463,7 +463,247 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
   },
 
-  // ── Post 3 added in subsequent commit ───────────────────────────────
+  // ── Post 3 ─────────────────────────────────────────────────────────
+  {
+    slug: "bamboo-removal-windermere-hoa-approved",
+    title:
+      "Bamboo Removal in Windermere: What HOA Committees Approve",
+    description:
+      "How Windermere HOAs (Isleworth, Keene's Pointe, Tildens Grove) treat bamboo removal, containment, and replacement — with approved screening alternatives and real costs.",
+    h1: "Bamboo removal in Windermere — what HOA committees approve",
+    publishedAt: "2026-05-22",
+    author: RYAN_AUTHOR,
+    category: "HOA & ARC",
+    tags: [
+      "bamboo removal",
+      "Windermere",
+      "Isleworth",
+      "Keene's Pointe",
+      "HOA",
+      "privacy screening",
+    ],
+    readTimeMinutes: 9,
+    heroPhotoLabel:
+      "Mid-removal photo of a Windermere bamboo stand — excavator visible, rhizome network exposed in the trench, fence line along property visible. Could be at Tildens Grove or a Lake Butler-adjacent property.",
+    sources: [
+      {
+        label: "Bamboo in Florida — Identification and Management (UF/IFAS EP567)",
+        url: "https://edis.ifas.ufl.edu/publication/EP567",
+        publisher: "UF/IFAS Extension",
+      },
+      {
+        label: "Florida-Friendly Plant Database — Right Plant, Right Place",
+        url: "https://ffl.ifas.ufl.edu/resources/plants/",
+        publisher: "UF/IFAS",
+      },
+      {
+        label: "Lakefront Shoreline Vegetation — SJRWMD permitting",
+        url: "https://www.sjrwmd.com/permitting/",
+        publisher: "St. Johns River Water Management District",
+      },
+    ],
+    related: [
+      {
+        href: "/services/bamboo-trimming-removal",
+        label: "Bamboo trimming & removal",
+        blurb:
+          "Running and clumping bamboo removal with two follow-up visits across 120 days",
+      },
+      {
+        href: "/service-areas/windermere",
+        label: "Windermere service area",
+        blurb:
+          "ARC submittal experience across Isleworth, Keene's Pointe, Tildens Grove",
+      },
+      {
+        href: "/services/landscape-design",
+        label: "Landscape design",
+        blurb:
+          "HOA-approved replacement screening palettes designed and installed in-house",
+      },
+    ],
+    body: [
+      {
+        type: "p",
+        text: "A lot of Windermere properties have a bamboo problem they didn't put there. Running bamboo — the aggressive kind that spreads underground through a rhizome network — was planted as a privacy hedge along estate property lines and lakefronts decades ago, before the invasive behavior was well understood. By the time the rhizomes crossed the property line or pushed up through a paver patio, the original owner was long gone and the new owner inherited a project that's both bigger and more politically sensitive than they expected. The HOA gets involved. The neighbor gets involved. The water management district sometimes gets involved.",
+      },
+      {
+        type: "p",
+        text: "We've worked enough bamboo removals across [Isleworth, Keene's Pointe, Tildens Grove, and the Lake Butler waterfront](/service-areas/windermere) to know what each Architectural Review Committee will sign off on and what they'll send back. The short version: running bamboo has to be dealt with — every Windermere ARC sees it as a community-level concern now — but there's flexibility in how. Full removal is the default. Engineered containment is acceptable when removal isn't possible. Both require documentation.",
+      },
+      {
+        type: "h2",
+        text: "First step: is it running or clumping bamboo?",
+      },
+      {
+        type: "p",
+        text: "The two categories behave completely differently and the management approach is different. [UF/IFAS publication EP567](https://edis.ifas.ufl.edu/publication/EP567) covers the identification details, but the field test we use is straightforward: probe the soil 3–6 feet outside the visible stand. If you find rhizomes (thick, woody underground stems) at that distance, it's running bamboo and you have an active spread.",
+      },
+      {
+        type: "ul",
+        items: [
+          "**Running bamboo** (Phyllostachys aurea 'Golden', P. nigra 'Black', P. bissetii). Spreads aggressively underground. Rhizomes can travel 20–30 feet beyond the visible canes — sometimes farther. This is what nearly every ARC concern in Windermere is about.",
+          "**Clumping bamboo** (Bambusa multiplex 'Hedge', Bambusa textilis 'Weaver's'). Stays in a tight clump and expands very slowly outward, maybe 4–8 inches per year. Most ARCs treat clumping bamboo as a regular ornamental shrub.",
+        ],
+      },
+      {
+        type: "p",
+        text: "If your stand is clumping bamboo and contained to the original planting area, the conversation with the ARC is usually about trimming, height, and tidiness — not removal. The rest of this article is about running bamboo, which is where the actual project work happens.",
+      },
+      {
+        type: "h2",
+        text: "What Windermere ARCs are looking for",
+      },
+      {
+        type: "p",
+        text: "Each gated community has its own ARC and its own current standards. The rules below reflect what we've seen approved and rejected in 2025–2026; they shift as committees rotate. Always submit a package and get a written response — don't proceed on a verbal.",
+      },
+      {
+        type: "h3",
+        text: "Isleworth",
+      },
+      {
+        type: "p",
+        text: "Isleworth's ARC has been the strictest of the Windermere communities on bamboo since roughly 2022. Standard expectation: full mechanical removal of the visible stand and the underlying rhizome network, with the work documented by a licensed landscape contractor. If the bamboo has crossed onto a neighboring lot, the submittal package needs to address the entire affected area, not just your side. Two follow-up visits at 60 and 120 days are part of the implicit expectation — without them, recurrence is high and Isleworth has been known to issue follow-up violations.",
+      },
+      {
+        type: "h3",
+        text: "Keene's Pointe",
+      },
+      {
+        type: "p",
+        text: "Keene's Pointe accepts either full removal or engineered containment with a 60-mil HDPE root barrier rated for bamboo (the same barrier system used by golf-course irrigation contractors). Containment packages need an installation drawing showing barrier depth (minimum 30 inches), seam treatment, and above-grade lip. Removal packages need a 120-day follow-up plan. Both options require a 'before' photo and 'after' photo set, time-stamped, attached to the submittal.",
+      },
+      {
+        type: "h3",
+        text: "Tildens Grove",
+      },
+      {
+        type: "p",
+        text: "Tildens Grove's ARC has historically preferred removal but will approve containment for stands that exist along shared property lines where neither neighbor wants the full disruption of excavation. Their submittal expects a replacement screening plan if removal is chosen — the bare expanse of fence or property line is itself a violation.",
+      },
+      {
+        type: "h3",
+        text: "Reserve at Lake Butler & smaller subdivisions",
+      },
+      {
+        type: "p",
+        text: "Smaller HOAs in the Lake Butler waterfront area handle bamboo case-by-case. We've seen everything from 'do whatever doesn't impact our shoreline' to detailed approval requirements modeled after Isleworth's. Always submit first. The smaller boards are often more flexible on timeline than Isleworth or Keene's Pointe.",
+      },
+      {
+        type: "callout",
+        title: "Lakefront note",
+        body: "If your bamboo stand sits within roughly 50 feet of a lake shoreline, the [St. Johns River Water Management District](https://www.sjrwmd.com/permitting/) may have jurisdiction over the work. Mechanical excavation in a regulated riparian zone can require a permit. We handle this paperwork as part of the project when relevant; if you're DIY, talk to SJRWMD before you put a shovel in the ground.",
+      },
+      {
+        type: "h2",
+        text: "What the actual removal looks like",
+      },
+      {
+        type: "p",
+        text: "Most Windermere bamboo removals run as 3-phase projects across 4 months:",
+      },
+      {
+        type: "ol",
+        items: [
+          "**Phase 1 (Days 1–3): mechanical removal.** Excavator and skid steer pull all visible canes and excavate the rhizome network 12–18 inches deep across the full stand footprint plus a 6-foot margin beyond the visible edge. Spoils hauled off — bamboo doesn't compost normally and can't go in regular green waste.",
+          "**Phase 2 (Day 3–5, if applicable): root barrier installation.** 60-mil HDPE barrier installed vertically along the property line or containment boundary, minimum 30 inches deep, with a 2–4 inch above-grade lip to catch surface rhizomes. Seams welded or overlapped per spec.",
+          "**Phase 3 (Day 60 follow-up): new-shoot pull.** Any rhizome fragment missed in Phase 1 sends up new shoots within 4–8 weeks. We pull them all by hand at day 60. Re-probe the soil for active spread.",
+          "**Phase 4 (Day 120 follow-up): final clearance.** Second follow-up. By this point most rhizomes are exhausted and remaining shoots are weak. Final pull, walk-through with photo documentation, and the area is ready for replanting.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Approved replacement screening for Windermere",
+      },
+      {
+        type: "p",
+        text: "If you removed bamboo to satisfy ARC, most committees want a replacement plan in the same submittal. The screening plants below are all on the Florida-Friendly list and have a track record of approval across Windermere boards:",
+      },
+      {
+        type: "ul",
+        items: [
+          "**Podocarpus macrophyllus (Yew Pine / Japanese Yew).** The most-approved bamboo replacement in Windermere. Grows 6–15 feet, evergreen, dense, very low maintenance. Tolerates partial shade. Hedges of mature Podocarpus screen as well as bamboo and look more refined.",
+          "**Viburnum suspensum (Sandankwa Viburnum).** Faster than Podocarpus to fill in, 4–8 feet at maturity, glossy evergreen leaves, fragrant flowers in spring. Works well where you want a shorter screen.",
+          "**Wax myrtle (Morella cerifera).** Florida native, tolerates wet feet — useful for lakefront or low-drainage spots. Grows 10–15 feet. Less formal but excellent for naturalized property edges.",
+          "**Clusia rosea 'Nana' (Dwarf Pitch Apple).** Tropical-feeling, dense, drought-tolerant once established, 4–6 feet. Increasingly popular for modern landscapes; check current ARC plant lists because some boards are still updating to include it.",
+          "**Fakahatchee grass (Tripsacum dactyloides).** Not a hedge, but an excellent native grass for naturalized screening with a 4–6 foot mound habit. Works in masses along property lines where formal hedges feel wrong.",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Real cost ranges (Windermere, 2026)",
+      },
+      {
+        type: "table",
+        headers: ["Project type", "Stand size", "Typical cost", "Timeline"],
+        rows: [
+          [
+            "Clumping bamboo trim / thin",
+            "Single clump",
+            "$300–$800",
+            "Half-day",
+          ],
+          [
+            "Running bamboo removal (small)",
+            "Backyard, < 20 ft long",
+            "$1,500–$4,000",
+            "1–3 days + 2 follow-ups",
+          ],
+          [
+            "Running bamboo removal (mid)",
+            "20–50 ft along fence",
+            "$4,000–$8,000",
+            "2–4 days + 2 follow-ups",
+          ],
+          [
+            "Running bamboo removal (large)",
+            "Estate-scale, 50+ ft",
+            "$8,000–$15,000+",
+            "3–5 days + 2 follow-ups",
+          ],
+          [
+            "60-mil HDPE root barrier",
+            "Per linear foot",
+            "$40–$80/lf",
+            "Installed during removal",
+          ],
+          [
+            "Replacement screening (Podocarpus)",
+            "Per linear foot installed",
+            "$40–$100/lf",
+            "1–2 days install",
+          ],
+        ],
+        caption:
+          "Costs reflect typical Windermere/Isleworth/Keene's Pointe pricing in spring 2026. Heavier access constraints (gated communities, narrow side yards, lakefront setbacks) move pricing toward the upper end.",
+      },
+      {
+        type: "h2",
+        text: "Why DIY rarely works on running bamboo",
+      },
+      {
+        type: "p",
+        text: "Almost every customer who calls us about Windermere bamboo has tried at least one of: (a) cutting the canes down to the ground, (b) spraying glyphosate on the cut canes, (c) digging out the visible base. None of these work on an established Phyllostachys stand, and the failures all share the same cause: the rhizome network is the plant, the canes are temporary expressions of it. Cutting the canes doesn't reduce the rhizomes. Glyphosate doesn't translocate far into a deep rhizome system. Hand-digging the visible base misses the network that extends 20+ feet beyond it.",
+      },
+      {
+        type: "p",
+        text: "Mechanical excavation of the rhizome network across the full affected area — not just where the canes are visible — is what actually ends the problem. Then the two follow-up visits to catch missed fragments. That's the work. There's no shortcut, and ARCs have learned to recognize half-finished removals from a hundred feet.",
+      },
+      {
+        type: "h2",
+        text: "How to start",
+      },
+      {
+        type: "p",
+        text: "If you're in Windermere with a bamboo problem and an ARC submittal pending — or expected — the right first step is a site walk. We'll identify the species, probe the rhizome extent, photograph the stand, and discuss whether removal or contained management is the right call for your specific ARC and budget. From there we draft the submittal package, including the replacement screening plan if the ARC requires one.",
+      },
+      {
+        type: "p",
+        text: "Book a site walk from our [contact page](/contact) or call (407) 584-3784. Most Windermere bamboo projects move from initial walk to ARC approval to install in 4–8 weeks, depending on the board's review cycle.",
+      },
+    ],
+  },
 ];
 
 export const BLOG_POSTS_MAP: Record<string, BlogPost> = Object.fromEntries(
