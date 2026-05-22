@@ -42,11 +42,63 @@ Production-ready Next.js 16 marketing site for Firsthand Lawns, replacing the ex
 - Cookie consent banner gating Meta Pixel + Tidio behind explicit opt-in
 - Financing call-out on home, dedicated `/financing` page, sidebar callout on every service page
 
+**Photo coverage** (real CompanyCam photos via the manifest at `lib/photos-manifest.ts`)
+
+| Surface | Status | Source |
+|---|---|---|
+| Home hero | ✓ | landscape-design backyard, Orlando |
+| Home financing callout | ✓ | hardscape-1 (Bay Hill travertine pool) |
+| Home "Where we work" | ✓ | winter-park-1 (oak-shaded Spanish home) |
+| Home recent-work grid | ✓ | 4 service heroes |
+| `/services/lawn-maintenance` | ✓ | lawn-1 hero |
+| `/services/landscape-design` | ✓ | landscape-1 hero |
+| `/services/sod-installation` | ✓ | sod-1 hero |
+| `/services/hardscape-installation` | ✓ | hardscape-1 hero |
+| `/services/stump-grinding-removal` | ✓ | stump-1 hero |
+| `/services/bamboo-trimming-removal` | ✓ | bamboo-1 hero |
+| `/services/irrigation` | ✗ | [RYAN: photo needed] — pool didn't include irrigation shots |
+| `/services/tree-trimming-removal` | ✗ | [RYAN: photo needed] |
+| `/service-areas/winter-park` | ✓ | winter-park-1 |
+| `/service-areas/windermere` | ✓ | windermere-1 |
+| `/service-areas/bay-hill` | ✓ | bay-hill-1 |
+| `/service-areas/orlando` | ✗ | [RYAN: photo needed] |
+| `/service-areas/college-park` | ✗ | [RYAN: photo needed] |
+| `/portfolio` gallery | ✓ | 18-photo curated grid |
+| `/about` recent work | ✓ | 8-photo grid |
+| `/about` credentials photo | ✓ | hardscape-1 |
+| `/about` Ryan + team photos | ✗ | placeholders (CompanyCam doesn't have these) |
+| `public/og-image.jpg` (1200×630) | ✓ | derived from home hero |
+
 **Tracking**
 
 - Google Tag Manager: **GTM-5T6BXSR7** (the existing WordPress container — preserved, not regenerated)
 - Meta Pixel: placeholder `PLACEHOLDER_FB_PIXEL_ID` in `app/layout.tsx`, fires PageView + Lead event after consent
 - Tidio chat: placeholder `PLACEHOLDER_TIDIO_ID` in `app/layout.tsx`, lazy-loaded after consent
+
+---
+
+## Regenerating photos from CompanyCam
+
+The photo pull is reproducible. Pullers + finalizer live at `/tmp/cc-pull/`
+(see `pull.mjs`, `resize.mjs`, `finalize.mjs`). To refresh:
+
+```bash
+# 1. Pull recent project photos and download candidates
+export CC_API_KEY=$(doppler secrets get COMPANYCAM_API_KEY \
+  --project firsthand-ops --config prd --plain)
+node /tmp/cc-pull/pull.mjs            # → /tmp/cc-pull/raw + photos-meta.json
+
+# 2. Resize to web sizes (max 1600px, mozjpeg q=78, EXIF stripped)
+node /tmp/cc-pull/resize.mjs          # → /tmp/cc-pull/staging
+
+# 3. Curate KEEPERS list in finalize.mjs (visual review of staging/)
+# 4. Run finalize to copy + rename + emit manifest + og-image
+node /tmp/cc-pull/finalize.mjs        # → public/photos/* + lib/photos-manifest.ts
+```
+
+Inspecting candidates: open `/tmp/cc-pull/staging/cand-*.jpg` in Preview
+and update `KEEPERS` in `finalize.mjs` with chosen filenames, target
+category prefix, area, service, role, and alt text override.
 
 ---
 
