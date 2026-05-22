@@ -3,7 +3,12 @@ import { Star, ArrowRight } from "lucide-react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CtaSection } from "@/components/cta-section";
 import { REVIEWS } from "@/lib/reviews-data";
-import { REVIEWS_SUMMARY, SITE_URL, SOCIAL } from "@/lib/site-config";
+import {
+  REVIEWS_SUMMARY,
+  SITE_URL,
+  SOCIAL,
+  LEAVE_REVIEW_URL,
+} from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Reviews — what our customers say | Firsthand Lawns",
@@ -57,6 +62,16 @@ export default function ReviewsPage() {
               View on Google
               <ArrowRight className="h-4 w-4" />
             </a>
+            <a
+              href={LEAVE_REVIEW_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold text-foreground hover:border-primary/40 transition-colors"
+            >
+              <Star className="h-3.5 w-3.5 fill-cta text-cta" strokeWidth={0} />
+              Leave us a Google review
+              <ArrowRight className="h-3.5 w-3.5" />
+            </a>
           </div>
 
           <p className="mt-6 text-base text-muted-foreground leading-relaxed">
@@ -107,18 +122,31 @@ export default function ReviewsPage() {
         </ul>
 
         <div className="mt-12 flex flex-col items-center text-center">
-          <p className="text-sm text-muted-foreground mb-3">
-            These are a representative cross-section. Read every review on Google.
+          <p className="text-sm text-muted-foreground mb-4">
+            These are a representative cross-section. Read every review on
+            Google — or add yours.
           </p>
-          <a
-            href={SOCIAL.google}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-muted"
-          >
-            Read all {REVIEWS_SUMMARY.count} reviews on Google
-            <ArrowRight className="h-4 w-4" />
-          </a>
+          <div className="flex flex-col sm:flex-row gap-3">
+            <a
+              href={SOCIAL.google}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-semibold text-foreground hover:bg-muted"
+            >
+              Read all {REVIEWS_SUMMARY.count} reviews on Google
+              <ArrowRight className="h-4 w-4" />
+            </a>
+            <a
+              href={LEAVE_REVIEW_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="cta-pill inline-flex items-center justify-center gap-1.5 px-5 py-2.5 text-sm font-semibold"
+            >
+              <Star className="h-4 w-4 fill-current" strokeWidth={0} />
+              Leave us a Google review
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       </section>
 

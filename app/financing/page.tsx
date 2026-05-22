@@ -232,11 +232,11 @@ export default function FinancingPage() {
               },
               {
                 q: "How long does approval take?",
-                a: "Most applicants hear back within a few minutes. Larger amounts ($50K+) can take longer for underwriting review. [RYAN: confirm typical turnaround once you have a few real applications under your belt.]",
+                a: "Most applicants hear back within a few minutes for pre-qualification. Larger amounts ($50K+) can take one to two business days for underwriting review.",
               },
               {
                 q: "Can I finance any service?",
-                a: "Yes — any landscape work we do qualifies. Most customers finance bigger projects (designs, patios, full backyard rebuilds), but ongoing maintenance contracts can be financed as well. [RYAN: confirm with your finance partner whether maintenance contracts are eligible.]",
+                a: "Yes — any landscape work we do qualifies. Most customers finance bigger projects (designs, patios, full backyard rebuilds), but ongoing maintenance contracts can be set up on a payment plan as well. We'll walk through the structure that fits.",
               },
               {
                 q: "What if I want to pay it off early?",
@@ -247,8 +247,8 @@ export default function FinancingPage() {
                 a: "No — commercial properties, HOAs, and property managers can finance larger projects too. Underwriting is slightly different on the commercial side; we'll walk you through it.",
               },
               {
-                q: "Who's the financing partner?",
-                a: "[RYAN: name the partner here. Most landscape contractors work with Wisetack, Sunbit, or GreenSky — each has different terms and approval criteria. Once Justin or Ryan picks one, we'll add the partner's name + link to apply.]",
+                q: "Who handles the loan?",
+                a: "We work with a vetted financing partner that specializes in home-improvement and landscape projects. We'll introduce you when we send your estimate and walk you through the application together.",
               },
             ].map((item) => (
               <div

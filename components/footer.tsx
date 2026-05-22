@@ -19,6 +19,7 @@ function InstagramIcon(props: React.SVGProps<SVGSVGElement>) {
     </svg>
   );
 }
+import { Star } from "lucide-react";
 import {
   NAP,
   SOCIAL,
@@ -26,6 +27,8 @@ import {
   SERVICE_AREAS,
   SITE_TAGLINE,
   HOURS_DISPLAY,
+  LEAVE_REVIEW_URL,
+  SITE_NAME,
 } from "@/lib/site-config";
 
 export function Footer() {
@@ -84,19 +87,30 @@ export function Footer() {
                 href={SOCIAL.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Facebook"
+                aria-label={`${SITE_NAME} on Facebook (opens in new tab)`}
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
               >
                 <FacebookIcon className="h-4 w-4" />
+                <span className="sr-only">Facebook</span>
               </a>
               <a
                 href={SOCIAL.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Instagram"
+                aria-label={`${SITE_NAME} on Instagram (opens in new tab)`}
                 className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
               >
                 <InstagramIcon className="h-4 w-4" />
+                <span className="sr-only">Instagram</span>
+              </a>
+              <a
+                href={LEAVE_REVIEW_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3.5 py-2 text-xs font-semibold text-foreground hover:border-primary/40 transition-colors"
+              >
+                <Star className="h-3.5 w-3.5 fill-cta text-cta" strokeWidth={0} />
+                Leave a Google review
               </a>
             </div>
           </div>

@@ -19,7 +19,9 @@ export function GoogleMapsEmbed({
 
   return (
     <div
-      className={`rounded-xl overflow-hidden border border-border shadow-card ${className ?? ""}`}
+      // 0.5px border per audit spec — on retina renders as a true hairline;
+      // on standard-density displays it rounds to the nearest physical pixel.
+      className={`rounded-xl overflow-hidden border-[0.5px] border-border-strong shadow-card ${className ?? ""}`}
     >
       <iframe
         src={src}

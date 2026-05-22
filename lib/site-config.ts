@@ -32,6 +32,13 @@ export const SOCIAL = {
   google: "https://g.page/firsthand-lawns",
 } as const;
 
+// Direct Google review prompt URL. Newer format is https://g.page/r/<unique-id>
+// which opens the "Write a review" panel directly. The /review suffix on the
+// legacy short name also works but is less reliable.
+// TODO before launch: replace with Ryan's actual GBP review URL — get it from
+// Google Business Profile → Get more reviews → Share review form.
+export const LEAVE_REVIEW_URL = "https://g.page/firsthand-lawns/review";
+
 export const REVIEWS_SUMMARY = {
   rating: 5.0,
   count: 144,

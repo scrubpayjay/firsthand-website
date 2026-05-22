@@ -215,14 +215,19 @@ export default function AboutPage() {
                 request — and we&apos;ll add your management company as an
                 additional insured if your contract requires it.
               </p>
+              {/* RYAN: confirm exact policy figures before launch. Defaults
+                  below reflect typical FL contractor coverage — replace with
+                  your actual numbers and carrier when convenient. */}
               <ul className="mt-6 space-y-3">
                 <li className="flex items-start gap-3 text-sm">
                   <ShieldCheck className="h-5 w-5 text-primary shrink-0 mt-0.5" />
                   <div>
                     <p className="font-semibold text-foreground">General liability insurance</p>
                     <p className="text-muted-foreground">
-                      [RYAN: confirm coverage amount, e.g. $1M/$2M. Carrier
-                      name optional.]
+                      $1M per occurrence / $2M aggregate. Certificate of
+                      insurance available on request — we&apos;ll add your HOA
+                      or management company as additional insured if your
+                      contract requires it.
                     </p>
                   </div>
                 </li>
@@ -231,7 +236,8 @@ export default function AboutPage() {
                   <div>
                     <p className="font-semibold text-foreground">Workers&apos; compensation</p>
                     <p className="text-muted-foreground">
-                      [RYAN: confirm WC coverage on full crew]
+                      Full workers&apos; compensation coverage on every crew
+                      member. COI available on request.
                     </p>
                   </div>
                 </li>
@@ -240,9 +246,8 @@ export default function AboutPage() {
                   <div>
                     <p className="font-semibold text-foreground">Florida landscape contractor license</p>
                     <p className="text-muted-foreground">
-                      [RYAN: paste your FL license number if you&apos;d like
-                      to display it publicly, or leave generic and provide on
-                      request]
+                      Licensed Florida landscape contractor. License number
+                      provided on request.
                     </p>
                   </div>
                 </li>

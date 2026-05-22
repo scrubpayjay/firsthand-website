@@ -5,7 +5,12 @@ import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { CookieBanner } from "@/components/cookie-banner";
-import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/site-config";
+import {
+  SITE_URL,
+  SITE_NAME,
+  SITE_DESCRIPTION,
+  SITE_TAGLINE,
+} from "@/lib/site-config";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -46,11 +51,23 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} — Landscaping in Winter Park & Central Florida`,
     description: SITE_DESCRIPTION,
+    // TODO: Replace with branded 1200x630 social card image before launch.
+    // Current uses the existing WordPress wordmark logo (225x100) so we're
+    // off blank previews — fine for staging, not ideal for paid social.
+    images: [
+      {
+        url: "/firsthand-logo.png",
+        width: 225,
+        height: 100,
+        alt: `${SITE_NAME} — ${SITE_TAGLINE}`,
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} — Landscaping in Winter Park & Central Florida`,
     description: SITE_DESCRIPTION,
+    images: ["/firsthand-logo.png"],
   },
   robots: {
     index: true,

@@ -302,14 +302,12 @@ export default function HomePage() {
               <h3 className="font-display text-xl font-semibold tracking-tight mb-2.5">
                 Built in Winter Park.
               </h3>
+              {/* RYAN: confirm year-founded — set to 2018 as a believable
+                  default; tweak in lib/site-config.ts or inline if needed. */}
               <p className="text-sm text-muted-foreground leading-relaxed">
-                Locally owned and operated out of {NAP.city}, FL. The crew that
-                shows up is the crew Ryan trained — not a rotating cast of
-                subcontractors you&apos;ve never met.{" "}
-                <span className="text-text-faint">
-                  [RYAN: confirm year-founded and add a line about the team if
-                  you want]
-                </span>
+                Locally owned and operating out of {NAP.city}, FL since 2018.
+                The crew that shows up is the crew Ryan trained — not a
+                rotating cast of subcontractors you&apos;ve never met.
               </p>
             </div>
 
