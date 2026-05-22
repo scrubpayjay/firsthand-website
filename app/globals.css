@@ -1,0 +1,167 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-playfair);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-hover: var(--primary-hover);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-hover: var(--accent-hover);
+  --color-cta: var(--cta);
+  --color-cta-hover: var(--cta-hover);
+  --color-cta-foreground: var(--cta-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-elevated: var(--elevated);
+  --color-text-dim: var(--text-dim);
+  --color-text-faint: var(--text-faint);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.85);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-pill: 9999px;
+}
+
+:root {
+  /* Firsthand brand palette */
+  --background: #fafaf9;
+  --foreground: #1c1917;
+  --card: #ffffff;
+  --card-foreground: #1c1917;
+  --popover: #ffffff;
+  --popover-foreground: #1c1917;
+
+  --primary: #2d5016;
+  --primary-hover: #1e3a0e;
+  --primary-foreground: #fafaf9;
+
+  --secondary: #f5f5f4;
+  --secondary-foreground: #2d5016;
+
+  --muted: #f5f5f4;
+  --muted-foreground: #57534e;
+
+  --accent: #ecfccb;
+  --accent-foreground: #1e3a0e;
+  --accent-hover: #d9f99d;
+
+  /* Vibrant lime CTA — used for primary action buttons */
+  --cta: #65a30d;
+  --cta-hover: #4d7c0f;
+  --cta-foreground: #ffffff;
+
+  --destructive: #b91c1c;
+  --border: #e7e5e4;
+  --border-strong: #d6d3d1;
+  --input: #e7e5e4;
+  --ring: #65a30d;
+
+  --elevated: #f5f5f4;
+  --text-dim: #57534e;
+  --text-faint: #a8a29e;
+
+  --radius: 0.625rem;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    border-color: var(--border);
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-sans), system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display), Georgia, serif;
+    letter-spacing: -0.02em;
+    color: var(--foreground);
+  }
+
+  /* Tighter leading + serif italic for display emphasis */
+  .font-display {
+    font-family: var(--font-display), Georgia, serif;
+  }
+
+  /* Better tap targets on mobile */
+  @media (max-width: 768px) {
+    button,
+    a[role="button"],
+    input[type="submit"] {
+      min-height: 44px;
+    }
+  }
+}
+
+@layer utilities {
+  /* Container with generous, opinionated max widths */
+  .container-prose {
+    @apply mx-auto w-full max-w-3xl px-5 sm:px-6;
+  }
+  .container-wide {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+  }
+  .container-tight {
+    @apply mx-auto w-full max-w-5xl px-5 sm:px-6 lg:px-8;
+  }
+
+  /* Section vertical rhythm */
+  .section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+  .section-tight {
+    @apply py-12 sm:py-16;
+  }
+
+  /* CTA pill — vibrant lime, the conversion button across the site */
+  .cta-pill {
+    background-color: var(--cta);
+    color: var(--cta-foreground);
+    border-radius: 9999px;
+    transition: background-color 150ms ease;
+  }
+  .cta-pill:hover {
+    background-color: var(--cta-hover);
+  }
+
+  /* Soft shadow used on cards over the warm-white background */
+  .shadow-card {
+    box-shadow: 0 1px 2px 0 rgba(28, 25, 23, 0.04),
+      0 4px 12px -2px rgba(28, 25, 23, 0.05);
+  }
+  .shadow-card-hover {
+    box-shadow: 0 4px 6px -1px rgba(28, 25, 23, 0.06),
+      0 12px 24px -8px rgba(28, 25, 23, 0.08);
+  }
+}
