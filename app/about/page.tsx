@@ -8,6 +8,8 @@ import {
   Hammer,
 } from "lucide-react";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
+import { SitePhoto } from "@/components/site-photo";
+import { PHOTOS } from "@/lib/photos-manifest";
 import { CtaSection } from "@/components/cta-section";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { SITE_TAGLINE, SITE_URL, NAP } from "@/lib/site-config";
@@ -263,12 +265,19 @@ export default function AboutPage() {
               </ul>
             </div>
 
-            <PhotoPlaceholder
-              label="Photo of certifications/licenses framed in the office, OR a clean shot of a crew member in branded shirt with truck in background. Builds 'real business' credibility."
-              aspect="aspect-[4/5]"
-              variant="primary"
-              className="rounded-2xl"
-            />
+            {(() => {
+              const credPhoto =
+                PHOTOS.find((p) => p.src === "/photos/hardscape-1.jpg") ??
+                PHOTOS[0];
+              return (
+                <SitePhoto
+                  photo={credPhoto}
+                  aspect="aspect-[4/5]"
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  rounded="rounded-2xl"
+                />
+              );
+            })()}
           </div>
         </div>
       </section>
@@ -294,25 +303,36 @@ export default function AboutPage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-            {[
-              "Winter Park front yard — full landscape design",
-              "Windermere paver patio with fire pit",
-              "Bay Hill irrigation overhaul",
-              "College Park sod replacement",
-              "Doctor Phillips backyard renovation",
-              "Orlando commercial property maintenance",
-              "Winter Park tree thinning before hurricane season",
-              "Windermere HOA-compliant front bed redesign",
-            ].map((label, i) => (
-              <PhotoPlaceholder
-                key={i}
-                label={label}
-                aspect="aspect-square"
-                variant={i % 3 === 0 ? "primary" : "muted"}
-              />
-            ))}
-          </div>
+          {(() => {
+            // 8 photos for the about-page recent-work strip — pulled from
+            // the manifest to vary services and areas
+            const galleryOrder = [
+              "/photos/landscape-1.jpg",
+              "/photos/hardscape-2.jpg",
+              "/photos/sod-1.jpg",
+              "/photos/winter-park-1.jpg",
+              "/photos/bamboo-1.jpg",
+              "/photos/hardscape-3.jpg",
+              "/photos/windermere-1.jpg",
+              "/photos/lawn-1.jpg",
+            ];
+            const gallery = galleryOrder
+              .map((src) => PHOTOS.find((p) => p.src === src))
+              .filter((p): p is NonNullable<typeof p> => Boolean(p));
+            return (
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+                {gallery.map((photo) => (
+                  <SitePhoto
+                    key={photo.src}
+                    photo={photo}
+                    aspect="aspect-square"
+                    sizes="(min-width: 1024px) 22vw, (min-width: 640px) 30vw, 48vw"
+                    rounded="rounded-xl"
+                  />
+                ))}
+              </div>
+            );
+          })()}
         </div>
       </section>
 

@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { ExternalLink, Camera } from "lucide-react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CtaSection } from "@/components/cta-section";
-import { PhotoPlaceholder } from "@/components/photo-placeholder";
+import { SitePhoto } from "@/components/site-photo";
+import { PHOTOS } from "@/lib/photos-manifest";
 import { COMPANYCAM_GALLERY_URL, SITE_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
@@ -12,50 +13,27 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/portfolio` },
 };
 
-interface ProjectFeature {
-  area: string;
-  scope: string;
-  before: string;
-  after: string;
-}
-
-const FEATURED: ProjectFeature[] = [
-  {
-    area: "Winter Park",
-    scope: "Full front-yard redesign — beds, sod, lighting",
-    before: "Tired hedge along the walkway, patchy St. Augustine, no plant variety",
-    after: "Muhly grass + dwarf firebush mix, fresh Floratam sod, low-voltage path lighting",
-  },
-  {
-    area: "Windermere (Isleworth HOA)",
-    scope: "HOA-compliant front bed redesign with submittal",
-    before: "Overgrown beds, ARC violation notice on file",
-    after: "Plumbago, ixora, and dwarf yaupon — submitted and approved on first pass",
-  },
-  {
-    area: "Bay Hill",
-    scope: "Travertine patio + outdoor kitchen base",
-    before: "Failing concrete slab, no shade structure",
-    after: "16x22 travertine patio, properly graded base, kitchen utilities stubbed",
-  },
-  {
-    area: "College Park",
-    scope: "Sod replacement + irrigation overhaul",
-    before: "Chinch-bug-damaged front lawn, irrigation leaking through meter",
-    after: "Fresh Floratam, four zones rebuilt, smart controller installed",
-  },
-  {
-    area: "Doctor Phillips",
-    scope: "Backyard renovation — design + install in 11 days",
-    before: "Bare-dirt yard from pool removal",
-    after: "Zoysia sod, paver border, four palm clusters, drip irrigation in beds",
-  },
-  {
-    area: "Audubon Park (Orlando)",
-    scope: "Pre-hurricane tree thinning",
-    before: "Two heavy laurel oaks overhanging the roof",
-    after: "Crowns thinned and balanced — held through 2024 storm season",
-  },
+// Curated subset for the on-page gallery — order chosen for visual rhythm
+// (mix of wide, square-ish, and portrait photos across services).
+const GALLERY_ORDER: string[] = [
+  "/photos/hardscape-1.jpg",
+  "/photos/landscape-1.jpg",
+  "/photos/sod-1.jpg",
+  "/photos/winter-park-1.jpg",
+  "/photos/bamboo-1.jpg",
+  "/photos/hardscape-2.jpg",
+  "/photos/lawn-1.jpg",
+  "/photos/windermere-1.jpg",
+  "/photos/landscape-2.jpg",
+  "/photos/hardscape-3.jpg",
+  "/photos/bay-hill-1.jpg",
+  "/photos/portfolio-1.jpg",
+  "/photos/sod-2.jpg",
+  "/photos/landscape-3.jpg",
+  "/photos/hardscape-5.jpg",
+  "/photos/portfolio-2.jpg",
+  "/photos/lawn-2.jpg",
+  "/photos/portfolio-3.jpg",
 ];
 
 export default function PortfolioPage() {
@@ -115,40 +93,34 @@ export default function PortfolioPage() {
 
       {/* Featured projects */}
       <section className="container-wide pb-16 lg:pb-20">
-        <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight mb-10">
-          Featured projects
-        </h2>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {FEATURED.map((p, i) => (
-            <article
-              key={i}
-              className="rounded-2xl border border-border bg-card overflow-hidden"
-            >
-              <div className="grid grid-cols-2">
-                <PhotoPlaceholder
-                  label={`BEFORE — ${p.before}`}
-                  aspect="aspect-square"
-                  className="rounded-none border-0 border-r"
-                />
-                <PhotoPlaceholder
-                  label={`AFTER — ${p.after}`}
-                  aspect="aspect-square"
-                  variant="primary"
-                  className="rounded-none border-0"
-                />
-              </div>
-              <div className="p-5">
-                <p className="text-xs font-semibold uppercase tracking-wider text-primary mb-1.5">
-                  {p.area}
-                </p>
-                <h3 className="font-display text-lg font-semibold leading-tight tracking-tight">
-                  {p.scope}
-                </h3>
-              </div>
-            </article>
-          ))}
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+          <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight">
+            Recent projects
+          </h2>
+          <p className="text-sm text-muted-foreground max-w-md">
+            A selection of finished work from the last twelve months across
+            Winter Park, Windermere, Bay Hill, and the rest of Central Florida.
+          </p>
         </div>
+
+        {(() => {
+          const ordered = GALLERY_ORDER.map((src) =>
+            PHOTOS.find((p) => p.src === src)
+          ).filter((p): p is NonNullable<typeof p> => Boolean(p));
+          return (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+              {ordered.map((photo) => (
+                <SitePhoto
+                  key={photo.src}
+                  photo={photo}
+                  aspect="aspect-square"
+                  sizes="(min-width: 1024px) 22vw, (min-width: 768px) 30vw, 48vw"
+                  rounded="rounded-xl"
+                />
+              ))}
+            </div>
+          );
+        })()}
       </section>
 
       {/* Project mix */}
