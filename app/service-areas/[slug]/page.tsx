@@ -17,6 +17,8 @@ import {
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CtaSection } from "@/components/cta-section";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
+import { SitePhoto } from "@/components/site-photo";
+import { photosByArea } from "@/lib/photos-manifest";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { GoogleMapsEmbed } from "@/components/google-maps-embed";
 import {
@@ -178,12 +180,29 @@ export default async function ServiceAreaPage({ params }: RouteProps) {
             </div>
           </div>
 
-          <PhotoPlaceholder
-            label={`Wide shot of a finished ${area.name} property — should communicate "this is what we deliver here." Front yard, ideally with a recognizable neighborhood characteristic (oak canopy for Winter Park, lakefront for Windermere, golf course for Bay Hill, etc).`}
-            aspect="aspect-[4/5]"
-            variant="primary"
-            className="rounded-2xl"
-          />
+          {(() => {
+            const photos = photosByArea(area.slug);
+            const hero =
+              photos.find((p) => p.role === "area-hero") ?? photos[0];
+            if (hero) {
+              return (
+                <SitePhoto
+                  photo={hero}
+                  aspect="aspect-[4/5]"
+                  sizes="(min-width: 1024px) 45vw, 100vw"
+                  rounded="rounded-2xl"
+                />
+              );
+            }
+            return (
+              <PhotoPlaceholder
+                label={`[RYAN: photo needed] ${area.fullName} — pull the strongest wide-angle finished property shot from CompanyCam for this city.`}
+                aspect="aspect-[4/5]"
+                variant="primary"
+                className="rounded-2xl"
+              />
+            );
+          })()}
         </div>
       </section>
 
