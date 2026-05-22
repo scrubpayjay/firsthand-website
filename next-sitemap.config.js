@@ -29,7 +29,17 @@ module.exports = {
       "/service-areas/windermere",
       "/service-areas/bay-hill",
       "/service-areas/college-park",
+      "/blog",
     ]);
+    // Blog posts get priority 0.8 — between top-level (1.0) and stub pages (0.7)
+    if (path.startsWith("/blog/")) {
+      return {
+        loc: path,
+        changefreq: "monthly",
+        priority: 0.8,
+        lastmod: new Date().toISOString(),
+      };
+    }
     return {
       loc: path,
       changefreq: config.changefreq,
