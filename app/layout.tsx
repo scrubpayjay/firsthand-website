@@ -51,15 +51,13 @@ export const metadata: Metadata = {
     siteName: SITE_NAME,
     title: `${SITE_NAME} — Landscaping in Winter Park & Central Florida`,
     description: SITE_DESCRIPTION,
-    // TODO: Replace with branded 1200x630 social card image before launch.
-    // Current uses the existing WordPress wordmark logo (225x100) so we're
-    // off blank previews — fine for staging, not ideal for paid social.
     images: [
       {
-        url: "/firsthand-logo.png",
-        width: 225,
-        height: 100,
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
         alt: `${SITE_NAME} — ${SITE_TAGLINE}`,
+        type: "image/jpeg",
       },
     ],
   },
@@ -67,7 +65,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE_NAME} — Landscaping in Winter Park & Central Florida`,
     description: SITE_DESCRIPTION,
-    images: ["/firsthand-logo.png"],
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
