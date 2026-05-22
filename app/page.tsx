@@ -20,6 +20,7 @@ import {
 import { TrustBar } from "@/components/trust-bar";
 import { CtaSection } from "@/components/cta-section";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
+import { ReviewsCarousel } from "@/components/reviews-carousel";
 import {
   NAP,
   SERVICES,
@@ -137,7 +138,7 @@ function localBusinessJsonLd() {
 }
 
 export default function HomePage() {
-  const reviewPreview = REVIEWS.slice(0, 3);
+  const carouselReviews = REVIEWS.slice(0, 10);
 
   return (
     <>
@@ -432,33 +433,11 @@ export default function HomePage() {
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-5">
-            {reviewPreview.map((r) => (
-              <figure
-                key={`${r.name}-${r.date}`}
-                className="rounded-xl border border-border bg-card p-6 flex flex-col"
-              >
-                <div className="flex items-center gap-0.5 mb-3">
-                  {[1, 2, 3, 4, 5].map((i) => (
-                    <Star
-                      key={i}
-                      className="h-4 w-4 fill-cta text-cta"
-                      strokeWidth={0}
-                    />
-                  ))}
-                </div>
-                <blockquote className="text-sm text-foreground leading-relaxed flex-1">
-                  &ldquo;{r.excerpt}&rdquo;
-                </blockquote>
-                <figcaption className="mt-4 pt-4 border-t border-border">
-                  <p className="text-sm font-semibold text-foreground">{r.name}</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">
-                    {r.area} · {r.service}
-                  </p>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
+          <ReviewsCarousel reviews={carouselReviews} />
+
+          <p className="mt-8 text-center text-sm text-muted-foreground">
+            Read every review on Google — we don&apos;t cherry-pick.
+          </p>
         </div>
       </section>
 

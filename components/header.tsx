@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { NAP, SERVICES, SERVICE_AREAS } from "@/lib/site-config";
@@ -48,17 +49,17 @@ export function Header() {
           href="/"
           className="flex items-center gap-2.5"
           onClick={() => setOpen(false)}
+          aria-label="Firsthand Lawns — home"
         >
-          {/* Mark — green leaf wordmark fallback until SVG logo lands */}
-          <span
-            aria-hidden="true"
-            className="inline-flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-base font-bold"
-          >
-            F
-          </span>
-          <span className="font-display text-lg sm:text-xl font-semibold tracking-tight text-foreground">
-            Firsthand Lawns
-          </span>
+          {/* Logo pulled from the WordPress site — replace with higher-res SVG when available */}
+          <Image
+            src="/firsthand-logo.png"
+            alt="Firsthand Lawns"
+            width={225}
+            height={100}
+            priority
+            className="h-9 sm:h-11 w-auto"
+          />
         </Link>
 
         {/* Desktop nav */}

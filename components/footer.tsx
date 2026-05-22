@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { Phone, Mail, MapPin } from "lucide-react";
 
 function FacebookIcon(props: React.SVGProps<SVGSVGElement>) {
@@ -36,16 +37,14 @@ export function Footer() {
         <div className="grid grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-10">
           {/* Brand column — spans 2 on lg */}
           <div className="col-span-2">
-            <Link href="/" className="flex items-center gap-2.5 mb-4">
-              <span
-                aria-hidden="true"
-                className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-base font-bold"
-              >
-                F
-              </span>
-              <span className="font-display text-xl font-semibold tracking-tight">
-                Firsthand Lawns
-              </span>
+            <Link href="/" className="inline-flex items-center mb-4" aria-label="Firsthand Lawns — home">
+              <Image
+                src="/firsthand-logo.png"
+                alt="Firsthand Lawns"
+                width={225}
+                height={100}
+                className="h-12 w-auto"
+              />
             </Link>
             <p className="font-display italic text-muted-foreground mb-5">
               {SITE_TAGLINE}
