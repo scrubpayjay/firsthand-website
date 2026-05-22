@@ -132,7 +132,7 @@ export default async function ServiceAreaPage({ params }: RouteProps) {
 
       <Breadcrumbs
         items={[
-          { href: "/service-areas/winter-park", label: "Service areas" },
+          { href: "/service-areas", label: "Service areas" },
           { label: area.name },
         ]}
       />

@@ -8,8 +8,8 @@ import { NAP, SERVICES, SERVICE_AREAS } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
 
 const primaryNav: Array<{ href: string; label: string }> = [
-  { href: "/services/lawn-maintenance", label: "Services" },
-  { href: "/service-areas/winter-park", label: "Service areas" },
+  { href: "/services", label: "Services" },
+  { href: "/service-areas", label: "Service areas" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/financing", label: "Financing" },
   { href: "/reviews", label: "Reviews" },

@@ -105,7 +105,7 @@ export default async function ServiceDetailPage({ params }: RouteProps) {
 
       <Breadcrumbs
         items={[
-          { href: "/services/lawn-maintenance", label: "Services" },
+          { href: "/services", label: "Services" },
           { label: service.name },
         ]}
       />
