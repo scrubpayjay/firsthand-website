@@ -262,7 +262,208 @@ export const BLOG_POSTS: BlogPost[] = [
     ],
   },
 
-  // ── Post 2 + 3 added in subsequent commits ─────────────────────────
+  // ── Post 2 ─────────────────────────────────────────────────────────
+  {
+    slug: "hurricane-prep-central-florida-landscape-checklist",
+    title:
+      "Hurricane Prep for Central Florida Landscapes: A Homeowner's Checklist",
+    description:
+      "What to do — and when — to get your Central Florida yard ready for hurricane season. Tree thinning, palm care, drainage, post-storm cleanup, and what to avoid.",
+    h1: "Hurricane prep for Central Florida landscapes: a homeowner's checklist",
+    publishedAt: "2026-05-22",
+    author: RYAN_AUTHOR,
+    category: "Seasonal",
+    tags: [
+      "hurricane",
+      "storm prep",
+      "tree trimming",
+      "Central Florida",
+      "Winter Park",
+    ],
+    readTimeMinutes: 9,
+    heroPhotoLabel:
+      "Crew working on a mature laurel oak in a Winter Park backyard — bucket truck visible, climber in the canopy with rigging visible. Pre-season trim shot.",
+    sources: [
+      {
+        label: "Hurricane Preparedness — Be Ready",
+        url: "https://www.nhc.noaa.gov/prepare/ready.php",
+        publisher: "NOAA National Hurricane Center",
+      },
+      {
+        label: "Selecting and Maintaining Wind-Resistant Trees (UF/IFAS FOR118)",
+        url: "https://edis.ifas.ufl.edu/publication/FR173",
+        publisher: "UF/IFAS Extension",
+      },
+      {
+        label: "Florida Forest Service — Storm Recovery",
+        url: "https://www.fdacs.gov/Divisions-Offices/Florida-Forest-Service",
+        publisher: "Florida Department of Agriculture",
+      },
+    ],
+    related: [
+      {
+        href: "/services/tree-trimming-removal",
+        label: "Tree trimming & removal",
+        blurb:
+          "Pre-season thinning, dead-limb removal, and full takedowns with proper rigging",
+      },
+      {
+        href: "/services/stump-grinding-removal",
+        label: "Stump grinding & removal",
+        blurb:
+          "Post-storm stump grinding after emergency tree removals — 6 to 12 inches below grade",
+      },
+      {
+        href: "/service-areas/winter-park",
+        label: "Winter Park service area",
+        blurb: "Oak-canopy neighborhoods that benefit most from pre-season work",
+      },
+    ],
+    body: [
+      {
+        type: "p",
+        text: "Hurricane season runs June 1 through November 30 in the Atlantic basin, and Central Florida sits in the cone every year. By the time a system is named and approaching, the landscape work that actually prevents damage is largely too late to start. The real prep window is April and May — thinning canopies, dropping dead limbs, clearing drainage, and staking the trees that need it. The window after that is shorter and more expensive.",
+      },
+      {
+        type: "p",
+        text: "This is the checklist we run with customers across Winter Park, Windermere, Bay Hill, and the rest of our service area. It's organized by timeframe — what to do months out, weeks out, days out, and after — so you can use it as a working punch list. Specific cost ranges and timing throughout. For broader household prep (water, supplies, evacuation), [NOAA's preparedness page](https://www.nhc.noaa.gov/prepare/ready.php) is the canonical resource.",
+      },
+      {
+        type: "h2",
+        text: "Pre-season (April–early June): the work that matters most",
+      },
+      {
+        type: "p",
+        text: "Storm damage is mostly tree damage. The trees most likely to fail under hurricane winds in Central Florida are laurel oaks (shallow-rooted, brittle), water oaks, and overgrown live oaks with one-sided or top-heavy canopies. Selective crown thinning — removing roughly 10–20 percent of interior branches to let wind pass through — has been studied extensively by [UF/IFAS](https://edis.ifas.ufl.edu/publication/FR173) and reduces failure rates substantially. April and May are the ideal window because the trees are leafing in but the crown isn't yet at full density.",
+      },
+      {
+        type: "p",
+        text: "What to schedule in April–May:",
+      },
+      {
+        type: "ul",
+        items: [
+          "**Crown thinning** on any oak over about 30 feet, especially laurel oaks and one-sided live oaks. Cuts should be made at branch collars, not flush. Avoid 'topping' — it actually weakens the tree long-term.",
+          "**Dead-wood removal** on every mature tree on the property. Dead limbs come down first in a storm.",
+          "**Crown raising** to lift lower limbs that are rubbing the roofline or scraping a structure. A swinging limb in 80 mph wind takes shingles off.",
+          "**Palm trimming** on Sabal palms, Queen palms, and Foxtails. Trim back dead and brown fronds, but don't 'hurricane cut' — over-trimmed palms are weaker, not stronger, because the fronds protect the bud.",
+          "**Vine and climber removal** from any structure — wisteria, climbing fig, Boston ivy. Vines hold water and pull on siding when wind catches them.",
+          "**Staking review** on any tree planted within the last 24 months. Replace rotted or broken ties; remove stakes from trees over 3 years old (they're a hazard, not a help, once the root flare is established).",
+          "**Drainage clearing** — French drains, swales, downspout splash blocks. Heavy storm rainfall is often as damaging as the wind.",
+        ],
+      },
+      {
+        type: "callout",
+        title: "Booking note",
+        body: "Tree-service capacity in Central Florida runs short in late May. Storm-chaser crews come in only after a named storm. If you want pre-season work done by a local crew that will still be here in October, book by early May.",
+      },
+      {
+        type: "h2",
+        text: "Two to three days out: the 48–72-hour window",
+      },
+      {
+        type: "p",
+        text: "Once a storm enters the cone and Central Florida is on the path, you have roughly two to three days to lock the property down. This is the time to handle everything outside the house that could become a projectile.",
+      },
+      {
+        type: "ul",
+        items: [
+          "Bring in patio furniture, grills, planters, decorative pots, garden art, hose reels, kids' toys",
+          "Move lighter trash bins and recycling carts into the garage",
+          "Stow umbrellas and umbrella bases — heavy bases break windows like nothing else",
+          "Roll up retractable awnings; if you have fixed awnings, photograph them now for insurance",
+          "Trim any obviously swinging branches over the roof or driveway — call us only if it's an actual hazard; non-hazard work doesn't get scheduled in a storm window",
+          "Photograph the yard with a phone — every angle, every elevation. Time-stamped insurance evidence",
+          "Turn off the irrigation system at the controller (saturated soil under high wind increases root-failure risk)",
+          "Move vehicles away from large trees and into the garage if possible",
+          "Charge phones and portable batteries — power loss is the norm, not the exception",
+        ],
+      },
+      {
+        type: "h2",
+        text: "Day-of: stay inside",
+      },
+      {
+        type: "p",
+        text: "Once sustained winds cross about 40 mph, don't go outside. Don't open windows or doors to 'equalize pressure' — that's a myth, and broken interior pressure is a much smaller risk than a window failure caused by debris. Wait for winds to drop before assessing damage.",
+      },
+      {
+        type: "h2",
+        text: "After the storm: what to do, what to avoid",
+      },
+      {
+        type: "h3",
+        text: "First 24 hours",
+      },
+      {
+        type: "ul",
+        items: [
+          "Wait for sustained wind to drop below 30–40 mph before walking the property",
+          "Watch for downed power lines — assume every line is live. Call Duke Energy (or your utility) before touching anything near a line",
+          "Document everything with photos and short videos — before you move a single limb. Insurance adjusters need pre-cleanup documentation",
+          "Clear safe access paths (front door, driveway entrance) so emergency services can reach you if needed",
+          "Don't burn debris. Burn bans are common after storms, air quality is poor, and the [Florida Forest Service](https://www.fdacs.gov/Divisions-Offices/Florida-Forest-Service) tracks fire risk closely in dry post-storm conditions",
+        ],
+      },
+      {
+        type: "h3",
+        text: "First 72 hours",
+      },
+      {
+        type: "ul",
+        items: [
+          "Triage damage: tree on a structure first, tree blocking the driveway second, hanging branches third, ground debris last",
+          "If a tree is on a roof or fence, photograph it from multiple angles before moving anything. Call your insurance carrier before you call a contractor — they may dispatch their own adjuster",
+          "Avoid storm-chaser contractors. Out-of-state crews with no local presence often show up in Central Florida after major storms, take deposits, and disappear. Verify any contractor with a Florida business license number, a local phone number that answers, and a Florida COI on file",
+          "Cleanup permits aren't usually required for residential tree work after a declared storm, but Orange County may issue separate guidance — check current rules before burning, hauling, or open dumping",
+          "If insurance is involved, save every receipt and document every visit",
+        ],
+      },
+      {
+        type: "h3",
+        text: "Weeks 2–4: the real cleanup",
+      },
+      {
+        type: "p",
+        text: "The initial cleanup gets the property safe and functional. The deeper work — stump grinding, fence repair, sod replacement on damaged turf, drainage repair, replanting lost specimens — happens over the next 2–6 weeks. We schedule this work as a phased project, partially because crews are stretched after a major storm and partially because some assessments (whether a damaged tree will recover, whether the soil under a fallen oak needs to be amended) take time.",
+      },
+      {
+        type: "h2",
+        text: "Real costs to expect",
+      },
+      {
+        type: "p",
+        text: "Rough Central Florida 2026 pricing for the most common post-storm services:",
+      },
+      {
+        type: "table",
+        headers: ["Service", "Typical range", "Notes"],
+        rows: [
+          ["Trim mid-size tree (20–40 ft)", "$300–$700", "Higher in storm-emergency windows"],
+          ["Full tree removal", "$400–$3,000+", "Depends on size, access, rigging requirements"],
+          ["Storm cleanup (per yard, debris)", "$400–$2,500", "Volume-based; insurance often covers if tied to documented damage"],
+          ["Stump grinding (per stump)", "$150–$400", "Less for multi-stump bulk jobs"],
+          ["Fence section repair", "$150–$600/section", "Material- and length-dependent"],
+          ["Sod patch (per pallet, installed)", "$400–$900", "Floratam cheaper; Palmetto / Empire higher"],
+          ["Pre-season crown thinning", "$300–$1,200/tree", "Cheaper than the same work post-failure"],
+        ],
+      },
+      {
+        type: "h2",
+        text: "The case for pre-season work",
+      },
+      {
+        type: "p",
+        text: "The arithmetic on pre-season tree work is straightforward. A pre-season crown thinning on a 50-foot laurel oak runs $500–$900. The same tree, after a partial failure (broken limb on the roof, dangling branches), runs $1,500–$3,500 to make safe and clean up — and that's not counting the cost of the actual roof, fence, or pool-cage damage it caused on the way down. Most years no single property needs the pre-season work to pay off. Over a five-year window of storms, most properties with significant tree cover do.",
+      },
+      {
+        type: "p",
+        text: "We typically book pre-season work from early April through the third week of May. After Memorial Day, our schedule fills with established customers and we start turning new requests down. If you want pre-season tree work for the current hurricane season, the time to call is now — book a site walk from our [contact page](/contact) or call (407) 584-3784.",
+      },
+    ],
+  },
+
+  // ── Post 3 added in subsequent commit ───────────────────────────────
 ];
 
 export const BLOG_POSTS_MAP: Record<string, BlogPost> = Object.fromEntries(
