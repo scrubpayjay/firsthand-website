@@ -12,6 +12,8 @@ import {
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CtaSection } from "@/components/cta-section";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
+import { SitePhoto } from "@/components/site-photo";
+import { photosByService } from "@/lib/photos-manifest";
 import { FaqAccordion } from "@/components/faq-accordion";
 import {
   SERVICE_PAGES,
@@ -251,12 +253,29 @@ export default async function ServiceDetailPage({ params }: RouteProps) {
               </ul>
             </div>
 
-            <PhotoPlaceholder
-              label={`Mid-project photo of a ${service.name.toLowerCase()} job in progress — crew in branded shirts, equipment visible, work area clean. Choose the most "in-action" shot from CompanyCam.`}
-              aspect="aspect-[4/5]"
-              variant="primary"
-              className="rounded-2xl"
-            />
+            {(() => {
+              const photos = photosByService(service.slug);
+              const hero =
+                photos.find((p) => p.role === "service-hero") ?? photos[0];
+              if (hero) {
+                return (
+                  <SitePhoto
+                    photo={hero}
+                    aspect="aspect-[4/5]"
+                    sizes="(min-width: 1024px) 45vw, 100vw"
+                    rounded="rounded-2xl"
+                  />
+                );
+              }
+              return (
+                <PhotoPlaceholder
+                  label={`[RYAN: photo needed] ${service.name} — pick the strongest CompanyCam shot for this service. The recent project pool didn't include a clear ${service.name.toLowerCase()} after-photo.`}
+                  aspect="aspect-[4/5]"
+                  variant="primary"
+                  className="rounded-2xl"
+                />
+              );
+            })()}
           </div>
         </div>
       </section>
