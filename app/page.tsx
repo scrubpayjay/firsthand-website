@@ -20,7 +20,9 @@ import {
 import { TrustBar } from "@/components/trust-bar";
 import { CtaSection } from "@/components/cta-section";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
+import { SitePhoto } from "@/components/site-photo";
 import { ReviewsCarousel } from "@/components/reviews-carousel";
+import { PHOTOS, photosByService, pickHero } from "@/lib/photos-manifest";
 import {
   NAP,
   SERVICES,
@@ -196,12 +198,18 @@ export default function HomePage() {
             </div>
 
             <div className="relative">
-              <PhotoPlaceholder
-                label="Hero shot — wide-angle of a finished Winter Park front yard. Ideally morning light, low-mowed St. Augustine, fresh mulch beds with firebush/plumbago, paver walkway visible. From CompanyCam gallery — pick the most magazine-ready frame you have."
-                aspect="aspect-[4/5] lg:aspect-[5/6]"
-                variant="primary"
-                className="rounded-2xl"
-              />
+              {(() => {
+                const hero = pickHero("hero", "hero") ?? PHOTOS[0];
+                return (
+                  <SitePhoto
+                    photo={hero}
+                    aspect="aspect-[4/5] lg:aspect-[5/6]"
+                    priority
+                    sizes="(min-width: 1024px) 45vw, 100vw"
+                    rounded="rounded-2xl"
+                  />
+                );
+              })()}
               {/* Floating stat card */}
               <div className="absolute -bottom-5 -left-5 lg:-bottom-6 lg:-left-6 bg-card border border-border rounded-2xl shadow-card p-4 max-w-[220px]">
                 <div className="flex items-center gap-1 mb-1.5">
@@ -398,12 +406,18 @@ export default function HomePage() {
               </div>
             </div>
             <div className="hidden lg:block">
-              <PhotoPlaceholder
-                label="Mid-build photo — paver patio or hardscape project in progress, showing scale of a $15-30K typical project."
-                aspect="aspect-[5/4]"
-                variant="dark"
-                className="rounded-2xl border-primary-foreground/15"
-              />
+              {(() => {
+                const financingPhoto =
+                  photosByService("hardscape-installation")[0] ?? PHOTOS[0];
+                return (
+                  <SitePhoto
+                    photo={financingPhoto}
+                    aspect="aspect-[5/4]"
+                    sizes="(min-width: 1024px) 40vw, 100vw"
+                    rounded="rounded-2xl"
+                  />
+                );
+              })()}
             </div>
           </div>
         </div>
@@ -480,18 +494,24 @@ export default function HomePage() {
             </div>
 
             <div>
-              <PhotoPlaceholder
-                label="Central Florida map illustration — Winter Park, Windermere, Bay Hill, College Park, Orlando highlighted. Could be a stylized map graphic or aerial photo. CompanyCam doesn't have this — Ryan needs a designer to mock up OR pull a screenshot from Google Maps centered on Orange County with pins."
-                aspect="aspect-[5/4]"
-                variant="muted"
-                className="rounded-2xl"
-              />
+              {(() => {
+                const wp =
+                  pickHero("area-hero", "winter-park") ?? PHOTOS[0];
+                return (
+                  <SitePhoto
+                    photo={wp}
+                    aspect="aspect-[5/4]"
+                    sizes="(min-width: 1024px) 50vw, 100vw"
+                    rounded="rounded-2xl"
+                  />
+                );
+              })()}
             </div>
           </div>
         </div>
       </section>
 
-      {/* ─── BEFORE/AFTER GALLERY ─────────────────────────────────────── */}
+      {/* ─── RECENT WORK GALLERY ──────────────────────────────────────── */}
       <section className="section bg-background">
         <div className="container-wide">
           <div className="max-w-3xl mb-10">
@@ -499,12 +519,12 @@ export default function HomePage() {
               Recent work
             </p>
             <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight font-semibold tracking-tight">
-              Before. After. Same day, sometimes.
+              A few jobs from the last twelve months.
             </h2>
             <p className="mt-4 text-base sm:text-lg text-muted-foreground">
-              The fastest path to a finished yard is starting from an honest
-              before photo. We document everything in CompanyCam — full
-              project archive on the{" "}
+              Real properties in Winter Park, Windermere, Bay Hill, and across
+              Central Florida. Documented in CompanyCam, before and after —
+              the full archive lives on the{" "}
               <Link href="/portfolio" className="underline text-foreground font-medium">
                 portfolio page
               </Link>
@@ -512,38 +532,27 @@ export default function HomePage() {
             </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-2 gap-5">
-            {[
-              {
-                before: "Worn-out front lawn with chinch-bug damage in Winter Park",
-                after: "Same yard, fresh Floratam sod laid, beds re-edged",
-              },
-              {
-                before: "Overgrown bamboo stand along property line in Windermere",
-                after: "Cleared back to property line, rhizome barrier installed",
-              },
-              {
-                before: "Cracked concrete driveway apron in College Park",
-                after: "Paver driveway with proper sand base",
-              },
-              {
-                before: "Storm-damaged laurel oak in Bay Hill backyard",
-                after: "Thinned and balanced, dead wood removed",
-              },
-            ].map((pair, i) => (
-              <div key={i} className="grid grid-cols-2 gap-2">
-                <PhotoPlaceholder
-                  label={`BEFORE — ${pair.before}`}
-                  aspect="aspect-square"
-                />
-                <PhotoPlaceholder
-                  label={`AFTER — ${pair.after}`}
-                  aspect="aspect-square"
-                  variant="primary"
-                />
+          {(() => {
+            const featuredPhotos = [
+              pickHero("service-hero", "hardscape"),
+              pickHero("service-hero", "sod"),
+              pickHero("service-hero", "landscape"),
+              pickHero("service-hero", "bamboo"),
+            ].filter((p): p is NonNullable<typeof p> => Boolean(p));
+            return (
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                {featuredPhotos.map((photo) => (
+                  <SitePhoto
+                    key={photo.src}
+                    photo={photo}
+                    aspect="aspect-square"
+                    sizes="(min-width: 1024px) 22vw, (min-width: 640px) 45vw, 100vw"
+                    rounded="rounded-xl"
+                  />
+                ))}
               </div>
-            ))}
-          </div>
+            );
+          })()}
 
           <div className="mt-10 text-center">
             <Link
