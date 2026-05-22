@@ -105,7 +105,7 @@ export const PHOTOS: SitePhoto[] = [
     "category": "sod",
     "area": "orlando",
     "service": "sod-installation",
-    "role": "secondary",
+    "role": "area-hero",
     "width": 1600,
     "height": 1200,
     "bytes": 343952
@@ -351,6 +351,28 @@ export const PHOTOS: SitePhoto[] = [
     "width": 1600,
     "height": 1200,
     "bytes": 237797
+  },
+  {
+    "src": "/photos/commercial-3.jpg",
+    "alt": "Commercial dental practice frontage with new gravel bed and landscaping in Orlando, FL — Firsthand Lawn and Landscape",
+    "category": "commercial",
+    "area": "orlando",
+    "service": "landscape-design",
+    "role": "portfolio",
+    "width": 1200,
+    "height": 1600,
+    "bytes": 455986
+  },
+  {
+    "src": "/photos/landscape-5.jpg",
+    "alt": "Fresh mulch and plant install along a Central Florida residential side yard — Firsthand Lawn and Landscape",
+    "category": "landscape",
+    "area": "central-florida",
+    "service": "landscape-design",
+    "role": "portfolio",
+    "width": 1600,
+    "height": 1200,
+    "bytes": 364872
   }
 ];
 

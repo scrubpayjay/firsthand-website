@@ -61,13 +61,24 @@ Production-ready Next.js 16 marketing site for Firsthand Lawns, replacing the ex
 | `/service-areas/winter-park` | ✓ | winter-park-1 |
 | `/service-areas/windermere` | ✓ | windermere-1 |
 | `/service-areas/bay-hill` | ✓ | bay-hill-1 |
-| `/service-areas/orlando` | ✗ | [RYAN: photo needed] |
-| `/service-areas/college-park` | ✗ | [RYAN: photo needed] |
+| `/service-areas/orlando` | ✓ | sod-2 (re-roled area-hero) |
+| `/service-areas/college-park` | ✗ | [RYAN: photo needed] — gap-fill pull confirmed CompanyCam has no clean post-finish College Park residential photos in recent project pool |
 | `/portfolio` gallery | ✓ | 18-photo curated grid |
 | `/about` recent work | ✓ | 8-photo grid |
 | `/about` credentials photo | ✓ | hardscape-1 |
 | `/about` Ryan + team photos | ✗ | placeholders (CompanyCam doesn't have these) |
 | `public/og-image.jpg` (1200×630) | ✓ | derived from home hero |
+
+**Gap-fill pull (round 2):** A second targeted pull scanned 300 projects looking specifically for irrigation, tree-trimming, College Park, and Orlando-neighborhood photos. Net additions:
+
+- `commercial-3.jpg` (Park Lake Dental — Orlando commercial frontage with new gravel beds)
+- `landscape-5.jpg` (fresh mulch + plant install along residential side yard)
+- `sod-2.jpg` re-roled to `area-hero` for `/service-areas/orlando` so the page now picks up a clean residential Orlando shot
+
+**Categories still missing** after both pulls (verified, not fixable from current CompanyCam content):
+- Irrigation: Firsthand has no projects in CompanyCam named or described with irrigation/sprinkler keywords — irrigation work is included in broader landscape projects and not separately photographed
+- Tree-trimming: recent project pool has no clean post-trim wide-angle "after" shots — most tree work photos are in-progress or focused on debris/equipment
+- College Park residential: most College Park projects in the pool are Ivanhoe-corner remodels with interior-only photos
 
 **Tracking**
 
