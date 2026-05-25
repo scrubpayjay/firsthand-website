@@ -12,7 +12,7 @@ import {
 
 export const metadata: Metadata = {
   title: "Reviews — what our customers say | Firsthand Lawns",
-  description: `Read ${REVIEWS_SUMMARY.count}+ verified Google reviews of Firsthand Lawns from Winter Park, Windermere, Bay Hill, College Park, and Orlando customers. 5.0 ★ average.`,
+  description: `Read ${REVIEWS_SUMMARY.count}+ verified Google reviews of Firsthand Lawns from Winter Park, Windermere, Bay Hill, College Park, and Orlando customers. ${REVIEWS_SUMMARY.rating.toFixed(1)} ★ average.`,
   alternates: { canonical: `${SITE_URL}/reviews` },
 };
 

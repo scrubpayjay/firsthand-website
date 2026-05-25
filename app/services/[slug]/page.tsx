@@ -215,8 +215,7 @@ export default async function ServiceDetailPage({ params }: RouteProps) {
                 Financing available
               </h3>
               <p className="text-sm text-primary-foreground/85 mb-4 leading-relaxed">
-                Projects from ${FINANCING.minAmount.toLocaleString()} to $
-                {FINANCING.maxAmount.toLocaleString()}, terms{" "}
+                Projects up to ${FINANCING.maxAmount.toLocaleString()}, terms{" "}
                 {FINANCING.minTermYears}–{FINANCING.maxTermYears} years, no
                 prepayment penalty.
               </p>

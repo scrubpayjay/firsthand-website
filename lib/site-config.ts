@@ -8,7 +8,7 @@ export const SITE_TAGLINE = "Building Trust Firsthand…";
 export const SITE_URL = "https://firsthand-website.vercel.app";
 
 export const SITE_DESCRIPTION =
-  "Landscape design, lawn maintenance, sod, and irrigation for Winter Park, Orlando, Windermere, and Central Florida. Family-owned, fully insured, financing $1K–$100K available.";
+  "Landscape design, lawn maintenance, sod, and irrigation for Winter Park, Orlando, Windermere, and Central Florida. Family-owned, fully insured, financing up to $100,000 available.";
 
 export const NAP = {
   legalName: "Firsthand Lawns LLC",
@@ -40,8 +40,8 @@ export const SOCIAL = {
 export const LEAVE_REVIEW_URL = "https://g.page/firsthand-lawns/review";
 
 export const REVIEWS_SUMMARY = {
-  rating: 5.0,
-  count: 144,
+  rating: 4.9,
+  count: 154,
   source: "Google",
   // [RYAN: update count as new reviews come in. Will be pulled live via Places API later.]
 } as const;

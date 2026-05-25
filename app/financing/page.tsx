@@ -13,16 +13,16 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { FINANCING, SERVICES, SITE_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Financing — $1K–$100K landscape financing | Firsthand Lawns",
+  title: "Financing — up to $100K landscape financing | Firsthand Lawns",
   description:
-    "Spread landscape projects over 2–12 years with no prepayment penalty. Amounts from $1,000 to $100,000. Soft credit pull for pre-qualification. Residential and commercial.",
+    "Spread landscape projects over 2–12 years with no prepayment penalty. Amounts up to $100,000. Soft credit pull for pre-qualification. Residential and commercial.",
   alternates: { canonical: `${SITE_URL}/financing` },
 };
 
 const BENEFITS = [
   {
     icon: CircleDollarSign,
-    title: "Projects from $1,000 to $100,000",
+    title: "Projects up to $100,000",
     body: "From a single irrigation overhaul to a full backyard rebuild — covered.",
   },
   {
@@ -82,7 +82,7 @@ export default function FinancingPage() {
                 Loan range
               </p>
               <p className="font-display text-4xl sm:text-5xl font-semibold tracking-tight">
-                ${FINANCING.minAmount.toLocaleString()}–
+                Up to{" "}
                 <span className="block sm:inline">
                   ${FINANCING.maxAmount.toLocaleString()}
                 </span>

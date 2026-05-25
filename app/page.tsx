@@ -40,7 +40,7 @@ import { REVIEWS } from "@/lib/reviews-data";
 export const metadata: Metadata = {
   title: "Firsthand Lawns — Landscaping in Winter Park & Central Florida",
   description:
-    "Landscape design, lawn maintenance, sod, irrigation, and hardscape for Winter Park, Windermere, Bay Hill, and Central Florida. Family-owned, fully insured, financing $1K–$100K.",
+    "Landscape design, lawn maintenance, sod, irrigation, and hardscape for Winter Park, Windermere, Bay Hill, and Central Florida. Family-owned, fully insured, financing up to $100K.",
   alternates: { canonical: SITE_URL },
 };
 
@@ -168,10 +168,9 @@ export default function HomePage() {
               <p className="mt-6 text-lg sm:text-xl text-muted-foreground leading-relaxed">
                 Lawn care, landscape design, sod, irrigation, and hardscape —
                 for homeowners, HOAs, and property managers. Family-owned,
-                fully insured, with financing from{" "}
+                fully insured, with financing{" "}
                 <span className="font-semibold text-foreground">
-                  ${FINANCING.minAmount.toLocaleString()}–$
-                  {FINANCING.maxAmount.toLocaleString()}
+                  up to ${FINANCING.maxAmount.toLocaleString()}
                 </span>{" "}
                 on {FINANCING.minTermYears}–{FINANCING.maxTermYears}-year terms.
               </p>
@@ -343,7 +342,7 @@ export default function HomePage() {
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Bigger projects don&apos;t need to wait. We&apos;ll connect you
-                with our financing partner for amounts from $1,000 to $100,000,
+                with our financing partner for amounts up to $100,000,
                 {" "}{FINANCING.minTermYears}–{FINANCING.maxTermYears}-year
                 terms, no prepayment penalties. Soft credit check for
                 pre-qualification.{" "}
@@ -376,7 +375,7 @@ export default function HomePage() {
               </p>
               <ul className="mt-6 grid sm:grid-cols-2 gap-2.5 max-w-2xl">
                 {[
-                  "Amounts from $1,000 to $100,000",
+                  "Amounts up to $100,000",
                   "Terms 2 to 12 years",
                   "No prepayment penalty",
                   "Soft pull for pre-qualification",

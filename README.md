@@ -38,7 +38,7 @@ Production-ready Next.js 16 marketing site for Firsthand Lawns, replacing the ex
 - Sticky header with mobile drawer and `Get a quote` CTA
 - Contact form with react-hook-form + zod validation, honeypot, inline errors, loading state
 - Reviews carousel with auto-rotate, pause on hover, swipe, prev/next, dot indicators (respects prefers-reduced-motion)
-- TrustBar (5.0 ★ / 144 reviews / Family-owned / Insured / Residential + Commercial)
+- TrustBar (4.9 ★ / 154 reviews / Family-owned / Insured / Residential + Commercial)
 - Cookie consent banner gating Meta Pixel + Tidio behind explicit opt-in
 - Financing call-out on home, dedicated `/financing` page, sidebar callout on every service page
 
