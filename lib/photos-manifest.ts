@@ -19,6 +19,14 @@ export interface SitePhoto {
   width: number;
   height: number;
   bytes: number;
+  /**
+   * True when the photo is an AI-generated illustration rather than a
+   * real Firsthand project shot. Surfaces a visible "Illustrative
+   * example — actual results vary" caption beneath the photo. Honesty
+   * requirement (not a style preference); also reinforced by the
+   * "— illustrative" suffix on the alt text.
+   */
+  illustrative?: boolean;
 }
 
 export const PHOTOS: SitePhoto[] = [
@@ -37,6 +45,59 @@ export const PHOTOS: SitePhoto[] = [
     "width": 1440,
     "height": 1440,
     "bytes": 594211
+  },
+  // ── AI illustrations (DALL-E 3, 2026-05-25) ─────────────────────────
+  // The four services Ryan didn't have real CompanyCam coverage for.
+  // illustrative=true triggers a visible caption beneath the photo on
+  // every render, and the alt text ends in "— illustrative" per the
+  // honesty requirement.
+  {
+    "src": "/photos/irrigation-illustration.jpg",
+    "alt": "Residential irrigation system spraying water across a Central Florida front lawn — illustrative",
+    "category": "irrigation",
+    "area": "central-florida",
+    "service": "irrigation",
+    "role": "service-hero",
+    "width": 1600,
+    "height": 900,
+    "bytes": 442542,
+    "illustrative": true
+  },
+  {
+    "src": "/photos/tree-trimming-illustration.jpg",
+    "alt": "Freshly trimmed mature oak canopy in a Central Florida residential yard — illustrative",
+    "category": "tree",
+    "area": "central-florida",
+    "service": "tree-trimming-removal",
+    "role": "service-hero",
+    "width": 1600,
+    "height": 900,
+    "bytes": 557840,
+    "illustrative": true
+  },
+  {
+    "src": "/photos/stump-grinding-illustration.jpg",
+    "alt": "Freshly ground stump with clean wood-chip fill in a Central Florida lawn — illustrative",
+    "category": "stump",
+    "area": "central-florida",
+    "service": "stump-grinding-removal",
+    "role": "service-hero",
+    "width": 1600,
+    "height": 900,
+    "bytes": 475932,
+    "illustrative": true
+  },
+  {
+    "src": "/photos/bamboo-illustration.jpg",
+    "alt": "Maintained bamboo privacy screen in a Central Florida backyard — illustrative",
+    "category": "bamboo",
+    "area": "central-florida",
+    "service": "bamboo-trimming-removal",
+    "role": "service-hero",
+    "width": 1600,
+    "height": 900,
+    "bytes": 688053,
+    "illustrative": true
   },
   {
     "src": "/photos/property-cleanup-hero.jpg",
@@ -651,7 +712,7 @@ export const PHOTOS: SitePhoto[] = [
     "category": "stump",
     "area": "bay-hill",
     "service": "stump-grinding-removal",
-    "role": "service-hero",
+    "role": "secondary",
     "width": 1200,
     "height": 1600,
     "bytes": 384178
@@ -662,7 +723,7 @@ export const PHOTOS: SitePhoto[] = [
     "category": "bamboo",
     "area": "bay-hill",
     "service": "bamboo-trimming-removal",
-    "role": "service-hero",
+    "role": "secondary",
     "width": 1440,
     "height": 1440,
     "bytes": 383532

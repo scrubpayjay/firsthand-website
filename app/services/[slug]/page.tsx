@@ -265,12 +265,19 @@ export default async function ServiceDetailPage({ params }: RouteProps) {
                 photos.find((p) => p.role === "service-hero") ?? photos[0];
               if (hero) {
                 return (
-                  <SitePhoto
-                    photo={hero}
-                    aspect="aspect-[4/5]"
-                    sizes="(min-width: 1024px) 45vw, 100vw"
-                    rounded="rounded-2xl"
-                  />
+                  <div>
+                    <SitePhoto
+                      photo={hero}
+                      aspect="aspect-[4/5]"
+                      sizes="(min-width: 1024px) 45vw, 100vw"
+                      rounded="rounded-2xl"
+                    />
+                    {hero.illustrative ? (
+                      <p className="mt-2 text-xs text-muted-foreground italic text-center">
+                        Illustrative example — actual results vary.
+                      </p>
+                    ) : null}
+                  </div>
                 );
               }
               return (
