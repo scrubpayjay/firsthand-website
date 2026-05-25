@@ -28,6 +28,17 @@ export const PHOTOS: SitePhoto[] = [
   // them first for hero / service-hero roles. The "-ryan-" infix in
   // filenames flags personally-curated assets.
   {
+    "src": "/photos/sod-installation-ryan-1.jpg",
+    "alt": "Before-and-after of complete sod installation at Central Florida residence — bare yard transformed into full green lawn with irrigation — Firsthand Lawn and Landscape",
+    "category": "sod",
+    "area": "central-florida",
+    "service": "sod-installation",
+    "role": "service-hero",
+    "width": 1440,
+    "height": 1440,
+    "bytes": 594211
+  },
+  {
     "src": "/photos/hero-ryan-1.jpg",
     "alt": "Two-story Mediterranean home with travertine walkway, palms, and bougainvillea in Central Florida — Firsthand Lawn and Landscape",
     "category": "hero",
@@ -486,7 +497,7 @@ export const PHOTOS: SitePhoto[] = [
     "category": "sod",
     "area": "orlando",
     "service": "sod-installation",
-    "role": "service-hero",
+    "role": "secondary",
     "width": 1024,
     "height": 768,
     "bytes": 178796
