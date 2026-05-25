@@ -143,11 +143,11 @@ export const SERVICE_PAGES: ServicePage[] = [
   // ── 2. Landscape Design ───────────────────────────────────────────────
   {
     slug: "landscape-design",
-    name: "Landscape Design",
-    title: "Landscape Design in Winter Park & Central Florida",
+    name: "Landscape Design & Installation",
+    title: "Landscape Design & Installation in Winter Park, FL | Firsthand Lawns",
     description:
-      "Landscape design that holds up to Central Florida sun, sandy soil, and HOA rules. Designed and installed by the same crew. Winter Park, Windermere, Bay Hill.",
-    h1: "Landscape Design in Winter Park & Central Florida",
+      "Custom landscape design and installation for Central Florida homes. Plant palettes, hardscape, lighting, and irrigation — designed and installed by the same team in Winter Park, Windermere, and Bay Hill.",
+    h1: "Landscape Design & Installation in Winter Park & Central Florida",
     intro: [
       "A landscape design that wins a Pinterest board doesn't necessarily survive Central Florida. Plants that thrive in a Connecticut garden book bake in our July sun; plants that don't tolerate sandy, fast-draining soil sulk for a year and die. The design itself is the part you remember — the plant selection is what makes it last.",
       "Most of our designs lean heavily on plants that already belong here: firebush, plumbago, ixora, dwarf yaupon, muhly grass, coontie, saw palmetto, native viburnum. They're drought-tolerant, pollinator-friendly, and most of them don't care if we get a freak January freeze. We layer them with the right specimen trees (live oak, magnolia, palms) and finish with bed lines that won't migrate when the rains hit.",
@@ -208,7 +208,7 @@ export const SERVICE_PAGES: ServicePage[] = [
       },
       {
         title: "Phased pricing if you want it.",
-        body: "Full property designs can land in the $20K–$60K range. We routinely phase the install over two seasons so you can spread the spend — front yard year one, backyard year two — without losing the cohesion of a single plan.",
+        body: "Full property designs can land in the $10K–$60K range. We routinely phase the install over two seasons so you can spread the spend — front yard year one, backyard year two — without losing the cohesion of a single plan.",
       },
     ],
     faqs: [

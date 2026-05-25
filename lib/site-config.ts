@@ -90,7 +90,7 @@ export const COMPANYCAM_GALLERY_URL =
  */
 export const SERVICES = [
   { slug: "lawn-maintenance", name: "Lawn Maintenance", confirm: false },
-  { slug: "landscape-design", name: "Landscape Design", confirm: false },
+  { slug: "landscape-design", name: "Landscape Design & Installation", confirm: false },
   { slug: "sod-installation", name: "Sod Installation", confirm: false },
   { slug: "irrigation", name: "Irrigation", confirm: false },
   { slug: "hardscape-installation", name: "Hardscape Installation", confirm: true },
