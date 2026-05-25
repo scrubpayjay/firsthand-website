@@ -14,7 +14,7 @@ export const NAP = {
   legalName: "Firsthand Lawns LLC",
   phone: "(407) 337-5191",
   phoneTel: "+14073375191",
-  email: "ryan@firsthandlawns.com", // [RYAN: confirm this is the right inbound address]
+  email: "admin@firsthandlawns.com",
   street: "3720 N Orange Blossom Trail",
   city: "Orlando",
   state: "FL",

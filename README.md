@@ -128,7 +128,7 @@ category prefix, area, service, role, and alt text override.
 |---|---|---|
 | `PLACEHOLDER_FB_PIXEL_ID` | `app/layout.tsx` | Real Meta Pixel ID (create in Meta Ads Manager) |
 | `PLACEHOLDER_TIDIO_ID` | `app/layout.tsx` | Tidio public key (see Tidio setup below) |
-| `ryan@firsthandlawns.com` | `lib/site-config.ts` | Confirm with Ryan whether this is the right inbound address |
+| `admin@firsthandlawns.com` | `lib/site-config.ts` | Inbound contact address (Ryan confirmed 2026-05-25) |
 | Hours (`Mon-Fri 8am-6pm · Sat-Sun 9am-2pm`) | `lib/site-config.ts` | Real hours from Ryan |
 | Financing partner URL (`https://example.com/apply`) | `lib/site-config.ts` | Real partner application URL (Wisetack, Sunbit, GreenSky, etc.) |
 | Social URLs (Facebook, Instagram, Google) | `lib/site-config.ts` | Real social profile URLs |
@@ -209,7 +209,7 @@ When Justin or Ryan creates the Tidio account:
    - "Financing options"
    - "Emergency tree/storm cleanup"
    - "Schedule a callback"
-5. Route unanswered messages to `ryan@firsthandlawns.com`
+5. Route unanswered messages to `admin@firsthandlawns.com`
 6. Office hours: M–F 8am–6pm, S–Su 9am–2pm (or whatever Ryan confirms)
 7. Outside hours: collect contact info, promise callback next business day
 
