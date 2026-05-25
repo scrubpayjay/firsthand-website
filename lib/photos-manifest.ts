@@ -50,6 +50,39 @@ export const PHOTOS: SitePhoto[] = [
     "bytes": 590218
   },
   {
+    "src": "/photos/portfolio-before-after-1.jpg",
+    "alt": "Before-and-after of property cleanup at a Mediterranean estate in Central Florida — overgrown landscape around brick paver driveway restored to manicured beds and lawn — Firsthand Lawn and Landscape",
+    "category": "before-after",
+    "area": "central-florida",
+    "service": "property-cleanup",
+    "role": "portfolio-card",
+    "width": 1200,
+    "height": 1200,
+    "bytes": 618614
+  },
+  {
+    "src": "/photos/portfolio-before-after-2.jpg",
+    "alt": "Before-and-after of sod installation under mature oak in Central Florida — patchy thinning lawn replaced with lush green turf — Firsthand Lawn and Landscape",
+    "category": "before-after",
+    "area": "central-florida",
+    "service": "sod-installation",
+    "role": "portfolio-card",
+    "width": 1200,
+    "height": 1200,
+    "bytes": 749683
+  },
+  {
+    "src": "/photos/portfolio-before-after-4.jpg",
+    "alt": "Before-and-after of side-yard restoration in Central Florida — dirt and leaf cover under oak transformed to manicured grass — Firsthand Lawn and Landscape",
+    "category": "before-after",
+    "area": "central-florida",
+    "service": "property-cleanup",
+    "role": "portfolio-card",
+    "width": 1200,
+    "height": 1200,
+    "bytes": 780288
+  },
+  {
     "src": "/photos/hero-ryan-1.jpg",
     "alt": "Two-story Mediterranean home with travertine walkway, palms, and bougainvillea in Central Florida — Firsthand Lawn and Landscape",
     "category": "hero",

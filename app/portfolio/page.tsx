@@ -39,9 +39,18 @@ const CATEGORY_CARDS = [
 ] as const;
 
 // Curated subset for the on-page gallery — order chosen for visual rhythm
-// (mix of wide, square-ish, and portrait photos across services). Top half
-// front-loaded with Ryan's 2026-05-24 curated batch.
+// (mix of wide, square-ish, and portrait photos across services). Leads
+// with 4 before/after composites, then Ryan's 2026-05-24 curated batch,
+// then 2 older auto-pulled shots. Three weak photos removed 2026-05-25
+// per Ryan's red-X feedback (landscape-1 yucca-overgrowth, winter-park-1
+// oak-shadow-patchy-lawn, sod-2 white-ranch-concrete-walk).
 const GALLERY_ORDER: string[] = [
+  // 4 before/after composites lead the gallery
+  "/photos/portfolio-before-after-1.jpg",
+  "/photos/sod-installation-ryan-1.jpg",
+  "/photos/portfolio-before-after-2.jpg",
+  "/photos/portfolio-before-after-4.jpg",
+  // Ryan-curated batch
   "/photos/landscape-ryan-3.jpg",
   "/photos/hardscape-ryan-3.jpg",
   "/photos/lawn-ryan-1.jpg",
@@ -54,11 +63,8 @@ const GALLERY_ORDER: string[] = [
   "/photos/hardscape-ryan-5.jpg",
   "/photos/concrete-ryan-3.jpg",
   "/photos/hardscape-ryan-12.jpg",
-  // Older auto-pulled CompanyCam shots below
-  "/photos/landscape-1.jpg",
-  "/photos/winter-park-1.jpg",
+  // Older auto-pulled CompanyCam shots remaining
   "/photos/bamboo-1.jpg",
-  "/photos/sod-2.jpg",
   "/photos/windermere-1.jpg",
   "/photos/bay-hill-1.jpg",
 ];
