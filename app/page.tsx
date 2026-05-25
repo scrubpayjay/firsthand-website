@@ -532,12 +532,15 @@ export default function HomePage() {
           </div>
 
           {(() => {
-            const featuredPhotos = [
-              pickHero("service-hero", "hardscape"),
-              pickHero("service-hero", "sod"),
-              pickHero("service-hero", "landscape"),
-              pickHero("service-hero", "bamboo"),
-            ].filter((p): p is NonNullable<typeof p> => Boolean(p));
+            const featuredOrder = [
+              "/photos/landscape-2.jpg",
+              "/photos/hardscape-1.jpg",
+              "/photos/winter-park-1.jpg",
+              "/photos/windermere-1.jpg",
+            ];
+            const featuredPhotos = featuredOrder
+              .map((src) => PHOTOS.find((p) => p.src === src))
+              .filter((p): p is NonNullable<typeof p> => Boolean(p));
             return (
               <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {featuredPhotos.map((photo) => (
