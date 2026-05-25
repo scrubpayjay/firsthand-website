@@ -43,12 +43,19 @@ export async function generateMetadata({
   const service = getServicePage(slug);
   if (!service) return { title: "Service not found" };
 
+  // The layout's title template appends " | Firsthand Lawns" to the
+  // document title automatically — but openGraph.title bypasses that
+  // template, so we add the brand suffix here so social-share previews
+  // (Facebook, iMessage, Twitter, LinkedIn) match what visitors see
+  // in their browser tab.
+  const fullTitle = `${service.title} | ${SITE_NAME}`;
+
   return {
     title: service.title,
     description: service.description,
     alternates: { canonical: `${SITE_URL}/services/${service.slug}` },
     openGraph: {
-      title: service.title,
+      title: fullTitle,
       description: service.description,
       url: `${SITE_URL}/services/${service.slug}`,
       type: "website",
