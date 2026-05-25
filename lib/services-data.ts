@@ -882,7 +882,7 @@ export const SERVICE_PAGES: ServicePage[] = [
   {
     slug: "property-cleanup",
     name: "Property Cleanup",
-    title: "Property Cleanup Services in Central Florida | Firsthand",
+    title: "Property Cleanup Services in Central Florida",
     description:
       "Fast, professional property cleanup services across Central Florida. Overgrown property cleanup, foreclosure turnover, storm debris removal. Licensed, insured, hauling included. Free quotes.",
     h1: "Property Cleanup Services in Central Florida",
