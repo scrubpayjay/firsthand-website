@@ -144,7 +144,7 @@ export const SERVICE_PAGES: ServicePage[] = [
   {
     slug: "landscape-design",
     name: "Landscape Design & Installation",
-    title: "Landscape Design & Installation in Winter Park, FL | Firsthand Lawns",
+    title: "Landscape Design & Installation in Winter Park, FL",
     description:
       "Custom landscape design and installation for Central Florida homes. Plant palettes, hardscape, lighting, and irrigation — designed and installed by the same team in Winter Park, Windermere, and Bay Hill.",
     h1: "Landscape Design & Installation in Winter Park & Central Florida",
