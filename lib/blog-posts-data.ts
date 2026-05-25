@@ -257,7 +257,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "p",
-        text: "If you're not sure which direction to go, the cheapest move is a site walk. We'll measure the lawn, check sun exposure across the day, look at your irrigation, and tell you honestly what we'd put down on our own house. Free, takes 20–30 minutes — book one from our [contact page](/contact) or call (407) 584-3784.",
+        text: "If you're not sure which direction to go, the cheapest move is a site walk. We'll measure the lawn, check sun exposure across the day, look at your irrigation, and tell you honestly what we'd put down on our own house. Free, takes 20–30 minutes — book one from our [contact page](/contact) or call (407) 337-5191.",
       },
     ],
   },
@@ -458,7 +458,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "p",
-        text: "We typically book pre-season work from early April through the third week of May. After Memorial Day, our schedule fills with established customers and we start turning new requests down. If you want pre-season tree work for the current hurricane season, the time to call is now — book a site walk from our [contact page](/contact) or call (407) 584-3784.",
+        text: "We typically book pre-season work from early April through the third week of May. After Memorial Day, our schedule fills with established customers and we start turning new requests down. If you want pre-season tree work for the current hurricane season, the time to call is now — book a site walk from our [contact page](/contact) or call (407) 337-5191.",
       },
     ],
   },
@@ -700,7 +700,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "p",
-        text: "Book a site walk from our [contact page](/contact) or call (407) 584-3784. Most Windermere bamboo projects move from initial walk to ARC approval to install in 4–8 weeks, depending on the board's review cycle.",
+        text: "Book a site walk from our [contact page](/contact) or call (407) 337-5191. Most Windermere bamboo projects move from initial walk to ARC approval to install in 4–8 weeks, depending on the board's review cycle.",
       },
     ],
   },
