@@ -82,7 +82,7 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-14 items-center">
             <div>
               <PhotoPlaceholder
-                label="Photo of Ryan Hanus on a job site — outdoors, in-progress shot, looks natural not staged. Could be him walking a property with a clipboard, or with the crew mid-install."
+                label="photo of Ryan to be added"
                 aspect="aspect-[4/5]"
                 variant="muted"
                 className="rounded-2xl"
@@ -93,30 +93,36 @@ export default function AboutPage() {
                 Ryan&apos;s story
               </p>
               <h2 className="font-display text-3xl sm:text-4xl leading-tight font-semibold tracking-tight">
-                Meet Ryan Hanus.
+                Meet Ryan.
               </h2>
               <div className="mt-5 space-y-4 text-base text-muted-foreground leading-relaxed">
-                <p className="text-text-faint italic">
-                  [RYAN: Replace this whole block with 2–3 paragraphs in your
-                  own voice. The structure that converts best is:
+                <p>
+                  I started Firsthand because people are tired of not getting
+                  what they paid for. In Central Florida, too many homeowners
+                  and property managers have dealt with poor communication,
+                  inconsistent work, and companies that disappear when
+                  it&apos;s time to be accountable. I knew landscaping could
+                  be done differently — with honesty, reliability, and pride
+                  in the work.
                 </p>
-                <p className="text-text-faint italic">
-                  (1) one sentence on why you started Firsthand — what was
-                  broken about the way landscape work was being done in
-                  Central Florida that you wanted to fix.
+                <p>
+                  At Firsthand, our approach is simple: bring honesty,
+                  integrity, and accountability back to landscaping. We
+                  believe customers deserve clear communication, dependable
+                  service, and results that actually match expectations.
+                  Whether it&apos;s routine maintenance or larger landscape
+                  projects, we treat every property like it matters because
+                  it does. We&apos;re not interested in cutting corners or
+                  making excuses — we&apos;re focused on building trust
+                  through consistent, high-quality work and doing the job
+                  right the first time.
                 </p>
-                <p className="text-text-faint italic">
-                  (2) one paragraph on what makes your approach different —
-                  could be the crew loyalty (same guys for years), CompanyCam
-                  documentation, the time you spend walking a property before
-                  quoting, anything that&apos;s actually true and specific.
-                </p>
-                <p className="text-text-faint italic">
-                  (3) one short paragraph on what matters to you outside of
-                  work — family, where you live, why you stayed in Central
-                  Florida. The point isn&apos;t to be cute, it&apos;s to
-                  remind the customer there&apos;s an actual human running
-                  this thing.]
+                <p>
+                  Outside of work, my faith and family are what matter most
+                  to me. I&apos;m passionate about being a good father to my
+                  4-year-old daughter, staying active, and taking care of my
+                  health so I can show up fully for the people who depend
+                  on me.
                 </p>
               </div>
             </div>
@@ -181,7 +187,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
             {[
-              "Ryan Hanus — Owner",
+              "Ryan — Owner",
               "[RYAN: Crew lead #1]",
               "[RYAN: Crew lead #2]",
               "[RYAN: Estimator / Designer]",
