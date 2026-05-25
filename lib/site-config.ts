@@ -76,10 +76,34 @@ export const FINANCING = {
 } as const;
 
 /**
- * CompanyCam portfolio — link until on-site gallery is built.
+ * CompanyCam portfolios — Ryan maintains three discipline-specific galleries
+ * that the public /portfolio page surfaces as category cards. Each card
+ * deep-links to the corresponding gallery; the legacy single-gallery export
+ * stays available for the "browse the full live gallery" callout.
  */
-export const COMPANYCAM_GALLERY_URL =
-  "https://app.companycam.com/galleries/72h2J7F9";
+export const COMPANYCAM_GALLERIES = {
+  lawnLandscape: {
+    label: "Lawn & Landscaping",
+    description:
+      "Maintenance, sod, landscape design + install — front yards, full backyard renovations, ongoing service.",
+    url: "https://app.companycam.com/galleries/Cek72gvA",
+  },
+  hardscape: {
+    label: "Hardscape",
+    description:
+      "Paver patios, driveways, walkways, retaining walls — Bay Hill, Windermere, Winter Park.",
+    url: "https://app.companycam.com/galleries/PU24wnL3",
+  },
+  concrete: {
+    label: "Concrete",
+    description:
+      "Concrete slabs, driveways, pads, decorative inlays — finished and stamped concrete work.",
+    url: "https://app.companycam.com/galleries/Jp7rERCP",
+  },
+} as const;
+
+// Back-compat: legacy "full live gallery" callout still uses this single URL.
+export const COMPANYCAM_GALLERY_URL = COMPANYCAM_GALLERIES.lawnLandscape.url;
 
 /**
  * Service catalog — drives header nav, footer, sitemap, internal linking.

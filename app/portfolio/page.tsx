@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
-import { ExternalLink, Camera } from "lucide-react";
+import { ArrowRight, ExternalLink, Camera } from "lucide-react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CtaSection } from "@/components/cta-section";
 import { SitePhoto } from "@/components/site-photo";
 import { PHOTOS } from "@/lib/photos-manifest";
-import { COMPANYCAM_GALLERY_URL, SITE_URL } from "@/lib/site-config";
+import {
+  COMPANYCAM_GALLERIES,
+  COMPANYCAM_GALLERY_URL,
+  SITE_URL,
+} from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "Portfolio — Recent landscape projects | Firsthand Lawns",
@@ -13,27 +17,50 @@ export const metadata: Metadata = {
   alternates: { canonical: `${SITE_URL}/portfolio` },
 };
 
+// Three discipline-specific category cards at top, each deep-linking to
+// Ryan's CompanyCam gallery for that category. Photo src is hand-picked
+// from Ryan's 2026-05-24 curated batch.
+const CATEGORY_CARDS = [
+  {
+    key: "lawnLandscape",
+    photoSrc: "/photos/landscape-ryan-2.jpg",
+    ...COMPANYCAM_GALLERIES.lawnLandscape,
+  },
+  {
+    key: "hardscape",
+    photoSrc: "/photos/hardscape-ryan-1.jpg",
+    ...COMPANYCAM_GALLERIES.hardscape,
+  },
+  {
+    key: "concrete",
+    photoSrc: "/photos/concrete-ryan-1.jpg",
+    ...COMPANYCAM_GALLERIES.concrete,
+  },
+] as const;
+
 // Curated subset for the on-page gallery — order chosen for visual rhythm
-// (mix of wide, square-ish, and portrait photos across services).
+// (mix of wide, square-ish, and portrait photos across services). Top half
+// front-loaded with Ryan's 2026-05-24 curated batch.
 const GALLERY_ORDER: string[] = [
-  "/photos/hardscape-1.jpg",
+  "/photos/landscape-ryan-3.jpg",
+  "/photos/hardscape-ryan-3.jpg",
+  "/photos/lawn-ryan-1.jpg",
+  "/photos/hardscape-ryan-7.jpg",
+  "/photos/landscape-ryan-7.jpg",
+  "/photos/concrete-ryan-2.jpg",
+  "/photos/landscape-ryan-10.jpg",
+  "/photos/hardscape-ryan-11.jpg",
+  "/photos/landscape-ryan-6.jpg",
+  "/photos/hardscape-ryan-5.jpg",
+  "/photos/concrete-ryan-3.jpg",
+  "/photos/hardscape-ryan-12.jpg",
+  // Older auto-pulled CompanyCam shots below
   "/photos/landscape-1.jpg",
-  "/photos/sod-1.jpg",
   "/photos/winter-park-1.jpg",
   "/photos/bamboo-1.jpg",
-  "/photos/hardscape-2.jpg",
-  "/photos/lawn-1.jpg",
-  "/photos/windermere-1.jpg",
-  "/photos/landscape-2.jpg",
-  "/photos/hardscape-3.jpg",
-  "/photos/bay-hill-1.jpg",
-  "/photos/portfolio-1.jpg",
   "/photos/sod-2.jpg",
-  "/photos/landscape-3.jpg",
-  "/photos/hardscape-5.jpg",
-  "/photos/portfolio-2.jpg",
-  "/photos/lawn-2.jpg",
-  "/photos/portfolio-3.jpg",
+  "/photos/windermere-1.jpg",
+  "/photos/bay-hill-1.jpg",
 ];
 
 export default function PortfolioPage() {
@@ -88,6 +115,62 @@ export default function PortfolioPage() {
             this callout for the inline grid. CompanyCam stays as the
             permanent project archive either way.]
           </p>
+        </div>
+      </section>
+
+      {/* Category cards — each deep-links to Ryan's CompanyCam gallery
+          for that discipline. Photo on each card is hand-picked from
+          his 2026-05-24 curated batch. */}
+      <section className="container-wide pb-12 lg:pb-16">
+        <div className="mb-8">
+          <h2 className="font-display text-3xl sm:text-4xl font-semibold tracking-tight">
+            Browse by category
+          </h2>
+          <p className="mt-3 text-sm text-muted-foreground max-w-2xl">
+            Three separate live galleries on CompanyCam — pick the
+            discipline you&apos;re shopping for and the photos open in
+            a new tab.
+          </p>
+        </div>
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {CATEGORY_CARDS.map((card) => {
+            const photo = PHOTOS.find((p) => p.src === card.photoSrc);
+            return (
+              <a
+                key={card.key}
+                href={card.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group rounded-2xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-card transition-all"
+              >
+                {photo ? (
+                  <SitePhoto
+                    photo={photo}
+                    aspect="aspect-[4/3]"
+                    sizes="(min-width: 1024px) 30vw, (min-width: 640px) 45vw, 100vw"
+                    rounded="rounded-none"
+                  />
+                ) : (
+                  <div className="aspect-[4/3] bg-muted" aria-hidden />
+                )}
+                <div className="p-5">
+                  <div className="flex items-center justify-between gap-3">
+                    <h3 className="font-display text-xl font-semibold tracking-tight">
+                      {card.label}
+                    </h3>
+                    <ArrowRight className="h-4 w-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-0.5 transition" />
+                  </div>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">
+                    {card.description}
+                  </p>
+                  <p className="mt-3 text-xs font-medium text-primary">
+                    Open CompanyCam gallery ↗
+                  </p>
+                </div>
+              </a>
+            );
+          })}
         </div>
       </section>
 
