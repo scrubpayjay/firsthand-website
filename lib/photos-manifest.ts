@@ -22,6 +22,398 @@ export interface SitePhoto {
 }
 
 export const PHOTOS: SitePhoto[] = [
+  // ── Ryan-curated batch (2026-05-24) ──────────────────────────────────
+  // Hand-picked by Ryan from his own project archive in response to v1
+  // site review. Placed at the TOP of the array so pickHero() finds
+  // them first for hero / service-hero roles. The "-ryan-" infix in
+  // filenames flags personally-curated assets.
+  {
+    "src": "/photos/hero-ryan-1.jpg",
+    "alt": "Two-story Mediterranean home with travertine walkway, palms, and bougainvillea in Central Florida — Firsthand Lawn and Landscape",
+    "category": "hero",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "hero",
+    "width": 1280,
+    "height": 720,
+    "bytes": 397300
+  },
+  {
+    "src": "/photos/landscape-ryan-1.jpg",
+    "alt": "Mature landscape design with palms, oak canopy, and stucco home in Central Florida — Firsthand Lawn and Landscape",
+    "category": "landscape",
+    "area": "central-florida",
+    "service": "landscape-design",
+    "role": "service-hero",
+    "width": 1280,
+    "height": 720,
+    "bytes": 527630
+  },
+  {
+    "src": "/photos/landscape-ryan-2.jpg",
+    "alt": "Completed landscape design with topiary boxwoods and palms at Central Florida estate home — Firsthand Lawn and Landscape",
+    "category": "landscape",
+    "area": "central-florida",
+    "service": "landscape-design",
+    "role": "portfolio-card",
+    "width": 1280,
+    "height": 960,
+    "bytes": 357162
+  },
+  {
+    "src": "/photos/landscape-ryan-3.jpg",
+    "alt": "White Mediterranean estate with palms and fresh sod in Central Florida — Firsthand Lawn and Landscape",
+    "category": "landscape",
+    "area": "central-florida",
+    "service": "landscape-design",
+    "role": "secondary",
+    "width": 1280,
+    "height": 960,
+    "bytes": 359347
+  },
+  {
+    "src": "/photos/landscape-ryan-4.jpg",
+    "alt": "Stucco home with palms and clean lawn around walkway in Central Florida — Firsthand Lawn and Landscape",
+    "category": "landscape",
+    "area": "central-florida",
+    "service": "landscape-design",
+    "role": "secondary",
+    "width": 1280,
+    "height": 960,
+    "bytes": 568024
+  },
+  {
+    "src": "/photos/landscape-ryan-5.jpg",
+    "alt": "Tall manicured hedge wall framing a turf strip in Central Florida — Firsthand Lawn and Landscape",
+    "category": "landscape",
+    "area": "central-florida",
+    "service": "landscape-design",
+    "role": "secondary",
+    "width": 1280,
+    "height": 720,
+    "bytes": 449142
+  },
+  {
+    "src": "/photos/landscape-ryan-6.jpg",
+    "alt": "Stucco home corner with mature oak and tidy hedge bed in Central Florida — Firsthand Lawn and Landscape",
+    "category": "landscape",
+    "area": "central-florida",
+    "service": "landscape-design",
+    "role": "secondary",
+    "width": 1280,
+    "height": 720,
+    "bytes": 522406
+  },
+  {
+    "src": "/photos/landscape-ryan-7.jpg",
+    "alt": "Privacy hedge with bougainvillea bloom and iron fence in Central Florida — Firsthand Lawn and Landscape",
+    "category": "landscape",
+    "area": "central-florida",
+    "service": "landscape-design",
+    "role": "secondary",
+    "width": 1280,
+    "height": 720,
+    "bytes": 487787
+  },
+  {
+    "src": "/photos/landscape-ryan-8.jpg",
+    "alt": "Modern white home with topiary boxwoods and palm cluster in Central Florida — Firsthand Lawn and Landscape",
+    "category": "landscape",
+    "area": "central-florida",
+    "service": "landscape-design",
+    "role": "secondary",
+    "width": 1280,
+    "height": 960,
+    "bytes": 484417
+  },
+  {
+    "src": "/photos/landscape-ryan-9.jpg",
+    "alt": "Tall manicured hedge alongside stucco home wing in Central Florida — Firsthand Lawn and Landscape",
+    "category": "landscape",
+    "area": "central-florida",
+    "service": "landscape-design",
+    "role": "secondary",
+    "width": 1280,
+    "height": 960,
+    "bytes": 567760
+  },
+  {
+    "src": "/photos/landscape-ryan-10.jpg",
+    "alt": "Pergola covered in bougainvillea over hardscape patio in Central Florida — Firsthand Lawn and Landscape",
+    "category": "landscape",
+    "area": "central-florida",
+    "service": "landscape-design",
+    "role": "secondary",
+    "width": 960,
+    "height": 1280,
+    "bytes": 603407
+  },
+  {
+    "src": "/photos/landscape-ryan-11.jpg",
+    "alt": "Backyard with stone retaining wall and fresh mulched plant bed in Central Florida — Firsthand Lawn and Landscape",
+    "category": "landscape",
+    "area": "central-florida",
+    "service": "landscape-design",
+    "role": "secondary",
+    "width": 960,
+    "height": 1280,
+    "bytes": 789462
+  },
+  {
+    "src": "/photos/lawn-ryan-1.jpg",
+    "alt": "Fresh mowing stripes under mature oak canopy in Central Florida — Firsthand Lawn and Landscape",
+    "category": "lawn",
+    "area": "central-florida",
+    "service": "lawn-maintenance",
+    "role": "service-hero",
+    "width": 1280,
+    "height": 960,
+    "bytes": 675616
+  },
+  {
+    "src": "/photos/lawn-ryan-2.jpg",
+    "alt": "Manicured walkway with hedge and ground cover edging in Central Florida — Firsthand Lawn and Landscape",
+    "category": "lawn",
+    "area": "central-florida",
+    "service": "lawn-maintenance",
+    "role": "secondary",
+    "width": 720,
+    "height": 1280,
+    "bytes": 495397
+  },
+  {
+    "src": "/photos/lawn-ryan-3.jpg",
+    "alt": "Brick paver walkway between Mediterranean homes with manicured hedges in Central Florida — Firsthand Lawn and Landscape",
+    "category": "lawn",
+    "area": "central-florida",
+    "service": "lawn-maintenance",
+    "role": "secondary",
+    "width": 720,
+    "height": 1280,
+    "bytes": 390398
+  },
+  {
+    "src": "/photos/hardscape-ryan-1.jpg",
+    "alt": "Wide paver patio with topiary boxwoods and umbrella in Central Florida — Firsthand Lawn and Landscape",
+    "category": "hardscape",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "service-hero",
+    "width": 1600,
+    "height": 900,
+    "bytes": 534219
+  },
+  {
+    "src": "/photos/hardscape-ryan-2.jpg",
+    "alt": "Stucco home with paver driveway and palm screen in Central Florida — Firsthand Lawn and Landscape",
+    "category": "hardscape",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "secondary",
+    "width": 1280,
+    "height": 720,
+    "bytes": 382119
+  },
+  {
+    "src": "/photos/hardscape-ryan-3.jpg",
+    "alt": "Wide paver driveway alongside podocarpus hedge in Central Florida — Firsthand Lawn and Landscape",
+    "category": "hardscape",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "secondary",
+    "width": 1280,
+    "height": 960,
+    "bytes": 523387
+  },
+  {
+    "src": "/photos/hardscape-ryan-4.jpg",
+    "alt": "Wide finished paver driveway leading to estate home in Central Florida — Firsthand Lawn and Landscape",
+    "category": "hardscape",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "secondary",
+    "width": 1280,
+    "height": 958,
+    "bytes": 377928
+  },
+  {
+    "src": "/photos/hardscape-ryan-5.jpg",
+    "alt": "Stacked-stone retaining wall around pool-side plant bed in Central Florida — Firsthand Lawn and Landscape",
+    "category": "hardscape",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "secondary",
+    "width": 1280,
+    "height": 954,
+    "bytes": 430450
+  },
+  {
+    "src": "/photos/hardscape-ryan-6.jpg",
+    "alt": "Curved retaining wall with round stone-bench planter steps in Central Florida — Firsthand Lawn and Landscape",
+    "category": "hardscape",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "secondary",
+    "width": 1280,
+    "height": 943,
+    "bytes": 422353
+  },
+  {
+    "src": "/photos/hardscape-ryan-7.jpg",
+    "alt": "Stacked stone wall in beachside Central Florida setting — Firsthand Lawn and Landscape",
+    "category": "hardscape",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "secondary",
+    "width": 1600,
+    "height": 940,
+    "bytes": 522027
+  },
+  {
+    "src": "/photos/hardscape-ryan-8.jpg",
+    "alt": "Newly installed paver walkway with polymeric sand-fill in Central Florida — Firsthand Lawn and Landscape",
+    "category": "hardscape",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "secondary",
+    "width": 1194,
+    "height": 1600,
+    "bytes": 447137
+  },
+  {
+    "src": "/photos/hardscape-ryan-9.jpg",
+    "alt": "Brick-paver step-up at sliding patio door in Central Florida — Firsthand Lawn and Landscape",
+    "category": "hardscape",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "secondary",
+    "width": 1196,
+    "height": 1600,
+    "bytes": 439369
+  },
+  {
+    "src": "/photos/hardscape-ryan-10.jpg",
+    "alt": "Travertine steps at dusk overlooking Central Florida landscape — Firsthand Lawn and Landscape",
+    "category": "hardscape",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "secondary",
+    "width": 882,
+    "height": 1600,
+    "bytes": 199447
+  },
+  {
+    "src": "/photos/hardscape-ryan-11.jpg",
+    "alt": "Gray herringbone paver patio at new construction home in Central Florida — Firsthand Lawn and Landscape",
+    "category": "hardscape",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "secondary",
+    "width": 1204,
+    "height": 1600,
+    "bytes": 403082
+  },
+  {
+    "src": "/photos/hardscape-ryan-12.jpg",
+    "alt": "Crew installing paver walkway along side yard in Central Florida — Firsthand Lawn and Landscape",
+    "category": "hardscape",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "secondary",
+    "width": 1191,
+    "height": 1600,
+    "bytes": 372599
+  },
+  {
+    "src": "/photos/hardscape-ryan-13.jpg",
+    "alt": "Brick paver side-yard walkway between stucco home and hedge in Central Florida — Firsthand Lawn and Landscape",
+    "category": "hardscape",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "secondary",
+    "width": 1570,
+    "height": 1600,
+    "bytes": 426838
+  },
+  {
+    "src": "/photos/hardscape-ryan-14.jpg",
+    "alt": "Clean paver patio at back of new construction home in Central Florida — Firsthand Lawn and Landscape",
+    "category": "hardscape",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "secondary",
+    "width": 1184,
+    "height": 1600,
+    "bytes": 415031
+  },
+  {
+    "src": "/photos/concrete-ryan-1.jpg",
+    "alt": "Finished concrete pads with white-gravel infill and RV driveway in Central Florida — Firsthand Lawn and Landscape",
+    "category": "concrete",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "portfolio-card",
+    "width": 1600,
+    "height": 1189,
+    "bytes": 465366
+  },
+  {
+    "src": "/photos/concrete-ryan-2.jpg",
+    "alt": "Diamond-pattern concrete driveway with gravel inlay at Central Florida home — Firsthand Lawn and Landscape",
+    "category": "concrete",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "secondary",
+    "width": 1212,
+    "height": 1600,
+    "bytes": 338479
+  },
+  {
+    "src": "/photos/concrete-ryan-3.jpg",
+    "alt": "Freshly poured and finished concrete slab next to brick wall in Central Florida — Firsthand Lawn and Landscape",
+    "category": "concrete",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "secondary",
+    "width": 1600,
+    "height": 1185,
+    "bytes": 328051
+  },
+  {
+    "src": "/photos/concrete-ryan-4.jpg",
+    "alt": "Fresh concrete pad at corner of fenced backyard in Central Florida — Firsthand Lawn and Landscape",
+    "category": "concrete",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "secondary",
+    "width": 1600,
+    "height": 1198,
+    "bytes": 576036
+  },
+  {
+    "src": "/photos/concrete-ryan-5.jpg",
+    "alt": "Concrete pour in progress with crew at Central Florida residential site — Firsthand Lawn and Landscape",
+    "category": "concrete",
+    "area": "central-florida",
+    "service": "hardscape-installation",
+    "role": "secondary",
+    "width": 1200,
+    "height": 1600,
+    "bytes": 459636
+  },
+  {
+    "src": "/photos/ryan-portrait.jpg",
+    "alt": "Ryan, owner of Firsthand Lawn and Landscape",
+    "category": "ryan-portrait",
+    "area": "n/a",
+    "service": "n/a",
+    "role": "portrait",
+    "width": 591,
+    "height": 1280,
+    "bytes": 68555
+  },
+
+  // ── Auto-pulled CompanyCam batch (May 2026) ──────────────────────────
   {
     "src": "/photos/hero-1.jpg",
     "alt": "Backyard landscape design with manicured lawn, palms, and screened pool — Firsthand Lawn and Landscape",
@@ -171,7 +563,7 @@ export const PHOTOS: SitePhoto[] = [
     "category": "landscape",
     "area": "orlando",
     "service": "landscape-design",
-    "role": "service-hero",
+    "role": "secondary",
     "width": 1600,
     "height": 1200,
     "bytes": 389296
