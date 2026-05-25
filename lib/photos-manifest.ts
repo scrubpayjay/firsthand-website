@@ -392,7 +392,16 @@ export function findPhoto(predicate: (p: SitePhoto) => boolean): SitePhoto | und
   return PHOTOS.find(predicate);
 }
 
-/** Pick one photo with role exactly matching, fall back to any of category. */
+/**
+ * Pick a photo matching BOTH role + category. Falls back to category-only,
+ * then role-only. Prior version ignored category on the role-match path, so
+ * a call like pickHero("area-hero", "winter-park") returned whatever role
+ * "area-hero" appeared first in the manifest regardless of locale.
+ */
 export function pickHero(role: string, category: string): SitePhoto | undefined {
-  return PHOTOS.find((p) => p.role === role) ?? PHOTOS.find((p) => p.category === category);
+  return (
+    PHOTOS.find((p) => p.role === role && p.category === category) ??
+    PHOTOS.find((p) => p.category === category) ??
+    PHOTOS.find((p) => p.role === role)
+  );
 }
