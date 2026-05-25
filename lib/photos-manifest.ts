@@ -39,6 +39,17 @@ export const PHOTOS: SitePhoto[] = [
     "bytes": 594211
   },
   {
+    "src": "/photos/property-cleanup-hero.jpg",
+    "alt": "Before-and-after of overgrown Central Florida property cleanup — stucco home with brick driveway transformed from neglected to manicured — Firsthand Lawn and Landscape",
+    "category": "property-cleanup",
+    "area": "central-florida",
+    "service": "property-cleanup",
+    "role": "service-hero",
+    "width": 1440,
+    "height": 1440,
+    "bytes": 590218
+  },
+  {
     "src": "/photos/hero-ryan-1.jpg",
     "alt": "Two-story Mediterranean home with travertine walkway, palms, and bougainvillea in Central Florida — Firsthand Lawn and Landscape",
     "category": "hero",

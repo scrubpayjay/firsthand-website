@@ -121,6 +121,7 @@ export const SERVICES = [
   { slug: "tree-trimming-removal", name: "Tree Trimming & Removal", confirm: true },
   { slug: "stump-grinding-removal", name: "Stump Grinding & Removal", confirm: true },
   { slug: "bamboo-trimming-removal", name: "Bamboo Trimming & Removal", confirm: true },
+  { slug: "property-cleanup", name: "Property Cleanup", confirm: false },
 ] as const;
 
 export const SERVICE_AREAS = [

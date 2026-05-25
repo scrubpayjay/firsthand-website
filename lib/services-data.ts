@@ -36,6 +36,17 @@ export interface ServicePage {
   /** True if this service was added in the new build and Ryan hasn't confirmed
    * the company is currently offering it. Shows a [RYAN: confirm] banner. */
   needsConfirm: boolean;
+  /**
+   * Optional dedicated gallery section rendered below "What's Included".
+   * For services where the single What's-Included photo isn't enough proof
+   * — e.g. Property Cleanup, where before/after composites are the core
+   * sales argument. Photo srcs match entries in lib/photos-manifest.ts.
+   */
+  gallery?: {
+    heading: string;
+    intro?: string;
+    photoSrcs: string[];
+  };
 }
 
 export const SERVICE_PAGES: ServicePage[] = [
@@ -134,7 +145,7 @@ export const SERVICE_PAGES: ServicePage[] = [
         a: "Yes. Maintenance contracts are month-to-month after a 30-day initial period — we don't lock you in on a yearly contract. If we're not the right fit, we'd rather know.",
       },
     ],
-    related: ["sod-installation", "irrigation", "landscape-design"],
+    related: ["sod-installation", "irrigation", "landscape-design", "property-cleanup"],
     priceRange: "From $40/visit (residential)",
     timeline: "Weekly or biweekly, year-round",
     needsConfirm: false,
@@ -241,7 +252,7 @@ export const SERVICE_PAGES: ServicePage[] = [
         a: "Six months on installed plant material — replacement if it dies under normal care. Hardscape carries the manufacturer's structural warranty (paver, travertine, etc.) plus our workmanship warranty.",
       },
     ],
-    related: ["sod-installation", "irrigation", "hardscape-installation"],
+    related: ["sod-installation", "irrigation", "hardscape-installation", "property-cleanup"],
     priceRange: "$500–$2,500 design · installs $5K–$50K",
     timeline: "2–4 weeks consult to install",
     needsConfirm: false,
@@ -659,7 +670,7 @@ export const SERVICE_PAGES: ServicePage[] = [
         a: "Separate service but we usually bundle it. Grinding a stump down 6–12 inches below grade lets you replant or re-sod over it. See our stump grinding page for details.",
       },
     ],
-    related: ["stump-grinding-removal", "bamboo-trimming-removal", "landscape-design"],
+    related: ["stump-grinding-removal", "bamboo-trimming-removal", "landscape-design", "property-cleanup"],
     priceRange: "Trim $300–$700 · removal $400–$3,000+",
     timeline: "Same-day storm response · 1–2 weeks scheduled",
     needsConfirm: true,
@@ -865,6 +876,114 @@ export const SERVICE_PAGES: ServicePage[] = [
     priceRange: "Trim $300–$800 · removal $1.5K–$10K+",
     timeline: "Initial 1–3 days · two follow-ups across 120 days",
     needsConfirm: true,
+  },
+
+  // ── 9. Property Cleanup ───────────────────────────────────────────────
+  {
+    slug: "property-cleanup",
+    name: "Property Cleanup",
+    title: "Property Cleanup Services in Central Florida | Firsthand",
+    description:
+      "Fast, professional property cleanup services across Central Florida. Overgrown property cleanup, foreclosure turnover, storm debris removal. Licensed, insured, hauling included. Free quotes.",
+    h1: "Property Cleanup Services in Central Florida",
+    intro: [
+      "Property cleanup is the work nobody wants to do twice — clearing a yard that's been swallowed by vines and overgrowth, prepping a foreclosure for sale, hauling out storm debris before the HOA fines start. Whether you're calling it property cleanup, property clean up, or property clean-up, the job is the same: get the place from unrentable, unsellable, or out-of-compliance back to presentable. Fast.",
+      "Most of our property cleanup services don't require sourcing materials, so we can usually start within the week. Overgrown property cleanup, foreclosure and rental turnover prep, post-storm debris removal, HOA violation cure work — we treat each one as time-sensitive because that's how they usually arrive. Quote on Monday, walking the property by Wednesday, hauling debris by Friday is a typical timeline.",
+      "Everything we cut, pull, or pile up leaves with us. Hauling and disposal are always included; you don't end up with a brush pile on the curb waiting for a separate trip. Property managers, real estate investors, and individual owners get the same fast response and the same photo-documented before/after record.",
+    ],
+    includes: [
+      "Overgrown vegetation and brush removal — fast clearing of yards reclaimed by nature",
+      "Foreclosure and rental turnover cleanup — get properties rent-ready or sale-ready",
+      "Post-storm debris removal — fallen branches, downed trees, scattered debris",
+      "HOA violation cure work — bring properties into compliance quickly",
+      "Land clearing and brush removal — for new construction prep or yard restoration",
+      "Hauling and disposal included — we don't leave piles for you to deal with",
+      "Photo documentation in CompanyCam — before and after, every job",
+      "Direct invoicing to property management companies and out-of-state owners",
+    ],
+    process: [
+      {
+        title: "Same-day quote response",
+        body: "Call or send the contact form with property address and a few photos if you've got them. Most property cleanup quotes go out within 24 hours; urgent foreclosure-closing or HOA-violation situations get prioritized.",
+      },
+      {
+        title: "On-site walk if scope warrants it",
+        body: "For larger overgrown property cleanup jobs or commercial lots we walk the property first to scope the equipment and crew size needed. Smaller residential cleanups we can scope from photos.",
+      },
+      {
+        title: "Schedule fast — usually within 5-7 days",
+        body: "Standard property cleanup work books within a week of quote acceptance. Storm response, HOA violation cure, and foreclosure-closing-date work gets squeezed into the next 48 hours when needed.",
+      },
+      {
+        title: "Crew, equipment, and debris haul",
+        body: "Crew arrives with the right combination of mowers, brush cutters, chainsaws, and trailers for the job. Everything we cut leaves with us — no piles waiting for a separate trip.",
+      },
+      {
+        title: "Before/after photo record",
+        body: "Every property cleanup job is documented in CompanyCam: before, during, and after. Property managers get the report the day the job closes; out-of-state owners get a clean visual confirmation.",
+      },
+      {
+        title: "Bundle anything else if you need it",
+        body: "Property cleanup often pairs with sod installation, tree removal, or a fresh landscape design install. We can quote the whole job at once and stage the work to avoid a second mobilization.",
+      },
+    ],
+    why: [
+      {
+        title: "Fast turnaround.",
+        body: "Property cleanup doesn't require sourcing materials. We can typically start within the week, and storm/foreclosure/HOA work often within 48 hours.",
+      },
+      {
+        title: "Licensed and insured.",
+        body: "Fully covered for property work including foreclosure cleanouts, rental turnover, and storm cleanup. Certificates of insurance available on request for property management contracts.",
+      },
+      {
+        title: "Same-week scheduling.",
+        body: "Most overgrown property cleanup jobs scheduled and completed within 5–7 business days of quote acceptance. We hold capacity in the schedule for time-sensitive cleanup work.",
+      },
+      {
+        title: "Clean haul-away included.",
+        body: "Every branch, leaf, brush pile, and storm-tossed debris pile leaves with us. No separate disposal fee, no curbside pile waiting for a second trip.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What does property cleanup cost?",
+        a: "Costs vary based on property size, condition, and scope. Typical residential property cleanup ranges from $500 to $5,000+. Severely overgrown or commercial lots run higher. Every quote is free — call (407) 337-5191 for an accurate estimate.",
+      },
+      {
+        q: "How fast can you start property clean up work?",
+        a: "Most jobs scheduled within 5–7 business days of quote acceptance. For urgent situations — foreclosure closing dates, post-storm, HOA violation cure — we can often start within 48 hours.",
+      },
+      {
+        q: "Do you handle foreclosure and rental turnover cleanups?",
+        a: "Yes. We work with property managers, real estate investors, and individual owners on foreclosure cleanouts, rental turnovers, and pre-sale property prep. Quick turnaround, photo documentation, direct invoicing to property management.",
+      },
+      {
+        q: "Do you remove fallen trees and storm debris?",
+        a: "Yes. Property cleanup includes hauling away fallen branches, downed trees, and storm-damaged vegetation. Active tree removal coordinates with our tree trimming service.",
+      },
+      {
+        q: "Do you do overgrown property cleanup on commercial lots?",
+        a: "Yes — overgrown vacant lots, neglected commercial landscaping, HOA-managed common areas. Pricing scales with property size.",
+      },
+      {
+        q: "What's included in your property cleanup services?",
+        a: "Every property cleanup includes vegetation removal, brush clearing, debris haul-away, and disposal. Standard service does not include tree removal (priced separately), sod installation, or new landscape installation — though we can bundle those into the same job.",
+      },
+    ],
+    related: ["lawn-maintenance", "tree-trimming-removal", "landscape-design"],
+    priceRange: "$500–$5,000+ typical residential",
+    timeline: "Start within 5–7 days · 48hr for urgent",
+    needsConfirm: false,
+    gallery: {
+      heading: "Recent property cleanup transformations",
+      intro:
+        "Two before/after composites from recent jobs — overgrown to manicured, dirt to fresh sod. Every transformation lives in CompanyCam alongside the rest of the project archive.",
+      photoSrcs: [
+        "/photos/property-cleanup-hero.jpg",
+        "/photos/sod-installation-ryan-1.jpg",
+      ],
+    },
   },
 ];
 

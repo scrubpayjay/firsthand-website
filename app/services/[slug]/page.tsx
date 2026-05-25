@@ -13,7 +13,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CtaSection } from "@/components/cta-section";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { SitePhoto } from "@/components/site-photo";
-import { photosByService } from "@/lib/photos-manifest";
+import { PHOTOS, photosByService } from "@/lib/photos-manifest";
 import { FaqAccordion } from "@/components/faq-accordion";
 import {
   SERVICE_PAGES,
@@ -278,6 +278,46 @@ export default async function ServiceDetailPage({ params }: RouteProps) {
           </div>
         </div>
       </section>
+
+      {/* ── Optional gallery (currently only Property Cleanup) ─────── */}
+      {service.gallery ? (
+        <section className="section bg-background">
+          <div className="container-wide">
+            <div className="max-w-3xl mb-10">
+              <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
+                Recent work
+              </p>
+              <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight font-semibold tracking-tight">
+                {service.gallery.heading}
+              </h2>
+              {service.gallery.intro ? (
+                <p className="mt-4 text-base text-muted-foreground leading-relaxed">
+                  {service.gallery.intro}
+                </p>
+              ) : null}
+            </div>
+
+            <div className="grid sm:grid-cols-2 gap-5">
+              {service.gallery.photoSrcs.map((src) => {
+                // Manifest-wide lookup so cross-service composites resolve
+                // (e.g. the sod-installation hero rendered on the
+                // property-cleanup gallery).
+                const photo = PHOTOS.find((p) => p.src === src);
+                if (!photo) return null;
+                return (
+                  <SitePhoto
+                    key={src}
+                    photo={photo}
+                    aspect="aspect-square"
+                    sizes="(min-width: 1024px) 45vw, 100vw"
+                    rounded="rounded-2xl"
+                  />
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       {/* ── Process ────────────────────────────────────────────────── */}
       <section className="section bg-background">
