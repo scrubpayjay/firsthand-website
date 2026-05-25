@@ -42,43 +42,52 @@ Production-ready Next.js 16 marketing site for Firsthand Lawns, replacing the ex
 - Cookie consent banner gating Meta Pixel + Tidio behind explicit opt-in
 - Financing call-out on home, dedicated `/financing` page, sidebar callout on every service page
 
-**Photo coverage** (real CompanyCam photos via the manifest at `lib/photos-manifest.ts`)
+**Photo coverage** (Ryan-curated 2026-05-24 batch + earlier CompanyCam pulls)
 
 | Surface | Status | Source |
 |---|---|---|
-| Home hero | ✓ | landscape-design backyard, Orlando |
+| Home hero | ✓ | **hero-ryan-1** (Mediterranean home, travertine walkway, bougainvillea) |
 | Home financing callout | ✓ | hardscape-1 (Bay Hill travertine pool) |
 | Home "Where we work" | ✓ | winter-park-1 (oak-shaded Spanish home) |
-| Home recent-work grid | ✓ | 4 service heroes |
-| `/services/lawn-maintenance` | ✓ | lawn-1 hero |
-| `/services/landscape-design` | ✓ | landscape-1 hero |
+| Home recent-work grid | ✓ | 4 Ryan-curated: landscape-ryan-3, hardscape-ryan-1, lawn-ryan-1, concrete-ryan-1 |
+| `/services/lawn-maintenance` | ✓ | **lawn-ryan-1** (fresh mowing stripes under oak) |
+| `/services/landscape-design` | ✓ | **landscape-ryan-1** (mature palms + stucco wing) |
 | `/services/sod-installation` | ✓ | sod-1 hero |
-| `/services/hardscape-installation` | ✓ | hardscape-1 hero |
+| `/services/hardscape-installation` | ✓ | **hardscape-ryan-1** (wide paver patio + topiary) |
 | `/services/stump-grinding-removal` | ✓ | stump-1 hero |
 | `/services/bamboo-trimming-removal` | ✓ | bamboo-1 hero |
-| `/services/irrigation` | ✗ | [RYAN: photo needed] — pool didn't include irrigation shots |
-| `/services/tree-trimming-removal` | ✗ | [RYAN: photo needed] |
+| `/services/irrigation` | ✗ | [RYAN: photo needed] — Ryan's batch did not include irrigation shots |
+| `/services/tree-trimming-removal` | ✗ | [RYAN: photo needed] — Ryan's batch did not include tree work shots |
 | `/service-areas/winter-park` | ✓ | winter-park-1 |
 | `/service-areas/windermere` | ✓ | windermere-1 |
 | `/service-areas/bay-hill` | ✓ | bay-hill-1 |
 | `/service-areas/orlando` | ✓ | sod-2 (re-roled area-hero) |
-| `/service-areas/college-park` | ✗ | [RYAN: photo needed] — gap-fill pull confirmed CompanyCam has no clean post-finish College Park residential photos in recent project pool |
-| `/portfolio` gallery | ✓ | 18-photo curated grid |
+| `/service-areas/college-park` | ✗ | [RYAN: photo needed] — Ryan's batch had no identifiable College Park landmarks |
+| `/portfolio` category cards | ✓ | **3 Ryan-curated cards** linking to discipline-specific CompanyCam galleries: Lawn & Landscape, Hardscape, Concrete |
+| `/portfolio` gallery | ✓ | 18-photo grid, top 12 now Ryan-curated |
 | `/about` recent work | ✓ | 8-photo grid |
 | `/about` credentials photo | ✓ | hardscape-1 |
-| `/about` Ryan + team photos | ✗ | placeholders (CompanyCam doesn't have these) |
-| `public/og-image.jpg` (1200×630) | ✓ | derived from home hero |
+| `/about` Ryan portrait | ✓ | **ryan-portrait** (Ryan's bio photo, green Firsthand cap + tee) |
+| `/about` crew/team photos | ✗ | placeholders — Ryan's batch did not include team portraits |
+| `public/og-image.jpg` (1200×630) | ✓ | derived from prior home hero (consider re-deriving from hero-ryan-1) |
 
-**Gap-fill pull (round 2):** A second targeted pull scanned 300 projects looking specifically for irrigation, tree-trimming, College Park, and Orlando-neighborhood photos. Net additions:
+**Ryan-curated batch (2026-05-24):** Ryan personally emailed 35 photos in response to v1 review. Inserted at the top of `lib/photos-manifest.ts` so `pickHero()` finds them first; filenames carry the `-ryan-` infix to flag personally-curated assets. Mix: 1 hero, 11 landscape, 3 lawn, 14 hardscape, 5 concrete, 1 Ryan portrait. (ChatGPT caricature also sent but skipped per Ryan's preference for the real bio photo.)
+
+**Categories still missing** after Ryan's batch:
+- Irrigation: no irrigation/sprinkler photos in the curated set
+- Tree-trimming: no clean post-trim "after" shots
+- Stump grinding: no stump shots
+- Bamboo: no bamboo shots
+- College Park residential: no identifiable College Park landmarks in batch
+- Crew/team portraits: no group team shots
+
+Existing placeholders remain on those surfaces. If Ryan sends a follow-up batch for any of these, repeat the integration pattern in this batch's commit series.
+
+**Earlier gap-fill pull (round 2):** A second CompanyCam pull scanned 300 projects looking specifically for irrigation, tree-trimming, College Park, and Orlando-neighborhood photos. Net additions still in the manifest:
 
 - `commercial-3.jpg` (Park Lake Dental — Orlando commercial frontage with new gravel beds)
 - `landscape-5.jpg` (fresh mulch + plant install along residential side yard)
 - `sod-2.jpg` re-roled to `area-hero` for `/service-areas/orlando` so the page now picks up a clean residential Orlando shot
-
-**Categories still missing** after both pulls (verified, not fixable from current CompanyCam content):
-- Irrigation: Firsthand has no projects in CompanyCam named or described with irrigation/sprinkler keywords — irrigation work is included in broader landscape projects and not separately photographed
-- Tree-trimming: recent project pool has no clean post-trim wide-angle "after" shots — most tree work photos are in-progress or focused on debris/equipment
-- College Park residential: most College Park projects in the pool are Ivanhoe-corner remodels with interior-only photos
 
 **Tracking**
 

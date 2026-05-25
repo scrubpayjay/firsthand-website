@@ -81,12 +81,29 @@ export default function AboutPage() {
         <div className="container-wide">
           <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-14 items-center">
             <div>
-              <PhotoPlaceholder
-                label="photo of Ryan to be added"
-                aspect="aspect-[4/5]"
-                variant="muted"
-                className="rounded-2xl"
-              />
+              {(() => {
+                const portrait = PHOTOS.find(
+                  (p) => p.src === "/photos/ryan-portrait.jpg",
+                );
+                if (!portrait) {
+                  return (
+                    <PhotoPlaceholder
+                      label="photo of Ryan to be added"
+                      aspect="aspect-[4/5]"
+                      variant="muted"
+                      className="rounded-2xl"
+                    />
+                  );
+                }
+                return (
+                  <SitePhoto
+                    photo={portrait}
+                    aspect="aspect-[4/5]"
+                    sizes="(min-width: 1024px) 40vw, 80vw"
+                    rounded="rounded-2xl"
+                  />
+                );
+              })()}
             </div>
             <div>
               <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">

@@ -532,11 +532,13 @@ export default function HomePage() {
           </div>
 
           {(() => {
+            // Ryan-curated quartet — one each landscape / hardscape /
+            // lawn / concrete, all hand-picked from his 2026-05-24 batch.
             const featuredOrder = [
-              "/photos/landscape-2.jpg",
-              "/photos/hardscape-1.jpg",
-              "/photos/winter-park-1.jpg",
-              "/photos/windermere-1.jpg",
+              "/photos/landscape-ryan-3.jpg",
+              "/photos/hardscape-ryan-1.jpg",
+              "/photos/lawn-ryan-1.jpg",
+              "/photos/concrete-ryan-1.jpg",
             ];
             const featuredPhotos = featuredOrder
               .map((src) => PHOTOS.find((p) => p.src === src))
