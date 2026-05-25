@@ -26,9 +26,9 @@ export const NAP = {
 } as const;
 
 export const SOCIAL = {
-  // [RYAN: replace these with your real social profile URLs]
-  facebook: "https://www.facebook.com/firsthandlawns",
-  instagram: "https://www.instagram.com/firsthandlawns",
+  facebook: "https://www.facebook.com/share/14fJcF4AhWF/",
+  instagram: "https://www.instagram.com/firsthandlawnandlandscape",
+  tiktok: "https://www.tiktok.com/@firsthand_lawn_landscape",
   google: "https://g.page/firsthand-lawns",
 } as const;
 

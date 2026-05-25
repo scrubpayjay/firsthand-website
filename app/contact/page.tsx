@@ -4,6 +4,7 @@ import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ContactForm } from "@/components/contact-form";
 import { GoogleMapsEmbed } from "@/components/google-maps-embed";
+import { SocialIcons } from "@/components/social-icons";
 import {
   NAP,
   SITE_URL,
@@ -189,6 +190,13 @@ export default function ContactPage() {
             Storm cleanup and emergency tree work: outside-hours response on
             request, billed at after-hours rate.
           </p>
+
+          <div className="mt-10 flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5">
+            <p className="text-sm font-semibold text-foreground">
+              Follow Firsthand
+            </p>
+            <SocialIcons />
+          </div>
         </div>
       </section>
     </>
