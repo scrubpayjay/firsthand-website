@@ -160,18 +160,18 @@ export const PHOTOS: SitePhoto[] = [
     "category": "landscape",
     "area": "winter-park",
     "service": "landscape-design",
-    "role": "service-hero",
+    "role": "secondary",
     "width": 1200,
     "height": 1600,
     "bytes": 462064
   },
   {
     "src": "/photos/landscape-2.jpg",
-    "alt": "Lush backyard with palm and hedge screening in Central Florida — Firsthand Lawn and Landscape",
+    "alt": "Completed landscape design and installation in Central Florida — lush backyard with palm and hedge screening by Firsthand Lawn and Landscape",
     "category": "landscape",
     "area": "orlando",
     "service": "landscape-design",
-    "role": "secondary",
+    "role": "service-hero",
     "width": 1600,
     "height": 1200,
     "bytes": 389296
