@@ -10,6 +10,7 @@ import {
   SITE_URL,
   HOURS,
   HOURS_DISPLAY,
+  PHONE_HOURS_DISPLAY,
   SERVICE_AREAS,
 } from "@/lib/site-config";
 
@@ -120,6 +121,9 @@ export default function ContactPage() {
                       <span className="block text-sm text-foreground">
                         {HOURS_DISPLAY}
                       </span>
+                      <span className="mt-0.5 block text-sm font-semibold text-foreground">
+                        {PHONE_HOURS_DISPLAY}
+                      </span>
                     </span>
                   </div>
                 </li>
@@ -168,9 +172,14 @@ export default function ContactPage() {
       {/* Hours detail */}
       <section className="bg-elevated section-tight">
         <div className="container-wide">
-          <h2 className="font-display text-2xl sm:text-3xl font-semibold tracking-tight mb-6">
-            Office hours
-          </h2>
+          <div className="mb-6 flex flex-col sm:flex-row sm:items-baseline sm:gap-4">
+            <h2 className="font-display text-2xl sm:text-3xl font-semibold tracking-tight">
+              Office hours
+            </h2>
+            <p className="text-sm font-semibold text-primary mt-1 sm:mt-0">
+              {PHONE_HOURS_DISPLAY}
+            </p>
+          </div>
           <ul className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 max-w-4xl">
             {HOURS.map((h) => (
               <li

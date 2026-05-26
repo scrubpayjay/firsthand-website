@@ -8,6 +8,7 @@ import {
   SERVICE_AREAS,
   SITE_TAGLINE,
   HOURS_DISPLAY,
+  PHONE_HOURS_DISPLAY,
   LEAVE_REVIEW_URL,
 } from "@/lib/site-config";
 
@@ -159,6 +160,9 @@ export function Footer() {
           <p className="text-muted-foreground">
             <span className="font-semibold text-foreground">Hours: </span>
             {HOURS_DISPLAY}
+            <span className="ml-2 inline-block font-semibold text-foreground">
+              · {PHONE_HOURS_DISPLAY}
+            </span>
           </p>
           <p className="text-muted-foreground">
             Family-owned · Fully licensed and insured · Central Florida since 2018
