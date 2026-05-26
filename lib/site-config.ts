@@ -63,6 +63,21 @@ export const HOURS = [
 export const HOURS_DISPLAY = "Mon–Fri 8am–6pm · Sat–Sun 9am–2pm";
 
 /**
+ * Phone is answered around the clock — visible label everywhere business
+ * hours are shown. The LocalBusiness JSON-LD `openingHours` field should
+ * still reflect the actual operating hours above (claiming 24/7 there
+ * triggers Google penalties for false structured-data claims).
+ */
+export const PHONE_HOURS_DISPLAY = "Phone support: 24/7";
+
+/**
+ * Pre-launch toggle for the About page "Meet the Team" section. Ryan
+ * needs time to collect crew photos + bios; flip to true when ready.
+ * The markup stays in place either way.
+ */
+export const SHOW_TEAM_SECTION = false;
+
+/**
  * Financing program — surface prominently. Real offering, not aspirational.
  */
 export const FINANCING = {

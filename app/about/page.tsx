@@ -1,7 +1,5 @@
-import Link from "next/link";
 import type { Metadata } from "next";
 import {
-  ArrowRight,
   ShieldCheck,
   HandHeart,
   Eye,
@@ -12,7 +10,12 @@ import { SitePhoto } from "@/components/site-photo";
 import { PHOTOS } from "@/lib/photos-manifest";
 import { CtaSection } from "@/components/cta-section";
 import { Breadcrumbs } from "@/components/breadcrumbs";
-import { SITE_TAGLINE, SITE_URL, NAP } from "@/lib/site-config";
+import {
+  NAP,
+  SHOW_TEAM_SECTION,
+  SITE_TAGLINE,
+  SITE_URL,
+} from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "About Firsthand Lawns — Family-owned landscaping in Winter Park, FL",
@@ -82,10 +85,17 @@ export default function AboutPage() {
           <div className="grid lg:grid-cols-[1fr_1.1fr] gap-10 lg:gap-14 items-center">
             <div>
               {(() => {
-                const portrait = PHOTOS.find(
-                  (p) => p.src === "/photos/ryan-portrait.jpg",
+                // Two photos of Ryan + his daughter — paired since
+                // they're the same family moment. Stacked on mobile,
+                // side-by-side on small+ tablets, paired column on
+                // desktop. Replaces the prior single ryan-portrait.jpg.
+                const photo1 = PHOTOS.find(
+                  (p) => p.src === "/photos/ryan-daughter-1.jpg",
                 );
-                if (!portrait) {
+                const photo2 = PHOTOS.find(
+                  (p) => p.src === "/photos/ryan-daughter-2.jpg",
+                );
+                if (!photo1 || !photo2) {
                   return (
                     <PhotoPlaceholder
                       label="photo of Ryan to be added"
@@ -96,12 +106,20 @@ export default function AboutPage() {
                   );
                 }
                 return (
-                  <SitePhoto
-                    photo={portrait}
-                    aspect="aspect-[4/5]"
-                    sizes="(min-width: 1024px) 40vw, 80vw"
-                    rounded="rounded-2xl"
-                  />
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                    <SitePhoto
+                      photo={photo1}
+                      aspect="aspect-[3/4]"
+                      sizes="(min-width: 1024px) 20vw, (min-width: 640px) 40vw, 90vw"
+                      rounded="rounded-2xl"
+                    />
+                    <SitePhoto
+                      photo={photo2}
+                      aspect="aspect-[3/4]"
+                      sizes="(min-width: 1024px) 20vw, (min-width: 640px) 40vw, 90vw"
+                      rounded="rounded-2xl"
+                    />
+                  </div>
                 );
               })()}
             </div>
@@ -183,181 +201,49 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team placeholder */}
-      <section className="section bg-elevated">
-        <div className="container-wide">
-          <div className="max-w-3xl mb-12">
-            <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
-              The team
-            </p>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight font-semibold tracking-tight">
-              People you&apos;ll actually see on the property.
-            </h2>
-            <p className="mt-4 text-base text-muted-foreground">
-              [RYAN: List 3–6 key crew members here with first name + role +
-              one sentence (years on the team, what they specialize in). This
-              section is one of the highest-converting elements on landscape
-              sites because customers want to know who&apos;s walking onto
-              their property.]
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[
-              "Ryan — Owner",
-              "[RYAN: Crew lead #1]",
-              "[RYAN: Crew lead #2]",
-              "[RYAN: Estimator / Designer]",
-            ].map((label, i) => (
-              <div key={i}>
-                <PhotoPlaceholder
-                  label={`Team headshot — ${label}. Outdoor or job-site background, smiling, name + role in caption.`}
-                  aspect="aspect-square"
-                  variant="muted"
-                  className="rounded-2xl"
-                />
-                <p className="mt-3 text-sm font-medium text-foreground">{label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Credentials */}
-      <section className="section bg-background">
-        <div className="container-wide">
-          <div className="grid lg:grid-cols-[1.2fr_1fr] gap-10 items-start">
-            <div>
+      {/* Team — hidden until Ryan ships crew photos + bios. Markup
+          stays in place; flip SHOW_TEAM_SECTION in site-config when
+          ready. */}
+      {SHOW_TEAM_SECTION ? (
+        <section className="section bg-elevated">
+          <div className="container-wide">
+            <div className="max-w-3xl mb-12">
               <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
-                Credentials &amp; insurance
-              </p>
-              <h2 className="font-display text-3xl sm:text-4xl leading-tight font-semibold tracking-tight">
-                On the record.
-              </h2>
-              <p className="mt-4 text-base text-muted-foreground leading-relaxed">
-                We carry the licensing and insurance that property managers
-                and HOAs need to onboard a vendor. Certificates available on
-                request — and we&apos;ll add your management company as an
-                additional insured if your contract requires it.
-              </p>
-              {/* RYAN: confirm exact policy figures before launch. Defaults
-                  below reflect typical FL contractor coverage — replace with
-                  your actual numbers and carrier when convenient. */}
-              <ul className="mt-6 space-y-3">
-                <li className="flex items-start gap-3 text-sm">
-                  <ShieldCheck className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-semibold text-foreground">General liability insurance</p>
-                    <p className="text-muted-foreground">
-                      $1M per occurrence / $2M aggregate. Certificate of
-                      insurance available on request — we&apos;ll add your HOA
-                      or management company as additional insured if your
-                      contract requires it.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3 text-sm">
-                  <ShieldCheck className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-semibold text-foreground">Workers&apos; compensation</p>
-                    <p className="text-muted-foreground">
-                      Full workers&apos; compensation coverage on every crew
-                      member. COI available on request.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3 text-sm">
-                  <ShieldCheck className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-semibold text-foreground">Florida landscape contractor license</p>
-                    <p className="text-muted-foreground">
-                      Licensed Florida landscape contractor. License number
-                      provided on request.
-                    </p>
-                  </div>
-                </li>
-                <li className="flex items-start gap-3 text-sm">
-                  <ShieldCheck className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                  <div>
-                    <p className="font-semibold text-foreground">Local business license</p>
-                    <p className="text-muted-foreground">
-                      Orange County, FL — current on file.
-                    </p>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            {(() => {
-              const credPhoto =
-                PHOTOS.find((p) => p.src === "/photos/hardscape-1.jpg") ??
-                PHOTOS[0];
-              return (
-                <SitePhoto
-                  photo={credPhoto}
-                  aspect="aspect-[4/5]"
-                  sizes="(min-width: 1024px) 40vw, 100vw"
-                  rounded="rounded-2xl"
-                />
-              );
-            })()}
-          </div>
-        </div>
-      </section>
-
-      {/* Gallery */}
-      <section className="section bg-elevated">
-        <div className="container-wide">
-          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
-            <div className="max-w-2xl">
-              <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
-                Recent work
+                The team
               </p>
               <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl leading-tight font-semibold tracking-tight">
-                What it looks like when it&apos;s done.
+                People you&apos;ll actually see on the property.
               </h2>
+              <p className="mt-4 text-base text-muted-foreground">
+                [RYAN: List 3–6 key crew members here with first name + role +
+                one sentence (years on the team, what they specialize in). This
+                section is one of the highest-converting elements on landscape
+                sites because customers want to know who&apos;s walking onto
+                their property.]
+              </p>
             </div>
-            <Link
-              href="/portfolio"
-              className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
-            >
-              See full portfolio
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
 
-          {(() => {
-            // 8 photos for the about-page recent-work strip — pulled from
-            // the manifest to vary services and areas
-            const galleryOrder = [
-              "/photos/landscape-1.jpg",
-              "/photos/hardscape-2.jpg",
-              "/photos/sod-1.jpg",
-              "/photos/winter-park-1.jpg",
-              "/photos/bamboo-1.jpg",
-              "/photos/hardscape-3.jpg",
-              "/photos/windermere-1.jpg",
-              "/photos/lawn-1.jpg",
-            ];
-            const gallery = galleryOrder
-              .map((src) => PHOTOS.find((p) => p.src === src))
-              .filter((p): p is NonNullable<typeof p> => Boolean(p));
-            return (
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-                {gallery.map((photo) => (
-                  <SitePhoto
-                    key={photo.src}
-                    photo={photo}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+              {[
+                "Ryan — Owner",
+                "[RYAN: Crew lead #1]",
+                "[RYAN: Crew lead #2]",
+                "[RYAN: Estimator / Designer]",
+              ].map((label, i) => (
+                <div key={i}>
+                  <PhotoPlaceholder
+                    label={`Team headshot — ${label}. Outdoor or job-site background, smiling, name + role in caption.`}
                     aspect="aspect-square"
-                    sizes="(min-width: 1024px) 22vw, (min-width: 640px) 30vw, 48vw"
-                    rounded="rounded-xl"
+                    variant="muted"
+                    className="rounded-2xl"
                   />
-                ))}
-              </div>
-            );
-          })()}
-        </div>
-      </section>
+                  <p className="mt-3 text-sm font-medium text-foreground">{label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <CtaSection />
     </>

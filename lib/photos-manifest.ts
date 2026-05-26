@@ -518,12 +518,34 @@ export const PHOTOS: SitePhoto[] = [
     "bytes": 459636
   },
   {
+    "src": "/photos/ryan-daughter-1.jpg",
+    "alt": "Ryan H., founder of Firsthand Lawn and Landscape, with his daughter in Firsthand-branded gear",
+    "category": "ryan-portrait",
+    "area": "n/a",
+    "service": "n/a",
+    "role": "about-hero",
+    "width": 900,
+    "height": 1200,
+    "bytes": 328960
+  },
+  {
+    "src": "/photos/ryan-daughter-2.jpg",
+    "alt": "Ryan H., founder of Firsthand Lawn and Landscape, with his daughter",
+    "category": "ryan-portrait",
+    "area": "n/a",
+    "service": "n/a",
+    "role": "about-secondary",
+    "width": 900,
+    "height": 1200,
+    "bytes": 495872
+  },
+  {
     "src": "/photos/ryan-portrait.jpg",
     "alt": "Ryan, owner of Firsthand Lawn and Landscape",
     "category": "ryan-portrait",
     "area": "n/a",
     "service": "n/a",
-    "role": "portrait",
+    "role": "secondary",
     "width": 591,
     "height": 1280,
     "bytes": 68555
