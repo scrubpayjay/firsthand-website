@@ -88,12 +88,23 @@ export const PHOTOS: SitePhoto[] = [
     "illustrative": true
   },
   {
+    "src": "/photos/bamboo-real-1.jpg",
+    "alt": "Bamboo privacy screen at a Central Florida residential property — Firsthand Lawn and Landscape",
+    "category": "bamboo",
+    "area": "central-florida",
+    "service": "bamboo-trimming-removal",
+    "role": "service-hero",
+    "width": 1280,
+    "height": 960,
+    "bytes": 546304
+  },
+  {
     "src": "/photos/bamboo-illustration.jpg",
     "alt": "Maintained bamboo privacy screen in a Central Florida backyard — illustrative",
     "category": "bamboo",
     "area": "central-florida",
     "service": "bamboo-trimming-removal",
-    "role": "service-hero",
+    "role": "secondary",
     "width": 1600,
     "height": 900,
     "bytes": 688053,
