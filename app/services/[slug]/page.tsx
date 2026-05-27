@@ -187,7 +187,7 @@ export default async function ServiceDetailPage({ params }: RouteProps) {
                       Service area
                     </p>
                     <p className="text-foreground">
-                      Winter Park · Windermere · Bay Hill · Orlando
+                      Winter Park · Windermere · Bay Hill · College Park · Orlando
                     </p>
                   </div>
                 </li>
