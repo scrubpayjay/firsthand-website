@@ -121,6 +121,22 @@ export const PHOTOS: SitePhoto[] = [
     "bytes": 725148
   },
   {
+    // Stand-in for /service-areas/college-park until Ryan sends a
+    // College-Park-specific shot. References the existing lawn-ryan-1
+    // file (oak-shaded bungalow + mowing stripes) which matches the
+    // typical College Park aesthetic without falsely claiming the
+    // specific neighborhood — alt text says "Central Florida".
+    "src": "/photos/lawn-ryan-1.jpg",
+    "alt": "Mature oak-shaded residential lawn maintenance representative of Firsthand work across Central Florida — Firsthand Lawn and Landscape",
+    "category": "lawn",
+    "area": "college-park",
+    "service": "lawn-maintenance",
+    "role": "area-hero",
+    "width": 1280,
+    "height": 960,
+    "bytes": 675616
+  },
+  {
     "src": "/photos/bamboo-illustration.jpg",
     "alt": "Maintained bamboo privacy screen in a Central Florida backyard — illustrative",
     "category": "bamboo",
