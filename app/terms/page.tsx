@@ -27,14 +27,6 @@ export default function TermsPage() {
         </p>
 
         <div className="mt-10 space-y-8 text-base text-foreground leading-relaxed">
-          <p className="text-text-faint italic">
-            [RYAN: This is a starter terms-of-service document. Before launch,
-            have it reviewed by an attorney — particularly the warranty,
-            liability, and dispute-resolution sections, which are jurisdiction-
-            specific. The text below is a reasonable starting point but is
-            not legal advice.]
-          </p>
-
           <section>
             <h2 className="font-display text-2xl font-semibold tracking-tight mb-3">
               Acceptance of terms

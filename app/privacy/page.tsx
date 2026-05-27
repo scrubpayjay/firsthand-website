@@ -27,14 +27,6 @@ export default function PrivacyPage() {
         </p>
 
         <div className="prose-section mt-10 space-y-8 text-base text-foreground leading-relaxed">
-          <p className="text-text-faint italic">
-            [RYAN: This is a starter privacy policy. Before launch, have it
-            reviewed by an attorney — especially if you operate in Florida
-            with any commercial clients subject to specific data
-            requirements. The text below is a reasonable starting point but
-            is not legal advice.]
-          </p>
-
           <section>
             <h2 className="font-display text-2xl font-semibold tracking-tight mb-3">
               Who we are

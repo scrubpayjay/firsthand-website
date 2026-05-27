@@ -56,14 +56,12 @@ export function PhotoPlaceholder({
           <rect width="100" height="100" fill="url(#ph-stripes)" />
         </svg>
       </div>
-      <div className="relative">
-        <p className="text-[10px] font-bold uppercase tracking-widest opacity-70 mb-1">
-          Photo placeholder
-        </p>
-        <p className="text-sm font-medium leading-snug max-w-[26ch]">
-          [RYAN: {label}]
-        </p>
-      </div>
+      {/* No visible label — the diagonal stripe + muted gradient read as
+          "placeholder, image coming soon" without exposing the internal
+          authoring instruction to customers. The `aria-label` on the
+          wrapper still carries the original label for assistive tech and
+          for content auditing via the browser inspector. */}
+      <div className="sr-only">{label}</div>
     </div>
   );
 }

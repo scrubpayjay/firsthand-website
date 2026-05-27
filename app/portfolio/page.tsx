@@ -116,11 +116,6 @@ export default function PortfolioPage() {
               <ExternalLink className="h-4 w-4" />
             </a>
           </div>
-          <p className="mt-4 text-xs text-muted-foreground sm:pl-[3.5rem]">
-            [RYAN: Once we&apos;ve built the on-site portfolio gallery, swap
-            this callout for the inline grid. CompanyCam stays as the
-            permanent project archive either way.]
-          </p>
         </div>
       </section>
 

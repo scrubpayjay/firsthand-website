@@ -60,7 +60,7 @@ export interface BlogPost {
 
 const RYAN_AUTHOR: BlogAuthor = {
   name: "Ryan Hanus, Firsthand Lawn and Landscape",
-  bio: "Ryan founded Firsthand Lawns in Winter Park and runs design, install, and crew operations across Central Florida. [RYAN: revise this bio in your own voice — a sentence or two about your background, why you started Firsthand, what you specialize in.]",
+  bio: "Ryan founded Firsthand Lawns in Winter Park and runs design, install, and crew operations across Central Florida.",
 };
 
 export const BLOG_POSTS: BlogPost[] = [

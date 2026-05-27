@@ -297,10 +297,6 @@ export default function FinancingPage() {
                 Apply for financing
                 <ArrowRight className="h-4 w-4" />
               </a>
-              <p className="text-xs text-primary-foreground/60 mt-1">
-                [RYAN: replace the apply link with your actual financing
-                partner&apos;s application URL.]
-              </p>
             </div>
           </div>
         </div>

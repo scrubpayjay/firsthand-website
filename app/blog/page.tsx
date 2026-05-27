@@ -84,11 +84,10 @@ export default function BlogPage() {
                 <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
-            <div className="lg:order-last min-h-[260px] bg-gradient-to-br from-primary/15 via-primary/8 to-primary/20 flex items-center justify-center p-6 text-center">
-              <p className="text-sm font-medium text-primary max-w-[26ch] leading-snug">
-                [RYAN: {featured.heroPhotoLabel}]
-              </p>
-            </div>
+            <div
+              className="lg:order-last min-h-[260px] bg-gradient-to-br from-primary/15 via-primary/8 to-primary/20"
+              aria-hidden="true"
+            />
           </article>
         )}
       </section>
@@ -106,11 +105,10 @@ export default function BlogPage() {
                 href={`/blog/${post.slug}`}
                 className="group flex flex-col h-full rounded-xl border border-border bg-card overflow-hidden hover:border-primary/40 hover:shadow-card-hover transition-all"
               >
-                <div className="aspect-[3/2] bg-gradient-to-br from-muted via-elevated to-muted flex items-center justify-center p-4">
-                  <p className="text-xs font-medium text-muted-foreground text-center max-w-[24ch] leading-snug">
-                    [RYAN: {post.heroPhotoLabel.slice(0, 80)}…]
-                  </p>
-                </div>
+                <div
+                  className="aspect-[3/2] bg-gradient-to-br from-muted via-elevated to-muted"
+                  aria-hidden="true"
+                />
                 <div className="flex-1 flex flex-col p-5">
                   <div className="flex items-center gap-2 text-xs text-muted-foreground mb-2.5">
                     <span className="font-semibold uppercase tracking-wider text-primary">
@@ -188,11 +186,6 @@ export default function BlogPage() {
                 <ArrowRight className="h-4 w-4" />
               </button>
             </form>
-            <p className="mt-3 text-xs text-muted-foreground">
-              [RYAN: Phase 2 — wire this to a dedicated newsletter list
-              (Mailchimp, Buttondown, ConvertKit, etc.). Right now it just
-              sends to Ryan&apos;s inbox via /api/contact.]
-            </p>
           </div>
         </div>
       </section>

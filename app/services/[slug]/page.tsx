@@ -3,7 +3,6 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
   ArrowRight,
-  AlertTriangle,
   CheckCircle2,
   MapPin,
   Clock,
@@ -121,28 +120,6 @@ export default async function ServiceDetailPage({ params }: RouteProps) {
 
       {/* ── Hero ───────────────────────────────────────────────────── */}
       <section className="container-wide pt-6 pb-12 lg:pt-8 lg:pb-16">
-        {service.needsConfirm && (
-          <div
-            role="note"
-            className="mb-6 rounded-xl border border-cta/30 bg-cta/8 px-5 py-4"
-            style={{ backgroundColor: "rgba(101, 163, 13, 0.06)" }}
-          >
-            <div className="flex items-start gap-3">
-              <AlertTriangle className="h-5 w-5 text-cta shrink-0 mt-0.5" />
-              <div className="text-sm">
-                <p className="font-semibold text-foreground mb-1">
-                  Pre-launch confirmation needed
-                </p>
-                <p className="text-muted-foreground">
-                  [RYAN: Confirm Firsthand currently offers {service.name.toLowerCase()}.
-                  If not, remove from menu and de-index this page before
-                  cutover. If yes, delete this banner.]
-                </p>
-              </div>
-            </div>
-          </div>
-        )}
-
         <div className="grid lg:grid-cols-[1.3fr_1fr] gap-10 lg:gap-12 items-start">
           <div>
             <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
@@ -282,7 +259,7 @@ export default async function ServiceDetailPage({ params }: RouteProps) {
               }
               return (
                 <PhotoPlaceholder
-                  label={`[RYAN: photo needed] ${service.name} — pick the strongest CompanyCam shot for this service. The recent project pool didn't include a clear ${service.name.toLowerCase()} after-photo.`}
+                  label={`${service.name} project photo coming soon`}
                   aspect="aspect-[4/5]"
                   variant="primary"
                   className="rounded-2xl"

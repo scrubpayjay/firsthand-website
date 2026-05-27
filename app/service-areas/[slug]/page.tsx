@@ -196,7 +196,7 @@ export default async function ServiceAreaPage({ params }: RouteProps) {
             }
             return (
               <PhotoPlaceholder
-                label={`[RYAN: photo needed] ${area.fullName} — pull the strongest wide-angle finished property shot from CompanyCam for this city.`}
+                label={`${area.fullName} project photo coming soon`}
                 aspect="aspect-[4/5]"
                 variant="primary"
                 className="rounded-2xl"
@@ -309,11 +309,9 @@ export default async function ServiceAreaPage({ params }: RouteProps) {
                 Reviews from your neighborhood.
               </h2>
               <p className="mt-4 text-base text-muted-foreground leading-relaxed">
-                [RYAN: Drop 2–3 reviews from real {area.name} customers here.
-                Use the same TODO_REPLACE_REVIEW pattern as the reviews data
-                file. Local reviews convert better than generic ones because
-                potential customers see &ldquo;someone on my street trusted
-                them.&rdquo;]
+                Customers across {area.name} have rated Firsthand 4.9 stars
+                on Google. Browse all 154 reviews to see what neighbors are
+                saying about recent work in the area.
               </p>
               <Link
                 href="/reviews"
@@ -324,28 +322,22 @@ export default async function ServiceAreaPage({ params }: RouteProps) {
               </Link>
             </div>
 
-            <div className="space-y-3">
-              {[1, 2].map((i) => (
-                <div
-                  key={i}
-                  className="rounded-xl border border-border bg-card p-5 sm:p-6"
-                >
-                  <div className="flex items-center gap-0.5 mb-2.5">
-                    {[1, 2, 3, 4, 5].map((s) => (
-                      <Star
-                        key={s}
-                        className="h-4 w-4 fill-cta text-cta"
-                        strokeWidth={0}
-                      />
-                    ))}
-                  </div>
-                  <p className="text-sm text-text-faint italic leading-relaxed">
-                    [RYAN: Paste a real review from a {area.name} customer
-                    here. Best ones mention the neighborhood by name or a
-                    landmark — that&apos;s what builds local trust.]
-                  </p>
-                </div>
-              ))}
+            <div className="rounded-xl border border-border bg-card p-6 sm:p-8 text-center">
+              <div className="inline-flex items-center gap-0.5 mb-3">
+                {[1, 2, 3, 4, 5].map((s) => (
+                  <Star
+                    key={s}
+                    className="h-5 w-5 fill-cta text-cta"
+                    strokeWidth={0}
+                  />
+                ))}
+              </div>
+              <p className="font-display text-4xl sm:text-5xl font-semibold tracking-tight">
+                4.9
+              </p>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Across 154 verified Google reviews
+              </p>
             </div>
           </div>
         </div>

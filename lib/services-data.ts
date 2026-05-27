@@ -662,10 +662,6 @@ export const SERVICE_PAGES: ServicePage[] = [
         a: "Yes — storm cleanup is a big part of our June–November work. We clear, cut, haul, and grind stumps. We document everything in CompanyCam for your insurance claim if you need it.",
       },
       {
-        q: "Are you ISA-certified?",
-        a: "[RYAN: answer this honestly. If you have an ISA-certified arborist on staff, list their certification number. If not, say so — customers respect honesty here. Either is fine, but don't claim certification you don't have, it's checkable.]",
-      },
-      {
         q: "What about stump grinding?",
         a: "Separate service but we usually bundle it. Grinding a stump down 6–12 inches below grade lets you replant or re-sod over it. See our stump grinding page for details.",
       },
