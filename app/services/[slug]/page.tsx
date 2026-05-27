@@ -163,7 +163,7 @@ export default async function ServiceDetailPage({ params }: RouteProps) {
                     <Tag className="h-4 w-4 text-primary mt-0.5 shrink-0" />
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                        Typical cost
+                        Typical investment
                       </p>
                       <p className="text-foreground">{service.priceRange}</p>
                     </div>
