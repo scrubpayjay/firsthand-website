@@ -182,10 +182,21 @@ export const PHOTOS: SitePhoto[] = [
     "category": "landscape",
     "area": "central-florida",
     "service": "landscape-design",
-    "role": "portfolio-card",
+    "role": "secondary",
     "width": 1280,
     "height": 960,
     "bytes": 357162
+  },
+  {
+    "src": "/photos/lawn-landscape-card-1.jpg",
+    "alt": "Backyard landscape design with mature bamboo privacy hedge, palms, manicured lawn, and travertine walkway — Firsthand Lawn and Landscape",
+    "category": "landscape",
+    "area": "central-florida",
+    "service": "landscape-design",
+    "role": "portfolio-card",
+    "width": 1200,
+    "height": 900,
+    "bytes": 593150
   },
   {
     "src": "/photos/landscape-ryan-3.jpg",

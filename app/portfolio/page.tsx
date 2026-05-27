@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 const CATEGORY_CARDS = [
   {
     key: "lawnLandscape",
-    photoSrc: "/photos/landscape-ryan-2.jpg",
+    photoSrc: "/photos/lawn-landscape-card-1.jpg",
     ...COMPANYCAM_GALLERIES.lawnLandscape,
   },
   {
