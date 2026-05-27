@@ -122,7 +122,7 @@ export const SERVICE_PAGES: ServicePage[] = [
       },
       {
         q: "What does it cost?",
-        a: "Residential lots in our service area run $175–$350 per visit, depending on lot size and access. Larger properties, HOAs, and commercial contracts get custom-scoped. We don't quote without seeing the yard.",
+        a: "Residential lots in our service area run $175–$350 per month, depending on lot size and access. Larger properties, HOAs, and commercial contracts get custom-scoped. We don't quote without seeing the yard.",
       },
       {
         q: "Do you handle fertilizer and pest control?",
@@ -146,7 +146,7 @@ export const SERVICE_PAGES: ServicePage[] = [
       },
     ],
     related: ["sod-installation", "irrigation", "landscape-design", "property-cleanup"],
-    priceRange: "$175–$350/visit (residential)",
+    priceRange: "$175–$350/month (residential)",
     timeline: "Weekly or biweekly, year-round",
     needsConfirm: false,
   },
