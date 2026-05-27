@@ -40,7 +40,7 @@ import { REVIEWS } from "@/lib/reviews-data";
 export const metadata: Metadata = {
   title: "Firsthand Lawns — Landscaping in Winter Park & Central Florida",
   description:
-    "Landscape design, lawn maintenance, sod, irrigation, and hardscape for Winter Park, Windermere, Bay Hill, and Central Florida. Family-owned, fully insured, financing up to $100K.",
+    "Landscape design, lawn maintenance, sod, irrigation, and hardscape for Winter Park, Windermere, Bay Hill, College Park, and Central Florida. Family-owned, fully insured, financing up to $100K.",
   alternates: { canonical: SITE_URL },
 };
 
@@ -158,7 +158,7 @@ export default function HomePage() {
             <div className="max-w-2xl">
               <p className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground mb-5">
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-cta" />
-                Winter Park · Windermere · Bay Hill · Orlando
+                Winter Park · Windermere · Bay Hill · College Park · Orlando
               </p>
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] leading-[1.05] font-semibold tracking-tight text-foreground">
                 Landscaping in{" "}
@@ -225,7 +225,8 @@ export default function HomePage() {
                 </div>
                 <p className="text-xs text-muted-foreground leading-snug">
                   Across {REVIEWS_SUMMARY.count} verified Google reviews from
-                  Winter Park, Windermere, Bay Hill, and Orlando customers.
+                  Winter Park, Windermere, Bay Hill, College Park, and Orlando
+                  customers.
                 </p>
               </div>
             </div>
@@ -521,8 +522,8 @@ export default function HomePage() {
               A few jobs from the last twelve months.
             </h2>
             <p className="mt-4 text-base sm:text-lg text-muted-foreground">
-              Real properties in Winter Park, Windermere, Bay Hill, and across
-              Central Florida. Documented in CompanyCam, before and after —
+              Real properties in Winter Park, Windermere, Bay Hill, College
+              Park, and across Central Florida. Documented in CompanyCam, before and after —
               the full archive lives on the{" "}
               <Link href="/portfolio" className="underline text-foreground font-medium">
                 portfolio page

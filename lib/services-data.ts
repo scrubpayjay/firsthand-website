@@ -63,7 +63,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     name: "Lawn Maintenance",
     title: "Lawn Maintenance in Winter Park & Orlando",
     description:
-      "Weekly or biweekly lawn maintenance for Winter Park, Windermere, Bay Hill, and Orlando. Cut at the right height for St. Augustine and Zoysia. Same crew, same day.",
+      "Weekly or biweekly lawn maintenance for Winter Park, Windermere, Bay Hill, College Park, and Orlando. Cut at the right height for St. Augustine and Zoysia. Same crew, same day.",
     h1: "Lawn Maintenance in Winter Park & Central Florida",
     intro: [
       "Most lawn services in Central Florida treat every yard the same — same blade height, same edging, same speed. That works on a six-month timeline. Then your St. Augustine starts scalping out, the curb edges get gouged, and by the time you notice the damage you're a year and a couple thousand dollars into the wrong relationship.",
@@ -381,7 +381,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     h1: "Irrigation in Winter Park & Central Florida",
     intro: [
       "A lot of Central Florida lawns are watered to death by systems nobody's looked at in a decade. Heads are mismatched, zones are timed for the season they were installed in, valves leak quietly through the meter. The owner sees a green yard and pays the OUC bill and assumes everything's fine. The audit usually finds three things wrong on a system that's been running for 15 years.",
-      "We install, repair, and audit irrigation across Winter Park, Windermere, Bay Hill, and the rest of Central Florida. New installs lean on Hunter and Rain Bird hardware, smart controllers from Rachio or Hunter Hydrawise, drip in beds, and proper pressure regulation. Repairs are usually fast — a broken lateral, a stuck valve, a controller that lost its programming after a power blip.",
+      "We install, repair, and audit irrigation across Winter Park, Windermere, Bay Hill, College Park, and the rest of Central Florida. New installs lean on Hunter and Rain Bird hardware, smart controllers from Rachio or Hunter Hydrawise, drip in beds, and proper pressure regulation. Repairs are usually fast — a broken lateral, a stuck valve, a controller that lost its programming after a power blip.",
       "Most homes that bring us in for an upgrade see the water bill drop measurably the next cycle. Smart controllers pull from local rain data and skip cycles automatically. That's required in Florida now (rain sensor mandate) but most systems we touch don't have one wired correctly.",
     ],
     includes: [
@@ -587,7 +587,7 @@ export const SERVICE_PAGES: ServicePage[] = [
     name: "Tree Trimming & Removal",
     title: "Tree Trimming & Removal in Winter Park & Orlando",
     description:
-      "Tree trimming, removal, and hurricane-season prep across Winter Park, Windermere, Bay Hill, and Orlando. Proper rigging, no roof scrapes, full debris haul.",
+      "Tree trimming, removal, and hurricane-season prep across Winter Park, Windermere, Bay Hill, College Park, and Orlando. Proper rigging, no roof scrapes, full debris haul.",
     h1: "Tree Trimming & Removal in Winter Park & Central Florida",
     intro: [
       "Hurricane season in Central Florida runs June through November. The work that prevents storm damage happens in April and May — thinning out laurel oaks before they catch wind, dropping the dead limbs that will fall first, balancing the canopy on trees that have grown one-sided. The work that responds to storm damage happens between mid-June and the end of November and looks completely different.",

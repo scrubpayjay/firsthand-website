@@ -20,7 +20,7 @@ import {
 export const metadata: Metadata = {
   title: "About Firsthand Lawns — Family-owned landscaping in Winter Park, FL",
   description:
-    "Firsthand Lawns is a family-owned landscape company serving Winter Park, Windermere, Bay Hill, and Central Florida. Meet the team, see our values, browse recent work.",
+    "Firsthand Lawns is a family-owned landscape company serving Winter Park, Windermere, Bay Hill, College Park, and Central Florida. Meet the team, see our values, browse recent work.",
   alternates: { canonical: `${SITE_URL}/about` },
 };
 

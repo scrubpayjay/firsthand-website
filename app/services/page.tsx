@@ -19,7 +19,7 @@ import { SITE_URL } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Landscape Services — Lawn, Sod, Design, Irrigation",
   description:
-    "Lawn maintenance, landscape design, sod, irrigation, hardscape, and tree work for Winter Park, Windermere, Bay Hill, and Orlando. One crew, the whole yard.",
+    "Lawn maintenance, landscape design, sod, irrigation, hardscape, and tree work for Winter Park, Windermere, Bay Hill, College Park, and Orlando. One crew, the whole yard.",
   alternates: { canonical: `${SITE_URL}/services` },
 };
 
@@ -50,8 +50,8 @@ export default function ServicesIndexPage() {
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
             We run every service in-house — mow crew, design, sod, irrigation,
             hardscape, tree work — across Winter Park, Windermere, Bay Hill,
-            and Orlando. That means no handoffs between contractors when
-            something needs a fix.
+            College Park, and Orlando. That means no handoffs between
+            contractors when something needs a fix.
           </p>
         </div>
       </section>

@@ -13,7 +13,7 @@ import {
 export const metadata: Metadata = {
   title: "Portfolio — Recent landscape projects | Firsthand Lawns",
   description:
-    "Browse Firsthand's recent landscape projects across Winter Park, Windermere, Bay Hill, and Orlando — sod, hardscape, irrigation, design installs.",
+    "Browse Firsthand's recent landscape projects across Winter Park, Windermere, Bay Hill, College Park, and Orlando — sod, hardscape, irrigation, design installs.",
   alternates: { canonical: `${SITE_URL}/portfolio` },
 };
 
@@ -185,7 +185,8 @@ export default function PortfolioPage() {
           </h2>
           <p className="text-sm text-muted-foreground max-w-md">
             A selection of finished work from the last twelve months across
-            Winter Park, Windermere, Bay Hill, and the rest of Central Florida.
+            Winter Park, Windermere, Bay Hill, College Park, and the rest of
+            Central Florida.
           </p>
         </div>
 
