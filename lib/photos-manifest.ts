@@ -110,6 +110,17 @@ export const PHOTOS: SitePhoto[] = [
     "bytes": 540631
   },
   {
+    "src": "/photos/portfolio-ryan-replacement-1.jpg",
+    "alt": "Manicured podocarpus hedges flanking a curving residential sidewalk in Central Florida — Firsthand Lawn and Landscape",
+    "category": "landscape",
+    "area": "central-florida",
+    "service": "lawn-maintenance",
+    "role": "portfolio-card",
+    "width": 1080,
+    "height": 1920,
+    "bytes": 725148
+  },
+  {
     "src": "/photos/bamboo-illustration.jpg",
     "alt": "Maintained bamboo privacy screen in a Central Florida backyard — illustrative",
     "category": "bamboo",

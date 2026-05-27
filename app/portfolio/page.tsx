@@ -63,10 +63,12 @@ const GALLERY_ORDER: string[] = [
   "/photos/hardscape-ryan-5.jpg",
   "/photos/concrete-ryan-3.jpg",
   "/photos/hardscape-ryan-12.jpg",
-  // Older auto-pulled CompanyCam shots remaining
+  // Older auto-pulled CompanyCam shots remaining (bamboo before/after
+  // composite kept; windermere-1 + bay-hill-1 dropped 2026-05-26 per
+  // Ryan's red-X feedback — see commit history).
   "/photos/bamboo-1.jpg",
-  "/photos/windermere-1.jpg",
-  "/photos/bay-hill-1.jpg",
+  // New Ryan-curated tail
+  "/photos/portfolio-ryan-replacement-1.jpg",
 ];
 
 export default function PortfolioPage() {
