@@ -559,7 +559,7 @@ export const PHOTOS: SitePhoto[] = [
     "role": "about-hero",
     "width": 900,
     "height": 1200,
-    "bytes": 328960
+    "bytes": 161397
   },
   {
     "src": "/photos/ryan-daughter-2.jpg",
@@ -570,7 +570,7 @@ export const PHOTOS: SitePhoto[] = [
     "role": "about-secondary",
     "width": 900,
     "height": 1200,
-    "bytes": 495872
+    "bytes": 248237
   },
   {
     "src": "/photos/ryan-portrait.jpg",
