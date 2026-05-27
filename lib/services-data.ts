@@ -146,7 +146,7 @@ export const SERVICE_PAGES: ServicePage[] = [
       },
     ],
     related: ["sod-installation", "irrigation", "landscape-design", "property-cleanup"],
-    priceRange: "From $40/visit (residential)",
+    priceRange: "$175/visit (residential)",
     timeline: "Weekly or biweekly, year-round",
     needsConfirm: false,
   },
