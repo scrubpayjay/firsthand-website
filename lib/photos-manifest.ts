@@ -99,6 +99,17 @@ export const PHOTOS: SitePhoto[] = [
     "bytes": 546304
   },
   {
+    "src": "/photos/lawn-maintenance-secondary-ryan-1.jpg",
+    "alt": "Manicured strip lawn with charcoal paver driveway, modern stucco home, and podocarpus hedge — Firsthand Lawn and Landscape",
+    "category": "landscape",
+    "area": "central-florida",
+    "service": "lawn-maintenance",
+    "role": "service-hero",
+    "width": 1280,
+    "height": 960,
+    "bytes": 540631
+  },
+  {
     "src": "/photos/bamboo-illustration.jpg",
     "alt": "Maintained bamboo privacy screen in a Central Florida backyard — illustrative",
     "category": "bamboo",
@@ -303,7 +314,7 @@ export const PHOTOS: SitePhoto[] = [
     "category": "lawn",
     "area": "central-florida",
     "service": "lawn-maintenance",
-    "role": "service-hero",
+    "role": "secondary",
     "width": 1280,
     "height": 960,
     "bytes": 675616
