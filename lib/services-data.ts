@@ -33,6 +33,13 @@ export interface ServicePage {
   /** Display strings for cost + timeline (price/range) — surfaced in sidebar */
   priceRange?: string;
   timeline?: string;
+  /**
+   * Sidebar label for the timeline field. Defaults to "Timeline" — most
+   * services describe a project duration. Recurring services like lawn
+   * maintenance override to "Frequency" since the value describes cadence,
+   * not how long a one-off project takes.
+   */
+  timelineLabel?: string;
   /** True if this service was added in the new build and Ryan hasn't confirmed
    * the company is currently offering it. Shows a [RYAN: confirm] banner. */
   needsConfirm: boolean;
@@ -147,7 +154,8 @@ export const SERVICE_PAGES: ServicePage[] = [
     ],
     related: ["sod-installation", "irrigation", "landscape-design", "property-cleanup"],
     priceRange: "$175–$350/month (residential)",
-    timeline: "Weekly or biweekly, year-round",
+    timeline: "Weekly in summer, bi-weekly in winter",
+    timelineLabel: "Frequency",
     needsConfirm: false,
   },
 

@@ -174,7 +174,7 @@ export default async function ServiceDetailPage({ params }: RouteProps) {
                     <Clock className="h-4 w-4 text-primary mt-0.5 shrink-0" />
                     <div>
                       <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-                        Timeline
+                        {service.timelineLabel ?? "Timeline"}
                       </p>
                       <p className="text-foreground">{service.timeline}</p>
                     </div>
