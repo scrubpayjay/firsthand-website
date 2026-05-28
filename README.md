@@ -87,7 +87,6 @@ Existing placeholders remain on those surfaces. If Ryan sends a follow-up batch 
 
 - `commercial-3.jpg` (Park Lake Dental — Orlando commercial frontage with new gravel beds)
 - `landscape-5.jpg` (fresh mulch + plant install along residential side yard)
-- `sod-2.jpg` re-roled to `area-hero` for `/service-areas/orlando` so the page now picks up a clean residential Orlando shot
 
 **Tracking**
 

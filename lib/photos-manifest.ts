@@ -121,20 +121,15 @@ export const PHOTOS: SitePhoto[] = [
     "bytes": 725148
   },
   {
-    // Stand-in for /service-areas/college-park until Ryan sends a
-    // College-Park-specific shot. References the existing lawn-ryan-1
-    // file (oak-shaded bungalow + mowing stripes) which matches the
-    // typical College Park aesthetic without falsely claiming the
-    // specific neighborhood — alt text says "Central Florida".
-    "src": "/photos/lawn-ryan-1.jpg",
-    "alt": "Mature oak-shaded residential lawn maintenance representative of Firsthand work across Central Florida — Firsthand Lawn and Landscape",
+    "src": "/photos/college-park-area-hero.jpg",
+    "alt": "Professionally maintained landscaping in College Park, FL",
     "category": "lawn",
     "area": "college-park",
     "service": "lawn-maintenance",
     "role": "area-hero",
-    "width": 1280,
-    "height": 960,
-    "bytes": 675616
+    "width": 1920,
+    "height": 1080,
+    "bytes": 467648
   },
   {
     "src": "/photos/bamboo-illustration.jpg",
@@ -690,15 +685,15 @@ export const PHOTOS: SitePhoto[] = [
     "bytes": 178796
   },
   {
-    "src": "/photos/sod-2.jpg",
-    "alt": "Side-yard sod with mature oak canopy in Central Florida — Firsthand Lawn and Landscape",
+    "src": "/photos/orlando-area-hero.jpg",
+    "alt": "Professionally maintained landscaping in Orlando, FL",
     "category": "sod",
     "area": "orlando",
     "service": "sod-installation",
     "role": "area-hero",
-    "width": 1600,
-    "height": 1200,
-    "bytes": 343952
+    "width": 1920,
+    "height": 1080,
+    "bytes": 709933
   },
   {
     "src": "/photos/lawn-1.jpg",
@@ -811,15 +806,15 @@ export const PHOTOS: SitePhoto[] = [
     "bytes": 383532
   },
   {
-    "src": "/photos/winter-park-1.jpg",
-    "alt": "Oak-shaded front yard at a Spanish-style home near Lake Ivanhoe in Winter Park, FL — Firsthand Lawn and Landscape",
+    "src": "/photos/winter-park-area-hero.jpg",
+    "alt": "Professionally maintained landscaping in Winter Park, FL",
     "category": "winter-park",
     "area": "winter-park",
     "service": "lawn-maintenance",
     "role": "area-hero",
-    "width": 1200,
-    "height": 1600,
-    "bytes": 449742
+    "width": 1440,
+    "height": 1920,
+    "bytes": 807159
   },
   {
     "src": "/photos/winter-park-2.jpg",
@@ -833,15 +828,15 @@ export const PHOTOS: SitePhoto[] = [
     "bytes": 12131
   },
   {
-    "src": "/photos/windermere-1.jpg",
-    "alt": "Wide paver driveway at a Mediterranean estate in Windermere, FL — Firsthand Lawn and Landscape",
+    "src": "/photos/windermere-area-hero.jpg",
+    "alt": "Professionally maintained landscaping in Windermere, FL",
     "category": "windermere",
     "area": "windermere",
     "service": "hardscape-installation",
     "role": "area-hero",
-    "width": 1600,
-    "height": 1200,
-    "bytes": 384979
+    "width": 1920,
+    "height": 1080,
+    "bytes": 573640
   },
   {
     "src": "/photos/windermere-2.jpg",
@@ -855,15 +850,15 @@ export const PHOTOS: SitePhoto[] = [
     "bytes": 314615
   },
   {
-    "src": "/photos/bay-hill-1.jpg",
-    "alt": "Estate home with mature magnolia and lawn in Bay Hill, FL — Firsthand Lawn and Landscape",
+    "src": "/photos/bay-hill-area-hero.jpg",
+    "alt": "Professionally maintained landscaping in Bay Hill, FL",
     "category": "bay-hill",
     "area": "bay-hill",
     "service": "lawn-maintenance",
     "role": "area-hero",
-    "width": 1600,
-    "height": 1200,
-    "bytes": 498917
+    "width": 1920,
+    "height": 1440,
+    "bytes": 586736
   },
   {
     "src": "/photos/commercial-1.jpg",
