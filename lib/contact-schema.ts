@@ -35,8 +35,9 @@ export const contactSchema = z.object({
     .trim()
     .min(5, "Enter the property address")
     .max(200, "Address is too long"),
-  city: z.enum(CITY_OPTIONS, { message: "Pick the closest service area" }),
-  service: z.enum(SERVICE_OPTIONS, { message: "Pick a service" }),
+  services: z
+    .array(z.enum(SERVICE_OPTIONS))
+    .min(1, "Pick at least one service"),
   message: z.string().trim().max(2000).optional().or(z.literal("")),
   // Honeypot — should always be empty. Bots tend to fill every field.
   website: z.string().max(0).optional().or(z.literal("")),

@@ -2,16 +2,18 @@
 
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { z } from "zod";
-import { Loader2, ArrowRight } from "lucide-react";
+import { Loader2, ArrowRight, X } from "lucide-react";
 import {
   contactSchema,
   type ContactInput,
-  CITY_OPTIONS,
   SERVICE_OPTIONS,
 } from "@/lib/contact-schema";
+
+const MAX_PHOTOS = 5;
+const MAX_PHOTO_BYTES = 10 * 1024 * 1024;
 
 // Schema uses `.trim()` and `.toLowerCase()` transforms, so zod's input
 // (pre-transform) and output (post-transform) types diverge. Pass both to
@@ -21,6 +23,9 @@ type ContactFormInput = z.input<typeof contactSchema>;
 export function ContactForm() {
   const router = useRouter();
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [photos, setPhotos] = useState<File[]>([]);
+  const [photoError, setPhotoError] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
 
   const {
     register,
@@ -34,20 +39,61 @@ export function ContactForm() {
       email: "",
       phone: "",
       address: "",
-      city: "" as ContactFormInput["city"],
-      service: "" as ContactFormInput["service"],
+      services: [],
       message: "",
       website: "",
     },
   });
 
+  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const incoming = Array.from(e.target.files ?? []);
+    if (incoming.length === 0) return;
+
+    const next = [...photos, ...incoming];
+    if (next.length > MAX_PHOTOS) {
+      setPhotoError(`You can attach at most ${MAX_PHOTOS} photos.`);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      return;
+    }
+    const tooBig = incoming.find((f) => f.size > MAX_PHOTO_BYTES);
+    if (tooBig) {
+      setPhotoError(`"${tooBig.name}" is over 10MB.`);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      return;
+    }
+    const notImage = incoming.find((f) => !f.type.startsWith("image/"));
+    if (notImage) {
+      setPhotoError(`"${notImage.name}" isn't an image.`);
+      if (fileInputRef.current) fileInputRef.current.value = "";
+      return;
+    }
+
+    setPhotoError(null);
+    setPhotos(next);
+    if (fileInputRef.current) fileInputRef.current.value = "";
+  };
+
+  const removePhoto = (index: number) => {
+    setPhotos((prev) => prev.filter((_, i) => i !== index));
+    setPhotoError(null);
+  };
+
   const onSubmit = async (data: ContactInput) => {
     setSubmitError(null);
     try {
+      const formData = new FormData();
+      formData.append("name", data.name);
+      formData.append("email", data.email);
+      formData.append("phone", data.phone);
+      formData.append("address", data.address);
+      for (const s of data.services) formData.append("services", s);
+      if (data.message) formData.append("message", data.message);
+      if (data.website) formData.append("website", data.website);
+      for (const file of photos) formData.append("photos", file);
+
       const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: formData,
       });
       if (!res.ok) throw new Error("Submit failed");
       // Fire Meta Pixel Lead event if pixel loaded (cookie-consent gated)
@@ -123,45 +169,35 @@ export function ContactForm() {
           />
         </Field>
 
-        <div className="grid sm:grid-cols-2 gap-5">
-          <Field label="City" error={errors.city?.message} required>
-            <select
-              {...register("city")}
-              className={selectClass(!!errors.city)}
-              defaultValue=""
-            >
-              <option value="" disabled>
-                Pick the closest
-              </option>
-              {CITY_OPTIONS.map((c) => (
-                <option key={c} value={c}>
-                  {c}
-                </option>
-              ))}
-            </select>
-          </Field>
-
-          <Field
-            label="Service interest"
-            error={errors.service?.message}
-            required
-          >
-            <select
-              {...register("service")}
-              className={selectClass(!!errors.service)}
-              defaultValue=""
-            >
-              <option value="" disabled>
-                What are you thinking?
-              </option>
-              {SERVICE_OPTIONS.map((s) => (
-                <option key={s} value={s}>
-                  {s}
-                </option>
-              ))}
-            </select>
-          </Field>
-        </div>
+        <fieldset className="block">
+          <legend className="block text-sm font-medium text-foreground mb-1.5">
+            Services you&apos;re interested in
+            <span className="text-primary ml-1" aria-hidden="true">
+              *
+            </span>
+          </legend>
+          <div className="grid sm:grid-cols-2 gap-x-5 gap-y-2.5">
+            {SERVICE_OPTIONS.map((option) => (
+              <label
+                key={option}
+                className="flex items-start gap-2.5 text-sm text-foreground cursor-pointer"
+              >
+                <input
+                  {...register("services")}
+                  type="checkbox"
+                  value={option}
+                  className="mt-0.5 h-4 w-4 rounded border-border text-primary focus:ring-2 focus:ring-ring/30"
+                />
+                <span>{option}</span>
+              </label>
+            ))}
+          </div>
+          {errors.services && (
+            <span className="block text-xs text-destructive mt-1.5">
+              {errors.services.message}
+            </span>
+          )}
+        </fieldset>
 
         <Field
           label="Tell us about the project"
@@ -175,6 +211,58 @@ export function ContactForm() {
             placeholder="Roughly 1/4 acre, the front lawn is half dead from chinch bugs and the irrigation needs an overhaul…"
           />
         </Field>
+
+        <div className="block">
+          <label
+            htmlFor="contact-photos"
+            className="block text-sm font-medium text-foreground mb-1.5"
+          >
+            Photos (optional)
+          </label>
+          <input
+            ref={fileInputRef}
+            id="contact-photos"
+            type="file"
+            multiple
+            accept="image/*"
+            onChange={handlePhotoChange}
+            className="block w-full text-sm text-foreground file:mr-3 file:rounded-md file:border file:border-border file:bg-background file:px-3 file:py-1.5 file:text-sm file:font-medium file:text-foreground hover:file:bg-muted/40"
+          />
+          <span className="block text-xs text-muted-foreground mt-1.5">
+            Up to {MAX_PHOTOS} photos, 10MB each. Helps us spot trouble before
+            we visit.
+          </span>
+          {photoError && (
+            <span className="block text-xs text-destructive mt-1.5">
+              {photoError}
+            </span>
+          )}
+          {photos.length > 0 && (
+            <ul className="mt-2.5 space-y-1.5">
+              {photos.map((file, i) => (
+                <li
+                  key={`${file.name}-${i}`}
+                  className="flex items-center justify-between gap-2 rounded-md border border-border bg-background px-3 py-1.5 text-xs"
+                >
+                  <span className="truncate text-foreground">
+                    {file.name}
+                    <span className="ml-2 text-muted-foreground">
+                      {(file.size / 1024 / 1024).toFixed(1)} MB
+                    </span>
+                  </span>
+                  <button
+                    type="button"
+                    onClick={() => removePhoto(i)}
+                    className="inline-flex items-center text-muted-foreground hover:text-destructive"
+                    aria-label={`Remove ${file.name}`}
+                  >
+                    <X className="h-3.5 w-3.5" />
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
 
         {/* Honeypot — visually hidden but in DOM for bots */}
         <div className="hidden" aria-hidden="true">
@@ -259,12 +347,6 @@ function Field({
 
 function inputClass(hasError: boolean): string {
   return `block w-full rounded-lg border bg-background px-3.5 py-2.5 text-sm text-foreground placeholder:text-text-faint focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-ring transition-colors ${
-    hasError ? "border-destructive" : "border-border"
-  }`;
-}
-
-function selectClass(hasError: boolean): string {
-  return `block w-full rounded-lg border bg-background px-3.5 py-2.5 text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-ring transition-colors ${
     hasError ? "border-destructive" : "border-border"
   }`;
 }

@@ -13,13 +13,28 @@ const CONTACT_INTERNAL_TO = process.env.CONTACT_INTERNAL_TO ?? NAP.email;
 const JOBBER_WEBHOOK_URL = process.env.JOBBER_WEBHOOK_URL;
 const JOBBER_WEBHOOK_SECRET = process.env.JOBBER_WEBHOOK_SECRET;
 
+const MAX_PHOTOS = 5;
+const MAX_PHOTO_BYTES = 10 * 1024 * 1024;
+
+type Attachment = { filename: string; content: Buffer };
+
 export async function POST(request: Request) {
-  let body: unknown;
+  let form: FormData;
   try {
-    body = await request.json();
+    form = await request.formData();
   } catch {
-    return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
+    return NextResponse.json({ error: "Invalid form data" }, { status: 400 });
   }
+
+  const body = {
+    name: form.get("name") ?? "",
+    email: form.get("email") ?? "",
+    phone: form.get("phone") ?? "",
+    address: form.get("address") ?? "",
+    services: form.getAll("services").filter((v): v is string => typeof v === "string"),
+    message: form.get("message") ?? "",
+    website: form.get("website") ?? "",
+  };
 
   const parsed = contactSchema.safeParse(body);
   if (!parsed.success) {
@@ -34,21 +49,53 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
+  const rawFiles = form
+    .getAll("photos")
+    .filter((v): v is File => v instanceof File && v.size > 0);
+
+  if (rawFiles.length > MAX_PHOTOS) {
+    return NextResponse.json(
+      { error: `At most ${MAX_PHOTOS} photos allowed.` },
+      { status: 400 }
+    );
+  }
+  const attachments: Attachment[] = [];
+  for (const file of rawFiles) {
+    if (file.size > MAX_PHOTO_BYTES) {
+      return NextResponse.json(
+        { error: `"${file.name}" exceeds 10MB.` },
+        { status: 400 }
+      );
+    }
+    if (!file.type.startsWith("image/")) {
+      return NextResponse.json(
+        { error: `"${file.name}" is not an image.` },
+        { status: 400 }
+      );
+    }
+    const buffer = Buffer.from(await file.arrayBuffer());
+    attachments.push({ filename: file.name, content: buffer });
+  }
+
   const submittedAt = new Date().toISOString();
 
   // Always log — gives us a fallback when env vars aren't set yet, and
   // a Vercel-function record even when delivery succeeds downstream.
   console.log(
     `[contact] new submission → ${CONTACT_INTERNAL_TO}:`,
-    JSON.stringify(parsed.data, null, 2)
+    JSON.stringify(
+      { ...parsed.data, attachmentCount: attachments.length },
+      null,
+      2
+    )
   );
 
   // Email + Jobber dispatched in parallel; both failures are non-blocking.
   // The user sees a successful redirect either way — we'd rather have a
   // logged failure than make the customer retry while we debug delivery.
   const results = await Promise.allSettled([
-    sendInternalEmail(parsed.data, submittedAt),
-    sendJobberWebhook(parsed.data, submittedAt),
+    sendInternalEmail(parsed.data, submittedAt, attachments),
+    sendJobberWebhook(parsed.data, submittedAt, attachments.length),
   ]);
 
   results.forEach((r, i) => {
@@ -61,13 +108,17 @@ export async function POST(request: Request) {
   return NextResponse.json({ ok: true });
 }
 
-async function sendInternalEmail(data: ContactInput, submittedAt: string) {
+async function sendInternalEmail(
+  data: ContactInput,
+  submittedAt: string,
+  attachments: Attachment[]
+) {
   if (!RESEND_API_KEY) {
     console.warn("[contact] RESEND_API_KEY not set — skipping email send");
     return { skipped: true };
   }
   const resend = new Resend(RESEND_API_KEY);
-  const subject = `New website inquiry — ${data.name} (${data.city})`;
+  const subject = `New website inquiry — ${data.name}`;
   const text = renderInternalEmailText(data, submittedAt);
   const html = renderInternalEmailHtml(data, submittedAt);
   return resend.emails.send({
@@ -77,15 +128,20 @@ async function sendInternalEmail(data: ContactInput, submittedAt: string) {
     subject,
     text,
     html,
+    attachments: attachments.length > 0 ? attachments : undefined,
   });
 }
 
-async function sendJobberWebhook(data: ContactInput, submittedAt: string) {
+async function sendJobberWebhook(
+  data: ContactInput,
+  submittedAt: string,
+  attachmentCount: number
+) {
   if (!JOBBER_WEBHOOK_URL) {
     console.warn("[contact] JOBBER_WEBHOOK_URL not set — skipping webhook");
     return { skipped: true };
   }
-  const payload = buildJobberPayload(data, submittedAt);
+  const payload = buildJobberPayload(data, submittedAt, attachmentCount);
   const headers: Record<string, string> = {
     "Content-Type": "application/json",
   };
@@ -117,8 +173,7 @@ function renderInternalEmailText(
     `Email:    ${data.email}`,
     `Phone:    ${data.phone}`,
     `Address:  ${data.address}`,
-    `City:     ${data.city}`,
-    `Service:  ${data.service}`,
+    `Services: ${data.services.join(", ")}`,
     "",
     "Message:",
     data.message && data.message.length > 0 ? data.message : "(none)",
@@ -133,6 +188,9 @@ function renderInternalEmailHtml(
 ): string {
   const row = (label: string, value: string) =>
     `<tr><td style="padding:4px 12px 4px 0;color:#666;font-size:14px;">${label}</td><td style="padding:4px 0;font-size:14px;color:#111;"><strong>${escapeHtml(value)}</strong></td></tr>`;
+  const servicesList = data.services
+    .map((s) => `<li>${escapeHtml(s)}</li>`)
+    .join("");
   const messageBlock =
     data.message && data.message.length > 0
       ? `<p style="margin:0 0 8px 0;font-size:14px;color:#666;">Message</p><div style="padding:12px;background:#f6f6f6;border-radius:8px;font-size:14px;color:#111;white-space:pre-wrap;">${escapeHtml(data.message)}</div>`
@@ -145,16 +203,20 @@ function renderInternalEmailHtml(
       ${row("Email", data.email)}
       ${row("Phone", data.phone)}
       ${row("Address", data.address)}
-      ${row("City", data.city)}
-      ${row("Service", data.service)}
     </table>
+    <p style="margin:0 0 8px 0;font-size:14px;color:#666;">Services</p>
+    <ul style="margin:0 0 16px 0;padding-left:20px;font-size:14px;color:#111;">${servicesList}</ul>
     ${messageBlock}
     <p style="margin:24px 0 0 0;font-size:12px;color:#999;">Submitted at ${submittedAt}</p>
   </div>
 </body></html>`;
 }
 
-function buildJobberPayload(data: ContactInput, submittedAt: string) {
+function buildJobberPayload(
+  data: ContactInput,
+  submittedAt: string,
+  attachmentCount: number
+) {
   return {
     source: "firsthand-website",
     submittedAt,
@@ -165,10 +227,11 @@ function buildJobberPayload(data: ContactInput, submittedAt: string) {
     },
     property: {
       address: data.address,
-      city: data.city,
     },
-    serviceInterest: data.service,
+    services: data.services,
     message: data.message ?? "",
+    hasAttachments: attachmentCount > 0,
+    attachmentCount,
   };
 }
 
