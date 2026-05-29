@@ -11,6 +11,7 @@ import {
   type ContactInput,
   SERVICE_OPTIONS,
 } from "@/lib/contact-schema";
+import { AddressAutocomplete } from "@/components/address-autocomplete";
 
 const MAX_PHOTOS = 5;
 const MAX_PHOTO_BYTES = 10 * 1024 * 1024;
@@ -30,6 +31,7 @@ export function ContactForm() {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors, isSubmitting },
   } = useForm<ContactFormInput, unknown, ContactInput>({
     resolver: zodResolver(contactSchema),
@@ -39,6 +41,10 @@ export function ContactForm() {
       email: "",
       phone: "",
       address: "",
+      city: "",
+      state: "",
+      zip: "",
+      placeId: "",
       services: [],
       message: "",
       website: "",
@@ -86,6 +92,10 @@ export function ContactForm() {
       formData.append("email", data.email);
       formData.append("phone", data.phone);
       formData.append("address", data.address);
+      if (data.city) formData.append("city", data.city);
+      if (data.state) formData.append("state", data.state);
+      if (data.zip) formData.append("zip", data.zip);
+      if (data.placeId) formData.append("placeId", data.placeId);
       for (const s of data.services) formData.append("services", s);
       if (data.message) formData.append("message", data.message);
       if (data.website) formData.append("website", data.website);
@@ -159,15 +169,30 @@ export function ContactForm() {
           label="Property address"
           error={errors.address?.message}
           required
+          hint="Start typing — we'll suggest matches from Google."
         >
-          <input
+          <AddressAutocomplete
             {...register("address")}
             type="text"
             autoComplete="street-address"
             className={inputClass(!!errors.address)}
             placeholder="1234 Magnolia Ave, Winter Park, FL 32789"
+            onPlaceSelected={(sel) => {
+              setValue("address", sel.formattedAddress, {
+                shouldValidate: true,
+                shouldDirty: true,
+              });
+              setValue("city", sel.city);
+              setValue("state", sel.state);
+              setValue("zip", sel.zip);
+              setValue("placeId", sel.placeId);
+            }}
           />
         </Field>
+        <input type="hidden" {...register("city")} />
+        <input type="hidden" {...register("state")} />
+        <input type="hidden" {...register("zip")} />
+        <input type="hidden" {...register("placeId")} />
 
         <fieldset className="block">
           <legend className="block text-sm font-medium text-foreground mb-1.5">

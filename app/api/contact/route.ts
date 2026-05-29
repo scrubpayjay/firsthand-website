@@ -31,6 +31,10 @@ export async function POST(request: Request) {
     email: form.get("email") ?? "",
     phone: form.get("phone") ?? "",
     address: form.get("address") ?? "",
+    city: form.get("city") ?? "",
+    state: form.get("state") ?? "",
+    zip: form.get("zip") ?? "",
+    placeId: form.get("placeId") ?? "",
     services: form.getAll("services").filter((v): v is string => typeof v === "string"),
     message: form.get("message") ?? "",
     website: form.get("website") ?? "",
@@ -166,20 +170,27 @@ function renderInternalEmailText(
   data: ContactInput,
   submittedAt: string
 ): string {
-  return [
+  const cityStateZip = [data.city, data.state, data.zip]
+    .filter((v) => v && v.length > 0)
+    .join(", ");
+  const lines: string[] = [
     "New inquiry from the Firsthand Lawns website.",
     "",
     `Name:     ${data.name}`,
     `Email:    ${data.email}`,
     `Phone:    ${data.phone}`,
     `Address:  ${data.address}`,
-    `Services: ${data.services.join(", ")}`,
+  ];
+  if (cityStateZip) lines.push(`Locality: ${cityStateZip}`);
+  lines.push(`Services: ${data.services.join(", ")}`);
+  lines.push(
     "",
     "Message:",
     data.message && data.message.length > 0 ? data.message : "(none)",
     "",
-    `Submitted at ${submittedAt}`,
-  ].join("\n");
+    `Submitted at ${submittedAt}`
+  );
+  return lines.join("\n");
 }
 
 function renderInternalEmailHtml(
@@ -188,6 +199,10 @@ function renderInternalEmailHtml(
 ): string {
   const row = (label: string, value: string) =>
     `<tr><td style="padding:4px 12px 4px 0;color:#666;font-size:14px;">${label}</td><td style="padding:4px 0;font-size:14px;color:#111;"><strong>${escapeHtml(value)}</strong></td></tr>`;
+  const cityStateZip = [data.city, data.state, data.zip]
+    .filter((v) => v && v.length > 0)
+    .join(", ");
+  const localityRow = cityStateZip ? row("Locality", cityStateZip) : "";
   const servicesList = data.services
     .map((s) => `<li>${escapeHtml(s)}</li>`)
     .join("");
@@ -203,6 +218,7 @@ function renderInternalEmailHtml(
       ${row("Email", data.email)}
       ${row("Phone", data.phone)}
       ${row("Address", data.address)}
+      ${localityRow}
     </table>
     <p style="margin:0 0 8px 0;font-size:14px;color:#666;">Services</p>
     <ul style="margin:0 0 16px 0;padding-left:20px;font-size:14px;color:#111;">${servicesList}</ul>
@@ -227,6 +243,10 @@ function buildJobberPayload(
     },
     property: {
       address: data.address,
+      city: data.city || undefined,
+      state: data.state || undefined,
+      zip: data.zip || undefined,
+      placeId: data.placeId || undefined,
     },
     services: data.services,
     message: data.message ?? "",

@@ -35,6 +35,10 @@ export const contactSchema = z.object({
     .trim()
     .min(5, "Enter the property address")
     .max(200, "Address is too long"),
+  city: z.string().trim().max(100).optional().or(z.literal("")),
+  state: z.string().trim().max(50).optional().or(z.literal("")),
+  zip: z.string().trim().max(20).optional().or(z.literal("")),
+  placeId: z.string().trim().max(255).optional().or(z.literal("")),
   services: z
     .array(z.enum(SERVICE_OPTIONS))
     .min(1, "Pick at least one service"),
