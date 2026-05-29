@@ -30,6 +30,11 @@ export const contactSchema = z.object({
     .min(10, "Enter a valid phone number")
     .max(40)
     .regex(/[\d().+\-\s]+/i, "Enter a valid phone number"),
+  address: z
+    .string()
+    .trim()
+    .min(5, "Enter the property address")
+    .max(200, "Address is too long"),
   city: z.enum(CITY_OPTIONS, { message: "Pick the closest service area" }),
   service: z.enum(SERVICE_OPTIONS, { message: "Pick a service" }),
   message: z.string().trim().max(2000).optional().or(z.literal("")),

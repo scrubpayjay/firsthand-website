@@ -33,6 +33,7 @@ export function ContactForm() {
       name: "",
       email: "",
       phone: "",
+      address: "",
       city: "" as ContactFormInput["city"],
       service: "" as ContactFormInput["service"],
       message: "",
@@ -105,6 +106,20 @@ export function ContactForm() {
             autoComplete="email"
             className={inputClass(!!errors.email)}
             placeholder="you@example.com"
+          />
+        </Field>
+
+        <Field
+          label="Property address"
+          error={errors.address?.message}
+          required
+        >
+          <input
+            {...register("address")}
+            type="text"
+            autoComplete="street-address"
+            className={inputClass(!!errors.address)}
+            placeholder="1234 Magnolia Ave, Winter Park, FL 32789"
           />
         </Field>
 
