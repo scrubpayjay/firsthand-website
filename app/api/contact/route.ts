@@ -151,7 +151,17 @@ async function sendWeb3FormsEmail(
     );
   }
 
-  const res = await fetch(WEB3FORMS_ENDPOINT, { method: "POST", body: fd });
+  // Web3Forms sits behind Cloudflare, which 403s requests with no
+  // User-Agent (Node fetch default). Send a real-looking UA + Accept.
+  const res = await fetch(WEB3FORMS_ENDPOINT, {
+    method: "POST",
+    body: fd,
+    headers: {
+      "User-Agent":
+        "Mozilla/5.0 (compatible; FirsthandLawnsWebsite/1.0; +https://firsthandlawns.com)",
+      Accept: "application/json",
+    },
+  });
   if (!res.ok) {
     const responseBody = await res.text().catch(() => "");
     throw new Error(
