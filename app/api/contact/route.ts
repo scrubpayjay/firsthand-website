@@ -1,22 +1,18 @@
 import { NextResponse } from "next/server";
-import { Resend } from "resend";
 import { contactSchema, type ContactInput } from "@/lib/contact-schema";
-import { NAP } from "@/lib/site-config";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const RESEND_API_KEY = process.env.RESEND_API_KEY;
-const RESEND_FROM =
-  process.env.RESEND_FROM ?? "Firsthand Lawns <hello@firsthandlawns.com>";
-const CONTACT_INTERNAL_TO = process.env.CONTACT_INTERNAL_TO ?? NAP.email;
+const WEB3FORMS_ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY;
+const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 const JOBBER_WEBHOOK_URL = process.env.JOBBER_WEBHOOK_URL;
 const JOBBER_WEBHOOK_SECRET = process.env.JOBBER_WEBHOOK_SECRET;
 
 const MAX_PHOTOS = 5;
 const MAX_PHOTO_BYTES = 10 * 1024 * 1024;
 
-type Attachment = { filename: string; content: Buffer };
+type Attachment = { filename: string; content: ArrayBuffer; type: string };
 
 export async function POST(request: Request) {
   let form: FormData;
@@ -77,16 +73,17 @@ export async function POST(request: Request) {
         { status: 400 }
       );
     }
-    const buffer = Buffer.from(await file.arrayBuffer());
-    attachments.push({ filename: file.name, content: buffer });
+    attachments.push({
+      filename: file.name,
+      content: await file.arrayBuffer(),
+      type: file.type,
+    });
   }
 
   const submittedAt = new Date().toISOString();
 
-  // Always log — gives us a fallback when env vars aren't set yet, and
-  // a Vercel-function record even when delivery succeeds downstream.
   console.log(
-    `[contact] new submission → ${CONTACT_INTERNAL_TO}:`,
+    "[contact] new submission:",
     JSON.stringify(
       { ...parsed.data, attachmentCount: attachments.length },
       null,
@@ -94,16 +91,16 @@ export async function POST(request: Request) {
     )
   );
 
-  // Email + Jobber dispatched in parallel; both failures are non-blocking.
-  // The user sees a successful redirect either way — we'd rather have a
-  // logged failure than make the customer retry while we debug delivery.
+  // Web3Forms (email to Ryan) + Jobber webhook dispatched in parallel; both
+  // failures are non-blocking. Customer still gets a successful redirect —
+  // a logged failure is preferable to making them retry while we debug.
   const results = await Promise.allSettled([
-    sendInternalEmail(parsed.data, submittedAt, attachments),
+    sendWeb3FormsEmail(parsed.data, submittedAt, attachments),
     sendJobberWebhook(parsed.data, submittedAt, attachments.length),
   ]);
 
   results.forEach((r, i) => {
-    const label = i === 0 ? "resend-email" : "jobber-webhook";
+    const label = i === 0 ? "web3forms" : "jobber-webhook";
     if (r.status === "rejected") {
       console.error(`[contact] ${label} failed:`, r.reason);
     }
@@ -112,28 +109,56 @@ export async function POST(request: Request) {
   return NextResponse.json({ ok: true });
 }
 
-async function sendInternalEmail(
+async function sendWeb3FormsEmail(
   data: ContactInput,
   submittedAt: string,
   attachments: Attachment[]
 ) {
-  if (!RESEND_API_KEY) {
-    console.warn("[contact] RESEND_API_KEY not set — skipping email send");
+  if (!WEB3FORMS_ACCESS_KEY) {
+    console.warn(
+      "[contact] WEB3FORMS_ACCESS_KEY not set — skipping email send"
+    );
     return { skipped: true };
   }
-  const resend = new Resend(RESEND_API_KEY);
-  const subject = `New website inquiry — ${data.name}`;
-  const text = renderInternalEmailText(data, submittedAt);
-  const html = renderInternalEmailHtml(data, submittedAt);
-  return resend.emails.send({
-    from: RESEND_FROM,
-    to: CONTACT_INTERNAL_TO,
-    replyTo: data.email,
-    subject,
-    text,
-    html,
-    attachments: attachments.length > 0 ? attachments : undefined,
-  });
+
+  const cityStateZip = [data.city, data.state, data.zip]
+    .filter((v) => v && v.length > 0)
+    .join(", ");
+
+  const fd = new FormData();
+  fd.append("access_key", WEB3FORMS_ACCESS_KEY);
+  fd.append("subject", `New Firsthand Lead — ${data.name}`);
+  fd.append("from_name", "Firsthand Lawns Website");
+  fd.append("replyto", data.email);
+  // Web3Forms convention: empty botcheck field. Honeypot already filtered above.
+  fd.append("botcheck", "");
+
+  fd.append("name", data.name);
+  fd.append("email", data.email);
+  fd.append("phone", data.phone);
+  fd.append("address", data.address);
+  if (cityStateZip) fd.append("locality", cityStateZip);
+  if (data.placeId) fd.append("place_id", data.placeId);
+  fd.append("services", data.services.join(", "));
+  fd.append("message", data.message ?? "");
+  fd.append("submitted_at", submittedAt);
+
+  for (const att of attachments) {
+    fd.append(
+      "attachments",
+      new Blob([att.content], { type: att.type }),
+      att.filename
+    );
+  }
+
+  const res = await fetch(WEB3FORMS_ENDPOINT, { method: "POST", body: fd });
+  if (!res.ok) {
+    const responseBody = await res.text().catch(() => "");
+    throw new Error(
+      `Web3Forms returned ${res.status} ${res.statusText}: ${responseBody.slice(0, 200)}`
+    );
+  }
+  return { ok: true, status: res.status };
 }
 
 async function sendJobberWebhook(
@@ -166,68 +191,6 @@ async function sendJobberWebhook(
   return { ok: true, status: res.status };
 }
 
-function renderInternalEmailText(
-  data: ContactInput,
-  submittedAt: string
-): string {
-  const cityStateZip = [data.city, data.state, data.zip]
-    .filter((v) => v && v.length > 0)
-    .join(", ");
-  const lines: string[] = [
-    "New inquiry from the Firsthand Lawns website.",
-    "",
-    `Name:     ${data.name}`,
-    `Email:    ${data.email}`,
-    `Phone:    ${data.phone}`,
-    `Address:  ${data.address}`,
-  ];
-  if (cityStateZip) lines.push(`Locality: ${cityStateZip}`);
-  lines.push(`Services: ${data.services.join(", ")}`);
-  lines.push(
-    "",
-    "Message:",
-    data.message && data.message.length > 0 ? data.message : "(none)",
-    "",
-    `Submitted at ${submittedAt}`
-  );
-  return lines.join("\n");
-}
-
-function renderInternalEmailHtml(
-  data: ContactInput,
-  submittedAt: string
-): string {
-  const row = (label: string, value: string) =>
-    `<tr><td style="padding:4px 12px 4px 0;color:#666;font-size:14px;">${label}</td><td style="padding:4px 0;font-size:14px;color:#111;"><strong>${escapeHtml(value)}</strong></td></tr>`;
-  const cityStateZip = [data.city, data.state, data.zip]
-    .filter((v) => v && v.length > 0)
-    .join(", ");
-  const localityRow = cityStateZip ? row("Locality", cityStateZip) : "";
-  const servicesList = data.services
-    .map((s) => `<li>${escapeHtml(s)}</li>`)
-    .join("");
-  const messageBlock =
-    data.message && data.message.length > 0
-      ? `<p style="margin:0 0 8px 0;font-size:14px;color:#666;">Message</p><div style="padding:12px;background:#f6f6f6;border-radius:8px;font-size:14px;color:#111;white-space:pre-wrap;">${escapeHtml(data.message)}</div>`
-      : "";
-  return `<!doctype html><html><body style="font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;background:#fff;color:#111;">
-  <div style="max-width:560px;margin:0 auto;padding:24px;">
-    <h2 style="margin:0 0 16px 0;font-size:18px;">New website inquiry</h2>
-    <table style="border-collapse:collapse;margin-bottom:16px;">
-      ${row("Name", data.name)}
-      ${row("Email", data.email)}
-      ${row("Phone", data.phone)}
-      ${row("Address", data.address)}
-      ${localityRow}
-    </table>
-    <p style="margin:0 0 8px 0;font-size:14px;color:#666;">Services</p>
-    <ul style="margin:0 0 16px 0;padding-left:20px;font-size:14px;color:#111;">${servicesList}</ul>
-    ${messageBlock}
-    <p style="margin:24px 0 0 0;font-size:12px;color:#999;">Submitted at ${submittedAt}</p>
-  </div>
-</body></html>`;
-}
-
 function buildJobberPayload(
   data: ContactInput,
   submittedAt: string,
@@ -253,13 +216,4 @@ function buildJobberPayload(
     hasAttachments: attachmentCount > 0,
     attachmentCount,
   };
-}
-
-function escapeHtml(s: string): string {
-  return s
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#39;");
 }
