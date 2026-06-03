@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
 import type { z } from "zod";
 import { Loader2, ArrowRight, X } from "lucide-react";
+import imageCompression from "browser-image-compression";
 import {
   contactSchema,
   type ContactInput,
@@ -15,6 +16,16 @@ import { AddressAutocomplete } from "@/components/address-autocomplete";
 
 const MAX_PHOTOS = 5;
 const MAX_PHOTO_BYTES = 10 * 1024 * 1024;
+// Vercel serverless functions cap request body at ~4.5 MB. Cap the post-
+// compression photo total at 4 MB so the rest of the multipart envelope
+// (other fields + boundaries) still fits comfortably below the gateway.
+const MAX_TOTAL_PHOTO_BYTES = 4 * 1024 * 1024;
+const COMPRESSION_OPTS = {
+  maxSizeMB: 1,
+  maxWidthOrHeight: 1600,
+  useWebWorker: true,
+  initialQuality: 0.8,
+};
 
 // Schema uses `.trim()` and `.toLowerCase()` transforms, so zod's input
 // (pre-transform) and output (post-transform) types diverge. Pass both to
@@ -26,6 +37,7 @@ export function ContactForm() {
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [photos, setPhotos] = useState<File[]>([]);
   const [photoError, setPhotoError] = useState<string | null>(null);
+  const [isCompressing, setIsCompressing] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const {
@@ -51,32 +63,53 @@ export function ContactForm() {
     },
   });
 
-  const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handlePhotoChange = async (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
     const incoming = Array.from(e.target.files ?? []);
+    if (fileInputRef.current) fileInputRef.current.value = "";
     if (incoming.length === 0) return;
 
-    const next = [...photos, ...incoming];
-    if (next.length > MAX_PHOTOS) {
+    if (photos.length + incoming.length > MAX_PHOTOS) {
       setPhotoError(`You can attach at most ${MAX_PHOTOS} photos.`);
-      if (fileInputRef.current) fileInputRef.current.value = "";
       return;
     }
     const tooBig = incoming.find((f) => f.size > MAX_PHOTO_BYTES);
     if (tooBig) {
       setPhotoError(`"${tooBig.name}" is over 10MB.`);
-      if (fileInputRef.current) fileInputRef.current.value = "";
       return;
     }
     const notImage = incoming.find((f) => !f.type.startsWith("image/"));
     if (notImage) {
       setPhotoError(`"${notImage.name}" isn't an image.`);
-      if (fileInputRef.current) fileInputRef.current.value = "";
       return;
     }
 
     setPhotoError(null);
-    setPhotos(next);
-    if (fileInputRef.current) fileInputRef.current.value = "";
+    setIsCompressing(true);
+    try {
+      const compressed: File[] = [];
+      for (const file of incoming) {
+        compressed.push(await imageCompression(file, COMPRESSION_OPTS));
+      }
+      const next = [...photos, ...compressed];
+      const total = next.reduce((sum, f) => sum + f.size, 0);
+      if (total > MAX_TOTAL_PHOTO_BYTES) {
+        const mb = (total / 1024 / 1024).toFixed(1);
+        setPhotoError(
+          `Your photos still total ${mb}MB after optimizing — please remove one before sending.`
+        );
+        return;
+      }
+      setPhotos(next);
+    } catch (err) {
+      console.error("[contact-form] image compression failed", err);
+      setPhotoError(
+        "Couldn't process one of those images. Try a different file."
+      );
+    } finally {
+      setIsCompressing(false);
+    }
   };
 
   const removePhoto = (index: number) => {
@@ -125,7 +158,10 @@ export function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate>
-      <fieldset disabled={isSubmitting} className="space-y-5 group">
+      <fieldset
+        disabled={isSubmitting || isCompressing}
+        className="space-y-5 group"
+      >
         <div className="grid sm:grid-cols-2 gap-5">
           <Field
             label="Name"
@@ -257,6 +293,12 @@ export function ContactForm() {
             Up to {MAX_PHOTOS} photos, 10MB each. Helps us spot trouble before
             we visit.
           </span>
+          {isCompressing && (
+            <span className="inline-flex items-center gap-1.5 text-xs text-muted-foreground mt-1.5">
+              <Loader2 className="h-3 w-3 animate-spin" />
+              Optimizing photos…
+            </span>
+          )}
           {photoError && (
             <span className="block text-xs text-destructive mt-1.5">
               {photoError}
