@@ -548,11 +548,11 @@ export const SERVICE_PAGES: ServicePage[] = [
     faqs: [
       {
         q: "What does a paver patio cost?",
-        a: "Installed cost typically runs $15–$30 per square foot depending on material and base requirements. Travertine and large-format pavers run higher. A 300 sq ft patio with proper base lands roughly $5,500–$9,500.",
+        a: "Installed cost typically runs $10–$15 per square foot depending on material and base requirements. Travertine and large-format pavers run higher. A 300 sq ft patio with proper base lands roughly $3,000–$4,500.",
       },
       {
         q: "How long does it take?",
-        a: "Most residential patios install in 3–10 days from excavation to final sweep. Larger projects with retaining walls or outdoor kitchen bases take 7–14 days. Weather can add a day here and there.",
+        a: "Most residential patios install in 1–5 days from excavation to final sweep. Larger projects with retaining walls or outdoor kitchen bases take 7–14 days. Weather can add a day here and there.",
       },
       {
         q: "Travertine, concrete paver, or natural stone?",
@@ -576,8 +576,8 @@ export const SERVICE_PAGES: ServicePage[] = [
       },
     ],
     related: ["landscape-design", "irrigation", "lawn-maintenance"],
-    priceRange: "$15–$30 / sq ft installed",
-    timeline: "3–10 days typical install",
+    priceRange: "$10–$15 / sq ft installed",
+    timeline: "1–5 days typical install",
     needsConfirm: true,
   },
 
