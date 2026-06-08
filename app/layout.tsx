@@ -78,7 +78,12 @@ const GTM_ID = "GTM-5T6BXSR7";
 
 // Replace these placeholders when the corresponding accounts are provisioned.
 const TIDIO_PUBLIC_KEY = "PLACEHOLDER_TIDIO_ID";
-const META_PIXEL_ID = "PLACEHOLDER_FB_PIXEL_ID";
+// Env-driven in production (NEXT_PUBLIC_META_PIXEL_ID in Vercel env vars);
+// PLACEHOLDER fallback so local dev without the env var still passes the
+// `pixelId.startsWith("PLACEHOLDER")` gate in components/cookie-banner.tsx
+// and the pixel script stays dormant.
+const META_PIXEL_ID =
+  process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "PLACEHOLDER_FB_PIXEL_ID";
 
 export default function RootLayout({
   children,
