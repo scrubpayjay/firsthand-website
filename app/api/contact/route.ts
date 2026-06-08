@@ -1,3 +1,4 @@
+import { createHash, createHmac } from "node:crypto";
 import { NextResponse } from "next/server";
 import { contactSchema, type ContactInput } from "@/lib/contact-schema";
 
@@ -7,7 +8,7 @@ export const dynamic = "force-dynamic";
 const WEB3FORMS_ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY;
 const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 const JOBBER_WEBHOOK_URL = process.env.JOBBER_WEBHOOK_URL;
-const JOBBER_WEBHOOK_SECRET = process.env.JOBBER_WEBHOOK_SECRET;
+const WEBSITE_LEAD_WEBHOOK_SECRET = process.env.WEBSITE_LEAD_WEBHOOK_SECRET;
 
 const MAX_PHOTOS = 5;
 const MAX_PHOTO_BYTES = 10 * 1024 * 1024;
@@ -96,7 +97,7 @@ export async function POST(request: Request) {
   // a logged failure is preferable to making them retry while we debug.
   const results = await Promise.allSettled([
     sendWeb3FormsEmail(parsed.data, submittedAt, attachments),
-    sendJobberWebhook(parsed.data, submittedAt, attachments.length),
+    sendJobberWebhook(parsed.data),
   ]);
 
   results.forEach((r, i) => {
@@ -171,26 +172,36 @@ async function sendWeb3FormsEmail(
   return { ok: true, status: res.status };
 }
 
-async function sendJobberWebhook(
-  data: ContactInput,
-  submittedAt: string,
-  attachmentCount: number
-) {
+async function sendJobberWebhook(data: ContactInput) {
   if (!JOBBER_WEBHOOK_URL) {
     console.warn("[contact] JOBBER_WEBHOOK_URL not set — skipping webhook");
     return { skipped: true };
   }
-  const payload = buildJobberPayload(data, submittedAt, attachmentCount);
-  const headers: Record<string, string> = {
-    "Content-Type": "application/json",
-  };
-  if (JOBBER_WEBHOOK_SECRET) {
-    headers["X-Webhook-Secret"] = JOBBER_WEBHOOK_SECRET;
+  if (!WEBSITE_LEAD_WEBHOOK_SECRET) {
+    // Fail-loud counterpart to the ops side. Without the secret we cannot
+    // sign the request and the ops endpoint would 401 every call — skip
+    // entirely rather than burn a round-trip for an inevitable rejection.
+    console.warn(
+      "[contact] WEBSITE_LEAD_WEBHOOK_SECRET not set — skipping Jobber webhook"
+    );
+    return { skipped: true };
   }
+  const payload = buildJobberPayload(data);
+  // Sign and send the EXACT bytes we send; the ops side computes HMAC over
+  // request.text(), so any re-stringification between sign and send breaks
+  // verification. JSON.stringify on an object literal we construct is
+  // deterministic in V8 (insertion-order keys).
+  const body = JSON.stringify(payload);
+  const signature = createHmac("sha256", WEBSITE_LEAD_WEBHOOK_SECRET)
+    .update(body)
+    .digest("base64");
   const res = await fetch(JOBBER_WEBHOOK_URL, {
     method: "POST",
-    headers,
-    body: JSON.stringify(payload),
+    headers: {
+      "Content-Type": "application/json",
+      "X-Hub-Signature-256": signature,
+    },
+    body,
   });
   if (!res.ok) {
     const responseBody = await res.text().catch(() => "");
@@ -201,29 +212,36 @@ async function sendJobberWebhook(
   return { ok: true, status: res.status };
 }
 
-function buildJobberPayload(
-  data: ContactInput,
-  submittedAt: string,
-  attachmentCount: number
-) {
+function computeIdempotencyKey(data: ContactInput): string {
+  // Collapses retries within the same minute. Normalisation prevents trivial
+  // differences (case, phone formatting, services order) from breaking dedup.
+  const email = data.email.toLowerCase().trim();
+  const phone = (data.phone ?? "").replace(/\D/g, "");
+  const name = data.name.trim().toLowerCase();
+  const address = data.address;
+  const services = [...data.services].sort().join(",");
+  const minuteBucket = Math.floor(Date.now() / 60000);
+  const input = `${email}|${phone}|${name}|${address}|${services}|${minuteBucket}`;
+  return createHash("sha256").update(input).digest("hex");
+}
+
+function buildJobberPayload(data: ContactInput) {
+  // Shape matches the zod schema on the ops side at
+  // apps/admin/app/api/webhooks/website-lead/route.ts. Photos are not
+  // forwarded — they continue via the Web3Forms email path.
   return {
-    source: "firsthand-website",
-    submittedAt,
-    contact: {
-      name: data.name,
-      email: data.email,
-      phone: data.phone,
-    },
-    property: {
-      address: data.address,
+    idempotency_key: computeIdempotencyKey(data),
+    name: data.name,
+    email: data.email,
+    phone: data.phone || undefined,
+    services: data.services,
+    message: data.message || undefined,
+    source_address: {
+      street: data.address || undefined,
       city: data.city || undefined,
       state: data.state || undefined,
       zip: data.zip || undefined,
       placeId: data.placeId || undefined,
     },
-    services: data.services,
-    message: data.message ?? "",
-    hasAttachments: attachmentCount > 0,
-    attachmentCount,
   };
 }
