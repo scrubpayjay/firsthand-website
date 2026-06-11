@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Menu, X, Phone } from "lucide-react";
 import { NAP, SERVICES, SERVICE_AREAS } from "@/lib/site-config";
 import { cn } from "@/lib/utils";
+import { TrackedContactLink } from "@/components/tracked-contact-link";
 
 const primaryNav: Array<{ href: string; label: string }> = [
   { href: "/services", label: "Services" },
@@ -77,14 +78,14 @@ export function Header() {
 
         {/* Desktop right side: phone + CTA */}
         <div className="hidden lg:flex items-center gap-3">
-          <a
+          <TrackedContactLink
             href={`tel:${NAP.phoneTel}`}
             className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
             aria-label={`Call ${NAP.phone}`}
           >
             <Phone className="h-3.5 w-3.5" />
             {NAP.phone}
-          </a>
+          </TrackedContactLink>
           <Link
             href="/contact"
             className="cta-pill inline-flex items-center justify-center px-5 py-2.5 text-sm font-semibold"
@@ -169,13 +170,13 @@ export function Header() {
             </div>
 
             <div className="border-t border-border pt-4 flex flex-col gap-3">
-              <a
+              <TrackedContactLink
                 href={`tel:${NAP.phoneTel}`}
                 className="flex items-center justify-center gap-2 rounded-full border border-border px-4 py-3 text-sm font-semibold text-foreground hover:bg-muted"
               >
                 <Phone className="h-4 w-4" />
                 Call {NAP.phone}
-              </a>
+              </TrackedContactLink>
               <Link
                 href="/contact"
                 onClick={() => setOpen(false)}

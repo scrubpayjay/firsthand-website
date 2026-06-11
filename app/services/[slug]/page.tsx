@@ -12,6 +12,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CtaSection } from "@/components/cta-section";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { SitePhoto } from "@/components/site-photo";
+import { TrackedContactLink } from "@/components/tracked-contact-link";
 import { PHOTOS, photosByService } from "@/lib/photos-manifest";
 import { FaqAccordion } from "@/components/faq-accordion";
 import {
@@ -142,12 +143,12 @@ export default async function ServiceDetailPage({ params }: RouteProps) {
                 Get a free estimate
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link
+              <TrackedContactLink
                 href={`tel:${NAP.phoneTel}`}
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold text-foreground hover:bg-muted"
               >
                 Call {NAP.phone}
-              </Link>
+              </TrackedContactLink>
             </div>
           </div>
 

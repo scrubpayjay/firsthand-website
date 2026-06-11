@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 import { NAP } from "@/lib/site-config";
+import { TrackedContactLink } from "@/components/tracked-contact-link";
 
 interface CtaSectionProps {
   heading?: string;
@@ -35,13 +36,13 @@ export function CtaSection({
               {primaryLabel}
               <ArrowRight className="h-4 w-4" />
             </Link>
-            <a
+            <TrackedContactLink
               href={`tel:${NAP.phoneTel}`}
               className="inline-flex items-center justify-center gap-2 rounded-full border border-primary-foreground/30 bg-transparent px-6 py-3.5 text-sm font-semibold text-primary-foreground hover:bg-primary-foreground/10 whitespace-nowrap"
             >
               <Phone className="h-4 w-4" />
               {NAP.phone}
-            </a>
+            </TrackedContactLink>
           </div>
         </div>
       </div>

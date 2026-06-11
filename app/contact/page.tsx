@@ -5,6 +5,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { ContactForm } from "@/components/contact-form";
 import { GoogleMapsEmbed } from "@/components/google-maps-embed";
 import { SocialIcons } from "@/components/social-icons";
+import { TrackedContactLink } from "@/components/tracked-contact-link";
 import {
   NAP,
   SITE_URL,
@@ -57,7 +58,7 @@ export default function ContactPage() {
               </h2>
               <ul className="space-y-4">
                 <li>
-                  <a
+                  <TrackedContactLink
                     href={`tel:${NAP.phoneTel}`}
                     className="group flex items-start gap-3"
                   >
@@ -72,10 +73,10 @@ export default function ContactPage() {
                         {NAP.phone}
                       </span>
                     </span>
-                  </a>
+                  </TrackedContactLink>
                 </li>
                 <li>
-                  <a
+                  <TrackedContactLink
                     href={`mailto:${NAP.email}`}
                     className="group flex items-start gap-3"
                   >
@@ -90,7 +91,7 @@ export default function ContactPage() {
                         {NAP.email}
                       </span>
                     </span>
-                  </a>
+                  </TrackedContactLink>
                 </li>
                 <li>
                   <div className="flex items-start gap-3">

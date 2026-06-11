@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Phone, Mail, MapPin, Star } from "lucide-react";
 import { SocialIcons } from "@/components/social-icons";
+import { TrackedContactLink } from "@/components/tracked-contact-link";
 import {
   NAP,
   SERVICES,
@@ -36,22 +37,22 @@ export function Footer() {
 
             <ul className="space-y-2.5 text-sm">
               <li>
-                <a
+                <TrackedContactLink
                   href={`tel:${NAP.phoneTel}`}
                   className="flex items-start gap-2.5 text-muted-foreground hover:text-foreground"
                 >
                   <Phone className="h-4 w-4 mt-0.5 shrink-0" />
                   {NAP.phone}
-                </a>
+                </TrackedContactLink>
               </li>
               <li>
-                <a
+                <TrackedContactLink
                   href={`mailto:${NAP.email}`}
                   className="flex items-start gap-2.5 text-muted-foreground hover:text-foreground break-all"
                 >
                   <Mail className="h-4 w-4 mt-0.5 shrink-0" />
                   {NAP.email}
-                </a>
+                </TrackedContactLink>
               </li>
               <li className="flex items-start gap-2.5 text-muted-foreground">
                 <MapPin className="h-4 w-4 mt-0.5 shrink-0" />

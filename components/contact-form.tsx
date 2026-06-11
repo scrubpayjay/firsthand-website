@@ -139,8 +139,14 @@ export function ContactForm() {
         body: formData,
       });
       if (!res.ok) throw new Error("Submit failed");
-      // Fire Meta Pixel Lead event if pixel loaded (cookie-consent gated)
       if (typeof window !== "undefined") {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: "lead_form_submit",
+          form_id: "contact",
+          page_path: window.location.pathname,
+        });
+        // Fire Meta Pixel Lead event if pixel loaded (cookie-consent gated)
         const w = window as typeof window & {
           fbq?: (event: string, name: string) => void;
         };

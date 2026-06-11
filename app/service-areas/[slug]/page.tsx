@@ -18,6 +18,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CtaSection } from "@/components/cta-section";
 import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { SitePhoto } from "@/components/site-photo";
+import { TrackedContactLink } from "@/components/tracked-contact-link";
 import { photosByArea } from "@/lib/photos-manifest";
 import { FaqAccordion } from "@/components/faq-accordion";
 import { GoogleMapsEmbed } from "@/components/google-maps-embed";
@@ -171,12 +172,12 @@ export default async function ServiceAreaPage({ params }: RouteProps) {
                 Get a free estimate in {area.name}
                 <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link
+              <TrackedContactLink
                 href={`tel:${NAP.phoneTel}`}
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-border bg-card px-7 py-3.5 text-sm font-semibold text-foreground hover:bg-muted"
               >
                 Call {NAP.phone}
-              </Link>
+              </TrackedContactLink>
             </div>
           </div>
 
