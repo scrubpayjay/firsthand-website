@@ -116,7 +116,7 @@ export function Header() {
 
       {/* Mobile drawer */}
       {open && (
-        <div className="lg:hidden border-t border-border bg-background">
+        <div className="lg:hidden border-t border-border bg-background max-h-[calc(100dvh-4rem)] sm:max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain">
           <div className="container-wide py-6 space-y-6">
             <nav aria-label="Mobile" className="flex flex-col gap-1">
               {primaryNav.map((item) => (
