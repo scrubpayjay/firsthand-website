@@ -145,4 +145,7 @@ export const SERVICE_AREAS = [
   { slug: "college-park", name: "College Park", primary: false },
   { slug: "windermere", name: "Windermere", primary: false },
   { slug: "bay-hill", name: "Bay Hill", primary: false },
+  { slug: "montverde", name: "Montverde", primary: false },
+  { slug: "heathrow", name: "Heathrow", primary: false },
+  { slug: "lake-nona", name: "Lake Nona", primary: false },
 ] as const;
