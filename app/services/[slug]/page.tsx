@@ -188,7 +188,7 @@ export default async function ServiceDetailPage({ params }: RouteProps) {
                       Service area
                     </p>
                     <p className="text-foreground">
-                      Winter Park · Windermere · Bay Hill · College Park · Orlando
+                      {SERVICE_AREAS.map((a) => a.name).join(" · ")}
                     </p>
                   </div>
                 </li>

@@ -40,7 +40,7 @@ import { REVIEWS } from "@/lib/reviews-data";
 export const metadata: Metadata = {
   title: "Landscaping in Winter Park & Central Florida | Firsthand Lawns",
   description:
-    "Landscape design, lawn maintenance, sod, irrigation, and hardscape for Winter Park, Windermere, Bay Hill, College Park, and Central Florida. Family-owned, fully insured, financing up to $100K.",
+    "Lawn maintenance, landscape design, sod, irrigation & hardscape for Winter Park, Windermere, Bella Collina, Lake Nona & Central Florida. Financing $100K.",
   alternates: { canonical: SITE_URL },
 };
 
@@ -158,7 +158,7 @@ export default function HomePage() {
             <div className="max-w-2xl">
               <p className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground mb-5">
                 <span className="inline-block h-1.5 w-1.5 rounded-full bg-cta" />
-                Winter Park · Windermere · Bay Hill · College Park · Orlando
+                {SERVICE_AREAS.map((a) => a.name).join(" · ")}
               </p>
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] leading-[1.05] font-semibold tracking-tight text-foreground">
                 Landscaping in{" "}

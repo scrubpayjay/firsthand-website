@@ -9,7 +9,7 @@ import { SITE_URL } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Service Areas — Winter Park, Windermere, Bay Hill, College Park, Orlando",
   description:
-    "Firsthand Lawns works across Central Florida — Winter Park (primary), Windermere, Bay Hill, College Park, and Orlando. Pick your area for local specifics.",
+    "Firsthand Lawns serves Central Florida — Winter Park (primary), Bay Hill, Bella Collina, Lake Nona, and more. Pick your area for local specifics.",
   alternates: { canonical: `${SITE_URL}/service-areas` },
 };
 
