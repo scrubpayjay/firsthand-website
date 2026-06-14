@@ -11,7 +11,7 @@ import {
 } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Reviews — what our customers say | Firsthand Lawns",
+  title: "Reviews — what our customers say",
   description: `Read ${REVIEWS_SUMMARY.count}+ verified Google reviews of Firsthand Lawns from Winter Park, Windermere, Bay Hill, College Park, and Orlando customers. ${REVIEWS_SUMMARY.rating.toFixed(1)} ★ average.`,
   alternates: { canonical: `${SITE_URL}/reviews` },
 };

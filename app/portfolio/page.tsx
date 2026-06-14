@@ -11,7 +11,7 @@ import {
 } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Portfolio — Recent landscape projects | Firsthand Lawns",
+  title: "Portfolio — Recent landscape projects",
   description:
     "Browse Firsthand's recent landscape projects across Winter Park, Windermere, Bay Hill, College Park, and Orlando — sod, hardscape, irrigation, design installs.",
   alternates: { canonical: `${SITE_URL}/portfolio` },

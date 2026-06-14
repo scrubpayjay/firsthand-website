@@ -16,7 +16,7 @@ import {
 } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Contact Firsthand Lawns — Get a free landscape estimate",
+  title: "Contact — Get a free landscape estimate",
   description:
     "Call (407) 337-5191, email, or send a quick form. Free estimates for Winter Park, Windermere, Bay Hill, College Park, and Orlando. Usually back within one business day.",
   alternates: { canonical: `${SITE_URL}/contact` },

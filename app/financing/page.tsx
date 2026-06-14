@@ -13,7 +13,7 @@ import { Breadcrumbs } from "@/components/breadcrumbs";
 import { FINANCING, SERVICES, SITE_URL } from "@/lib/site-config";
 
 export const metadata: Metadata = {
-  title: "Financing — up to $100K landscape financing | Firsthand Lawns",
+  title: "Financing — up to $100K landscape financing",
   description:
     "Spread landscape projects over 2–12 years with no prepayment penalty. Amounts up to $100,000. Soft credit pull for pre-qualification. Residential and commercial.",
   alternates: { canonical: `${SITE_URL}/financing` },

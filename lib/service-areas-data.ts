@@ -39,7 +39,7 @@ export const SERVICE_AREA_PAGES: ServiceAreaPage[] = [
     slug: "winter-park",
     name: "Winter Park",
     fullName: "Winter Park, FL",
-    title: "Landscaping in Winter Park, FL | Firsthand Lawns",
+    title: "Landscaping in Winter Park, FL",
     description:
       "Landscape design, lawn care, sod, irrigation, and hardscape for Winter Park, FL — Park Avenue, Hannibal Square, Olde Winter Park, Comstock Park, Windsong. Family-owned.",
     h1: "Landscaping in Winter Park, FL",
@@ -112,7 +112,7 @@ export const SERVICE_AREA_PAGES: ServiceAreaPage[] = [
     slug: "orlando",
     name: "Orlando",
     fullName: "Orlando, FL",
-    title: "Landscaping in Orlando, FL | Firsthand Lawns",
+    title: "Landscaping in Orlando, FL",
     description:
       "Landscape design, lawn care, sod, irrigation, and hardscape in Orlando — Audubon Park, Mills 50, Thornton Park, Baldwin Park, SoDo, College Park. Residential + commercial.",
     h1: "Landscaping in Orlando, FL",
@@ -185,7 +185,7 @@ export const SERVICE_AREA_PAGES: ServiceAreaPage[] = [
     slug: "college-park",
     name: "College Park",
     fullName: "College Park, FL",
-    title: "Landscaping in College Park, Orlando | Firsthand Lawns",
+    title: "Landscaping in College Park, Orlando",
     description:
       "Lawn care, landscape design, sod, and irrigation in College Park (Orlando) — Princeton Street, Edgewater Drive, Dubsdread, Lake Adair, Lake Concord. Older homes a specialty.",
     h1: "Landscaping in College Park, Orlando",
@@ -258,7 +258,7 @@ export const SERVICE_AREA_PAGES: ServiceAreaPage[] = [
     slug: "windermere",
     name: "Windermere",
     fullName: "Windermere, FL",
-    title: "Landscaping in Windermere, FL | Firsthand Lawns",
+    title: "Landscaping in Windermere, FL",
     description:
       "Premium landscape design, hardscape, and irrigation for Windermere homes — Butler Chain of Lakes, Isleworth, Keene's Pointe, Tildens Grove. ARC-fluent. HOA-approved.",
     h1: "Landscaping in Windermere, FL",
@@ -331,7 +331,7 @@ export const SERVICE_AREA_PAGES: ServiceAreaPage[] = [
     slug: "bay-hill",
     name: "Bay Hill",
     fullName: "Bay Hill / Doctor Phillips, FL",
-    title: "Landscaping in Bay Hill & Doctor Phillips | Firsthand Lawns",
+    title: "Landscaping in Bay Hill & Doctor Phillips",
     description:
       "Landscape design, lawn care, and hardscape for Bay Hill, Doctor Phillips, and Restaurant Row — residential and commercial. Country club perimeter expertise. ARC-fluent.",
     h1: "Landscaping in Bay Hill & Doctor Phillips, FL",
@@ -404,7 +404,7 @@ export const SERVICE_AREA_PAGES: ServiceAreaPage[] = [
     slug: "montverde",
     name: "Montverde",
     fullName: "Montverde, FL",
-    title: "Bella Collina & Montverde Landscape Design | Firsthand",
+    title: "Bella Collina & Montverde Landscape Design",
     description:
       "Landscape design, installation, and hardscape for Bella Collina and Montverde near Lake Apopka — custom patios, outdoor living, Tuscan-style plantings.",
     h1: "Landscape Design & Hardscape in Montverde, FL",
@@ -489,7 +489,7 @@ export const SERVICE_AREA_PAGES: ServiceAreaPage[] = [
     slug: "heathrow",
     name: "Heathrow",
     fullName: "Heathrow, FL",
-    title: "Landscape Design in Heathrow & Alaqua Lakes | Firsthand",
+    title: "Landscape Design in Heathrow & Alaqua Lakes",
     description:
       "Landscape design, installation, and hardscape for Heathrow and Alaqua Lakes — custom outdoor living, ARC-fluent estate landscape work in Seminole County.",
     h1: "Landscape Design & Hardscape in Heathrow, FL",
@@ -562,7 +562,7 @@ export const SERVICE_AREA_PAGES: ServiceAreaPage[] = [
     slug: "lake-nona",
     name: "Lake Nona",
     fullName: "Lake Nona, FL",
-    title: "Landscape Design in Lake Nona, FL | Firsthand Lawns",
+    title: "Landscape Design in Lake Nona, FL",
     description:
       "Landscape design, installation, and hardscape for Lake Nona — Laureate Park, Lake Nona Golf & Country Club, Medical City. New-construction specialists.",
     h1: "Landscape Design & Hardscape in Lake Nona, FL",
