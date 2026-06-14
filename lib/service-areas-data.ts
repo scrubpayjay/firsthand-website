@@ -404,13 +404,13 @@ export const SERVICE_AREA_PAGES: ServiceAreaPage[] = [
     slug: "montverde",
     name: "Montverde",
     fullName: "Montverde, FL",
-    title: "Landscape Design in Montverde, FL | Firsthand Lawns",
+    title: "Bella Collina & Montverde Landscape Design | Firsthand",
     description:
-      "Landscape design, installation, and hardscape for Montverde and Bella Collina — custom patios, outdoor living spaces, Tuscan-style plantings.",
+      "Landscape design, installation, and hardscape for Bella Collina and Montverde near Lake Apopka — custom patios, outdoor living, Tuscan-style plantings.",
     h1: "Landscape Design & Hardscape in Montverde, FL",
     primary: false,
     intro: [
-      "Montverde and the Bella Collina community sit on some of the only real rolling hills in central Florida. The homes here — Mediterranean and Tuscan villas spread across the hilltops above Lake Apopka — were built for views, and the landscape has to do the same. The work that fits Montverde is full landscape redesigns, custom patios and pool decks that take advantage of the elevation, mature plantings that match the architectural style, and hardscape that lasts thirty years.",
+      "We design and install estate-scale landscape projects in Montverde and Bella Collina — custom patios on hilltop lots, mature Mediterranean plantings, outdoor living spaces that take advantage of central Florida's only real rolling hills. The homes here are Mediterranean and Tuscan villas spread across the hilltops above Lake Apopka, built for views, and the landscape has to match that ambition. Most of our Montverde work is full redesigns, custom hardscape, and plantings that last thirty years.",
       "Bella Collina especially has architectural and landscape standards that mirror the Tuscan theme of the community — olive trees, lavender, cypress, stonework, fountains. We design within that language when projects call for it, and we know which plant material holds up to Florida summers despite looking Italian in concept.",
       "Most of our Montverde work is initiated when a homeowner buys a property and wants to take the landscape from builder-grade to estate-grade. That's a full-property design conversation: site walk, hand-drawn concept, refined plan, then phased install over a season.",
     ],
@@ -441,6 +441,10 @@ export const SERVICE_AREA_PAGES: ServiceAreaPage[] = [
         title: "Full-property design from concept to install.",
         body: "Most Montverde work starts with a blank slate or builder-grade landscape and ends as a designed estate property. We carry the project from site walk to concept to revised plan to phased install, with the same team through all of it.",
       },
+      {
+        title: "Hilltop irrigation and drainage engineering.",
+        body: "Bella Collina's elevation creates real irrigation challenges most central Florida landscape companies aren't set up for — pressure variation between the top of the lot and the bottom can be 20+ PSI, and runoff from the high side can scour beds or undermine retaining walls if it isn't engineered out. We design irrigation zones around the actual grade, spec pressure-regulating heads where elevation calls for them, and grade so water moves where we want it instead of where gravity wants it.",
+      },
     ],
     faqs: [
       {
@@ -456,8 +460,16 @@ export const SERVICE_AREA_PAGES: ServiceAreaPage[] = [
         a: "Estate-scale outdoor living projects in Bella Collina and similar properties typically run $40K–$200K depending on hardscape material, kitchen scope, and lighting. Travertine pool deck plus covered outdoor kitchen with grill, fridge, and bar seating sits in the upper half of that range.",
       },
       {
+        q: "Can you redo our pool deck as part of the landscape project?",
+        a: "Yes — pool deck replacements are a regular part of Bella Collina project scope. Travertine and porcelain pavers in 18×36 or 24×24 formats are the typical finish at this price point. Pool deck plus surrounding landscape designed and installed together usually runs $50K–$120K depending on square footage, material, and whether coping and tile need replacement. The deck and the landscape grading interact, so scoping them as one job is cleaner than sequencing two contractors.",
+      },
+      {
         q: "We just bought a property — when should we start the landscape design?",
         a: "Before you move in if possible. Builder-grade landscape on a $2M home looks out of place from day one. Most Montverde redesigns are scoped during the closing window and start installation within 30–60 days of move-in. Design phase is usually two to four weeks.",
+      },
+      {
+        q: "How long does a full Montverde landscape project take from first call to finished install?",
+        a: "Design phase is typically two to four weeks: site walk, hand-drawn concept, then refined plan. Bella Collina ARC submittal adds another one to three weeks depending on the committee's calendar. Install is six to twelve weeks for a full-property project — longer if pool deck or covered outdoor structures are part of scope. Total timeline from first conversation to finished yard is usually three to five months for a standard estate-scale project.",
       },
       {
         q: "Do you handle the retaining wall and grading on hilltop lots?",
