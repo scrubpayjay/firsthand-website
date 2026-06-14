@@ -38,7 +38,7 @@ import {
 import { REVIEWS } from "@/lib/reviews-data";
 
 export const metadata: Metadata = {
-  title: "Landscaping in Winter Park & Central Florida",
+  title: "Landscaping in Winter Park & Central Florida | Firsthand Lawns",
   description:
     "Landscape design, lawn maintenance, sod, irrigation, and hardscape for Winter Park, Windermere, Bay Hill, College Park, and Central Florida. Family-owned, fully insured, financing up to $100K.",
   alternates: { canonical: SITE_URL },
