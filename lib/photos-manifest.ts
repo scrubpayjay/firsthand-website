@@ -27,9 +27,58 @@ export interface SitePhoto {
    * "— illustrative" suffix on the alt text.
    */
   illustrative?: boolean;
+  /**
+   * True for portrait marketing-flyer hero images (logo + headline +
+   * photo + badges + footer baked into a single PNG, ~2:3 aspect). The
+   * service-area page template renders these at `aspect-[2/3]` so the
+   * full flyer shows; regular hero photos keep `aspect-[4/5]`.
+   */
+  flyer?: boolean;
 }
 
 export const PHOTOS: SitePhoto[] = [
+  // ── Area marketing flyers (2026-06-15) ───────────────────────────────
+  // Portrait 2:3 marketing collateral with logo + "Proudly Serving"
+  // headline + hero photo + 3 feature badges + "YOUR LAWN. OUR
+  // PRIORITY." footer baked into each PNG. Rendered at aspect-[2/3] on
+  // the service-area page so the full flyer is visible (badges + footer
+  // not cropped). Listed first so the area's area-hero pick finds them.
+  {
+    "src": "/photos/area-flyers/montverde.png",
+    "alt": "Firsthand Lawns proudly serving Montverde, FL",
+    "category": "montverde",
+    "area": "montverde",
+    "service": "lawn-maintenance",
+    "role": "area-hero",
+    "width": 1024,
+    "height": 1536,
+    "bytes": 2595683,
+    "flyer": true
+  },
+  {
+    "src": "/photos/area-flyers/heathrow.png",
+    "alt": "Firsthand Lawns proudly serving Heathrow, FL",
+    "category": "heathrow",
+    "area": "heathrow",
+    "service": "lawn-maintenance",
+    "role": "area-hero",
+    "width": 1024,
+    "height": 1536,
+    "bytes": 3061083,
+    "flyer": true
+  },
+  {
+    "src": "/photos/area-flyers/lake-nona.png",
+    "alt": "Firsthand Lawns proudly serving Lake Nona, FL",
+    "category": "lake-nona",
+    "area": "lake-nona",
+    "service": "lawn-maintenance",
+    "role": "area-hero",
+    "width": 1024,
+    "height": 1536,
+    "bytes": 2630895,
+    "flyer": true
+  },
   // ── Ryan-curated batch (2026-05-24) ──────────────────────────────────
   // Hand-picked by Ryan from his own project archive in response to v1
   // site review. Placed at the TOP of the array so pickHero() finds

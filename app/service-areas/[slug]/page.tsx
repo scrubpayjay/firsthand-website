@@ -186,10 +186,13 @@ export default async function ServiceAreaPage({ params }: RouteProps) {
             const hero =
               photos.find((p) => p.role === "area-hero") ?? photos[0];
             if (hero) {
+              // Portrait flyer heroes ship at 2:3 with badges/footer
+              // baked in; cropping to 4:5 would chop them off.
+              const aspect = hero.flyer ? "aspect-[2/3]" : "aspect-[4/5]";
               return (
                 <SitePhoto
                   photo={hero}
-                  aspect="aspect-[4/5]"
+                  aspect={aspect}
                   sizes="(min-width: 1024px) 45vw, 100vw"
                   rounded="rounded-2xl"
                 />
