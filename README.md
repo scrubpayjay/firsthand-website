@@ -91,7 +91,7 @@ Existing placeholders remain on those surfaces. If Ryan sends a follow-up batch 
 **Tracking**
 
 - Google Tag Manager: **GTM-5T6BXSR7** (the existing WordPress container — preserved, not regenerated)
-- Meta Pixel: placeholder `PLACEHOLDER_FB_PIXEL_ID` in `app/layout.tsx`, fires PageView + Lead event after consent
+- Meta Pixel: ID `5294875050737022` (env-driven via `NEXT_PUBLIC_META_PIXEL_ID`), fires PageView + Lead event after consent
 - Tidio chat: placeholder `PLACEHOLDER_TIDIO_ID` in `app/layout.tsx`, lazy-loaded after consent
 
 ---
@@ -125,7 +125,6 @@ category prefix, area, service, role, and alt text override.
 
 | Placeholder | Location | Replace with |
 |---|---|---|
-| `PLACEHOLDER_FB_PIXEL_ID` | `app/layout.tsx` | Real Meta Pixel ID (create in Meta Ads Manager) |
 | `PLACEHOLDER_TIDIO_ID` | `app/layout.tsx` | Tidio public key (see Tidio setup below) |
 | `admin@firsthandlawns.com` | `lib/site-config.ts` | Inbound contact address (Ryan confirmed 2026-05-25) |
 | Hours (`Mon-Fri 8am-6pm · Sat-Sun 9am-2pm`) | `lib/site-config.ts` | Real hours from Ryan |
