@@ -11,6 +11,7 @@ import { TrackedContactLink } from "@/components/tracked-contact-link";
 const primaryNav: Array<{ href: string; label: string }> = [
   { href: "/services", label: "Services" },
   { href: "/service-areas", label: "Service areas" },
+  { href: "/commercial", label: "Commercial" },
   { href: "/portfolio", label: "Portfolio" },
   { href: "/financing", label: "Financing" },
   { href: "/reviews", label: "Reviews" },
