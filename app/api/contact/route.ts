@@ -5,8 +5,6 @@ import { contactSchema, type ContactInput } from "@/lib/contact-schema";
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const WEB3FORMS_ACCESS_KEY = process.env.WEB3FORMS_ACCESS_KEY;
-const WEB3FORMS_ENDPOINT = "https://api.web3forms.com/submit";
 const JOBBER_WEBHOOK_URL = process.env.JOBBER_WEBHOOK_URL;
 const WEBSITE_LEAD_WEBHOOK_SECRET = process.env.WEBSITE_LEAD_WEBHOOK_SECRET;
 
@@ -34,6 +32,9 @@ export async function POST(request: Request) {
     placeId: form.get("placeId") ?? "",
     services: form.getAll("services").filter((v): v is string => typeof v === "string"),
     message: form.get("message") ?? "",
+    // FormData carries the checkbox as the literal string "true"/"false".
+    // Coerce here so the zod boolean field parses cleanly.
+    smsConsent: form.get("smsConsent") === "true",
     website: form.get("website") ?? "",
   };
 
@@ -81,98 +82,44 @@ export async function POST(request: Request) {
     });
   }
 
-  const submittedAt = new Date().toISOString();
+  // Stamp SMS consent server-side. If we trusted a client-supplied timestamp
+  // we couldn't defend it in a TCR / carrier dispute. Only set when the user
+  // actually checked the box — an unchecked submission has no consent event.
+  const smsConsentTimestamp = parsed.data.smsConsent
+    ? new Date().toISOString()
+    : null;
 
   console.log(
     "[contact] new submission:",
     JSON.stringify(
-      { ...parsed.data, attachmentCount: attachments.length },
+      {
+        ...parsed.data,
+        smsConsentTimestamp,
+        attachmentCount: attachments.length,
+      },
       null,
       2
     )
   );
 
-  // Web3Forms (email to Ryan) + Jobber webhook dispatched in parallel; both
-  // failures are non-blocking. Customer still gets a successful redirect —
-  // a logged failure is preferable to making them retry while we debug.
-  const results = await Promise.allSettled([
-    sendWeb3FormsEmail(parsed.data, submittedAt, attachments),
-    sendJobberWebhook(parsed.data),
-  ]);
-
-  results.forEach((r, i) => {
-    const label = i === 0 ? "web3forms" : "jobber-webhook";
-    if (r.status === "rejected") {
-      console.error(`[contact] ${label} failed:`, r.reason);
-    }
-  });
+  // Signed Jobber webhook → firsthand-ops admin is the sole notification
+  // path. Ryan gets Jobber's native push notification on every new request.
+  // The prior Web3Forms email path was removed because Web3Forms is now
+  // fronted by a Cloudflare JS-interstitial challenge that no server-side
+  // HTTP client can pass.
+  try {
+    await sendJobberWebhook(parsed.data, smsConsentTimestamp);
+  } catch (err) {
+    console.error("[contact] jobber-webhook failed:", err);
+  }
 
   return NextResponse.json({ ok: true });
 }
 
-async function sendWeb3FormsEmail(
+async function sendJobberWebhook(
   data: ContactInput,
-  submittedAt: string,
-  attachments: Attachment[]
+  smsConsentTimestamp: string | null
 ) {
-  if (!WEB3FORMS_ACCESS_KEY) {
-    console.warn(
-      "[contact] WEB3FORMS_ACCESS_KEY not set — skipping email send"
-    );
-    return { skipped: true };
-  }
-
-  const cityStateZip = [data.city, data.state, data.zip]
-    .filter((v) => v && v.length > 0)
-    .join(", ");
-
-  const fd = new FormData();
-  fd.append("access_key", WEB3FORMS_ACCESS_KEY);
-  fd.append("subject", `New Firsthand Lead — ${data.name}`);
-  fd.append("from_name", "Firsthand Lawns Website");
-  fd.append("replyto", data.email);
-  // Web3Forms convention: empty botcheck field. Honeypot already filtered above.
-  fd.append("botcheck", "");
-
-  fd.append("name", data.name);
-  fd.append("email", data.email);
-  fd.append("phone", data.phone);
-  fd.append("address", data.address);
-  if (cityStateZip) fd.append("locality", cityStateZip);
-  if (data.placeId) fd.append("place_id", data.placeId);
-  fd.append("services", data.services.join(", "));
-  fd.append("message", data.message ?? "");
-  fd.append("submitted_at", submittedAt);
-
-  for (const att of attachments) {
-    fd.append(
-      "attachments",
-      new Blob([att.content], { type: att.type }),
-      att.filename
-    );
-  }
-
-  // Web3Forms sits behind Cloudflare, which 403s requests with no
-  // User-Agent (Node fetch default). Send a real-looking UA + Accept.
-  const res = await fetch(WEB3FORMS_ENDPOINT, {
-    method: "POST",
-    body: fd,
-    headers: {
-      "User-Agent":
-        "Mozilla/5.0 (compatible; FirsthandLawnsWebsite/1.0; +https://firsthandlawns.com)",
-      Accept: "application/json",
-    },
-  });
-  if (!res.ok) {
-    const responseBody = await res.text().catch(() => "");
-    throw new Error(
-      `Web3Forms returned ${res.status} ${res.statusText}: ${responseBody.slice(0, 200)}`
-    );
-  }
-  return { ok: true, status: res.status };
-}
-
-async function sendJobberWebhook(data: ContactInput) {
   if (!JOBBER_WEBHOOK_URL) {
     console.warn("[contact] JOBBER_WEBHOOK_URL not set — skipping webhook");
     return { skipped: true };
@@ -186,7 +133,7 @@ async function sendJobberWebhook(data: ContactInput) {
     );
     return { skipped: true };
   }
-  const payload = buildJobberPayload(data);
+  const payload = buildJobberPayload(data, smsConsentTimestamp);
   // Sign and send the EXACT bytes we send; the ops side computes HMAC over
   // request.text(), so any re-stringification between sign and send breaks
   // verification. JSON.stringify on an object literal we construct is
@@ -225,10 +172,18 @@ function computeIdempotencyKey(data: ContactInput): string {
   return createHash("sha256").update(input).digest("hex");
 }
 
-function buildJobberPayload(data: ContactInput) {
+function buildJobberPayload(
+  data: ContactInput,
+  smsConsentTimestamp: string | null
+) {
   // Shape matches the zod schema on the ops side at
-  // apps/admin/app/api/webhooks/website-lead/route.ts. Photos are not
-  // forwarded — they continue via the Web3Forms email path.
+  // apps/admin/app/api/webhooks/website-lead/route.ts. Photos uploaded
+  // to the contact form are currently dropped — the prior email path
+  // forwarded them and we haven't wired a replacement. Track separately.
+  //
+  // sms_consent + sms_consent_timestamp are the audit record for TCR / A2P
+  // 10DLC. Always include sms_consent so the ops side stores a definitive
+  // boolean per lead; timestamp is only present when consent was granted.
   return {
     idempotency_key: computeIdempotencyKey(data),
     name: data.name,
@@ -236,6 +191,8 @@ function buildJobberPayload(data: ContactInput) {
     phone: data.phone || undefined,
     services: data.services,
     message: data.message || undefined,
+    sms_consent: data.smsConsent,
+    sms_consent_timestamp: smsConsentTimestamp ?? undefined,
     source_address: {
       street: data.address || undefined,
       city: data.city || undefined,

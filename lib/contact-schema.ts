@@ -43,6 +43,10 @@ export const contactSchema = z.object({
     .array(z.enum(SERVICE_OPTIONS))
     .min(1, "Pick at least one service"),
   message: z.string().trim().max(2000).optional().or(z.literal("")),
+  // TCR / A2P 10DLC opt-in. Optional and unchecked by default — carriers
+  // require that granting SMS consent is not a condition of submitting the
+  // form. `false` means the lead has NOT opted into SMS from this submission.
+  smsConsent: z.boolean().default(false),
   // Honeypot — should always be empty. Bots tend to fill every field.
   website: z.string().max(0).optional().or(z.literal("")),
 });

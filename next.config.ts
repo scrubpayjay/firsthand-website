@@ -20,8 +20,11 @@ const legacyRedirects = [
   { source: "/where-we-service/", destination: "/service-areas", permanent: true },
   { source: "/contact-us", destination: "/contact", permanent: true },
   { source: "/contact-us/", destination: "/contact", permanent: true },
-  { source: "/privacy-policy", destination: "/privacy", permanent: true },
-  { source: "/privacy-policy/", destination: "/privacy", permanent: true },
+  // Old short URL now redirects to the canonical /privacy-policy — that
+  // route ships the TCR/A2P 10DLC-compliant policy (SMS opt-in language,
+  // sharing carve-out) referenced from the compliance filing.
+  { source: "/privacy", destination: "/privacy-policy", permanent: true },
+  { source: "/privacy/", destination: "/privacy-policy", permanent: true },
   { source: "/terms-and-conditions", destination: "/terms", permanent: true },
   { source: "/terms-and-conditions/", destination: "/terms", permanent: true },
 ];

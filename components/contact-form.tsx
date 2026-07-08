@@ -3,6 +3,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef, useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { z } from "zod";
 import { Loader2, ArrowRight, X } from "lucide-react";
@@ -59,6 +60,7 @@ export function ContactForm() {
       placeId: "",
       services: [],
       message: "",
+      smsConsent: false,
       website: "",
     },
   });
@@ -131,6 +133,10 @@ export function ContactForm() {
       if (data.placeId) formData.append("placeId", data.placeId);
       for (const s of data.services) formData.append("services", s);
       if (data.message) formData.append("message", data.message);
+      // Always send smsConsent so the server can distinguish "user unchecked
+      // it" from "the field wasn't posted." String form because FormData
+      // stringifies everything anyway.
+      formData.append("smsConsent", data.smsConsent ? "true" : "false");
       if (data.website) formData.append("website", data.website);
       for (const file of photos) formData.append("photos", file);
 
@@ -347,6 +353,46 @@ export function ContactForm() {
               tabIndex={-1}
               autoComplete="off"
             />
+          </label>
+        </div>
+
+        {/* SMS opt-in — TCR / A2P 10DLC. Unchecked by default and optional;
+            the form submits either way. Consent must NOT be a condition of
+            requesting a quote per carrier requirements. */}
+        <div className="rounded-lg border border-border bg-muted/30 px-4 py-3.5">
+          <label
+            htmlFor="sms-consent"
+            className="flex items-start gap-3 text-sm text-muted-foreground cursor-pointer"
+          >
+            <input
+              {...register("smsConsent")}
+              id="sms-consent"
+              type="checkbox"
+              className="mt-0.5 h-4 w-4 rounded border-border text-primary focus:ring-2 focus:ring-ring/30 shrink-0"
+            />
+            <span className="leading-relaxed">
+              By checking this box, I agree to receive SMS text messages from
+              Firsthand Lawn and Landscape, LLC related to my inquiry and
+              services, including appointment reminders, quote follow-ups,
+              service updates, and billing notifications. Message frequency
+              varies. Message &amp; data rates may apply. Reply STOP to opt
+              out at any time, or HELP for help. Consent is not a condition
+              of purchase. See our{" "}
+              <Link
+                href="/privacy-policy"
+                className="underline text-foreground hover:text-primary"
+              >
+                Privacy Policy
+              </Link>{" "}
+              and{" "}
+              <Link
+                href="/sms-terms"
+                className="underline text-foreground hover:text-primary"
+              >
+                SMS Terms &amp; Conditions
+              </Link>
+              .
+            </span>
           </label>
         </div>
 

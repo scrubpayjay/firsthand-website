@@ -178,9 +178,12 @@ export function Footer() {
         {/* Legal row */}
         <div className="mt-6 pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-muted-foreground">
           <p>© {year} Firsthand Lawns. All rights reserved.</p>
-          <div className="flex items-center gap-5">
-            <Link href="/privacy" className="hover:text-foreground">
-              Privacy
+          <div className="flex items-center gap-5 flex-wrap">
+            <Link href="/privacy-policy" className="hover:text-foreground">
+              Privacy policy
+            </Link>
+            <Link href="/sms-terms" className="hover:text-foreground">
+              SMS terms
             </Link>
             <Link href="/terms" className="hover:text-foreground">
               Terms
