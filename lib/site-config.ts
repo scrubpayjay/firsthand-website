@@ -137,6 +137,12 @@ export const SERVICES = [
   { slug: "stump-grinding-removal", name: "Stump Grinding & Removal", confirm: true },
   { slug: "bamboo-trimming-removal", name: "Bamboo Trimming & Removal", confirm: true },
   { slug: "property-cleanup", name: "Property Cleanup", confirm: false },
+  // Off-season service lines (2026-07) — fill the landscaping slow season and
+  // keep the crew working: gutters (fall/winter), Christmas lights (Nov–Dec),
+  // pressure washing (year-round/shoulder). New to this site → confirm: true.
+  { slug: "pressure-washing", name: "Pressure Washing", confirm: true },
+  { slug: "gutter-cleaning", name: "Gutter Cleaning", confirm: true },
+  { slug: "christmas-lights", name: "Christmas Light Installation", confirm: true },
 ] as const;
 
 export const SERVICE_AREAS = [

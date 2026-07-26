@@ -989,6 +989,294 @@ export const SERVICE_PAGES: ServicePage[] = [
       ],
     },
   },
+
+  // ── 10. Pressure Washing [needs Ryan confirm] ─────────────────────────
+  // Off-season service line — pressure washing runs year-round / shoulder
+  // season and keeps the crew working. Copy adapted to the site's real NAP
+  // (Firsthand Lawns) and actual service areas (Winter Park primary).
+  {
+    slug: "pressure-washing",
+    name: "Pressure Washing",
+    title: "Pressure Washing in Winter Park & Orlando",
+    description:
+      "Pressure washing and soft-wash for driveways, pavers, pool decks, and home exteriors across Winter Park, Orlando, Windermere, and Central Florida. Free estimates.",
+    h1: "Pressure Washing in Winter Park & Central Florida",
+    intro: [
+      "Central Florida's heat and humidity are hard on every exterior surface. Algae, mold, mildew, and grime build up fast on driveways, walkways, pavers, and siding — and left alone they don't just look bad. Black streaking eats into concrete, algae makes pool decks slick, and organic growth works its way under paver sealer until the joints let go.",
+      "The mistake most people make is treating pressure washing as one setting. A driveway can take 3,000 PSI; stucco, painted siding, and screen enclosures cannot — hit those with a pressure tip and you've stripped paint or driven water behind the wall. We soft-wash the surfaces that need it (low pressure plus a cleaning solution that kills the growth at the root) and reserve high pressure for the hardscape that can take it. Right method, right surface, nothing damaged in the name of getting clean.",
+      "You already know us for your lawn and landscape. Pressure washing is the same insured crew you trust on your property, keeping the whole exterior cared for through the shoulder season — one company for the yard and the hardscape, not another vendor to vet.",
+    ],
+    includes: [
+      "Driveways & walkways — lift oil stains, tire marks, algae, and the black streaking that comes back every summer",
+      "Paver patios & pool decks — cleaned at safe pressure so joints, sand, and sealer aren't blown out",
+      "House exteriors & siding — soft-wash methods that protect stucco, vinyl, and painted surfaces",
+      "Fences & wood/composite decks — restored before the staining sets in permanently",
+      "Pavers & retaining walls — the hardscape features we install and maintain",
+      "Sidewalks, entryways, and curbs — the first thing anyone sees",
+      "Rust, irrigation, and fertilizer staining lifted from concrete",
+      "Surrounding plants and beds pre-wet and rinsed so cleaning-solution runoff never burns your landscaping",
+    ],
+    process: [
+      {
+        title: "Walk-through & estimate",
+        body: "We look at the surfaces, note what's hardscape vs. what needs soft-washing, and give you a clear price. Free, usually same visit if we're already on the property.",
+      },
+      {
+        title: "Surface-by-surface plan",
+        body: "Concrete and pavers get pressure; stucco, siding, screens, and painted trim get soft-wash. We tell you which is which before we start so there are no surprises.",
+      },
+      {
+        title: "Protect the landscaping",
+        body: "Beds, foundation plants, and turf near the work get pre-wet so nothing is exposed to cleaning solution. This is the step most one-truck outfits skip.",
+      },
+      {
+        title: "Wash & rinse",
+        body: "We clean the surface, then rinse everything down — including the plants and beds around it. Most single-family homes are done in one visit, two to four hours.",
+      },
+      {
+        title: "Final walk",
+        body: "We walk it with you (or send CompanyCam photos if you're not home) so you sign off on the result, not a promise.",
+      },
+    ],
+    why: [
+      {
+        title: "Right pressure for every surface.",
+        body: "Soft-wash for stucco, siding, and screens; high pressure for concrete and pavers. Blasting everything at max PSI is faster and it's how driveways get etched and paint gets stripped — we don't work that way.",
+      },
+      {
+        title: "We protect your landscaping.",
+        body: "We already maintain the beds around these surfaces, so we pre-wet and rinse them. The cleaning solution that kills algae will also brown out a foundation planting if nobody's paying attention.",
+      },
+      {
+        title: "One company for the whole exterior.",
+        body: "Same insured crew that mows and maintains your property. Adding a wash is a text, not a new vendor, a new estimate, and a new set of strangers on your property.",
+      },
+      {
+        title: "It holds longer.",
+        body: "Killing the algae and mold at the root with a soft-wash solution keeps it from growing back in weeks the way a plain water-blast does.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What's the difference between pressure washing and soft washing?",
+        a: "Pressure washing uses high-PSI water — right for concrete driveways, sidewalks, and most pavers. Soft washing uses low pressure plus a cleaning solution that kills algae, mold, and mildew at the root — right for stucco, vinyl and painted siding, screen enclosures, and roofs. Using high pressure on a soft-wash surface is how paint gets stripped and stucco gets damaged, so we match the method to the surface.",
+      },
+      {
+        q: "Will pressure washing damage my pavers or stucco?",
+        a: "Not the way we do it. Pavers get cleaned at a pressure that lifts growth without blowing out the joint sand or sealer, and stucco and siding get soft-washed, never blasted. We install and maintain hardscape ourselves, so we know exactly how much a paver patio can take.",
+      },
+      {
+        q: "How often should I have my house and driveway washed in Florida?",
+        a: "Most Central Florida homes benefit from a house soft-wash once a year and driveways/pool decks once or twice a year — our heat, humidity, and summer rain grow algae faster than most of the country. North-facing and shaded surfaces green up faster and may want it more often.",
+      },
+      {
+        q: "What does pressure washing cost?",
+        a: "Driveways typically start around $99; a full house soft-wash runs roughly $250–$600 depending on size and stories. We quote off the actual surfaces, not a flat rate — ask us for a number after we've seen it.",
+      },
+      {
+        q: "Do you pressure wash roofs?",
+        a: "We soft-wash roofs (never high pressure — that strips granules off shingles and voids warranties). If your roof has black streaks or algae, that's a soft-wash job and we'll flag whether it's a good candidate on the walk-through.",
+      },
+      {
+        q: "I'm already a lawn client — can you just add it?",
+        a: "Yes, that's the easy path. We're already on your property, we already know the landscaping to protect, and adding a wash is a text. No new vendor, no new estimate visit.",
+      },
+    ],
+    related: ["hardscape-installation", "gutter-cleaning", "property-cleanup"],
+    priceRange: "Driveways from $99 · house soft-wash $250–$600",
+    timeline: "Most homes done in 2–4 hours, one visit",
+    needsConfirm: true,
+  },
+
+  // ── 11. Gutter Cleaning [needs Ryan confirm] ──────────────────────────
+  {
+    slug: "gutter-cleaning",
+    name: "Gutter Cleaning",
+    title: "Gutter Cleaning in Winter Park & Orlando",
+    description:
+      "Gutter cleaning that protects your home from water damage — hand debris removal, downspout flushing, haul-away. Serving Winter Park, Orlando, and Central Florida.",
+    h1: "Gutter Cleaning in Winter Park & Central Florida",
+    intro: [
+      "Clogged gutters are one of the most overlooked causes of expensive home damage. When leaves, pine needles, and oak debris block the channel, water backs up — spilling over the edge, seeping toward the foundation, rotting fascia boards, and pooling in the beds right where you don't want it. In Central Florida's storm season, that's not a someday problem; it's a next-afternoon problem.",
+      "Between live-oak leaf drop, pine straw, oak catkins in spring, and the sheer volume of water a Florida thunderstorm dumps in twenty minutes, Orlando-area gutters fill faster than most homeowners expect. A gutter that's fine in April is overflowing by July. We clear the whole run by hand, flush the downspouts to confirm they actually drain, and haul the debris off — we don't leave wet piles in your beds.",
+      "It's also the natural cold-weather add-on for the crew you already trust with your lawn. Heading into fall and winter, keeping the crew working and your property protected is one text — not a separate vendor you have to find, vet, and schedule.",
+    ],
+    includes: [
+      "Full debris removal — leaves, twigs, pine needles, oak catkins, and shingle grit cleared by hand, not just blown around",
+      "Downspout flushing — we run water through and confirm it flows free all the way to the outlet",
+      "Debris haul-away — nothing left piled in your yard or beds",
+      "Problem-spotting — sagging runs, loose fasteners, separated seams, and early fascia rot flagged before they become repairs",
+      "Ground-level check of splash blocks and downspout extensions so water actually leaves the foundation",
+      "Gutter-guard/screen check and clear-off if you have them installed",
+      "CompanyCam photos of before and after, so you can see the work whether you're home or not",
+    ],
+    process: [
+      {
+        title: "Quick quote",
+        body: "We size it up by stories, roofline length, and tree cover, and give you a flat price. Usually same-visit if we're already there for the lawn.",
+      },
+      {
+        title: "Inspect the roofline",
+        body: "We check the full gutter run and the roof edge before we start — noting any sagging, pulled fasteners, or damage so you hear about it before it turns into a repair bill.",
+      },
+      {
+        title: "Clear by hand",
+        body: "Debris comes out by hand and gets bagged, not flung onto the roof or into the beds. Hand-clearing is the only way to actually empty a Florida gutter packed with wet pine straw.",
+      },
+      {
+        title: "Flush & test downspouts",
+        body: "We run water through every downspout and watch it exit the bottom. A clear gutter with a clogged downspout still floods — so we confirm the whole path drains.",
+      },
+      {
+        title: "Report & haul-away",
+        body: "We bag and remove all debris, and send you a short note (with photos) on anything we spotted that's worth watching.",
+      },
+    ],
+    why: [
+      {
+        title: "Built for the Florida debris load.",
+        body: "Oak leaves, pine straw, spring catkins, and 2-inch-in-20-minute storms fill gutters here faster than almost anywhere. We clear the whole run by hand because a leaf-blower just moves the top layer.",
+      },
+      {
+        title: "We flag damage before it's a repair.",
+        body: "Sagging runs, loose fasteners, soft fascia — we tell you while it's a $20 fastener, not after water has been running behind it for a season and rotted the board.",
+      },
+      {
+        title: "Haul-away included.",
+        body: "The debris leaves with us. No wet mound of pine straw sitting in your bed or driveway for you to deal with after we go.",
+      },
+      {
+        title: "The easy cold-weather add-on.",
+        body: "We're already at your property for the lawn. Adding gutters heading into storm and leaf-drop season means one less vendor to schedule and one less thing on your list.",
+      },
+    ],
+    faqs: [
+      {
+        q: "How often should gutters be cleaned in Central Florida?",
+        a: "Twice a year is the right baseline for most Orlando-area homes — once heading into summer storm season and once after fall/winter leaf drop. If you're under live oaks or pines, three times a year keeps you ahead of it; those trees shed year-round.",
+      },
+      {
+        q: "What does gutter cleaning cost?",
+        a: "Single-story homes typically start around $99; two-story or steep-roof homes run roughly $150–$300 depending on roofline length and tree cover. We give you a flat price before we start.",
+      },
+      {
+        q: "Do you repair gutters, or just clean them?",
+        a: "Cleaning is the service — but we flag anything we find (sagging sections, loose fasteners, separated seams, fascia rot) so you can get ahead of it. Minor re-securing we can often handle on the spot; larger gutter replacement we'll refer or scope separately.",
+      },
+      {
+        q: "Do you clean gutters with gutter guards installed?",
+        a: "Yes. Guards slow debris but don't eliminate it, especially with pine needles, which slip right through most screens. We clear the top of the guards and check that water's still getting into the gutter underneath.",
+      },
+      {
+        q: "Can you clean two-story gutters?",
+        a: "Yes — two-story and steep-pitch roofs are routine for us, with the right ladders and fall protection. It's priced a bit higher than single-story for the added setup and time.",
+      },
+      {
+        q: "Can you add gutter cleaning to my regular lawn visit?",
+        a: "Absolutely, and it's the simplest way to do it. We're already scheduled at your property — ask us to add gutters to the next visit and it's handled.",
+      },
+    ],
+    related: ["pressure-washing", "tree-trimming-removal", "property-cleanup"],
+    priceRange: "Single-story from $99 · two-story $150–$300",
+    timeline: "Most homes done same visit, under 2 hours",
+    needsConfirm: true,
+  },
+
+  // ── 12. Christmas Light Installation [needs Ryan confirm] ─────────────
+  {
+    slug: "christmas-lights",
+    name: "Christmas Light Installation",
+    title: "Christmas Light Installation in Orlando",
+    description:
+      "Christmas light design, installation, takedown, and storage in Winter Park, Orlando, and Central Florida. Commercial-grade lights — book early, spots fill fast.",
+    h1: "Professional Christmas Light Installation in Orlando",
+    intro: [
+      "Make your home the best-looking house on the block — without spending a weekend on a ladder. Firsthand designs, installs, maintains, and takes down your holiday lighting, then stores it until next year. You get a clean, custom display and none of the tangled-strand, blown-fuse, ladder-on-a-wet-roof hassle.",
+      "This is full-service, not a box of lights and a handshake. We plan a display scaled to your roofline and landscaping, cut the runs to fit so there are no gaps or dangling extras, install with commercial-grade materials that actually survive a season, and come back if a bulb or run goes dark. In January we take it all down and store it labeled — so next year is a phone call, not a project.",
+      "It's also how the crew you trust with your yard stays working through the one stretch Florida landscaping slows down. Same insured team, same standard, keeping your property looking its best right through the holidays.",
+    ],
+    includes: [
+      "Design consultation — a display scaled to your rooflines, trees, columns, and style, not a one-size template",
+      "Professional installation — rooflines and ridges, trees and shrubs, walkways, columns, and wreaths or garland",
+      "Commercial-grade lights and materials — brighter, weather-rated, and color-stable all season (we provide them; you're not re-buying tangled boxes every year)",
+      "Custom-cut light runs sized to your roof — no gaps, no dangling extra strand",
+      "Timers or smart plugs set so it comes on at dusk on its own",
+      "Season-long maintenance — a bulb or run goes out, we come fix it",
+      "Takedown in January — everything removed cleanly, no leftover clips or hooks",
+      "Labeled storage — we store your display so next year's install is even faster",
+    ],
+    process: [
+      {
+        title: "Design consultation",
+        body: "We walk the property, talk through what you want lit — roofline, trees, entry, columns — and design a display that fits the house and your budget.",
+      },
+      {
+        title: "Measure & quote",
+        body: "We measure the runs, spec the materials, and send a clear quote covering design, install, season-long maintenance, takedown, and storage — all of it, one price.",
+      },
+      {
+        title: "Pre-season install",
+        body: "We install on your scheduled date (most go up November into early December), custom-cutting runs to fit and setting the timer so it comes on at dusk.",
+      },
+      {
+        title: "Maintain all season",
+        body: "If a bulb or section goes out, we come fix it — you shouldn't be back on the ladder in December because one run failed.",
+      },
+      {
+        title: "Takedown & storage",
+        body: "In January we remove everything, clean up every clip, and store your display labeled so next year we're back up faster.",
+      },
+    ],
+    why: [
+      {
+        title: "You never touch a ladder.",
+        body: "Hanging lights is genuinely dangerous — tangled strands, burnt-out bulbs, and ladders on wet roofs send people to the ER every December. We do it every day with the right equipment and crews.",
+      },
+      {
+        title: "We already know your property.",
+        body: "We maintain your landscape, so we know the rooflines, the trees worth lighting, and how to make the house shine without guessing.",
+      },
+      {
+        title: "Commercial-grade, and maintained.",
+        body: "Bright, durable, weather-rated lights that hold up all season — plus we come back if anything fails. Not the string-store lights that dim and drop bulbs by mid-December.",
+      },
+      {
+        title: "One less thing, every year.",
+        body: "Design, install, maintenance, takedown, and storage in one price. Next year is a phone call, because your display is already labeled and stored.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Do you provide the lights, or do I?",
+        a: "We provide commercial-grade lights and materials as part of the service — brighter and far more durable than retail strands, and cut to fit your roof. You're not buying, storing, and re-untangling boxes every year. We store the display for you between seasons.",
+      },
+      {
+        q: "What does Christmas light installation cost?",
+        a: "Most residential displays start around $500 and run to $2,500+ depending on roofline length, how much of the landscaping you light, and the design. That price covers install, season-long maintenance, takedown, and storage — not just the hang.",
+      },
+      {
+        q: "Do you take the lights down and store them too?",
+        a: "Yes — full service. We take everything down in January, remove every clip, and store your display labeled so next year's install is faster and easier. Takedown and storage are included in the quote.",
+      },
+      {
+        q: "Can you light trees and landscaping, not just the roofline?",
+        a: "Absolutely. Rooflines and ridges, wrapped trees and shrubs, walkways, columns, and wreaths or garland — we design the whole property, and because we maintain your landscape we know which trees will look best lit.",
+      },
+      {
+        q: "Do you do commercial properties and HOAs?",
+        a: "Yes. We handle commercial storefronts, entrances, and HOA common areas on the same full-service model — design, install, maintain, take down, store. Reach out early; commercial calendars fill first.",
+      },
+      {
+        q: "When should I book?",
+        a: "Early. Holiday lighting is our most in-demand seasonal service and installation dates fill through November. Reserve early to lock in your spot and your preferred install date — the earlier you book, the better your options.",
+      },
+    ],
+    related: ["landscape-design", "lawn-maintenance", "pressure-washing"],
+    priceRange: "Installs from $500–$2,500+ (install, maintenance, takedown, storage)",
+    timeline: "Book by early Nov · installs Nov–early Dec",
+    timelineLabel: "Season",
+    needsConfirm: true,
+  },
 ];
 
 export const SERVICE_PAGES_MAP: Record<string, ServicePage> = Object.fromEntries(
