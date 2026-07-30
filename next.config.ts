@@ -29,6 +29,19 @@ const legacyRedirects = [
   { source: "/terms-and-conditions/", destination: "/terms", permanent: true },
 ];
 
+/**
+ * Short service URLs → canonical /services/<slug>. The off-season content
+ * brief (2026-07) specs the short form (/pressure-washing), and it's what GBP
+ * posts and print material tend to use — the canonical pages live under
+ * /services/ with the rest of the catalog, so the short form 301s there.
+ */
+const shortServiceRedirects = ["pressure-washing", "gutter-cleaning", "christmas-lights"].flatMap(
+  (slug) => [
+    { source: `/${slug}`, destination: `/services/${slug}`, permanent: true },
+    { source: `/${slug}/`, destination: `/services/${slug}`, permanent: true },
+  ],
+);
+
 const nextConfig: NextConfig = {
   // Pin Turbopack to this project so it ignores stray lockfiles in parent dirs.
   turbopack: {
@@ -43,7 +56,7 @@ const nextConfig: NextConfig = {
     ],
   },
   async redirects() {
-    return legacyRedirects;
+    return [...legacyRedirects, ...shortServiceRedirects];
   },
 };
 
