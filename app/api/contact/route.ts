@@ -1,6 +1,10 @@
 import { createHash, createHmac } from "node:crypto";
 import { NextResponse } from "next/server";
 import { contactSchema, type ContactInput } from "@/lib/contact-schema";
+import {
+  forwardPhotosToFieldShot,
+  type JobberIdsFromWebhook,
+} from "@/lib/fieldshot-lead-media";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -107,22 +111,59 @@ export async function POST(request: Request) {
   // The prior Web3Forms email path was removed because Web3Forms is now
   // fronted by a Cloudflare JS-interstitial challenge that no server-side
   // HTTP client can pass.
+  const idempotencyKey = computeIdempotencyKey(parsed.data);
+  let jobberIds: JobberIdsFromWebhook = {};
   try {
-    await sendJobberWebhook(parsed.data, smsConsentTimestamp);
+    jobberIds = await sendJobberWebhook(
+      parsed.data,
+      smsConsentTimestamp,
+      idempotencyKey
+    );
   } catch (err) {
     console.error("[contact] jobber-webhook failed:", err);
+  }
+
+  // Photos → FieldShot, so the lead's request arrives WITH its photos for the
+  // AI quote drafter. Keyed by the same idempotency key as the webhook; the
+  // Jobber ids from the webhook response let FieldShot pre-create the project
+  // the Jobber sync will converge on. Best-effort: a FieldShot failure must
+  // never fail the form — the Jobber request is the lead's system of record.
+  if (attachments.length > 0) {
+    try {
+      const result = await forwardPhotosToFieldShot({
+        idempotencyKey,
+        lead: {
+          name: parsed.data.name,
+          street: parsed.data.address || undefined,
+          city: parsed.data.city || undefined,
+          state: parsed.data.state || undefined,
+          zip: parsed.data.zip || undefined,
+        },
+        jobber: jobberIds,
+        photos: attachments,
+      });
+      console.log("[contact] fieldshot photo forward:", JSON.stringify(result));
+    } catch (err) {
+      console.error("[contact] fieldshot photo forward failed:", err);
+    }
   }
 
   return NextResponse.json({ ok: true });
 }
 
+// Returns the Jobber ids from the ops webhook response (client/request always
+// on success; property once the ops side ships it) so the photo forward can
+// key FieldShot's project to the exact objects this submission created. An
+// empty object on skip — the photo pipe degrades to an unlinked pending-lead
+// project rather than dropping the photos.
 async function sendJobberWebhook(
   data: ContactInput,
-  smsConsentTimestamp: string | null
-) {
+  smsConsentTimestamp: string | null,
+  idempotencyKey: string
+): Promise<JobberIdsFromWebhook> {
   if (!JOBBER_WEBHOOK_URL) {
     console.warn("[contact] JOBBER_WEBHOOK_URL not set — skipping webhook");
-    return { skipped: true };
+    return {};
   }
   if (!WEBSITE_LEAD_WEBHOOK_SECRET) {
     // Fail-loud counterpart to the ops side. Without the secret we cannot
@@ -131,9 +172,9 @@ async function sendJobberWebhook(
     console.warn(
       "[contact] WEBSITE_LEAD_WEBHOOK_SECRET not set — skipping Jobber webhook"
     );
-    return { skipped: true };
+    return {};
   }
-  const payload = buildJobberPayload(data, smsConsentTimestamp);
+  const payload = buildJobberPayload(data, smsConsentTimestamp, idempotencyKey);
   // Sign and send the EXACT bytes we send; the ops side computes HMAC over
   // request.text(), so any re-stringification between sign and send breaks
   // verification. JSON.stringify on an object literal we construct is
@@ -156,7 +197,16 @@ async function sendJobberWebhook(
       `Jobber webhook returned ${res.status} ${res.statusText}: ${responseBody.slice(0, 200)}`
     );
   }
-  return { ok: true, status: res.status };
+  const responseJson = (await res.json().catch(() => ({}))) as {
+    jobber_client_id?: string | null;
+    jobber_request_id?: string | null;
+    jobber_property_id?: string | null;
+  };
+  return {
+    clientId: responseJson.jobber_client_id ?? undefined,
+    requestId: responseJson.jobber_request_id ?? undefined,
+    propertyId: responseJson.jobber_property_id ?? undefined,
+  };
 }
 
 function computeIdempotencyKey(data: ContactInput): string {
@@ -174,18 +224,19 @@ function computeIdempotencyKey(data: ContactInput): string {
 
 function buildJobberPayload(
   data: ContactInput,
-  smsConsentTimestamp: string | null
+  smsConsentTimestamp: string | null,
+  idempotencyKey: string
 ) {
   // Shape matches the zod schema on the ops side at
-  // apps/admin/app/api/webhooks/website-lead/route.ts. Photos uploaded
-  // to the contact form are currently dropped — the prior email path
-  // forwarded them and we haven't wired a replacement. Track separately.
+  // apps/admin/app/api/webhooks/website-lead/route.ts. Photos travel on a
+  // separate leg — the FieldShot lead-media pipe (lib/fieldshot-lead-media.ts),
+  // keyed by the same idempotency_key as this payload.
   //
   // sms_consent + sms_consent_timestamp are the audit record for TCR / A2P
   // 10DLC. Always include sms_consent so the ops side stores a definitive
   // boolean per lead; timestamp is only present when consent was granted.
   return {
-    idempotency_key: computeIdempotencyKey(data),
+    idempotency_key: idempotencyKey,
     name: data.name,
     email: data.email,
     phone: data.phone || undefined,
