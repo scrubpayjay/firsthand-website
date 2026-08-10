@@ -9,7 +9,7 @@ export const CITY_OPTIONS = [
 
 export const SERVICE_OPTIONS = [
   ...SERVICES.map((s) => s.name),
-  "Multiple / Not sure",
+  "Other",
 ] as const;
 
 export const contactSchema = z.object({
@@ -42,7 +42,14 @@ export const contactSchema = z.object({
   services: z
     .array(z.enum(SERVICE_OPTIONS))
     .min(1, "Pick at least one service"),
-  message: z.string().trim().max(2000).optional().or(z.literal("")),
+  // Required: Ryan uses this to scope the job before calling, and it is what
+  // the automated quote drafter reads. An empty box means a phone call just
+  // to ask "what do you need?".
+  message: z
+    .string()
+    .trim()
+    .min(10, "Please tell us a bit about the project")
+    .max(2000, "That is a bit long — 2000 characters max"),
   // TCR / A2P 10DLC opt-in. Optional and unchecked by default — carriers
   // require that granting SMS consent is not a condition of submitting the
   // form. `false` means the lead has NOT opted into SMS from this submission.

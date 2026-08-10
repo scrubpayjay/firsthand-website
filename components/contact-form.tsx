@@ -132,7 +132,7 @@ export function ContactForm() {
       if (data.zip) formData.append("zip", data.zip);
       if (data.placeId) formData.append("placeId", data.placeId);
       for (const s of data.services) formData.append("services", s);
-      if (data.message) formData.append("message", data.message);
+      formData.append("message", data.message);   // required — always sent
       // Always send smsConsent so the server can distinguish "user unchecked
       // it" from "the field wasn't posted." String form because FormData
       // stringifies everything anyway.
@@ -274,8 +274,9 @@ export function ContactForm() {
 
         <Field
           label="Tell us about the project"
+          required
           error={errors.message?.message}
-          hint="Lot size, what's there now, what you're hoping to fix — whatever helps us scope it. Optional."
+          hint="Lot size, what's there now, what you're hoping to fix — whatever helps us scope it."
         >
           <textarea
             {...register("message")}

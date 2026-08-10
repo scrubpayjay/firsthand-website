@@ -57,7 +57,7 @@ async function sendJobberWebhook(data: ChatLeadInput) {
     name: data.name,
     email: data.email && data.email.length > 0 ? data.email : "no-email@chat.firsthandlawns.com",
     phone: data.phone || undefined,
-    services: ["Multiple / Not sure"],
+    services: ["Other"],
     message: [data.interest, data.transcript ? `--- chat transcript ---\n${data.transcript}` : null]
       .filter(Boolean)
       .join("\n\n") || undefined,

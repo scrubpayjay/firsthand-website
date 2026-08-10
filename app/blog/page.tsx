@@ -161,7 +161,7 @@ export default function BlogPage() {
               <input
                 type="hidden"
                 name="service"
-                value="Multiple / Not sure"
+                value="Other"
               />
               <input
                 type="hidden"
