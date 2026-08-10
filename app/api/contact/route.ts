@@ -117,7 +117,8 @@ export async function POST(request: Request) {
     jobberIds = await sendJobberWebhook(
       parsed.data,
       smsConsentTimestamp,
-      idempotencyKey
+      idempotencyKey,
+      attachments.length
     );
   } catch (err) {
     console.error("[contact] jobber-webhook failed:", err);
@@ -159,7 +160,8 @@ export async function POST(request: Request) {
 async function sendJobberWebhook(
   data: ContactInput,
   smsConsentTimestamp: string | null,
-  idempotencyKey: string
+  idempotencyKey: string,
+  photoCount: number
 ): Promise<JobberIdsFromWebhook> {
   if (!JOBBER_WEBHOOK_URL) {
     console.warn("[contact] JOBBER_WEBHOOK_URL not set — skipping webhook");
@@ -174,7 +176,12 @@ async function sendJobberWebhook(
     );
     return {};
   }
-  const payload = buildJobberPayload(data, smsConsentTimestamp, idempotencyKey);
+  const payload = buildJobberPayload(
+    data,
+    smsConsentTimestamp,
+    idempotencyKey,
+    photoCount
+  );
   // Sign and send the EXACT bytes we send; the ops side computes HMAC over
   // request.text(), so any re-stringification between sign and send breaks
   // verification. JSON.stringify on an object literal we construct is
@@ -225,7 +232,8 @@ function computeIdempotencyKey(data: ContactInput): string {
 function buildJobberPayload(
   data: ContactInput,
   smsConsentTimestamp: string | null,
-  idempotencyKey: string
+  idempotencyKey: string,
+  photoCount: number
 ) {
   // Shape matches the zod schema on the ops side at
   // apps/admin/app/api/webhooks/website-lead/route.ts. Photos travel on a
@@ -241,7 +249,14 @@ function buildJobberPayload(
     email: data.email,
     phone: data.phone || undefined,
     services: data.services,
-    message: data.message || undefined,
+    // Photos ride a separate pipe to FieldShot (they are too large for this
+    // JSON webhook), so the Jobber request previously gave no sign they
+    // existed — Ryan saw a request with no photos and no hint that any were
+    // uploaded. Say so in the note. Wording describes what the CUSTOMER did,
+    // which stays true even if the FieldShot forward later fails.
+    message: photoCount > 0
+      ? `${data.message}\n\n---\nCustomer attached ${photoCount} photo${photoCount === 1 ? "" : "s"} — view them in FieldShot (ref ${idempotencyKey.slice(0, 12)}).`
+      : data.message || undefined,
     sms_consent: data.smsConsent,
     sms_consent_timestamp: smsConsentTimestamp ?? undefined,
     source_address: {
