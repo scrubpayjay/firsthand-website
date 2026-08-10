@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Playfair_Display } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
@@ -122,6 +123,10 @@ export default function RootLayout({
         <Footer />
         <ChatWidget />
         <CookieBanner pixelId={META_PIXEL_ID} tidioKey={TIDIO_PUBLIC_KEY} />
+        {/* Vercel Web Analytics — first-party, cookieless, same-origin beacons
+            (/_vercel/insights/*), so it needs no consent gate and is unaffected
+            by the cookie banner above. */}
+        <Analytics />
       </body>
     </html>
   );
