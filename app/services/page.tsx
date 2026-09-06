@@ -10,6 +10,8 @@ import {
   TreePine,
   Axe,
   Scissors,
+  Leaf,
+  Flower2,
 } from "lucide-react";
 import { Breadcrumbs } from "@/components/breadcrumbs";
 import { CtaSection } from "@/components/cta-section";
@@ -19,7 +21,7 @@ import { SITE_URL } from "@/lib/site-config";
 export const metadata: Metadata = {
   title: "Landscape Services — Lawn, Sod, Design, Irrigation",
   description:
-    "Lawn maintenance, landscape design, sod, irrigation, hardscape, and tree work for Winter Park, Windermere, Bay Hill, College Park, and Orlando. One crew, the whole yard.",
+    "Lawn maintenance, landscaping, mulch installation, seasonal cleanups, leaf removal, sod, irrigation, and hardscape services across Central Florida.",
   alternates: { canonical: `${SITE_URL}/services` },
 };
 
@@ -32,6 +34,9 @@ const ICONS: Record<string, typeof Sprout> = {
   "tree-trimming-removal": TreePine,
   "stump-grinding-removal": Axe,
   "bamboo-trimming-removal": Scissors,
+  "mulch-refresh-installation": Layers,
+  "leaf-cleanup-removal": Leaf,
+  "fall-spring-landscape-cleanups": Flower2,
 };
 
 export default function ServicesIndexPage() {
@@ -48,10 +53,10 @@ export default function ServicesIndexPage() {
             One crew. The whole yard.
           </h1>
           <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
-            We run every service in-house — mow crew, design, sod, irrigation,
-            hardscape, tree work — across Winter Park, Windermere, Bay Hill,
-            College Park, and Orlando. That means no handoffs between
-            contractors when something needs a fix.
+            We run every service in-house — mowing, design, sod, irrigation,
+            mulch, seasonal cleanups, hardscape, and tree work — across Winter
+            Park, Windermere, Bay Hill, College Park, and Orlando. That means no
+            handoffs between contractors when something needs a fix.
           </p>
         </div>
       </section>

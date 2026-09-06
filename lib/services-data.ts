@@ -990,7 +990,304 @@ export const SERVICE_PAGES: ServicePage[] = [
     },
   },
 
-  // ── 10. Pressure Washing [needs Ryan confirm] ─────────────────────────
+  // ── 10. Mulch Refresh & Installation ──────────────────────────────────
+  {
+    slug: "mulch-refresh-installation",
+    name: "Mulch Refresh & Installation",
+    title: "Mulch Installation in Orlando",
+    description:
+      "Mulch refresh and installation in Winter Park, Orlando, Windermere, and Central Florida. Bed preparation, clean edging, spreading, and cleanup included.",
+    h1: "Mulch Refresh & Installation in Winter Park & Central Florida",
+    intro: [
+      "Fresh mulch is one of the fastest ways to make an entire property look finished, but it does more than cover bare soil. A properly installed layer helps beds hold moisture through Central Florida heat, limits new weed growth, reduces soil splash during summer rain, and gives plants a cleaner buffer from mowers and string trimmers.",
+      "The result depends on the preparation underneath. Piling new material over weeds, leaves, compacted mulch, and buried edging creates a thick, uneven bed that holds water in the wrong places and creeps onto walks after the first storm. We clear loose debris, redefine the bed edge, address visible weeds, and spread the material evenly around—not against—plant stems, shrubs, and tree trunks.",
+      "We handle both targeted refreshes and full-property mulch installation for homes, HOAs, and commercial landscapes across Winter Park, Windermere, Bay Hill, College Park, Orlando, and the surrounding communities. Tell us the look you want or ask us to recommend a material and depth for the property; either way, the quote spells out the bed area, material, preparation, and haul-away before work begins.",
+    ],
+    includes: [
+      "On-site measurement of planting beds and material requirements",
+      "Removal of loose leaves, sticks, and surface debris before installation",
+      "Light weed removal and preparation of visible problem areas",
+      "Clean bed-edge definition along turf, sidewalks, and hardscape",
+      "Even mulch placement at an appropriate depth for a true refresh",
+      "Careful clearance around trunks, stems, crowns, drains, and foundations",
+      "Final raking, hardscape blow-off, and job-site cleanup",
+      "Optional coordination with pruning, planting, irrigation, or seasonal cleanup work",
+    ],
+    process: [
+      {
+        title: "Walk and measure",
+        body: "We inspect the beds, measure the install area, note access and drainage, and check how much usable mulch remains. That determines whether the property needs a light top-dress or a fuller reset.",
+      },
+      {
+        title: "Choose the material",
+        body: "We confirm the mulch type and color before ordering. If you are unsure, we recommend an option that fits the home, planting palette, maintenance expectations, and budget.",
+      },
+      {
+        title: "Prepare the beds",
+        body: "The crew clears loose debris, removes visible weeds, and re-establishes bed lines where needed. Excess or compacted material is addressed in the written scope instead of being buried under a new layer.",
+      },
+      {
+        title: "Install evenly",
+        body: "Mulch is distributed consistently across the beds, tapered at edges, and kept back from plant crowns, woody stems, tree trunks, drainage points, and the building foundation.",
+      },
+      {
+        title: "Clean and document",
+        body: "We rake the finished surface, blow off every adjacent walk and driveway, haul away included debris, and document the completed work in CompanyCam.",
+      },
+    ],
+    why: [
+      {
+        title: "Preparation is part of the job.",
+        body: "A mulch refresh should not hide weeds and debris. We prepare and define the beds first so the new material sits evenly and the finished edge stays clean.",
+      },
+      {
+        title: "Plants are not buried.",
+        body: "Mulch is kept off trunks, stems, and plant crowns. The volcano-shaped piles seen around trees trap moisture against bark and are not part of a professional installation.",
+      },
+      {
+        title: "The quantity is measured.",
+        body: "We calculate the bed area and required depth before ordering, which keeps the quote tied to the actual property and avoids thin spots or unnecessary material.",
+      },
+      {
+        title: "One crew can finish the beds.",
+        body: "If the landscape also needs pruning, planting, irrigation adjustments, or cleanup, we can sequence the work so mulch is installed last and stays clean.",
+      },
+    ],
+    faqs: [
+      {
+        q: "How often should mulch be refreshed in Central Florida?",
+        a: "Most properties benefit from an inspection once or twice a year, but a full new layer is not always necessary. Sun exposure, rainfall, material type, bed traffic, and the amount already in place determine whether you need a light refresh or a deeper reset.",
+      },
+      {
+        q: "How deep should mulch be installed?",
+        a: "The finished bed generally needs an even layer deep enough to cover soil and help manage moisture without burying plants or trapping excess water. We account for the material already present rather than adding the same amount every visit.",
+      },
+      {
+        q: "Do you remove the old mulch first?",
+        a: "Not automatically. Existing mulch that is clean and breaking down normally can often remain under a measured refresh. We recommend removal when it is excessively deep, compacted, contaminated with debris, or contributing to a drainage or plant-health problem.",
+      },
+      {
+        q: "Do you weed and edge the beds before spreading mulch?",
+        a: "Yes. Standard preparation includes clearing loose debris, addressing visible weeds, and defining the bed edge. Heavy weed infestation, major bed reshaping, or removal of large volumes of old material is scoped separately in the quote.",
+      },
+      {
+        q: "Can mulch installation be combined with a landscape cleanup?",
+        a: "Yes, and that is often the cleanest sequence. We complete pruning, leaf removal, bed cleanup, and irrigation work first, then install mulch as the final finish so fresh material is not covered with debris.",
+      },
+      {
+        q: "Do you install mulch for commercial properties and HOAs?",
+        a: "Yes. We quote residential properties, HOA common areas, offices, retail sites, and other commercial landscapes. Multi-property and phased installation schedules are available after an on-site assessment.",
+      },
+    ],
+    related: [
+      "landscape-design",
+      "lawn-maintenance",
+      "fall-spring-landscape-cleanups",
+    ],
+    timeline: "Most residential installations completed in one day",
+    needsConfirm: false,
+  },
+
+  // ── 11. Leaf Cleanup & Removal ────────────────────────────────────────
+  {
+    slug: "leaf-cleanup-removal",
+    name: "Leaf Cleanup & Removal",
+    title: "Leaf Cleanup & Removal in Orlando",
+    description:
+      "Leaf cleanup and removal in Winter Park, Orlando, Windermere, and Central Florida. Full-yard clearing, bagging, hauling, and final blow-off included.",
+    h1: "Leaf Cleanup & Removal in Winter Park & Central Florida",
+    intro: [
+      "Central Florida does not get a northern-style fall, but mature oaks, magnolias, palms, and ornamental trees still create heavy leaf and yard debris—often in waves from late winter into spring and again after storms. When it settles into turf, planting beds, drains, pool screens, and corners of the property, a regular mowing visit is not enough to clear it properly.",
+      "Our leaf cleanup service is a focused reset. We collect loose leaves and small natural debris from the lawn and accessible landscape beds, clear hardscape and curb lines, and remove the material from the property. The goal is not to scatter a pile from one side of the yard to the other; it is to leave the usable outdoor areas clean and the turf uncovered.",
+      "One-time cleanups work well before guests, listings, inspections, or the next lawn-service cycle. Properties with dense tree cover can also schedule recurring visits during peak leaf drop. We scope the access, acreage, bed density, and debris volume up front so the crew arrives with the right equipment and enough hauling capacity to finish the job.",
+    ],
+    includes: [
+      "Leaf and small natural-debris collection from turf areas",
+      "Cleanup of accessible planting beds and tree rings",
+      "Clearing of driveways, walkways, patios, entry areas, and curb lines",
+      "Removal of loose palm fronds and small fallen branches already on the ground",
+      "Bagging, loading, hauling, and disposal of collected material",
+      "Final blow-off of hardscape and high-visibility areas",
+      "One-time or recurring scheduling during heavy leaf-drop periods",
+      "Before-and-after photo documentation for property managers and remote owners",
+    ],
+    process: [
+      {
+        title: "Confirm the scope",
+        body: "Send the address and current photos or schedule a walk-through. We confirm which lawns, beds, hardscape areas, and curb lines are included and whether any heavy branches or non-yard waste need separate handling.",
+      },
+      {
+        title: "Estimate the volume",
+        body: "Tree cover, lot size, access, and debris depth determine crew time and hauling. The quote is based on the property as it sits, not a generic lot-size guess.",
+      },
+      {
+        title: "Collect without damaging beds",
+        body: "We use the appropriate combination of blowers, rakes, tarps, and collection equipment to clear turf and accessible beds while protecting irrigation heads, edging, and plant material.",
+      },
+      {
+        title: "Load and haul",
+        body: "Collected leaves and included natural debris leave with our crew. We do not finish by moving everything to the curb and making disposal someone else's problem.",
+      },
+      {
+        title: "Final property pass",
+        body: "Hardscape, entrances, curb lines, and staging areas receive a final blow-off. The completed cleanup is photographed before the crew leaves.",
+      },
+    ],
+    why: [
+      {
+        title: "The debris leaves the property.",
+        body: "Bagging, loading, hauling, and disposal are included in the agreed scope. You are not left with a wall of bags or a loose curbside pile after the crew is gone.",
+      },
+      {
+        title: "Beds and turf both get attention.",
+        body: "Leaves collect differently across turf, mulch, pavers, and dense planting. We clean each accessible surface with methods suited to it instead of blasting everything into the nearest bed.",
+      },
+      {
+        title: "Recurring service is available.",
+        body: "A heavily wooded property may need more than one pass during peak leaf drop. We can set a short seasonal cadence instead of waiting for the yard to disappear again.",
+      },
+      {
+        title: "Easy to combine with lawn care.",
+        body: "Leaf removal can be coordinated with mowing, gutter cleaning, pruning, or a complete seasonal landscape cleanup so the work happens in the right order.",
+      },
+    ],
+    faqs: [
+      {
+        q: "Do you haul the leaves away?",
+        a: "Yes. Loading, hauling, and disposal of the leaves and small natural debris included in your quote are part of the service. We do not leave bags or a loose pile at the curb unless you specifically request that arrangement.",
+      },
+      {
+        q: "Can you remove leaves from landscape beds?",
+        a: "Yes. We clear accessible planting beds and tree rings using methods appropriate for the plants and mulch in place. Very dense groundcover or delicate specialty beds are reviewed during the estimate so expectations are clear.",
+      },
+      {
+        q: "Is leaf cleanup included with regular lawn maintenance?",
+        a: "Light routine blow-off is part of lawn maintenance, but a heavy seasonal accumulation requires separate crew time and hauling. We quote that cleanup on its own or bundle it with the next maintenance visit.",
+      },
+      {
+        q: "Do you offer recurring leaf removal?",
+        a: "Yes. Properties with mature oaks or other heavy leaf-producing trees can schedule recurring cleanups during the active drop period. We recommend the cadence after seeing the tree cover and how quickly debris accumulates.",
+      },
+      {
+        q: "Will you remove branches and palm fronds too?",
+        a: "Loose palm fronds and small fallen branches already on the ground can be included. Large limbs, storm damage, active tree cutting, or material requiring chainsaw work is scoped under property cleanup or tree trimming and removal.",
+      },
+      {
+        q: "Can you clean leaves before a showing, event, or inspection?",
+        a: "Yes. One-time cleanups are available for listings, guests, events, HOA inspections, and property turnovers. Share the deadline when you request the estimate so we can confirm scheduling before you approve the work.",
+      },
+    ],
+    related: [
+      "fall-spring-landscape-cleanups",
+      "lawn-maintenance",
+      "property-cleanup",
+    ],
+    timeline: "One-time or recurring during peak leaf drop",
+    timelineLabel: "Scheduling",
+    needsConfirm: false,
+  },
+
+  // ── 12. Fall & Spring Landscaping Cleanups ────────────────────────────
+  {
+    slug: "fall-spring-landscape-cleanups",
+    name: "Fall & Spring Landscaping Cleanups",
+    title: "Fall & Spring Yard Cleanups in Orlando",
+    description:
+      "Fall and spring landscaping cleanups in Winter Park, Orlando, Windermere, and Central Florida. Bed cleanup, pruning, debris removal, and haul-away.",
+    h1: "Fall & Spring Landscaping Cleanups in Central Florida",
+    intro: [
+      "Central Florida's seasons do not follow the same calendar as the rest of the country, but landscapes still need two deliberate resets. A fall cleanup clears storm-season growth and debris before the cooler, slower months. A spring cleanup removes winter leaf drop, reshapes overgrowth, and gets beds, turf edges, and irrigation ready before heat and daily rain accelerate everything again.",
+      "This is more complete than a mow-and-blow visit. We walk the property as a whole, identify the pruning, leaf and debris removal, bed work, edging, and haul-away needed to make it feel maintained again, then build one scope in the right sequence. If the property also needs mulch, planting, sod, irrigation repairs, or tree work, those items are separated clearly in the estimate and can be scheduled with the cleanup.",
+      "Homeowners use seasonal cleanups to get ahead of months of accumulated work. Property managers and HOAs use them before inspections, resident events, budget closeout, storm season, or a new maintenance cycle. Every job is scoped to the condition of the property—no vague package that quietly excludes the areas taking most of the crew's time.",
+    ],
+    includes: [
+      "Property-wide collection of leaves and loose landscape debris",
+      "Cutback and shaping of appropriate shrubs and ornamental plantings",
+      "Removal of dead annuals, spent growth, and obvious volunteer vegetation",
+      "Light weeding and cleanup of accessible planting beds",
+      "Re-establishment of bed edges along turf and hardscape",
+      "Clearing of walkways, patios, driveways, entrances, and curb lines",
+      "Hauling and disposal of included green waste and debris",
+      "Optional add-on scope for mulch, planting, irrigation, sod, or tree work",
+    ],
+    process: [
+      {
+        title: "Seasonal walk-through",
+        body: "We walk the property and separate routine cleanup from specialty work such as tall-tree pruning, major removals, irrigation repair, sod replacement, or new installation.",
+      },
+      {
+        title: "Written scope by area",
+        body: "The estimate identifies what will happen in the front, back, side yards, beds, and hardscape areas, plus any optional add-ons. You know what 'cleanup' means before the crew starts.",
+      },
+      {
+        title: "Cut back and clear",
+        body: "The crew completes approved pruning and removes leaf buildup, dead growth, weeds, and loose debris before any finish materials are installed.",
+      },
+      {
+        title: "Define and finish",
+        body: "Bed edges and high-visibility areas are reset, then approved mulch or planting work is completed last so the finished landscape stays clean.",
+      },
+      {
+        title: "Haul and document",
+        body: "Included green waste and debris leave the property. We complete a final blow-off and photograph the finished areas for the job record.",
+      },
+    ],
+    why: [
+      {
+        title: "Built for Central Florida timing.",
+        body: "Our fall and spring scopes account for storm-season growth, winter leaf drop, year-round turf, subtropical plant material, and the fast return of heat and rain.",
+      },
+      {
+        title: "One clear scope for the property.",
+        body: "Pruning, beds, leaves, edges, hardscape cleanup, and hauling are documented together. Specialty work is identified separately instead of appearing as a surprise exclusion on cleanup day.",
+      },
+      {
+        title: "Work happens in the right order.",
+        body: "We prune and clear before installing mulch or plants. That simple sequencing prevents fresh beds from being covered with clippings and avoids paying a crew to redo finished areas.",
+      },
+      {
+        title: "Ready for the next season.",
+        body: "The goal is not just a cleaner yard for one afternoon. We leave the landscape easier to maintain and flag irrigation, turf, drainage, or plant issues that should be handled before conditions intensify.",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is included in a fall or spring landscaping cleanup?",
+        a: "The typical scope includes leaf and loose-debris removal, appropriate shrub and ornamental cutbacks, light bed weeding, bed-edge cleanup, hardscape blow-off, hauling, and disposal. Your written estimate lists the exact areas and tasks included for your property.",
+      },
+      {
+        q: "When should I schedule a seasonal cleanup in Central Florida?",
+        a: "Spring cleanups are best scheduled before sustained heat and summer rain drive rapid growth. Fall cleanups are useful after the most active storm-season growth and before the cooler months. The right week depends on your trees, plants, maintenance cycle, and any event or inspection deadline.",
+      },
+      {
+        q: "Is mulch included in the seasonal cleanup?",
+        a: "Mulch can be added, but it is measured and priced separately because material type, bed area, and required depth vary. When bundled, we complete the cleanup first and install mulch last.",
+      },
+      {
+        q: "Does the service include tree trimming?",
+        a: "Ground-level shaping of appropriate shrubs and ornamentals may be included. Tall-tree pruning, hazardous limbs, chainsaw work, and tree removal are handled under our tree trimming and removal service with the equipment and scope those jobs require.",
+      },
+      {
+        q: "Can you prepare an HOA or commercial property for inspection?",
+        a: "Yes. We work from the property walk and any inspection or violation list you provide. Common areas, entrances, curb lines, and other high-visibility zones can be prioritized, with before-and-after documentation available for management.",
+      },
+      {
+        q: "Can I book a cleanup without ongoing lawn service?",
+        a: "Yes. Fall and spring landscaping cleanups are available as one-time services. If you want ongoing maintenance afterward, we can quote that separately based on the turf, lot size, access, and service frequency.",
+      },
+    ],
+    related: [
+      "mulch-refresh-installation",
+      "leaf-cleanup-removal",
+      "landscape-design",
+      "property-cleanup",
+    ],
+    timeline: "Seasonal · most residential cleanups take 1–2 days",
+    timelineLabel: "Scheduling",
+    needsConfirm: false,
+  },
+
+  // ── 13. Pressure Washing [needs Ryan confirm] ─────────────────────────
   // Off-season service line — pressure washing runs year-round / shoulder
   // season and keeps the crew working. Copy adapted to the site's real NAP
   // (Firsthand Lawns) and actual service areas (Winter Park primary).

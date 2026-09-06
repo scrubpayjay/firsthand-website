@@ -1,7 +1,7 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
   // Read from env first so Vercel preview deploys use their own canonical
-  siteUrl: process.env.SITE_URL || "https://firsthand-website.vercel.app",
+  siteUrl: process.env.SITE_URL || "https://firsthandlawns.com",
   generateRobotsTxt: true,
   generateIndexSitemap: false,
   changefreq: "weekly",
@@ -24,6 +24,9 @@ module.exports = {
       "/services/landscape-design",
       "/services/sod-installation",
       "/services/irrigation",
+      "/services/mulch-refresh-installation",
+      "/services/leaf-cleanup-removal",
+      "/services/fall-spring-landscape-cleanups",
       "/service-areas/winter-park",
       "/service-areas/orlando",
       "/service-areas/windermere",

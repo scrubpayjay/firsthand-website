@@ -5,7 +5,7 @@
 
 export const SITE_NAME = "Firsthand Lawns";
 export const SITE_TAGLINE = "Building Trust Firsthand…";
-export const SITE_URL = "https://firsthand-website.vercel.app";
+export const SITE_URL = "https://firsthandlawns.com";
 
 export const SITE_DESCRIPTION =
   "Landscape design, lawn maintenance, sod, and irrigation for Winter Park, Orlando, Windermere, and Central Florida. Family-owned, fully insured, financing up to $100,000 available.";
@@ -137,6 +137,13 @@ export const SERVICES = [
   { slug: "stump-grinding-removal", name: "Stump Grinding & Removal", confirm: true },
   { slug: "bamboo-trimming-removal", name: "Bamboo Trimming & Removal", confirm: true },
   { slug: "property-cleanup", name: "Property Cleanup", confirm: false },
+  { slug: "mulch-refresh-installation", name: "Mulch Refresh & Installation", confirm: false },
+  { slug: "leaf-cleanup-removal", name: "Leaf Cleanup & Removal", confirm: false },
+  {
+    slug: "fall-spring-landscape-cleanups",
+    name: "Fall & Spring Landscaping Cleanups",
+    confirm: false,
+  },
   // Off-season service lines (2026-07) — fill the landscaping slow season and
   // keep the crew working: gutters (fall/winter), Christmas lights (Nov–Dec),
   // pressure washing (year-round/shoulder). New to this site → confirm: true.
