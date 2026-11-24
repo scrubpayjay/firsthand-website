@@ -856,7 +856,7 @@
     inset-inline: 0;
     z-index: 40;
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 0.6rem;
     background: #fafaf9;
     border-top: 1px solid #d4dbc9;
@@ -882,8 +882,31 @@
   body:has(.landing-page) footer {
     padding-bottom: 80px;
   }
-  body:has(.landing-page) button[aria-label="Ask Firsthand — open assistant"] {
-    bottom: 90px;
+  .landing-chat-space {
+    min-height: 44px;
+  }
+  /* The global launcher occupies the reserved third slot, inside the opaque action bar. */
+  body:has(.landing-page)
+    button[aria-label="Ask Firsthand — open chat assistant"] {
+    left: auto;
+    right: 1rem;
+    bottom: max(0.65rem, env(safe-area-inset-bottom));
+    width: calc((100% - 3.2rem) / 3);
+    min-height: 44px;
+    padding: 0.65rem 0.3rem;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+  body:has(.landing-page)
+    button[aria-label="Ask Firsthand — open chat assistant"]
+    > span {
+    display: none;
+  }
+  body:has(.landing-page)
+    button[aria-label="Ask Firsthand — open chat assistant"]::after {
+    content: "Chat";
+    font-size: 0.78rem;
+    font-weight: 600;
   }
 }
 @media (prefers-reduced-motion: reduce) {

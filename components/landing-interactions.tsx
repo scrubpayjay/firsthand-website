@@ -61,7 +61,7 @@ export function LandingSticky({ kind }: { kind: LandingKind }) {
         placement="mobile_sticky"
         className="cta-pill"
       >
-        Free estimate <ArrowRight size={16} />
+        Estimate <ArrowRight size={16} />
       </LandingLink>
       <LandingLink
         kind={kind}
@@ -71,6 +71,8 @@ export function LandingSticky({ kind }: { kind: LandingKind }) {
       >
         <Phone size={16} /> Call now
       </LandingLink>
+      {/* Reserve a dock slot for the shared launcher in both its initial and reopened states. */}
+      <span className="landing-chat-space" aria-hidden="true" />
     </div>
   );
 }

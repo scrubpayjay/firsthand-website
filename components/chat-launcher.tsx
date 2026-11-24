@@ -14,7 +14,7 @@ export function ChatLauncher() {
     <button
       type="button"
       onClick={() => setLaunched(true)}
-      aria-label="Ask Firsthand — open assistant"
+      aria-label="Ask Firsthand — open chat assistant"
       className="fixed bottom-5 left-5 z-50 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-3 shadow-card-hover hover:bg-primary-hover transition-colors sm:px-5 sm:py-3.5"
     >
       <Sparkles className="h-4 w-4" />

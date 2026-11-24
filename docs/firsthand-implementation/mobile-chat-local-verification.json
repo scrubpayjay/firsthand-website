@@ -1,0 +1,111 @@
+[
+  {
+    "button": {
+      "bottom": 833.6015625,
+      "height": 44,
+      "left": 251.0703125,
+      "right": 359,
+      "top": 789.6015625,
+      "width": 107.9296875,
+      "x": 251.0703125,
+      "y": 789.6015625
+    },
+    "buttonInDock": true,
+    "caption": {
+      "bottom": 500.625,
+      "height": 89.640625,
+      "left": 20,
+      "right": 355,
+      "top": 410.984375,
+      "width": 335,
+      "x": 20,
+      "y": 410.984375
+    },
+    "captionOverlapPixels": 0,
+    "dock": {
+      "bottom": 844,
+      "height": 65.796875,
+      "left": 0,
+      "right": 375,
+      "top": 778.203125,
+      "width": 375,
+      "x": 0,
+      "y": 778.203125
+    },
+    "scrollWidth": 375,
+    "width": 390
+  },
+  {
+    "button": {
+      "bottom": 833.6015625,
+      "height": 44,
+      "left": 241.0703125,
+      "right": 344,
+      "top": 789.6015625,
+      "width": 102.9296875,
+      "x": 241.0703125,
+      "y": 789.6015625
+    },
+    "buttonInDock": true,
+    "caption": {
+      "bottom": 550.7421875,
+      "height": 111.3984375,
+      "left": 20,
+      "right": 340,
+      "top": 439.34375,
+      "width": 320,
+      "x": 20,
+      "y": 439.34375
+    },
+    "captionOverlapPixels": 0,
+    "dock": {
+      "bottom": 844,
+      "height": 65.796875,
+      "left": 0,
+      "right": 360,
+      "top": 778.203125,
+      "width": 360,
+      "x": 0,
+      "y": 778.203125
+    },
+    "scrollWidth": 360,
+    "width": 375
+  },
+  {
+    "state": "after_close",
+    "button": {
+      "bottom": 833.6015625,
+      "height": 44,
+      "left": 241.0703125,
+      "right": 344,
+      "top": 789.6015625,
+      "width": 102.9296875,
+      "x": 241.0703125,
+      "y": 789.6015625
+    },
+    "buttonInDock": true,
+    "caption": {
+      "bottom": 550.7421875,
+      "height": 111.3984375,
+      "left": 20,
+      "right": 340,
+      "top": 439.34375,
+      "width": 320,
+      "x": 20,
+      "y": 439.34375
+    },
+    "captionOverlapPixels": 0,
+    "dock": {
+      "bottom": 844,
+      "height": 65.796875,
+      "left": 0,
+      "right": 360,
+      "top": 778.203125,
+      "width": 360,
+      "x": 0,
+      "y": 778.203125
+    },
+    "scrollWidth": 360,
+    "width": 375
+  }
+]

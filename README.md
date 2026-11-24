@@ -1,302 +1,90 @@
-# Firsthand Lawns — Marketing Site
+# Firsthand Lawns — Production Website
 
-Production-ready Next.js 16 marketing site for Firsthand Lawns, replacing the existing WordPress site at firsthandlawns.com. Currently live on Vercel staging at https://firsthand-website.vercel.app.
+Next.js marketing website for Firsthand Lawn and Landscape, deployed from this repository to Vercel.
 
----
-
-## What's built
-
-**25 routes, all rendering**
-
-- 11 static pages: `/`, `/about`, `/contact`, `/contact/thanks`, `/reviews`, `/portfolio`, `/financing`, `/blog`, `/services` (index), `/service-areas` (index), `/privacy`, `/terms`
-- 8 dynamic service pages: `/services/{lawn-maintenance,landscape-design,sod-installation,irrigation,hardscape-installation,tree-trimming-removal,stump-grinding-removal,bamboo-trimming-removal}` — 800–1200 words each, real Central Florida specifics (St. Augustine, Zoysia, hurricane prep, sandy soil, native palettes, OUC restrictions)
-- 5 dynamic service-area pages: `/service-areas/{winter-park,orlando,college-park,windermere,bay-hill}` — Winter Park anchored as primary, each with neighborhood/landmark refs, city-specific FAQs, embedded Google Map
-- 1 API route: `/api/contact` (validation + console.log + Resend TODO)
-
-**Production Lighthouse**
-
-| Page | Perf | A11y | Best Practices | SEO |
-|------|-----:|-----:|---------------:|----:|
-| `/` | 93 | 100 | 100 | 100 |
-| `/services/landscape-design` | 100 | 100 | 100 | 100 |
-| `/service-areas/winter-park` | 100 | 100 | 100 | 100 |
-
-**SEO infrastructure**
-
-- LocalBusiness / LandscapeService JSON-LD on home with full NAP + AggregateRating + areaServed
-- Service + FAQPage JSON-LD on every service page
-- LocalBusiness + areaServed + GeoCoordinates + FAQPage JSON-LD on every service-area page
-- BreadcrumbList JSON-LD on every non-home page
-- sitemap.xml (auto-generated postbuild) — 25 URLs, prioritized by conversion value
-- robots.txt allowing all crawlers, disallowing `/api/` and `/contact/thanks`
-- Open Graph + Twitter card defaults via Next.js Metadata API, per-page overrides
-- Internal linking: each service page cross-links to all 5 areas; each area page cross-links to all 8 services
-- 301 redirect map for every legacy WordPress URL (in `next.config.ts`)
-
-**Conversion infrastructure**
-
-- Sticky header with mobile drawer and `Get a quote` CTA
-- Contact form with react-hook-form + zod validation, honeypot, inline errors, loading state
-- Reviews carousel with auto-rotate, pause on hover, swipe, prev/next, dot indicators (respects prefers-reduced-motion)
-- TrustBar (4.9 ★ / 154 reviews / Family-owned / Insured / Residential + Commercial)
-- Cookie consent banner gating Meta Pixel + Tidio behind explicit opt-in
-- Financing call-out on home, dedicated `/financing` page, sidebar callout on every service page
-
-**Photo coverage** (Ryan-curated 2026-05-24 batch + earlier CompanyCam pulls)
-
-| Surface | Status | Source |
-|---|---|---|
-| Home hero | ✓ | **hero-ryan-1** (Mediterranean home, travertine walkway, bougainvillea) |
-| Home financing callout | ✓ | hardscape-1 (Bay Hill travertine pool) |
-| Home "Where we work" | ✓ | winter-park-1 (oak-shaded Spanish home) |
-| Home recent-work grid | ✓ | 4 Ryan-curated: landscape-ryan-3, hardscape-ryan-1, lawn-ryan-1, concrete-ryan-1 |
-| `/services/lawn-maintenance` | ✓ | **lawn-ryan-1** (fresh mowing stripes under oak) |
-| `/services/landscape-design` | ✓ | **landscape-ryan-1** (mature palms + stucco wing) |
-| `/services/sod-installation` | ✓ | sod-1 hero |
-| `/services/hardscape-installation` | ✓ | **hardscape-ryan-1** (wide paver patio + topiary) |
-| `/services/stump-grinding-removal` | ✓ | stump-1 hero |
-| `/services/bamboo-trimming-removal` | ✓ | bamboo-1 hero |
-| `/services/irrigation` | ✗ | [RYAN: photo needed] — Ryan's batch did not include irrigation shots |
-| `/services/tree-trimming-removal` | ✗ | [RYAN: photo needed] — Ryan's batch did not include tree work shots |
-| `/service-areas/winter-park` | ✓ | winter-park-1 |
-| `/service-areas/windermere` | ✓ | windermere-1 |
-| `/service-areas/bay-hill` | ✓ | bay-hill-1 |
-| `/service-areas/orlando` | ✓ | sod-2 (re-roled area-hero) |
-| `/service-areas/college-park` | ✗ | [RYAN: photo needed] — Ryan's batch had no identifiable College Park landmarks |
-| `/portfolio` category cards | ✓ | **3 Ryan-curated cards** linking to discipline-specific CompanyCam galleries: Lawn & Landscape, Hardscape, Concrete |
-| `/portfolio` gallery | ✓ | 18-photo grid, top 12 now Ryan-curated |
-| `/about` recent work | ✓ | 8-photo grid |
-| `/about` credentials photo | ✓ | hardscape-1 |
-| `/about` Ryan portrait | ✓ | **ryan-portrait** (Ryan's bio photo, green Firsthand cap + tee) |
-| `/about` crew/team photos | ✗ | placeholders — Ryan's batch did not include team portraits |
-| `public/og-image.jpg` (1200×630) | ✓ | derived from prior home hero (consider re-deriving from hero-ryan-1) |
-
-**Ryan-curated batch (2026-05-24):** Ryan personally emailed 35 photos in response to v1 review. Inserted at the top of `lib/photos-manifest.ts` so `pickHero()` finds them first; filenames carry the `-ryan-` infix to flag personally-curated assets. Mix: 1 hero, 11 landscape, 3 lawn, 14 hardscape, 5 concrete, 1 Ryan portrait. (ChatGPT caricature also sent but skipped per Ryan's preference for the real bio photo.)
-
-**Categories still missing** after Ryan's batch:
-- Irrigation: no irrigation/sprinkler photos in the curated set
-- Tree-trimming: no clean post-trim "after" shots
-- Stump grinding: no stump shots
-- Bamboo: no bamboo shots
-- College Park residential: no identifiable College Park landmarks in batch
-- Crew/team portraits: no group team shots
-
-Existing placeholders remain on those surfaces. If Ryan sends a follow-up batch for any of these, repeat the integration pattern in this batch's commit series.
-
-**Earlier gap-fill pull (round 2):** A second CompanyCam pull scanned 300 projects looking specifically for irrigation, tree-trimming, College Park, and Orlando-neighborhood photos. Net additions still in the manifest:
-
-- `commercial-3.jpg` (Park Lake Dental — Orlando commercial frontage with new gravel beds)
-- `landscape-5.jpg` (fresh mulch + plant install along residential side yard)
-
-**Tracking**
-
-- Google Tag Manager: **GTM-5T6BXSR7** (the existing WordPress container — preserved, not regenerated)
-- Meta Pixel: ID `5294875050737022` (env-driven via `NEXT_PUBLIC_META_PIXEL_ID`), fires PageView + Lead event after consent
-- Tidio chat: placeholder `PLACEHOLDER_TIDIO_ID` in `app/layout.tsx`, lazy-loaded after consent
-
----
-
-## Regenerating photos from CompanyCam
-
-The photo pull is reproducible. Pullers + finalizer live at `/tmp/cc-pull/`
-(see `pull.mjs`, `resize.mjs`, `finalize.mjs`). To refresh:
-
-```bash
-# 1. Pull recent project photos and download candidates
-export CC_API_KEY=$(doppler secrets get COMPANYCAM_API_KEY \
-  --project firsthand-ops --config prd --plain)
-node /tmp/cc-pull/pull.mjs            # → /tmp/cc-pull/raw + photos-meta.json
-
-# 2. Resize to web sizes (max 1600px, mozjpeg q=78, EXIF stripped)
-node /tmp/cc-pull/resize.mjs          # → /tmp/cc-pull/staging
-
-# 3. Curate KEEPERS list in finalize.mjs (visual review of staging/)
-# 4. Run finalize to copy + rename + emit manifest + og-image
-node /tmp/cc-pull/finalize.mjs        # → public/photos/* + lib/photos-manifest.ts
-```
-
-Inspecting candidates: open `/tmp/cc-pull/staging/cand-*.jpg` in Preview
-and update `KEEPERS` in `finalize.mjs` with chosen filenames, target
-category prefix, area, service, role, and alt text override.
-
----
-
-## Placeholders to replace before launch
-
-| Placeholder | Location | Replace with |
-|---|---|---|
-| `PLACEHOLDER_TIDIO_ID` | `app/layout.tsx` | Tidio public key (see Tidio setup below) |
-| `admin@firsthandlawns.com` | `lib/site-config.ts` | Inbound contact address (Ryan confirmed 2026-05-25) |
-| Hours (`Mon-Fri 8am-6pm · Sat-Sun 9am-2pm`) | `lib/site-config.ts` | Real hours from Ryan |
-| Financing partner URL (`https://example.com/apply`) | `lib/site-config.ts` | Real partner application URL (Wisetack, Sunbit, GreenSky, etc.) |
-| Social URLs (Facebook, Instagram, Google) | `lib/site-config.ts` | Real social profile URLs |
-| Email service in `/api/contact` | `app/api/contact/route.ts` | Wire Resend (recommended — Vercel-native) |
-| `public/firsthand-logo.png` | `public/` | Higher-res SVG when available |
-| ~30 photo placeholders | sprinkled across pages | Real CompanyCam photos (each is marked `[RYAN: ...]`) |
-| 15 review excerpts | `lib/reviews-data.ts` | Real Google reviews via Places API or paste manually — search `TODO_REPLACE_REVIEW` |
-
----
-
-## [RYAN: ...] markers grouped by page
-
-Search the codebase for `[RYAN:` to find every spot where Ryan's voice, real content, or confirmation is required. Roughly 33 textual markers + 30+ photo placeholders.
-
-**`/` (Home)**
-- Photo placeholder: hero shot
-- Photo placeholder: mid-build financing image
-- Photo placeholder: Central Florida map
-- 4× before/after photo pairs
-- `[RYAN: confirm year-founded and add a line about the team]` in Why-Firsthand card
-
-**`/about`**
-- Ryan's story (3 paragraphs)
-- Photo placeholder: Ryan on a job site
-- Team list (Crew lead #1, Crew lead #2, Estimator/Designer)
-- 4× team headshot placeholders
-- License/insurance coverage amounts (3 markers)
-- 8× recent-work gallery placeholders
-
-**`/contact`** — nothing to replace (real NAP wired in)
-
-**`/portfolio`**
-- Note about replacing CompanyCam callout with on-site gallery
-- 6× before/after pairs (12 photo placeholders)
-
-**`/financing`**
-- 3× FAQ confirmations (turnaround time, eligible services, finance partner name)
-- Financing partner apply URL
-
-**`/blog`**
-- Phase-2 note about wiring email capture to dedicated newsletter list
-
-**`/privacy` and `/terms`**
-- Attorney review recommendation
-- Document last-updated dates
-
-**`/services/{hardscape-installation,tree-trimming-removal,stump-grinding-removal,bamboo-trimming-removal}`**
-- Banner on each: `[RYAN: Confirm Firsthand currently offers this service]` (4 services NEW to this site vs. old WordPress)
-- Tree-trimming page: ISA certification confirmation in FAQ
-- Photo placeholder per service hero
-
-**`/service-areas/{winter-park,orlando,college-park,windermere,bay-hill}`** (×5)
-- 2× local testimonial slots per city (10 testimonial placeholders)
-- Hero photo placeholder per city
-
-**`lib/site-config.ts`**
-- Email address confirmation
-- Hours confirmation
-- Social URLs
-- Financing partner URL
-
-**`lib/reviews-data.ts`**
-- 15 review excerpts marked `TODO_REPLACE_REVIEW`
-
----
-
-## Tidio account setup (do this in Tidio dashboard)
-
-When Justin or Ryan creates the Tidio account:
-
-1. Sign up at tidio.com (free tier supports basic chat; paid $29/mo unlocks AI flows)
-2. Copy the public key, paste into `app/layout.tsx` replacing `PLACEHOLDER_TIDIO_ID`
-3. Configure the greeting:
-   > "Hi! I'm Ryan's assistant. I can help with quotes, scheduling, or general questions about lawn care in Winter Park and Central Florida. What can I help with?"
-4. Set up 5 quick-reply buttons:
-   - "Get a free estimate"
-   - "Service areas you cover"
-   - "Financing options"
-   - "Emergency tree/storm cleanup"
-   - "Schedule a callback"
-5. Route unanswered messages to `admin@firsthandlawns.com`
-6. Office hours: M–F 8am–6pm, S–Su 9am–2pm (or whatever Ryan confirms)
-7. Outside hours: collect contact info, promise callback next business day
-
-**Phase 2 (future):** replace Tidio with custom Drafted-integrated chat that routes through Agent 10 (lead reply) for unified triage. ~2-day build, defer until customer base justifies it.
-
----
-
-## 301 redirect map (active now)
-
-Every legacy WordPress URL redirects to the new equivalent at the moment DNS cuts over. Verified live:
-
-```
-/services/                  → /services
-/services/lawn-care/        → /services/lawn-maintenance
-/services/landscaping/      → /services/landscape-design
-/projects/                  → /portfolio
-/about-us/                  → /about
-/where-we-service/          → /service-areas
-/contact-us/                → /contact
-/privacy-policy/            → /privacy
-/terms-and-conditions/      → /terms
-```
-
-All return final 200 after the redirect chain.
-
----
-
-## Before-launch checklist
-
-- [ ] All `PLACEHOLDER_*` strings above replaced
-- [ ] Real Firsthand logo (SVG preferred) — currently using PNG from old site
-- [ ] All `[RYAN: ...]` markers resolved (search the codebase)
-- [ ] Real photos in place (~30 needed — pull from CompanyCam gallery)
-- [ ] Tidio account created with chat flows configured per spec above
-- [ ] GTM-5T6BXSR7 verified in layout (DO NOT generate a new container — preserve continuity from WordPress)
-- [ ] Financing partner URL added to `/financing` page and `lib/site-config.ts`
-- [ ] Resend (or SendGrid) account created and wired into `/api/contact`
-- [ ] Resend domain verification done for firsthandlawns.com
-- [ ] Google Search Console verification meta tag added to root layout
-- [ ] Submit new sitemap.xml to Search Console
-- [ ] Verify every old URL hits 301 (use `curl -ILs <url>` or Search Console URL Inspection)
-- [ ] Confirm new services (Hardscape, Tree, Stump, Bamboo) are services Firsthand actually offers — remove or de-index any that aren't
-- [ ] CompanyCam portfolio gallery link still resolves on `/portfolio`
-- [ ] Test contact form end-to-end with real email delivery
-- [ ] Google Business Profile NAP matches new site exactly (phone, address, hours)
-- [ ] Tell Evergrow Marketing they're being phased out (handle contract / WordPress handoff gracefully)
-- [ ] **DNS cutover from firsthandlawns.com → Vercel (LAST step, only after everything above)**
-
----
-
-## How to maintain
-
-- **Content updates**: edit `lib/services-data.ts`, `lib/service-areas-data.ts`, `lib/reviews-data.ts`, `lib/site-config.ts`. Rebuilds on push.
-- **New blog post**: create `app/blog/[slug]/page.tsx` (blog index already exists).
-- **New service page**: append an object to `lib/services-data.ts`, then add to `SERVICES` in `lib/site-config.ts`. Page auto-generates from `generateStaticParams`.
-- **New service area**: append an object to `lib/service-areas-data.ts`, then add to `SERVICE_AREAS` in `lib/site-config.ts`. Page auto-generates.
-- **Lighthouse audit**: `pnpm build && pnpm start` then run Lighthouse via Chrome DevTools or `npx lighthouse <url>`.
-
----
-
-## Stack
-
-- Next.js 16.2.6 (App Router, Turbopack)
-- TypeScript strict
-- Tailwind CSS 4 with `@theme inline` palette in `app/globals.css`
-- shadcn/ui (`base-nova` preset, Base UI primitives)
-- next/font for Inter + Playfair Display
-- react-hook-form + zod for the contact form
-- next-sitemap (postbuild)
-- lucide-react for icons
-- Hosted on Vercel free tier under team `mindaro`
+- Production: [firsthandlawns.com](https://www.firsthandlawns.com)
+- Outdoor Living: [/outdoor-living](https://www.firsthandlawns.com/outdoor-living)
+- Artificial Turf: [/artificial-turf](https://www.firsthandlawns.com/artificial-turf)
+- GitHub: [scrubpayjay/firsthand-website](https://github.com/scrubpayjay/firsthand-website)
+- Vercel: `mindaro/firsthand-website` (`prj_jsLxTw8PThxR1ZkL5584sj4QfAG9`)
+- Production branch: `main`; feature branches receive protected previews.
 
 ## Local development
 
+Use the existing authorized environment configuration. `.env.local` and credentials must stay out of Git. Variable names and setup comments are in `.env.example`; some legacy comments there predate the current CRM delivery path.
+
 ```bash
-pnpm install
-pnpm dev          # http://localhost:3000
-pnpm build        # production build + sitemap
-pnpm start        # serve the production build
-pnpm typecheck    # tsc --noEmit
-pnpm lint         # eslint
+pnpm install --frozen-lockfile
+pnpm dev
+pnpm lint
+pnpm typecheck
+node --test scripts/landing-leads.test.cjs
+pnpm build
+pnpm start
 ```
 
-If pnpm complains about ignored build scripts on first install, run `pnpm approve-builds` or check `pnpm-workspace.yaml` (sharp, unrs-resolver, msw are already whitelisted).
+`pnpm build` runs Next.js and generates the XML sitemap through its postbuild hook. Vercel uses its configured Node.js runtime; check project settings before changing runtime versions.
 
-## Deployment
+## Current functionality
 
-- GitHub: https://github.com/scrubpayjay/firsthand-website
-- Vercel project: `mindaro/firsthand-website`
-- Auto-deploys from `main` branch on every push
-- Preview deploys on PRs
-- Production: https://firsthand-website.vercel.app (DNS cutover to firsthandlawns.com is the LAST pre-launch step)
+- Existing home, service, service-area, commercial, portfolio, review, financing, blog, contact, and legal pages remain available. Legacy redirects are in `next.config.ts`.
+- `/outdoor-living` and `/artificial-turf` include dedicated estimate forms, responsive layouts, FAQs, canonical/social metadata, and LocalBusiness/Service/FAQ/breadcrumb structured data.
+- Landing-page estimates use `/api/estimate`, server validation, a honeypot, origin/body checks, a per-instance burst limit, and durable CRM idempotency.
+- On mobile landing pages, Estimate, Call, and Chat occupy the bottom action bar. The shared chat launcher uses the third reserved slot, so it does not float over the image disclosure or other page content. Both initial and reopened launcher states use the same positioning.
+- The existing assistant loads on demand. Lead delivery and advertising consent are independent of opening the assistant.
+
+## Content and business scope
+
+| Concern | Source |
+|---|---|
+| Brand, phone, address, existing service catalog, service areas | `lib/site-config.ts` |
+| Landing copy, FAQs, installation checklist, confirmed offerings | `lib/landing-pages.ts` |
+| Landing-page rendering and mobile action bar | `components/landing-page.tsx`, `components/landing-interactions.tsx`, `app/landing.css` |
+| Existing service and area page content | `lib/services-data.ts`, `lib/service-areas-data.ts` |
+| Genuine Google review excerpts and source links | `lib/reviews-data.ts` |
+| Project-image provenance | `lib/photos-manifest.ts` |
+| Blog content | `lib/blog-posts-data.ts` |
+
+Unconfirmed pergolas/covered patios, kitchens, fire features, pool decks, and putting greens remain hidden from landing-page cards, forms, and structured data. Dr. Phillips, Winter Garden, Maitland, and Clermont remain excluded from the new landing-page coverage lists. Obtain business confirmation before changing these gates.
+
+The turf page includes `public/photos/turf-design-concept-illustrative.png`, a generated two-view concept board. Keep the image uncropped and retain its baked-in disclosure, visible HTML caption, and descriptive alt text: **AI-generated concept — not a Firsthand project.** It is design inspiration, not installation evidence. Authentic archive photographs are identified separately.
+
+Three short, attributed Google review excerpts were verified on the matching business profile on November 24, 2026. The former placeholder testimonials were removed. These reviews describe landscaping, not turf installations. The observed aggregate was 4.8 from 177 reviews; this is a dated snapshot, not a live feed. Verify directly on Google before refreshing it. Do not invent review dates or customer/project claims.
+
+## Lead delivery
+
+`/api/estimate` and the existing contact endpoint send signed requests to the established Firsthand ops receiver, which persists submissions and creates Jobber requests. A successful form confirmation requires backend acceptance and a real Jobber request ID; missing configuration, network failures, and pending/failed acknowledgements do not display success.
+
+The CRM contract requires an email address, so landing forms include email alongside the requested project fields. Project details, landing page, consent state, attribution, and submission timestamp are included in the persisted message. SMS consent defaults to false. The existing contact-photo pipeline uses FieldShot where configured.
+
+Required server configuration uses the existing `JOBBER_WEBHOOK_URL` and `WEBSITE_LEAD_WEBHOOK_SECRET`. Never print, commit, or replace their values casually. The burst throttle is per instance; durable deduplication is enforced downstream by the CRM.
+
+## Analytics and privacy
+
+Reuse the existing GTM container `GTM-5T6BXSR7`; do not add another GA/Ads/Meta bootstrap. The audited configuration includes GA4 `G-D7SGCGNJEP`, Ads `AW-18285479572`, and Meta `5294875050737022`.
+
+- GTM loads after affirmative consent; Privacy choices can reopen the consent dialog.
+- `lead_form_submit` uses the existing GA4/Ads mapping, and `generate_lead` uses the Meta Lead mapping.
+- Form-start, CTA, and phone-click events are consent-gated.
+- UTMs, GCLID, GBRAID, WBRAID, and FBCLID are captured/persisted only after consent.
+- Existing Vercel cookieless analytics remains enabled on Vercel.
+- Meta CAPI and advertising-dashboard attribution have not been independently configured/verified by this implementation.
+
+## Verification and releases
+
+Use lint, TypeScript, the lead/consent contract tests, and a production build before release. Visually inspect desktop and 390/375-pixel mobile layouts, including the full turf disclosure and chat open/close behavior. On a release, confirm the actual production domain, asset loading, source labels, and retained business-scope gates.
+
+`main` pushes trigger Vercel production deployments. Wait for READY and verify the domain; a push alone is not proof of a successful release. Never disable deployment protection to test previews.
+
+The previously recorded local mobile Lighthouse baseline was outdoor 89 and turf 87 performance, with 100 accessibility, best practices, and SEO. These are historical measurements, not current field-performance claims.
+
+- [Current handoff](HANDOFF.md)
+- [Implementation report](docs/firsthand-implementation/implementation-report.md)
+- [Production release and provenance](docs/firsthand-implementation/production-release-2026-11-24.md)
+- [Requirements matrix](docs/firsthand-implementation/requirements-matrix.md)
+
+Rollback to a known deployment through Vercel or a reviewed Git revert. The pre-landing-page rollback is `dpl_2sXkRQERnPPPA83C8N6zx59j6t1s`; the prior release with the labeled turf concept is `dpl_CYXGaedz6ab9QQ6BnE68gZfxGvDp` (`88691d10f066629a6ed25135dd143ee660f052db`). Vercel rollback disables automatic domain assignment until a subsequent promotion restores it. Check current state before acting.
+
+## Stack
+
+Next.js 16.2.6, React 19, TypeScript, Tailwind CSS 4, Inter/Playfair Display, React Hook Form, Zod, next-sitemap, and Vercel. Treat remaining `[RYAN: ...]`, placeholder integration settings, and financing-partner details elsewhere in the repository as items to audit against current business evidence; this landing-page release does not establish those unrelated claims.

@@ -1,0 +1,73 @@
+TAP version 13
+# [estimate] CRM delivery not confirmed
+# [estimate] CRM delivery not confirmed
+# Subtest: estimate validation, delivery, attribution, and duplicate contract
+    # Subtest: invalid, bot, unsupported service, cross-origin, and oversized requests never reach CRM
+    ok 1 - invalid, bot, unsupported service, cross-origin, and oversized requests never reach CRM
+      ---
+      duration_ms: 64.480863
+      type: 'test'
+      ...
+    # Subtest: accepted lead preserves CRM contract and consented attribution
+    ok 2 - accepted lead preserves CRM contract and consented attribution
+      ---
+      duration_ms: 24.807983
+      type: 'test'
+      ...
+    # Subtest: identical inquiries reuse the durable CRM idempotency key
+    ok 3 - identical inquiries reuse the durable CRM idempotency key
+      ---
+      duration_ms: 8.407403
+      type: 'test'
+      ...
+    # Subtest: denied consent strips all attribution before forwarding
+    ok 4 - denied consent strips all attribution before forwarding
+      ---
+      duration_ms: 3.245498
+      type: 'test'
+      ...
+    # Subtest: outdoor project details reach the same receiver
+    ok 5 - outdoor project details reach the same receiver
+      ---
+      duration_ms: 4.682451
+      type: 'test'
+      ...
+    # Subtest: backend errors, pending rows, malformed acceptance never show success
+    ok 6 - backend errors, pending rows, malformed acceptance never show success
+      ---
+      duration_ms: 34.060845
+      type: 'test'
+      ...
+    # Subtest: missing delivery credentials fails closed
+    ok 7 - missing delivery credentials fails closed
+      ---
+      duration_ms: 4.455177
+      type: 'test'
+      ...
+    # Subtest: burst protection rejects excessive requests
+    ok 8 - burst protection rejects excessive requests
+      ---
+      duration_ms: 17.192691
+      type: 'test'
+      ...
+    1..8
+ok 1 - estimate validation, delivery, attribution, and duplicate contract
+  ---
+  duration_ms: 170.687731
+  type: 'test'
+  ...
+# Subtest: browser attribution and analytics honor consent
+ok 2 - browser attribution and analytics honor consent
+  ---
+  duration_ms: 102.825606
+  type: 'test'
+  ...
+1..2
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2187.196327
