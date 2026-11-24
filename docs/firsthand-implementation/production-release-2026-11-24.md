@@ -21,7 +21,7 @@ The pre-existing `lib/reviews-data.ts` explicitly identified its former testimon
 
 ## Generated turf concept
 
-The generated two-view concept board is stored at `concepts/turf-concept-not-a-firsthand-project.png`. Its disclosure is baked into the image: “AI-generated concept — not a Firsthand project”. It is delivered as a concept only and is not included in the public pages or project gallery. Existing authentic archive imagery remains live.
+The generated two-view concept board is stored at `concepts/turf-concept-not-a-firsthand-project.png`. Its disclosure is baked into the image: “AI-generated concept — not a Firsthand project”. Initially delivered separately; the user subsequently authorized publishing it with a clear illustrative label. It now appears only on the artificial-turf page in a dedicated concept figure, with the entire baked-in disclosure preserved, an accessible HTML caption, and descriptive alt text. The generated concept is separate from authentic project photography. Existing authentic archive imagery remains live.
 
 ## Validation and rollback
 
