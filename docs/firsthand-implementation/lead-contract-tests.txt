@@ -5,61 +5,61 @@ TAP version 13
     # Subtest: invalid, bot, unsupported service, cross-origin, and oversized requests never reach CRM
     ok 1 - invalid, bot, unsupported service, cross-origin, and oversized requests never reach CRM
       ---
-      duration_ms: 20.558882
+      duration_ms: 51.848484
       type: 'test'
       ...
     # Subtest: accepted lead preserves CRM contract and consented attribution
     ok 2 - accepted lead preserves CRM contract and consented attribution
       ---
-      duration_ms: 6.288548
+      duration_ms: 7.533887
       type: 'test'
       ...
     # Subtest: identical inquiries reuse the durable CRM idempotency key
     ok 3 - identical inquiries reuse the durable CRM idempotency key
       ---
-      duration_ms: 2.161782
+      duration_ms: 4.237252
       type: 'test'
       ...
     # Subtest: denied consent strips all attribution before forwarding
     ok 4 - denied consent strips all attribution before forwarding
       ---
-      duration_ms: 1.781945
+      duration_ms: 2.7973
       type: 'test'
       ...
     # Subtest: outdoor project details reach the same receiver
     ok 5 - outdoor project details reach the same receiver
       ---
-      duration_ms: 2.42082
+      duration_ms: 2.652466
       type: 'test'
       ...
     # Subtest: backend errors, pending rows, malformed acceptance never show success
     ok 6 - backend errors, pending rows, malformed acceptance never show success
       ---
-      duration_ms: 6.94766
+      duration_ms: 17.995579
       type: 'test'
       ...
     # Subtest: missing delivery credentials fails closed
     ok 7 - missing delivery credentials fails closed
       ---
-      duration_ms: 1.951892
+      duration_ms: 1.542004
       type: 'test'
       ...
     # Subtest: burst protection rejects excessive requests
     ok 8 - burst protection rejects excessive requests
       ---
-      duration_ms: 5.965702
+      duration_ms: 9.039406
       type: 'test'
       ...
     1..8
 ok 1 - estimate validation, delivery, attribution, and duplicate contract
   ---
-  duration_ms: 51.562474
+  duration_ms: 105.17746
   type: 'test'
   ...
 # Subtest: browser attribution and analytics honor consent
 ok 2 - browser attribution and analytics honor consent
   ---
-  duration_ms: 11.174716
+  duration_ms: 19.974686
   type: 'test'
   ...
 1..2
@@ -70,4 +70,4 @@ ok 2 - browser attribution and analytics honor consent
 # cancelled 0
 # skipped 0
 # todo 0
-# duration_ms 877.820602
+# duration_ms 2273.115226

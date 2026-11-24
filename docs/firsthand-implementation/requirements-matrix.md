@@ -39,5 +39,5 @@ The separate pasted implementation request defines the task and deployment autho
 | Meta Conversions API | No established CAPI implementation found in the website; no secret or new server tracker invented | Not configured |
 | SEO | Canonicals, titles/descriptions, OG/Twitter, H1/H2/H3, LocalBusiness + Service + visible FAQ + breadcrumbs, alt text, sitemap priorities | Implemented |
 | Navigation | Top navigation, keyboard-accessible Services hover/focus menu, mobile navigation, services index, home cards, footer, cross-links | Implemented |
-| Responsive/accessibility | Responsive grids, semantic details, labels, focus styles, reduced motion, mobile sticky controls | Testing recorded in report |
+| Responsive/accessibility | Responsive grids, semantic details, labels, focus styles, reduced motion, mobile sticky controls | PASS at 1440/768/390/375; evidence in report |
 | Production release | Preview and checks first; scope confirmation and production approval required by user's request | Pending |
