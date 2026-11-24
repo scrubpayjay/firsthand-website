@@ -1,5 +1,6 @@
 "use client";
 
+import { landingEvent } from "@/lib/landing-tracking";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRef, useState } from "react";
@@ -145,21 +146,8 @@ export function ContactForm() {
         body: formData,
       });
       if (!res.ok) throw new Error("Submit failed");
-      if (typeof window !== "undefined") {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event: "lead_form_submit",
-          form_id: "contact",
-          page_path: window.location.pathname,
-        });
-        // Fire Meta Pixel Lead event if pixel loaded (cookie-consent gated)
-        const w = window as typeof window & {
-          fbq?: (event: string, name: string) => void;
-        };
-        if (typeof w.fbq === "function") {
-          w.fbq("track", "Lead");
-        }
-      }
+      landingEvent("lead_form_submit", "contact", {form_id:"contact"});
+      landingEvent("generate_lead", "contact");
       router.push("/contact/thanks");
     } catch {
       setSubmitError(

@@ -122,6 +122,7 @@ export async function POST(request: Request) {
     );
   } catch (err) {
     console.error("[contact] jobber-webhook failed:", err);
+    return NextResponse.json({ error: "We couldn’t confirm receipt. Please try again or call (407) 337-5191." }, { status: 503 });
   }
 
   // Photos → FieldShot, so the lead's request arrives WITH its photos for the
@@ -165,7 +166,7 @@ async function sendJobberWebhook(
 ): Promise<JobberIdsFromWebhook> {
   if (!JOBBER_WEBHOOK_URL) {
     console.warn("[contact] JOBBER_WEBHOOK_URL not set — skipping webhook");
-    return {};
+    throw new Error("CRM delivery is not configured");
   }
   if (!WEBSITE_LEAD_WEBHOOK_SECRET) {
     // Fail-loud counterpart to the ops side. Without the secret we cannot
@@ -174,7 +175,7 @@ async function sendJobberWebhook(
     console.warn(
       "[contact] WEBSITE_LEAD_WEBHOOK_SECRET not set — skipping Jobber webhook"
     );
-    return {};
+    throw new Error("CRM delivery is not configured");
   }
   const payload = buildJobberPayload(
     data,
@@ -208,7 +209,12 @@ async function sendJobberWebhook(
     jobber_client_id?: string | null;
     jobber_request_id?: string | null;
     jobber_property_id?: string | null;
+    ok?: boolean;
+    status?: string;
   };
+  if (responseJson.ok !== true || !responseJson.jobber_request_id || (responseJson.status && responseJson.status !== "request_created")) {
+    throw new Error("CRM did not confirm request creation");
+  }
   return {
     clientId: responseJson.jobber_client_id ?? undefined,
     requestId: responseJson.jobber_request_id ?? undefined,

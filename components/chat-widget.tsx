@@ -42,7 +42,7 @@ export function ChatWidget() {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored) as ChatMessage[];
-        if (Array.isArray(parsed) && parsed.length > 0) setMessages(parsed);
+        if (Array.isArray(parsed) && parsed.length > 0) queueMicrotask(() => setMessages(parsed));
       }
     } catch {
       // ignore

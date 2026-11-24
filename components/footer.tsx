@@ -84,10 +84,10 @@ export function Footer() {
               Services
             </h3>
             <ul className="space-y-2.5 text-sm">
-              {SERVICES.map((s) => (
+              {[{slug:"outdoor-living",name:"Outdoor Living"},{slug:"artificial-turf",name:"Artificial Turf"},...SERVICES].map((s) => (
                 <li key={s.slug}>
                   <Link
-                    href={`/services/${s.slug}`}
+                    href={s.slug === "outdoor-living" || s.slug === "artificial-turf" ? `/${s.slug}` : `/services/${s.slug}`}
                     className="text-muted-foreground hover:text-foreground"
                   >
                     {s.name}

@@ -1,0 +1,29 @@
+[
+  {
+    "heroCTA": {
+      "bottom": 607.59375,
+      "top": 555.1953125
+    },
+    "route": "/outdoor-living",
+    "scroll": 753,
+    "width": 768
+  },
+  {
+    "heroCTA": {
+      "bottom": 618.9375,
+      "top": 566.9375
+    },
+    "route": "/outdoor-living",
+    "scroll": 375,
+    "width": 390
+  },
+  {
+    "heroCTA": {
+      "bottom": 618.9375,
+      "top": 566.9375
+    },
+    "route": "/outdoor-living",
+    "scroll": 360,
+    "width": 375
+  }
+]

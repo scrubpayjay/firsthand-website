@@ -62,6 +62,10 @@ export default function ServicesIndexPage() {
       </section>
 
       <section className="container-wide pb-16 lg:pb-20">
+        <div className="grid sm:grid-cols-2 gap-5 mb-8">
+          <Link href="/outdoor-living" className="rounded-xl border border-border bg-card p-6 hover:border-primary"><h2 className="text-2xl">Outdoor Living</h2><p className="mt-2 text-muted-foreground">Backyard transformations, paver patios, and landscape installation.</p></Link>
+          <Link href="/artificial-turf" className="rounded-xl border border-border bg-card p-6 hover:border-primary"><h2 className="text-2xl">Artificial Turf</h2><p className="mt-2 text-muted-foreground">Residential, backyard, and pet-friendly turf installation.</p></Link>
+        </div>
         <ul className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {SERVICE_PAGES.map((s) => {
             const Icon = ICONS[s.slug] ?? Sprout;

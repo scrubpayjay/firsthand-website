@@ -75,54 +75,21 @@ export const metadata: Metadata = {
   },
 };
 
-// Real GTM container from the existing firsthandlawns.com WordPress site — DO NOT regenerate.
-const GTM_ID = "GTM-5T6BXSR7";
-
-// Replace these placeholders when the corresponding accounts are provisioned.
 const TIDIO_PUBLIC_KEY = "PLACEHOLDER_TIDIO_ID";
-// Env-driven in production (NEXT_PUBLIC_META_PIXEL_ID in Vercel env vars);
-// PLACEHOLDER fallback so local dev without the env var still passes the
-// `pixelId.startsWith("PLACEHOLDER")` gate in components/cookie-banner.tsx
-// and the pixel script stays dormant.
-const META_PIXEL_ID =
-  process.env.NEXT_PUBLIC_META_PIXEL_ID ?? "PLACEHOLDER_FB_PIXEL_ID";
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
-      <head>
-        {/* Google Tag Manager — preserves existing GTM-5T6BXSR7 from the WordPress site so
-            tagging continuity (GA4, conversion pixels) is maintained at DNS cutover. */}
-        <Script
-          id="gtm-script"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-              })(window,document,'script','dataLayer','${GTM_ID}');`,
-          }}
-        />
-      </head>
+      <head><Script id="consent-defaults" strategy="beforeInteractive" dangerouslySetInnerHTML={{__html:`window.dataLayer=window.dataLayer||[];(function(){function consent(){window.dataLayer.push(arguments)}consent('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});})();`}}/></head>
       <body className="min-h-screen flex flex-col bg-background text-foreground">
-        {/* GTM noscript fallback */}
-        <noscript>
-          <iframe
-            src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
-            height="0"
-            width="0"
-            style={{ display: "none", visibility: "hidden" }}
-          />
-        </noscript>
 
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
         <ChatWidget />
-        <CookieBanner pixelId={META_PIXEL_ID} tidioKey={TIDIO_PUBLIC_KEY} />
+        <CookieBanner tidioKey={TIDIO_PUBLIC_KEY} />
         {/* Vercel Web Analytics — first-party, cookieless, same-origin beacons
             (/_vercel/insights/*), so it needs no consent gate and is unaffected
             by the cookie banner above. */}
