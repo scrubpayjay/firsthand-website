@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { REVIEWS } from "@/lib/reviews-data";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -552,8 +553,9 @@ export function LandingPage({ kind }: { kind: LandingKind }) {
           <p className="landing-eyebrow">HEAR FROM HOMEOWNERS</p>
           <h2>Get to know Firsthand.</h2>
           <p>
-            Read customer feedback on Google and explore our project archive as
-            you plan your outdoor space.
+            Short excerpts from real Google reviews, verified November 24, 2026.
+            These describe Firsthand’s landscaping services, not artificial turf
+            installations.
           </p>
         </div>
         <a
@@ -564,6 +566,24 @@ export function LandingPage({ kind }: { kind: LandingKind }) {
         >
           Read customer reviews on Google <ArrowUpRight size={22} />
         </a>
+        <div className="landing-verified-reviews">
+          {REVIEWS.map((review) => (
+            <figure key={review.name}>
+              <blockquote>“{review.excerpt}”</blockquote>
+              <figcaption>
+                <strong>{review.name}</strong>
+                <span>{review.service} · Google review excerpt</span>
+                <a
+                  href={review.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Read on Google <ArrowUpRight size={15} />
+                </a>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
       </section>
 
       <section className="landing-areas">

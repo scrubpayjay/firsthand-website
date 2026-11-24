@@ -29,7 +29,7 @@ export const SOCIAL = {
   facebook: "https://www.facebook.com/share/14fJcF4AhWF/",
   instagram: "https://www.instagram.com/firsthandlawnandlandscape",
   tiktok: "https://www.tiktok.com/@firsthand_lawn_landscape",
-  google: "https://g.page/firsthand-lawns",
+  google: "https://www.google.com/maps/place/Firsthand+Lawn+and+Landscape,+LLC/data=!4m2!3m1!1s0x88e77bc82a6698bb:0x5465c4d72841fa70",
 } as const;
 
 // Direct Google review prompt URL. Newer format is https://g.page/r/<unique-id>
@@ -40,10 +40,10 @@ export const SOCIAL = {
 export const LEAVE_REVIEW_URL = "https://g.page/firsthand-lawns/review";
 
 export const REVIEWS_SUMMARY = {
-  rating: 4.9,
-  count: 154,
+  rating: 4.8,
+  count: 177,
   source: "Google",
-  // [RYAN: update count as new reviews come in. Will be pulled live via Places API later.]
+  // Observed on the matching Google Maps profile on November 24, 2026.
 } as const;
 
 /**

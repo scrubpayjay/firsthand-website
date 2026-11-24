@@ -12,6 +12,7 @@ interface ReviewsCarouselProps {
 }
 
 const formatDate = (d: string) => {
+  if (!d) return "Google review excerpt";
   const [y, m] = d.split("-");
   const month = new Date(Number(y), Number(m) - 1, 1).toLocaleString("en-US", {
     month: "long",
@@ -45,18 +46,15 @@ export function ReviewsCarousel({
     return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   }, []);
 
-  const goTo = useCallback(
-    (i: number, behavior: ScrollBehavior = "smooth") => {
-      const el = scrollerRef.current;
-      if (!el) return;
-      const target = el.children[i] as HTMLElement | undefined;
-      if (!target) return;
-      const targetLeft = target.offsetLeft - el.offsetLeft;
-      el.scrollTo({ left: targetLeft, behavior });
-      setIndex(i);
-    },
-    []
-  );
+  const goTo = useCallback((i: number, behavior: ScrollBehavior = "smooth") => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const target = el.children[i] as HTMLElement | undefined;
+    if (!target) return;
+    const targetLeft = target.offsetLeft - el.offsetLeft;
+    el.scrollTo({ left: targetLeft, behavior });
+    setIndex(i);
+  }, []);
 
   const next = useCallback(() => {
     setIndex((current) => {
@@ -154,6 +152,14 @@ export function ReviewsCarousel({
               <p className="text-sm font-semibold text-foreground">{r.name}</p>
               <p className="text-xs text-muted-foreground mt-0.5">
                 {r.area} · {r.service}
+                <a
+                  href={r.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block underline mt-2"
+                >
+                  View on Google
+                </a>
               </p>
             </figcaption>
           </figure>
@@ -185,7 +191,7 @@ export function ReviewsCarousel({
                   "block h-1.5 rounded-full transition-all",
                   index === i
                     ? "w-6 bg-primary"
-                    : "w-1.5 bg-border group-hover:bg-text-dim"
+                    : "w-1.5 bg-border group-hover:bg-text-dim",
                 )}
               />
             </button>

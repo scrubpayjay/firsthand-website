@@ -23,7 +23,7 @@ The separate pasted implementation request defines the task and deployment autho
 | Authentic images | Existing curated CompanyCam/owner archive only; no AI images on new pages | Implemented |
 | Turf installation before/after | No verified turf pair found in website archive or focused local asset search; existing natural-lawn and cleanup images explicitly labeled | Pending authentic turf photography |
 | Before/after comparison | Existing genuine cleanup pair displayed with explicit project category; no claim it is a turf conversion | Partial; relevant project pair needed |
-| Testimonials | Existing lib/reviews-data.ts explicitly says placeholders; not reused. New sections link to Google customer reviews without invented quotes or ratings | Verified excerpts pending |
+| Testimonials | Former placeholder entries removed. Three short genuine Google excerpts, names, source links, and verified aggregate figures used on landing pages and existing review surfaces | Three genuine Google excerpts verified November 24, 2026 |
 | Service areas | Orlando, Winter Park, Windermere, Bay Hill, Lake Nona from existing site coverage; Dr. Phillips, Winter Garden, Maitland, Clermont withheld | Additional coverage confirmation pending |
 | Outdoor form fields | Name, phone, ZIP, project type, budget, start timing | Implemented |
 | Turf form fields | Name, phone, ZIP, approximate area, project type | Implemented |
@@ -40,4 +40,4 @@ The separate pasted implementation request defines the task and deployment autho
 | SEO | Canonicals, titles/descriptions, OG/Twitter, H1/H2/H3, LocalBusiness + Service + visible FAQ + breadcrumbs, alt text, sitemap priorities | Implemented |
 | Navigation | Top navigation, keyboard-accessible Services hover/focus menu, mobile navigation, services index, home cards, footer, cross-links | Implemented |
 | Responsive/accessibility | Responsive grids, semantic details, labels, focus styles, reduced motion, mobile sticky controls | PASS at 1440/768/390/375; evidence in report |
-| Production release | Preview and checks first; scope confirmation and production approval required by user's request | Pending |
+| Production release | User approved current pages with unconfirmed scope and expanded areas hidden on November 24, 2026 | Released; see production report |

@@ -1,0 +1,35 @@
+[
+  {
+    "route": "/outdoor-living",
+    "status": 200,
+    "url": "https://www.firsthandlawns.com/outdoor-living",
+    "h1Count": 1,
+    "hiddenServicesAbsent": true,
+    "expandedCoverageAbsent": true
+  },
+  {
+    "route": "/artificial-turf",
+    "status": 200,
+    "url": "https://www.firsthandlawns.com/artificial-turf",
+    "h1Count": 1,
+    "hiddenServicesAbsent": true,
+    "expandedCoverageAbsent": true
+  },
+  {
+    "route": "/",
+    "status": 200,
+    "url": "https://www.firsthandlawns.com/"
+  },
+  {
+    "route": "/services",
+    "status": 200,
+    "url": "https://www.firsthandlawns.com/services"
+  },
+  {
+    "route": "/sitemap.xml",
+    "status": 200,
+    "url": "https://www.firsthandlawns.com/sitemap.xml",
+    "hasOutdoor": true,
+    "hasTurf": true
+  }
+]

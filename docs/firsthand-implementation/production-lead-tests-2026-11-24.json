@@ -1,0 +1,18 @@
+[
+  {
+    "page": "artificial-turf",
+    "httpStatus": 200,
+    "response": {
+      "ok": true,
+      "reference": "estimate-591a00233253"
+    }
+  },
+  {
+    "page": "outdoor-living",
+    "httpStatus": 200,
+    "response": {
+      "ok": true,
+      "reference": "estimate-74beefd55ffd"
+    }
+  }
+]
