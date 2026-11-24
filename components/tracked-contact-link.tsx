@@ -1,5 +1,6 @@
 "use client";
 
+import { landingEvent } from "@/lib/landing-tracking";
 import type { AnchorHTMLAttributes, MouseEvent, ReactNode } from "react";
 
 type Props = AnchorHTMLAttributes<HTMLAnchorElement> & {
@@ -21,12 +22,8 @@ export function TrackedContactLink({
           ? "email_click"
           : null;
       if (event) {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          event,
-          click_url: href,
-          page_path: window.location.pathname,
-        });
+        landingEvent(event, window.location.pathname);
+
       }
     }
     onClick?.(e);

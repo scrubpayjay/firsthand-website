@@ -5,7 +5,7 @@ import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
-import { ChatWidget } from "@/components/chat-widget";
+import { ChatLauncher } from "@/components/chat-launcher";
 import { CookieBanner } from "@/components/cookie-banner";
 import {
   SITE_URL,
@@ -88,12 +88,12 @@ export default function RootLayout({
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
-        <ChatWidget />
+        <ChatLauncher />
         <CookieBanner tidioKey={TIDIO_PUBLIC_KEY} />
         {/* Vercel Web Analytics — first-party, cookieless, same-origin beacons
             (/_vercel/insights/*), so it needs no consent gate and is unaffected
             by the cookie banner above. */}
-        <Analytics />
+        {process.env.VERCEL === "1" && <Analytics />}
       </body>
     </html>
   );

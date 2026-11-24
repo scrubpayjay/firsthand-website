@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports -- Node CommonJS test harness installs a TypeScript require hook without adding a runtime dependency. */
 const test = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
@@ -39,4 +40,18 @@ test('estimate validation, delivery, attribution, and duplicate contract',async 
   await t.test('missing delivery credentials fails closed',async()=>{delete process.env.WEBSITE_LEAD_WEBHOOK_SECRET;assert.equal((await POST(request())).status,503);});
   await t.test('burst protection rejects excessive requests',async()=>{for(let n=0;n<6;n++)await POST(request(valid,{'x-forwarded-for':'192.0.2.250'}));assert.equal((await POST(request(valid,{'x-forwarded-for':'192.0.2.250'}))).status,429);});
  }finally{global.fetch=originalFetch;if(originalUrl)process.env.JOBBER_WEBHOOK_URL=originalUrl;else delete process.env.JOBBER_WEBHOOK_URL;if(originalSecret)process.env.WEBSITE_LEAD_WEBHOOK_SECRET=originalSecret;else delete process.env.WEBSITE_LEAD_WEBHOOK_SECRET;}
+});
+
+test('browser attribution and analytics honor consent',()=>{
+ const vm=require('node:vm');
+ const trackingModule={exports:{}};const local=new Map();const session=new Map();
+ const memory=map=>({getItem:key=>map.get(key)||null,setItem:(key,value)=>map.set(key,value),removeItem:key=>map.delete(key)});
+ const context={exports:trackingModule.exports,module:trackingModule,localStorage:memory(local),sessionStorage:memory(session),location:{search:'?utm_source=qa&utm_medium=test&utm_campaign=acceptance&utm_term=backyard&utm_content=hero&gclid=g&gbraid=b&wbraid=w&fbclid=f',pathname:'/artificial-turf'},URLSearchParams,window:{dataLayer:[]}};
+ vm.runInNewContext(ts.transpileModule(fs.readFileSync(path.join(root,'lib/landing-tracking.ts'),'utf8'),{compilerOptions:{module:ts.ModuleKind.CommonJS,target:ts.ScriptTarget.ES2022}}).outputText,context);
+ const {captureAttribution,landingEvent}=trackingModule.exports;
+ assert.equal(JSON.stringify(captureAttribution()),'{}');landingEvent('form_start','artificial-turf');assert.equal(context.window.dataLayer.length,0);assert.equal(session.size,0);
+ local.set('firsthand:cookie-consent','granted');const result=captureAttribution();assert.equal(Object.keys(result).length,9);assert.equal(result.gclid,'g');context.location.search='';assert.equal(captureAttribution().utm_source,'qa');
+ landingEvent('form_start','artificial-turf');landingEvent('cta_click','artificial-turf');landingEvent('lead_form_submit','artificial-turf');landingEvent('generate_lead','artificial-turf');
+ const events=context.window.dataLayer.filter(e=>e.event).map(e=>e.event);assert.equal(JSON.stringify(events),JSON.stringify(['form_start','cta_click','lead_form_submit','generate_lead']));assert.equal(context.window.dataLayer.filter(e=>e[0]==='event'&&e[2].send_to==='G-D7SGCGNJEP').length,2);
+ local.set('firsthand:cookie-consent','denied');const count=context.window.dataLayer.length;landingEvent('generate_lead','artificial-turf');assert.equal(context.window.dataLayer.length,count);assert.equal(JSON.stringify(captureAttribution()),'{}');
 });
