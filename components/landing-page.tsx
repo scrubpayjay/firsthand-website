@@ -330,7 +330,6 @@ export function LandingPage({ kind }: { kind: LandingKind }) {
               className="w-full h-auto"
             />
             <figcaption id="turf-concept-caption">
-              <strong>AI-generated concept — not a Firsthand project.</strong>
               <span>
                 Illustrative design inspiration. Your project layout, materials,
                 and finished appearance will depend on your property and agreed
