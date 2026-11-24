@@ -894,3 +894,45 @@
     transform: none;
   }
 }
+
+.landing-verified-reviews {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+.landing-verified-reviews figure {
+  padding: 1.5rem;
+  border: 1px solid #d5d9ce;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.landing-verified-reviews blockquote {
+  font-family: var(--font-playfair), Georgia, serif;
+  font-size: 1.35rem;
+  line-height: 1.5;
+  flex: 1;
+}
+.landing-verified-reviews figcaption {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+}
+.landing-verified-reviews figcaption span {
+  color: #5b6258;
+  font-size: 0.7rem;
+}
+.landing-verified-reviews figcaption a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: underline;
+  min-height: 44px;
+}
+@media (max-width: 639px) {
+  .landing-verified-reviews {
+    grid-template-columns: 1fr;
+  }
+}

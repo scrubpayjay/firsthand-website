@@ -161,13 +161,13 @@ export default function HomePage() {
               </p>
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl xl:text-[4.25rem] leading-[1.05] font-semibold tracking-tight text-foreground">
                 Landscaping in{" "}
-                <span className="italic text-primary">Winter Park</span>{" "}
-                &amp; across Central Florida.
+                <span className="italic text-primary">Winter Park</span> &amp;
+                across Central Florida.
               </h1>
               <p className="mt-6 text-lg sm:text-xl text-muted-foreground leading-relaxed">
                 Lawn care, landscape design, sod, irrigation, and hardscape —
-                for homeowners, HOAs, and property managers. Family-owned,
-                fully insured, with financing{" "}
+                for homeowners, HOAs, and property managers. Family-owned, fully
+                insured, with financing{" "}
                 <span className="font-semibold text-foreground">
                   up to ${FINANCING.maxAmount.toLocaleString()}
                 </span>{" "}
@@ -223,9 +223,8 @@ export default function HomePage() {
                   </span>
                 </div>
                 <p className="text-xs text-muted-foreground leading-snug">
-                  Across {REVIEWS_SUMMARY.count} verified Google reviews from
-                  Winter Park, Windermere, Bay Hill, College Park, and Orlando
-                  customers.
+                  Across {REVIEWS_SUMMARY.count} Google reviews for Firsthand
+                  Lawn and Landscape. Rating checked November 24, 2026.
                 </p>
               </div>
             </div>
@@ -233,11 +232,40 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="container-wide py-12" aria-label="Outdoor installation services">
-        <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">More room for outdoor living</p>
+      <section
+        className="container-wide py-12"
+        aria-label="Outdoor installation services"
+      >
+        <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">
+          More room for outdoor living
+        </p>
         <div className="grid sm:grid-cols-2 gap-5">
-          <Link href="/outdoor-living" className="rounded-xl border border-border bg-card p-7 hover:border-primary"><h2 className="text-2xl">Custom outdoor living</h2><p className="mt-3 text-sm text-muted-foreground">Bring your backyard together with paver patios, hardscaping, and landscape design.</p><span className="inline-flex items-center gap-2 mt-5 text-sm font-semibold">Plan your transformation <ArrowRight size={16}/></span></Link>
-          <Link href="/artificial-turf" className="rounded-xl border border-border bg-card p-7 hover:border-primary"><h2 className="text-2xl">Artificial turf installation</h2><p className="mt-3 text-sm text-muted-foreground">Explore residential, backyard, and pet-friendly artificial grass for your Orlando property.</p><span className="inline-flex items-center gap-2 mt-5 text-sm font-semibold">Explore artificial turf <ArrowRight size={16}/></span></Link>
+          <Link
+            href="/outdoor-living"
+            className="rounded-xl border border-border bg-card p-7 hover:border-primary"
+          >
+            <h2 className="text-2xl">Custom outdoor living</h2>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Bring your backyard together with paver patios, hardscaping, and
+              landscape design.
+            </p>
+            <span className="inline-flex items-center gap-2 mt-5 text-sm font-semibold">
+              Plan your transformation <ArrowRight size={16} />
+            </span>
+          </Link>
+          <Link
+            href="/artificial-turf"
+            className="rounded-xl border border-border bg-card p-7 hover:border-primary"
+          >
+            <h2 className="text-2xl">Artificial turf installation</h2>
+            <p className="mt-3 text-sm text-muted-foreground">
+              Explore residential, backyard, and pet-friendly artificial grass
+              for your Orlando property.
+            </p>
+            <span className="inline-flex items-center gap-2 mt-5 text-sm font-semibold">
+              Explore artificial turf <ArrowRight size={16} />
+            </span>
+          </Link>
         </div>
       </section>
       <TrustBar />
@@ -256,8 +284,8 @@ export default function HomePage() {
               <p className="mt-4 text-base sm:text-lg text-muted-foreground">
                 Most landscape jobs in Central Florida get split across three
                 vendors — mow, irrigation, tree guy. We do it all under one
-                roof, which means no finger-pointing when something needs to
-                get fixed.
+                roof, which means no finger-pointing when something needs to get
+                fixed.
               </p>
             </div>
           </div>
@@ -320,8 +348,8 @@ export default function HomePage() {
                   default; tweak in lib/site-config.ts or inline if needed. */}
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Locally owned and operating out of {NAP.city}, FL since 2018.
-                The crew that shows up is the crew Ryan trained — not a
-                rotating cast of subcontractors you&apos;ve never met.
+                The crew that shows up is the crew Ryan trained — not a rotating
+                cast of subcontractors you&apos;ve never met.
               </p>
             </div>
 
@@ -349,11 +377,13 @@ export default function HomePage() {
               </h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 Bigger projects don&apos;t need to wait. We&apos;ll connect you
-                with our financing partner for amounts up to $100,000,
-                {" "}{FINANCING.minTermYears}–{FINANCING.maxTermYears}-year
-                terms, no prepayment penalties. Soft credit check for
-                pre-qualification.{" "}
-                <Link href="/financing" className="underline font-medium text-foreground">
+                with our financing partner for amounts up to $100,000,{" "}
+                {FINANCING.minTermYears}–{FINANCING.maxTermYears}-year terms, no
+                prepayment penalties. Soft credit check for pre-qualification.{" "}
+                <Link
+                  href="/financing"
+                  className="underline font-medium text-foreground"
+                >
                   See financing
                 </Link>
                 .
@@ -375,10 +405,10 @@ export default function HomePage() {
                 Don&apos;t put the project off another summer.
               </h2>
               <p className="mt-4 text-base sm:text-lg text-primary-foreground/85 max-w-2xl leading-relaxed">
-                Most landscape projects fall in the $5K–$30K range. We work
-                with a financing partner so you can spread that out over
-                2 to 12 years, with no prepayment penalty if you decide to
-                pay it down early. Approvals usually take minutes.
+                Most landscape projects fall in the $5K–$30K range. We work with
+                a financing partner so you can spread that out over 2 to 12
+                years, with no prepayment penalty if you decide to pay it down
+                early. Approvals usually take minutes.
               </p>
               <ul className="mt-6 grid sm:grid-cols-2 gap-2.5 max-w-2xl">
                 {[
@@ -389,7 +419,10 @@ export default function HomePage() {
                   "Residential and commercial",
                   "Apply during or after estimate",
                 ].map((b) => (
-                  <li key={b} className="flex items-start gap-2 text-sm text-primary-foreground/90">
+                  <li
+                    key={b}
+                    className="flex items-start gap-2 text-sm text-primary-foreground/90"
+                  >
                     <CheckCircle2 className="h-4 w-4 mt-0.5 shrink-0 text-cta" />
                     {b}
                   </li>
@@ -454,7 +487,7 @@ export default function HomePage() {
           <ReviewsCarousel reviews={carouselReviews} />
 
           <p className="mt-8 text-center text-sm text-muted-foreground">
-            Read every review on Google — we don&apos;t cherry-pick.
+            Read the full reviews and other customer feedback on Google.
           </p>
         </div>
       </section>
@@ -474,8 +507,8 @@ export default function HomePage() {
                 We don&apos;t take jobs we&apos;d have to drive 45 minutes to.
                 That keeps the crew on schedule and keeps response times short
                 when something needs a callback. If you&apos;re outside this
-                map, ask us — we&apos;ll tell you straight whether we&apos;re
-                a fit.
+                map, ask us — we&apos;ll tell you straight whether we&apos;re a
+                fit.
               </p>
               <ul className="mt-6 grid grid-cols-2 gap-2.5">
                 {SERVICE_AREAS.map((a) => (
@@ -501,8 +534,7 @@ export default function HomePage() {
 
             <div>
               {(() => {
-                const wp =
-                  pickHero("area-hero", "winter-park") ?? PHOTOS[0];
+                const wp = pickHero("area-hero", "winter-park") ?? PHOTOS[0];
                 return (
                   <SitePhoto
                     photo={wp}
@@ -529,9 +561,12 @@ export default function HomePage() {
             </h2>
             <p className="mt-4 text-base sm:text-lg text-muted-foreground">
               Real properties in Winter Park, Windermere, Bay Hill, College
-              Park, and across Central Florida. Documented in CompanyCam, before and after —
-              the full archive lives on the{" "}
-              <Link href="/portfolio" className="underline text-foreground font-medium">
+              Park, and across Central Florida. Documented in CompanyCam, before
+              and after — the full archive lives on the{" "}
+              <Link
+                href="/portfolio"
+                className="underline text-foreground font-medium"
+              >
                 portfolio page
               </Link>
               .

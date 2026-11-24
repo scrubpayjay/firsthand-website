@@ -12,11 +12,12 @@ import {
 
 export const metadata: Metadata = {
   title: "Reviews — what our customers say",
-  description: `Read ${REVIEWS_SUMMARY.count}+ verified Google reviews of Firsthand Lawns from Winter Park, Windermere, Bay Hill, College Park, and Orlando customers. ${REVIEWS_SUMMARY.rating.toFixed(1)} ★ average.`,
+  description: `Explore Google customer reviews of Firsthand Lawns and short excerpts verified November 24, 2026. ${REVIEWS_SUMMARY.rating.toFixed(1)} ★ average.`,
   alternates: { canonical: `${SITE_URL}/reviews` },
 };
 
 const formatDate = (d: string) => {
+  if (!d) return "Google review excerpt";
   const [y, m] = d.split("-");
   const month = new Date(Number(y), Number(m) - 1, 1).toLocaleString("en-US", {
     month: "long",
@@ -41,7 +42,11 @@ export default function ReviewsPage() {
           <div className="mt-7 flex flex-wrap items-center gap-x-5 gap-y-3">
             <div className="flex items-center gap-1">
               {[1, 2, 3, 4, 5].map((i) => (
-                <Star key={i} className="h-6 w-6 fill-cta text-cta" strokeWidth={0} />
+                <Star
+                  key={i}
+                  className="h-6 w-6 fill-cta text-cta"
+                  strokeWidth={0}
+                />
               ))}
               <span className="ml-2 text-2xl font-display font-bold text-foreground">
                 {REVIEWS_SUMMARY.rating.toFixed(1)}
@@ -75,10 +80,10 @@ export default function ReviewsPage() {
           </div>
 
           <p className="mt-6 text-base text-muted-foreground leading-relaxed">
-            Below are excerpts from a representative cross-section of our
-            reviews — by service, by neighborhood, by year. We&apos;ve never
-            paid for a review or asked a customer to remove one. If something
-            goes wrong on a job, the right answer is to fix it, not to bury it.
+            These short excerpts were checked against our Google Maps profile on
+            November 24, 2026. They describe landscaping and landscape
+            installation. Use the Google links to read the full reviews and
+            other customer feedback.
           </p>
         </div>
       </section>
@@ -115,6 +120,14 @@ export default function ReviewsPage() {
                 </p>
                 <p className="text-xs text-muted-foreground mt-0.5">
                   {r.area} · {r.service}
+                  <a
+                    href={r.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block underline mt-2"
+                  >
+                    View on Google
+                  </a>
                 </p>
               </figcaption>
             </li>
@@ -123,7 +136,7 @@ export default function ReviewsPage() {
 
         <div className="mt-12 flex flex-col items-center text-center">
           <p className="text-sm text-muted-foreground mb-4">
-            These are a representative cross-section. Read every review on
+            These are selected short excerpts. Read all customer feedback on
             Google — or add yours.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">

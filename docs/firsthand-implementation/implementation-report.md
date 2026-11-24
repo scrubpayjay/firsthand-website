@@ -1,3 +1,5 @@
+> **Production update — November 24, 2026:** The user approved release with unconfirmed services and expanded coverage hidden. Both pages are live. See `production-release-2026-11-24.md` for current deployment and review provenance. The preview-stage publication gates below are historical.
+
 # Firsthand implementation report
 
 Work began November 23 and report finalized November 24, 2026, America/New_York. Implementation is on a dedicated branch; production has not been changed.

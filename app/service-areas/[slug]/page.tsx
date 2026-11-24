@@ -28,12 +28,7 @@ import {
   type ServiceAreaPage,
 } from "@/lib/service-areas-data";
 import { SERVICE_PAGES } from "@/lib/services-data";
-import {
-  NAP,
-  SITE_NAME,
-  SITE_URL,
-  REVIEWS_SUMMARY,
-} from "@/lib/site-config";
+import { NAP, SITE_NAME, SITE_URL, REVIEWS_SUMMARY } from "@/lib/site-config";
 
 interface RouteProps {
   params: Promise<{ slug: string }>;
@@ -307,15 +302,16 @@ export default async function ServiceAreaPage({ params }: RouteProps) {
           <div className="grid lg:grid-cols-[1.1fr_1fr] gap-10 items-center">
             <div>
               <p className="text-sm font-semibold uppercase tracking-wider text-primary mb-3">
-                From {area.name} customers
+                Google customer feedback
               </p>
               <h2 className="font-display text-3xl sm:text-4xl leading-tight font-semibold tracking-tight">
-                Reviews from your neighborhood.
+                Hear from Firsthand customers.
               </h2>
               <p className="mt-4 text-base text-muted-foreground leading-relaxed">
-                Customers across {area.name} have rated Firsthand 4.9 stars
-                on Google. Browse all 154 reviews to see what neighbors are
-                saying about recent work in the area.
+                Firsthand’s Google profile shows{" "}
+                {REVIEWS_SUMMARY.rating.toFixed(1)} stars across{" "}
+                {REVIEWS_SUMMARY.count} reviews, checked November 24, 2026. Read
+                the full customer feedback on Google.
               </p>
               <Link
                 href="/reviews"
@@ -337,10 +333,10 @@ export default async function ServiceAreaPage({ params }: RouteProps) {
                 ))}
               </div>
               <p className="font-display text-4xl sm:text-5xl font-semibold tracking-tight">
-                4.9
+                {REVIEWS_SUMMARY.rating.toFixed(1)}
               </p>
               <p className="mt-1 text-sm text-muted-foreground">
-                Across 154 verified Google reviews
+                Across {REVIEWS_SUMMARY.count} Google reviews
               </p>
             </div>
           </div>
