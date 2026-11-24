@@ -41,7 +41,7 @@ export function LandingPage({kind}:{kind:LandingKind}) {
   return <article className={`landing-page ${turf?"landing-turf":"landing-outdoor"}`}>
     <script type="application/ld+json" dangerouslySetInnerHTML={{__html:JSON.stringify(schema).replace(/</g,"\\u003c")}}/>
     <section className="landing-hero">
-      <div className="landing-hero-photo"><Image src={`/photos/${turf?"lawn-landscape-card-1.jpg":"hardscape-ryan-1.jpg"}`} alt={turf?"Firsthand backyard landscape with natural lawn, bamboo privacy hedge, and travertine walkway; landscape project, not artificial turf":"Completed Firsthand paver patio with topiary boxwoods and outdoor seating"} fill priority fetchPriority="high" quality={60} sizes="100vw" className="object-cover"/></div>
+      <div className="landing-hero-photo"><Image src={`/photos/${turf?"lawn-landscape-card-1.jpg":"hardscape-ryan-1.jpg"}`} alt={turf?"Firsthand backyard landscape with natural lawn, bamboo privacy hedge, and travertine walkway; landscape project, not artificial turf":"Completed Firsthand paver patio with topiary boxwoods and outdoor seating"} fill priority fetchPriority="high" quality={50} sizes="100vw" className="object-cover"/></div>
       <div className="landing-hero-shade"/>
       <div className="container-wide landing-hero-content">
         <nav aria-label="Breadcrumb" className="landing-breadcrumb"><Link href="/">Home</Link><span>/</span><span>{turf?"Artificial Turf":"Outdoor Living"}</span></nav>

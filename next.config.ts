@@ -48,7 +48,7 @@ const nextConfig: NextConfig = {
     root: path.resolve(__dirname),
   },
   images: {
-    qualities: [60, 75],
+    qualities: [50, 60, 75],
     remotePatterns: [
       // CompanyCam-hosted photos that we link out to from /portfolio
       { protocol: "https", hostname: "app.companycam.com" },
