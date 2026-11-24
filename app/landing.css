@@ -936,3 +936,28 @@
     grid-template-columns: 1fr;
   }
 }
+
+.landing-turf-concept {
+  margin-bottom: 4rem;
+}
+.landing-turf-concept h2 {
+  margin-bottom: 1.75rem;
+}
+.landing-turf-concept img {
+  display: block;
+  border: 1px solid #d5d9ce;
+}
+.landing-turf-concept figcaption {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+.landing-turf-concept figcaption strong {
+  color: #183526;
+}
+.landing-turf-concept figcaption span {
+  color: #5b6258;
+  font-size: 0.78rem;
+}

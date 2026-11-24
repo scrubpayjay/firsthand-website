@@ -20,7 +20,7 @@ The separate pasted implementation request defines the task and deployment autho
 | Four turf process steps | All four source steps and descriptions | Implemented |
 | Turf FAQs | All five source Q&As; 10–15-year estimate, heat, hygiene, and upkeep qualifications preserved | Implemented |
 | Turf page order | Hero → project photos → services → why → benefits → inclusions → process → reviews → areas → FAQ → form | Implemented |
-| Authentic images | Existing curated CompanyCam/owner archive only; no AI images on new pages | Implemented |
+| Authentic images | Authentic CompanyCam/owner archive plus a separately labeled AI-generated turf design concept, authorized for publication November 24, 2026 | Implemented |
 | Turf installation before/after | No verified turf pair found in website archive or focused local asset search; existing natural-lawn and cleanup images explicitly labeled | Pending authentic turf photography |
 | Before/after comparison | Existing genuine cleanup pair displayed with explicit project category; no claim it is a turf conversion | Partial; relevant project pair needed |
 | Testimonials | Former placeholder entries removed. Three short genuine Google excerpts, names, source links, and verified aggregate figures used on landing pages and existing review surfaces | Three genuine Google excerpts verified November 24, 2026 |

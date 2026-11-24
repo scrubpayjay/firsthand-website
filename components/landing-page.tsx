@@ -312,6 +312,33 @@ export function LandingPage({ kind }: { kind: LandingKind }) {
       </div>
 
       <section className="landing-section container-wide" id="projects">
+        {turf && (
+          <figure
+            className="landing-turf-concept"
+            id="turf-concept"
+            aria-labelledby="turf-concept-caption"
+          >
+            <p className="landing-eyebrow">ILLUSTRATIVE TURF DESIGN</p>
+            <h2>Picture the possibilities.</h2>
+            <Image
+              src="/photos/turf-design-concept-illustrative.png"
+              alt="AI-generated illustrative turf concept showing an imagined backyard and a close-up of artificial grass beside pavers; not a completed Firsthand project"
+              width={1672}
+              height={941}
+              quality={60}
+              sizes="(min-width: 1280px) 1216px, 100vw"
+              className="w-full h-auto"
+            />
+            <figcaption id="turf-concept-caption">
+              <strong>AI-generated concept — not a Firsthand project.</strong>
+              <span>
+                Illustrative design inspiration. Your project layout, materials,
+                and finished appearance will depend on your property and agreed
+                scope.
+              </span>
+            </figcaption>
+          </figure>
+        )}
         <div className="landing-heading-row">
           <Heading
             eyebrow="A CLOSER LOOK"
