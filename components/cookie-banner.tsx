@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore, useEffect } from "react";
 import Script from "next/script";
 import Link from "next/link";
 import { X } from "lucide-react";
@@ -42,6 +42,12 @@ const getServerSnapshot = (): StoredConsent => null;
  * react-hooks/set-state-in-effect lint.
  */
 export function CookieBanner({ tidioKey }: CookieBannerProps) {
+  const [preferencesOpen, setPreferencesOpen] = useState(false);
+  useEffect(() => {
+    const reopen = () => setPreferencesOpen(true);
+    window.addEventListener("firsthand:privacy-choices", reopen);
+    return () => window.removeEventListener("firsthand:privacy-choices", reopen);
+  }, []);
   const storedConsent = useSyncExternalStore(
     subscribe,
     getSnapshot,
@@ -61,15 +67,21 @@ export function CookieBanner({ tidioKey }: CookieBannerProps) {
       // ignore — private browsing
     }
     setOverrideConsent(choice);
+    setPreferencesOpen(false);
     window.dispatchEvent(new Event("firsthand:consent"));
     window.dataLayer = window.dataLayer || [];
     const consentCommand = function(...args: unknown[]) { window.dataLayer.push(args as unknown as Record<string, unknown>); };
     consentCommand("consent", "update", { analytics_storage: choice, ad_storage: choice, ad_user_data: choice, ad_personalization: choice });
-    if (choice === "denied") { try { sessionStorage.removeItem("firsthand:attribution"); } catch {} }
+    if (choice === "denied") {
+      try { sessionStorage.removeItem("firsthand:attribution"); } catch {}
+      // Reload on withdrawal to unload custom marketing templates that do
+      // not understand Google consent updates. Stored refusal prevents reload tags.
+      if (consent === "granted") window.location.reload();
+    }
   };
 
   const accepted = consent === "granted";
-  const showBanner = consent === null;
+  const showBanner = consent === null || preferencesOpen;
   const placeholderTidio = tidioKey.startsWith("PLACEHOLDER");
 
   return (
@@ -142,4 +154,8 @@ export function CookieBanner({ tidioKey }: CookieBannerProps) {
       )}
     </>
   );
+}
+
+export function PrivacyChoices() {
+  return <button type="button" className="hover:text-foreground underline" onClick={() => window.dispatchEvent(new Event("firsthand:privacy-choices"))}>Privacy choices</button>;
 }

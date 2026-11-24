@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState, type FormEvent, type ReactNode } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore, type FormEvent, type ReactNode } from "react";
 import Link from "next/link";
 import { ArrowRight, Phone } from "lucide-react";
 import { NAP } from "@/lib/site-config";
@@ -12,7 +12,9 @@ export function LandingSticky({kind}:{kind:LandingKind}) {
   useEffect(() => { captureAttribution(); const capture=()=>captureAttribution(); window.addEventListener("firsthand:consent",capture); return ()=>window.removeEventListener("firsthand:consent",capture); },[]);
   return <div className="landing-sticky"><LandingLink kind={kind} href="#estimate" placement="mobile_sticky" className="cta-pill">Free estimate <ArrowRight size={16}/></LandingLink><LandingLink kind={kind} href={`tel:${NAP.phoneTel}`} placement="mobile_sticky" className="landing-sticky-call"><Phone size={16}/> Call now</LandingLink></div>;
 }
+const subscribeHydration = () => () => {};
 export function EstimateForm({kind}:{kind:LandingKind}) {
+  const hydrated = useSyncExternalStore(subscribeHydration, () => true, () => false);
   const [busy,setBusy]=useState(false); const [error,setError]=useState(""); const [reference,setReference]=useState("");
   const started=useRef(false); const submission=useRef(""); const pending=useRef(false);
   async function submit(e:FormEvent<HTMLFormElement>) {
@@ -32,8 +34,8 @@ export function EstimateForm({kind}:{kind:LandingKind}) {
     finally { pending.current=false;setBusy(false); }
   }
   if(reference)return <div role="status" className="estimate-success"><span className="landing-eyebrow">REQUEST RECEIVED</span><h3>Let’s bring your space to life.</h3><p>Your estimate request has been accepted. The Firsthand team will contact you to discuss your project.</p><p className="text-sm">Reference: {reference}</p><a href={`tel:${NAP.phoneTel}`}>Questions? Call {NAP.phone}</a></div>;
-  return <form className="estimate-form" onSubmit={submit} onFocusCapture={()=>{if(!started.current){landingEvent("form_start",kind);started.current=true;}}}>
-    <fieldset disabled={busy}><legend className="sr-only">Your project details</legend><div className="estimate-fields">
+  return <form method="post" action="/api/estimate" className="estimate-form" onSubmit={submit} onFocusCapture={()=>{if(!started.current){landingEvent("form_start",kind);started.current=true;}}}>
+    <fieldset disabled={busy || !hydrated}><legend className="sr-only">Your project details</legend><div className="estimate-fields">
       <label>Name<input name="name" autoComplete="name" required minLength={2} maxLength={100}/></label>
       <label>Phone number<input name="phone" type="tel" autoComplete="tel" required maxLength={40} pattern="[+0-9().\\s\\-]{10,40}"/></label>
       <label>Email address<input name="email" type="email" autoComplete="email" required maxLength={200}/><small>For your estimate and project follow-up.</small></label>
