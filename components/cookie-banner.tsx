@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useSyncExternalStore } from "react";
+import { useState, useSyncExternalStore, useEffect } from "react";
 import Script from "next/script";
 import Link from "next/link";
 import { X } from "lucide-react";
@@ -10,7 +10,6 @@ const CONSENT_KEY = "firsthand:cookie-consent";
 type StoredConsent = "granted" | "denied" | null;
 
 interface CookieBannerProps {
-  pixelId: string;
   tidioKey: string;
 }
 
@@ -42,7 +41,13 @@ const getServerSnapshot = (): StoredConsent => null;
  * truth (other tabs can update it, etc.) and we don't violate the
  * react-hooks/set-state-in-effect lint.
  */
-export function CookieBanner({ pixelId, tidioKey }: CookieBannerProps) {
+export function CookieBanner({ tidioKey }: CookieBannerProps) {
+  const [preferencesOpen, setPreferencesOpen] = useState(false);
+  useEffect(() => {
+    const reopen = () => setPreferencesOpen(true);
+    window.addEventListener("firsthand:privacy-choices", reopen);
+    return () => window.removeEventListener("firsthand:privacy-choices", reopen);
+  }, []);
   const storedConsent = useSyncExternalStore(
     subscribe,
     getSnapshot,
@@ -62,45 +67,36 @@ export function CookieBanner({ pixelId, tidioKey }: CookieBannerProps) {
       // ignore — private browsing
     }
     setOverrideConsent(choice);
+    setPreferencesOpen(false);
+    window.dispatchEvent(new Event("firsthand:consent"));
+    window.dataLayer = window.dataLayer || [];
+    const consentCommand = function(...args: unknown[]) { window.dataLayer.push(args as unknown as Record<string, unknown>); };
+    consentCommand("consent", "update", { analytics_storage: choice, ad_storage: choice, ad_user_data: choice, ad_personalization: choice });
+    if (choice === "denied") {
+      try { sessionStorage.removeItem("firsthand:attribution"); } catch {}
+      // Reload on withdrawal to unload custom marketing templates that do
+      // not understand Google consent updates. Stored refusal prevents reload tags.
+      if (consent === "granted") window.location.reload();
+    }
   };
 
   const accepted = consent === "granted";
-  const showBanner = consent === null;
-  const placeholderPixel = pixelId.startsWith("PLACEHOLDER");
+  const showBanner = consent === null || preferencesOpen;
   const placeholderTidio = tidioKey.startsWith("PLACEHOLDER");
 
   return (
     <>
-      {/* Meta Pixel — only fires after explicit consent AND once real ID is configured.
-          Race-resilient: if window.fbq already exists (e.g. injected by a GTM container
-          tag), skip the bootstrap and reuse it — init + track on the live fbq instance.
-          Deleting fbq instead would orphan the already-loaded fbevents.js closure and
-          our queued calls would never process. The __fhPixelInit flag makes Accept
-          idempotent so re-clicks don't double-fire PageView. */}
-      {accepted && !placeholderPixel && (
-        <Script
-          id="meta-pixel"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function(){
-                if(window.__fhPixelInit)return;window.__fhPixelInit=true;
-                if(typeof window.fbq!=='function'){
-                  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){
-                  n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-                  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-                  n.queue=[];t=b.createElement(e);t.async=!0;
-                  t.src=v;s=b.getElementsByTagName(e)[0];
-                  s.parentNode.insertBefore(t,s)}(window,document,'script',
-                  'https://connect.facebook.net/en_US/fbevents.js');
-                }
-                fbq('init', '${pixelId}');
-                fbq('track', 'PageView');
-              })();
-            `,
-          }}
-        />
-      )}
+      {/* GTM already owns GA4, Google Ads, and Meta. Gate the entire container
+          because its custom Meta template does not honor Google consent mode. */}
+      {accepted && <Script id="firsthand-gtm" strategy="afterInteractive" dangerouslySetInnerHTML={{__html:`
+        (function(w,d,s,l,i){if(w.__fhGtmLoaded)return;w.__fhGtmLoaded=true;
+        w[l]=w[l]||[];function consent(){w[l].push(arguments)}
+        consent('consent','update',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});
+        w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;
+        j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);
+        })(window,document,'script','dataLayer','GTM-5T6BXSR7');
+      `}}/>}
 
       {/* Tidio — only fires after consent AND once real public key is configured.
           See README for full Tidio account setup checklist (greeting, quick replies, hours). */}
@@ -131,7 +127,7 @@ export function CookieBanner({ pixelId, tidioKey }: CookieBannerProps) {
             </button>
           </div>
           <p className="text-sm text-muted-foreground mb-4">
-            We use cookies to measure site traffic and enable live chat for
+            We use cookies to measure site traffic, measure advertising, and enable live chat for
             customer questions. We don&apos;t sell your data.{" "}
             <Link href="/privacy-policy" className="underline text-foreground">
               Read our privacy policy
@@ -158,4 +154,8 @@ export function CookieBanner({ pixelId, tidioKey }: CookieBannerProps) {
       )}
     </>
   );
+}
+
+export function PrivacyChoices() {
+  return <button type="button" className="hover:text-foreground underline" onClick={() => window.dispatchEvent(new Event("firsthand:privacy-choices"))}>Privacy choices</button>;
 }

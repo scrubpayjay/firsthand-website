@@ -1,0 +1,26 @@
+[
+  {
+    "route": "/artificial-turf",
+    "scrollWidth": 1425,
+    "sticky": "none",
+    "width": 1440
+  },
+  {
+    "route": "/artificial-turf",
+    "scrollWidth": 753,
+    "sticky": "none",
+    "width": 768
+  },
+  {
+    "route": "/artificial-turf",
+    "scrollWidth": 375,
+    "sticky": "grid",
+    "width": 390
+  },
+  {
+    "route": "/artificial-turf",
+    "scrollWidth": 360,
+    "sticky": "grid",
+    "width": 375
+  }
+]

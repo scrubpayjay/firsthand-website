@@ -18,6 +18,8 @@ module.exports = {
     const HIGH_VALUE = new Set([
       "/",
       "/contact",
+      "/outdoor-living",
+      "/artificial-turf",
       "/portfolio",
       "/financing",
       "/services/lawn-maintenance",

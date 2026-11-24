@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { PrivacyChoices } from "@/components/cookie-banner";
 import Image from "next/image";
 import { Phone, Mail, MapPin, Star } from "lucide-react";
 import { SocialIcons } from "@/components/social-icons";
@@ -84,10 +85,10 @@ export function Footer() {
               Services
             </h3>
             <ul className="space-y-2.5 text-sm">
-              {SERVICES.map((s) => (
+              {[{slug:"outdoor-living",name:"Outdoor Living"},{slug:"artificial-turf",name:"Artificial Turf"},...SERVICES].map((s) => (
                 <li key={s.slug}>
                   <Link
-                    href={`/services/${s.slug}`}
+                    href={s.slug === "outdoor-living" || s.slug === "artificial-turf" ? `/${s.slug}` : `/services/${s.slug}`}
                     className="text-muted-foreground hover:text-foreground"
                   >
                     {s.name}
@@ -179,6 +180,7 @@ export function Footer() {
         <div className="mt-6 pt-6 border-t border-border flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-xs text-muted-foreground">
           <p>© {year} Firsthand Lawns. All rights reserved.</p>
           <div className="flex items-center gap-5 flex-wrap">
+            <PrivacyChoices />
             <Link href="/privacy-policy" className="hover:text-foreground">
               Privacy policy
             </Link>

@@ -19,7 +19,6 @@ import {
 } from "lucide-react";
 import { TrustBar } from "@/components/trust-bar";
 import { CtaSection } from "@/components/cta-section";
-import { PhotoPlaceholder } from "@/components/photo-placeholder";
 import { SitePhoto } from "@/components/site-photo";
 import { ReviewsCarousel } from "@/components/reviews-carousel";
 import { PHOTOS, photosByService, pickHero } from "@/lib/photos-manifest";
@@ -234,6 +233,13 @@ export default function HomePage() {
         </div>
       </section>
 
+      <section className="container-wide py-12" aria-label="Outdoor installation services">
+        <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">More room for outdoor living</p>
+        <div className="grid sm:grid-cols-2 gap-5">
+          <Link href="/outdoor-living" className="rounded-xl border border-border bg-card p-7 hover:border-primary"><h2 className="text-2xl">Custom outdoor living</h2><p className="mt-3 text-sm text-muted-foreground">Bring your backyard together with paver patios, hardscaping, and landscape design.</p><span className="inline-flex items-center gap-2 mt-5 text-sm font-semibold">Plan your transformation <ArrowRight size={16}/></span></Link>
+          <Link href="/artificial-turf" className="rounded-xl border border-border bg-card p-7 hover:border-primary"><h2 className="text-2xl">Artificial turf installation</h2><p className="mt-3 text-sm text-muted-foreground">Explore residential, backyard, and pet-friendly artificial grass for your Orlando property.</p><span className="inline-flex items-center gap-2 mt-5 text-sm font-semibold">Explore artificial turf <ArrowRight size={16}/></span></Link>
+        </div>
+      </section>
       <TrustBar />
 
       {/* ─── SERVICES GRID ────────────────────────────────────────────── */}

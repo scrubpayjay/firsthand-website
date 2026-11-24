@@ -1,0 +1,2 @@
+# Implementation evidence is for Git review; keep it out of deployed bundles.
+docs/firsthand-implementation

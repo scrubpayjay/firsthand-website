@@ -20,8 +20,8 @@ type LeadState =
   | { kind: "sent" }
   | { kind: "error"; message: string };
 
-export function ChatWidget() {
-  const [open, setOpen] = useState(false);
+export function ChatWidget({ initialOpen = false }: { initialOpen?: boolean }) {
+  const [open, setOpen] = useState(initialOpen);
   const [messages, setMessages] = useState<ChatMessage[]>([GREETING]);
   const [input, setInput] = useState("");
   const [streaming, setStreaming] = useState(false);
@@ -42,7 +42,7 @@ export function ChatWidget() {
       const stored = localStorage.getItem(STORAGE_KEY);
       if (stored) {
         const parsed = JSON.parse(stored) as ChatMessage[];
-        if (Array.isArray(parsed) && parsed.length > 0) setMessages(parsed);
+        if (Array.isArray(parsed) && parsed.length > 0) queueMicrotask(() => setMessages(parsed));
       }
     } catch {
       // ignore
@@ -205,7 +205,7 @@ export function ChatWidget() {
         <button
           type="button"
           onClick={() => setOpen(true)}
-          aria-label="Open Firsthand assistant"
+          aria-label="Ask Firsthand — open assistant"
           className="fixed bottom-5 left-5 z-50 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-3 shadow-card-hover hover:bg-primary-hover transition-colors sm:px-5 sm:py-3.5"
         >
           <Sparkles className="h-4 w-4" />

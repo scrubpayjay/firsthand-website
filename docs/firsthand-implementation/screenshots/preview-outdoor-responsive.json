@@ -1,0 +1,20 @@
+[
+  {
+    "route": "/outdoor-living",
+    "scrollWidth": 753,
+    "sticky": "none",
+    "width": 768
+  },
+  {
+    "route": "/outdoor-living",
+    "scrollWidth": 375,
+    "sticky": "grid",
+    "width": 390
+  },
+  {
+    "route": "/outdoor-living",
+    "scrollWidth": 360,
+    "sticky": "grid",
+    "width": 375
+  }
+]

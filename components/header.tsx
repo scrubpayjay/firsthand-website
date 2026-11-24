@@ -9,6 +9,8 @@ import { cn } from "@/lib/utils";
 import { TrackedContactLink } from "@/components/tracked-contact-link";
 
 const primaryNav: Array<{ href: string; label: string }> = [
+  { href: "/outdoor-living", label: "Outdoor living" },
+  { href: "/artificial-turf", label: "Artificial turf" },
   { href: "/services", label: "Services" },
   { href: "/service-areas", label: "Service areas" },
   { href: "/commercial", label: "Commercial" },
@@ -65,12 +67,19 @@ export function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden lg:flex items-center gap-1" aria-label="Primary">
+        <nav className="hidden lg:flex items-center gap-0" aria-label="Primary">
           {primaryNav.map((item) => (
-            <Link
+            item.href === "/services" ? <div className="relative group" key={item.href}>
+              <Link href="/services" className="block rounded-md px-2 py-2 text-xs font-medium text-muted-foreground hover:text-foreground">Services</Link>
+              <div className="absolute left-0 top-full w-72 rounded-lg border border-border bg-background p-3 shadow-lg hidden group-hover:block group-focus-within:block">
+                <Link href="/outdoor-living" className="block rounded px-3 py-2 text-sm hover:bg-muted">Outdoor Living</Link>
+                <Link href="/artificial-turf" className="block rounded px-3 py-2 text-sm hover:bg-muted">Artificial Turf</Link>
+                <Link href="/services" className="block rounded px-3 py-2 text-sm hover:bg-muted">Explore all services</Link>
+              </div>
+            </div> : <Link
               key={item.href}
               href={item.href}
-              className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-muted"
+              className="rounded-md px-2 py-2 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground hover:bg-muted"
             >
               {item.label}
             </Link>

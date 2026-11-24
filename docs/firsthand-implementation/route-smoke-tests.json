@@ -1,0 +1,57 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "finalPath": "/"
+  },
+  {
+    "path": "/services",
+    "status": 200,
+    "finalPath": "/services"
+  },
+  {
+    "path": "/contact",
+    "status": 200,
+    "finalPath": "/contact"
+  },
+  {
+    "path": "/portfolio",
+    "status": 200,
+    "finalPath": "/portfolio"
+  },
+  {
+    "path": "/privacy-policy",
+    "status": 200,
+    "finalPath": "/privacy-policy"
+  },
+  {
+    "path": "/outdoor-living",
+    "status": 200,
+    "finalPath": "/outdoor-living",
+    "h1Count": 1,
+    "hasCanonical": true,
+    "hasServiceSchema": true,
+    "hasFaqSchema": true
+  },
+  {
+    "path": "/artificial-turf",
+    "status": 200,
+    "finalPath": "/artificial-turf",
+    "h1Count": 1,
+    "hasCanonical": true,
+    "hasServiceSchema": true,
+    "hasFaqSchema": true
+  },
+  {
+    "path": "/services/landscaping",
+    "status": 200,
+    "finalPath": "/services/landscape-design"
+  },
+  {
+    "path": "/sitemap.xml",
+    "status": 200,
+    "finalPath": "/sitemap.xml",
+    "hasOutdoor": true,
+    "hasTurf": true
+  }
+]
