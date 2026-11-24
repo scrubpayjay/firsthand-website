@@ -32,3 +32,7 @@ Pre-launch rollback point remains `dpl_2sXkRQERnPPPA83C8N6zx59j6t1s`, `firsthand
 Prior mobile Lighthouse baseline remains outdoor 89 and turf 87 performance, with 100 accessibility, best practices, and SEO; not rerun for this short review-content update. No new claim of platform attribution/dashboard verification or Meta CAPI support.
 
 Post-deploy runtime-log check: no error/fatal groups returned for the initial production deployment in the queried 30-minute window. No claim about unrelated deployments or periods.
+
+## Mobile caption-overlap fix and handoff
+
+PR #6 moved the shared mobile chat launcher into the third slot of the opaque Estimate / Call / Chat bar. Both initial and reopened launchers stay inside the bar, rather than floating over the turf caption. Live code commit: `a46cfa29edc762c96b5bf44d4d93144bd9251af1`; Vercel production: `dpl_CAWSsfqf1Ks357UhhRAuJyYQRLW7` (READY). Production checks at 390px and 375px show zero caption intersection, and chat opens/reopens. Desktop positioning is unchanged. Lint, TypeScript, production build, and all 10 contract tests pass. README and root HANDOFF.md now describe the actual current site and delivery state. The temporary local verification server was stopped. See `mobile-chat-production-verification.json` and `screenshots/mobile-chat-production-375.jpg`.

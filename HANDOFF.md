@@ -23,12 +23,18 @@ The user authorized launching the outdoor-living and artificial-turf pages, reta
 - Local production-server visual/geometry checks at 390 and 375 pixels: chat button fully inside the dock; **0 square pixels of caption overlap**, including after closing the assistant.
 - Chat opens and reopens: PASS.
 - Desktop at 1440 pixels: mobile dock hidden; launcher retains its existing 20px left offset.
-- Detailed geometry evidence: `docs/firsthand-implementation/mobile-chat-local-verification.json`.
+- **VERIFIED on production:** 390px and 375px both show the chat launcher completely inside the bottom bar with zero caption overlap. The live assistant opens and reopens. No error/fatal groups were returned in the release runtime-log query.
+- Production evidence: `docs/firsthand-implementation/mobile-chat-production-verification.json` and `docs/firsthand-implementation/screenshots/mobile-chat-production-375.jpg`.
+- Detailed local geometry evidence: `docs/firsthand-implementation/mobile-chat-local-verification.json`.
 - Earlier production lead tests accepted both labeled QA inquiries through the existing CRM. Do not create unnecessary fresh customer-like test records; reuse the documented QA details if a delivery change needs testing.
 
 ## Git and deployment state
 
-The mobile fix is prepared on `codex/firsthand-mobile-chat-dock`; this handoff's deployment status will be finalized after its production release. Previous production release: `88691d10f066629a6ed25135dd143ee660f052db`, Vercel `dpl_CYXGaedz6ab9QQ6BnE68gZfxGvDp`.
+**VERIFIED live:** PR #6 is merged into `main`. UI release commit: `a46cfa29edc762c96b5bf44d4d93144bd9251af1`. Vercel production deployment: `dpl_CAWSsfqf1Ks357UhhRAuJyYQRLW7`, READY, `firsthand-website-nri4fcc4p-mindaro.vercel.app`. Both live landing routes are available. Final handoff/evidence updates are documentation-only follow-ups to that tested UI release.
+
+Git is on `main`, synced with GitHub after delivery, with no pending implementation changes. The temporary verification server on port 3230 was stopped; no new local server is left by this fix. Other project processes were not changed.
+
+Previous production rollback: `88691d10f066629a6ed25135dd143ee660f052db`, Vercel `dpl_CYXGaedz6ab9QQ6BnE68gZfxGvDp`. Use it only with an explicit rollback request or a verified release failure.
 
 Repository: `scrubpayjay/firsthand-website`. Vercel: `mindaro/firsthand-website`, project `prj_jsLxTw8PThxR1ZkL5584sj4QfAG9`, team `team_m5YDilrP62GNe0RgPUYi2e62`. Main pushes deploy production; feature branches deploy protected previews. Re-read live Git and Vercel state when resuming rather than trusting old status notes.
 
@@ -43,4 +49,4 @@ Repository: `scrubpayjay/firsthand-website`. Vercel: `mindaro/firsthand-website`
 
 ## Next safe action
 
-Finish the mobile-fix production deployment, inspect the actual domain at both mobile widths, and finalize this handoff with the deployed code commit and verification. The user has already authorized this release. After delivery, no pending implementation work is required for the caption-overlap fix.
+The requested mobile fix, GitHub push, production release, README update, and handoff are complete. No approval or implementation step remains for this request. For future work, inspect current Git and Vercel state first; business-scope gates and unrelated UNKNOWN items above are separate follow-up work.
